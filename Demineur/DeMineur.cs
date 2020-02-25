@@ -2,7 +2,7 @@
 
 namespace Demineur
 {
-    class Program
+    class DemineurControlleur
     {
         static void Main()
         {
