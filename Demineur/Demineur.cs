@@ -2,7 +2,7 @@
 
 namespace Demineur
 {
-    class Program
+    class Demineur
     {
         static void Main(string[] args)
         {
