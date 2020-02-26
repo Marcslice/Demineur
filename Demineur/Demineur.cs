@@ -4,9 +4,9 @@ namespace Demineur
 {
     class Demineur
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            Console.WriteLine("yeet");
+            Console.WriteLine("yass");
         }
     }
 }
