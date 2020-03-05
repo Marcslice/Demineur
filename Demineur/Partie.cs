@@ -4,7 +4,22 @@ using System.Text;
 
 namespace Demineur
 {
-    class Partie
+    public class Partie
     {
+        Grille m_Grille;
+        Joueur m_Joeur;
+        IA m_IA;
+        string tempsEcoule;
+        bool automatique;
+
+        public Partie()
+        {
+
+        }
+
+        public string ObtenirMetadonneesDeLaPartieActuellementTerminee()
+        {
+            return null;
+        }
     }
 }

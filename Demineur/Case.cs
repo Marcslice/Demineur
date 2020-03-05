@@ -4,7 +4,25 @@ using System.Text;
 
 namespace Demineur
 {
-    class Case
+    public class Case
     {
+        bool bombe;
+        char nbDanger;
+        bool[] casesVoisines;
+
+        public Case()
+        {
+
+        }
+
+        public bool EsTuBombe()
+        {
+            return true;
+        }
+
+        public char CombienDanger()
+        {
+            return '0';
+        }
     }
 }

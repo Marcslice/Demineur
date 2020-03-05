@@ -4,9 +4,24 @@ namespace Demineur
 {
     class Demineur
     {
+        bool m_EnMarche;
+        Partie m_Partie;
+        Classements m_Classement;
+
+        Demineur()
+        {
+            m_EnMarche = true;
+            //m_Partie = new Partie();
+
+            m_Classement = new Classements();
+            Menu.AfficherMenu();
+        }
+
+
+
         static void Main()
         {
-            Console.WriteLine("yass");
+            Demineur m_Demineur = new Demineur();
         }
     }
 }

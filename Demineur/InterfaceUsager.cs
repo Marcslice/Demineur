@@ -4,7 +4,26 @@ using System.Text;
 
 namespace Demineur
 {
-    class InterfaceUsager
+    public class InterfaceUsager
     {
+        public void DessinerGrille(string grille)
+        {
+
+        }
+
+        public void AfficherChronometre(string temps)
+        {
+
+        }
+
+        public void MessageVictoire()
+        {
+
+        }
+
+        public void MessageDefaite()
+        {
+
+        }
     }
 }

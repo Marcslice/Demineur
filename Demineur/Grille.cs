@@ -4,7 +4,19 @@ using System.Text;
 
 namespace Demineur
 {
-    class Grille
+    public class Grille
     {
+        Case[] champ;
+        short nbBombeGrille;
+
+        public Grille(uint grosseur)
+        {
+
+        }
+
+        public void DisperserBombes(short nbBombeGrille)
+        {
+
+        }
     }
 }
