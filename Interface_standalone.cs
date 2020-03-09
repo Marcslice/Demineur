@@ -23,9 +23,8 @@ namespace draw
 
             Console.Write("    ");
             for (int y = 0; y < iCol; y++) //Dessine ligne du haut
-            {
                 Console.Write(" ___");
-            }
+
             Console.Write("\n");
             for (int x = 0; x < 5; x++) // Dessine ligne 
             {
@@ -55,16 +54,23 @@ namespace draw
         }
 
 
-        public static void DessinerGrille(int col, int lig, char[] tab, short posX, short posY)
-        {
+        public void DessinerTitreJeu() {
 
             // Dessine le titre centré
             string titre = "Démineur 2020, année du JUGEMENT dernier.";
             int posTitre = (((col * 4) / 2) - (titre.Length / 2)) + 4;
-            drawInstructions(col*4+8);
+            drawInstructions(col * 4 + 8);
             Console.SetCursorPosition(posTitre, 0);
-            Console.WriteLine(titre+"\n");
+            Console.WriteLine(titre + "\n");
             // Fin du titre
+
+
+        }
+
+        public static void DessinerGrille(int col, int lig, char[] tab, short posX, short posY)
+        {
+
+            DessinerTitreJeu();
 
             for (int x = 0; x < lig; x++)
             {

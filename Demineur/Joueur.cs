@@ -30,7 +30,7 @@ namespace Demineur
             return true;
         }
 
-        public string ToString()
+        public override string ToString()
         {
             return null;
         }
