@@ -6,23 +6,44 @@ namespace Demineur
 {
     public class Case
     {
-        bool bombe;
-        char nbDanger;
-        bool[] casesVoisines;
+        bool esTuBombe;
+        short nbDanger;
+        Case[] casesVoisines;
 
         public Case()
         {
-
+            esTuBombe = false;
+            nbDanger = 0;
+            casesVoisines = new Case[8]{null, null, null, null, null, null, null, null};
         }
 
-        public bool EsTuBombe()
+        public short Value
         {
-            return true;
+            get { CombienDanger();
+                return nbDanger; }
         }
 
-        public char CombienDanger()
+        public bool Bombe
         {
-            return '0';
+            set { esTuBombe = value; }
+            get { return esTuBombe; }
         }
+
+        public Case this[int i]
+        {
+            set {casesVoisines[i] = value; }
+        }
+
+        public void CombienDanger()
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                if(casesVoisines[i].Bombe)
+                {
+                    nbDanger++;
+                }
+            }
+        }
+
     }
 }

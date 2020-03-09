@@ -15,6 +15,7 @@ namespace Demineur
 
             m_Classement = new Classements();
             Menu.AfficherMenu();
+            m_Partie = new Partie(Menu.OptionDePartie());
         }
 
 

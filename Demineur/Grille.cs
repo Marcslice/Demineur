@@ -9,12 +9,18 @@ namespace Demineur
         Case[] champ;
         short nbBombeGrille;
 
-        public Grille(uint grosseur)
+        public Grille(short colonne, short ligne, short nbBombe)
         {
-
+            nbBombeGrille = nbBombe;
+            //...
         }
 
-        public void DisperserBombes(short nbBombeGrille)
+        public void DisperserBombes()
+        {
+            
+        }
+
+        public void RencontreVoisin()
         {
 
         }
