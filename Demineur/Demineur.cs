@@ -16,7 +16,8 @@ namespace Demineur
 
             switch (Menu.AfficherMenu()) {
                 case 1 :
-                    m_Partie = new Partie(Menu.OptionDePartie());
+                    InterfaceUsager.DessinerGrille(16, 8,"ree", 1,1);
+                    //m_Partie = new Partie(Menu.OptionDePartie());
                     break;
                 case 2  :
                     Menu.AfficherClassement();
@@ -28,8 +29,6 @@ namespace Demineur
                     break;
             }
         }
-
-
 
         static void Main()
         {
