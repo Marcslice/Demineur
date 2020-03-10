@@ -120,7 +120,7 @@ namespace Demineur
                 Console.WriteLine("#                                                        #");
                 Console.WriteLine("#                 4.  MENU PRINCIPAL                     #");
                 Console.WriteLine("#                                                        #");
-                Console.Write("#        Options : " + recap); for (int x = 1; x < (58 - (19 + recap.Length)); x++) { Console.Write(" "); }
+                Console.Write("#        Options : " + recap); for (int x = 1; x < (58 - (19 + recap.Length)); x++) { Console.Write(" "); } Console.WriteLine("#");
                 Console.WriteLine("#                                                        #");
                 Console.WriteLine("##########################################################");
                 Console.Write("Quel est votre choix ? >> ");
@@ -165,7 +165,7 @@ namespace Demineur
                 Console.WriteLine("#                                                        #");
                 Console.WriteLine("#                 4.  MENU PRINCIPAL                     #");
                 Console.WriteLine("#                                                        #");
-                Console.Write("#        Options : " + recap); for (int x = 1; x < (58 - (19 + recap.Length)); x++) { Console.Write(" "); }
+                Console.Write("#        Options : " + recap); for (int x = 1; x < (58 - (19 + recap.Length)); x++) { Console.Write(" "); } Console.WriteLine("#");
                 Console.WriteLine("#                                                        #");
                 Console.WriteLine("##########################################################");
                 Console.Write("Quel est votre choix ? >> ");
@@ -206,7 +206,7 @@ namespace Demineur
             Console.WriteLine("#                                                        #");
             Console.WriteLine("#                                                        #");
             Console.WriteLine("#                                                        #");
-            Console.Write("#        Options : " + recap); for (int x = 1; x < (58 - (19 + recap.Length)); x++) { Console.Write(" "); } // auto
+            Console.Write("#        Options : " + recap); for (int x = 1; x < (58 - (19 + recap.Length)); x++) { Console.Write(" "); } Console.WriteLine("#"); // auto
             Console.WriteLine("#                                                        #");
             Console.WriteLine("##########################################################");
             return Console.ReadKey().KeyChar;
