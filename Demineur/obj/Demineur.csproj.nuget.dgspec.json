@@ -1,31 +1,29 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\marc_\\Desktop\\Demineur\\Demineur\\Demineur.csproj": {}
+    "/home/marc/Documents/Demineur/Demineur/Demineur.csproj": {}
   },
   "projects": {
-    "C:\\Users\\marc_\\Desktop\\Demineur\\Demineur\\Demineur.csproj": {
+    "/home/marc/Documents/Demineur/Demineur/Demineur.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\marc_\\Desktop\\Demineur\\Demineur\\Demineur.csproj",
+        "projectUniqueName": "/home/marc/Documents/Demineur/Demineur/Demineur.csproj",
         "projectName": "Demineur",
-        "projectPath": "C:\\Users\\marc_\\Desktop\\Demineur\\Demineur\\Demineur.csproj",
-        "packagesPath": "C:\\Users\\marc_\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\marc_\\Desktop\\Demineur\\Demineur\\obj\\",
+        "projectPath": "/home/marc/Documents/Demineur/Demineur/Demineur.csproj",
+        "packagesPath": "/home/marc/.nuget/packages/",
+        "outputPath": "/home/marc/Documents/Demineur/Demineur/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\marc_\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/marc/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp2.1"
+          "netcoreapp3.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp2.1": {
+          "netcoreapp3.1": {
             "projectReferences": {}
           }
         },
@@ -36,15 +34,7 @@
         }
       },
       "frameworks": {
-        "netcoreapp2.1": {
-          "dependencies": {
-            "Microsoft.NETCore.App": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[2.1.0, )",
-              "autoReferenced": true
-            }
-          },
+        "netcoreapp3.1": {
           "imports": [
             "net461",
             "net462",
@@ -55,7 +45,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.102/RuntimeIdentifierGraph.json"
         }
       }
     }

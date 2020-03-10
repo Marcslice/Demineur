@@ -70,6 +70,7 @@ namespace Demineur
         {
 
             Console.Clear();
+              Console.SetWindowSize(140,40);
             DessinerTitreJeu();
 
             for (int x = 0; x < lig; x++)
