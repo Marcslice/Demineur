@@ -6,11 +6,16 @@ namespace Demineur
 {
     public static class Menu
     {
-        public static int[] AfficherMenu()
+        static char[] optionsDePartie;
+        static string recap;
+        public static short AfficherMenu()
         {
-            int[] optionsDePartie = new int[] {'0','0','0'};
             char choix;
+            optionsDePartie = new char[] { '0', '0', '0' };
+            recap = "";
+            
             do {
+                Console.Clear();
                 Console.WriteLine("##########################################################");
                 Console.WriteLine("#                                                        #");
                 Console.WriteLine("#                         MENU                           #");
@@ -26,25 +31,30 @@ namespace Demineur
                 Console.WriteLine("#                                                        #");
                 Console.WriteLine("##########################################################");
                 Console.Write("Quel est votre choix ? >> ");
-                choix = Console.ReadLine()[0];
+                choix = Console.ReadKey().KeyChar;
             } while (choix != '1' && choix != '2' && choix != '3');
 
             switch (choix)
             {
-                case '1':
-                    MenuJouerGrosseur(optionsDePartie);
-                    MenuJouerDifficulte(optionsDePartie);
-                    MenuJouerAI(optionsDePartie);
-                    return optionsDePartie;
-                case '2':
-                    return AfficherClassement();
-                case '3':
+                case '1': // Jouer
+                    if (MenuJouerGrosseur() == '4') // 4 = retour au menu principal
+                        return 4;
+                    if (MenuJouerDifficulte() == '4')
+                        return 4;
+                    if (MenuJouerAI() == '4')
+                        return 4;
+                    if (RecapFinal() == '4')
+                        return 4;
+                    return 1;
+                case '2': // Afficher classement
+                    return 2;
+                case '3': // Quitter
                 default:
-                    return optionsDePartie = new int[3] {'0', '0', '0'};
+                    return 3;
             }
         }
 
-        public static int[] MenuJouerGrosseur(int[] optionsDePartie) {
+        public static char MenuJouerGrosseur() {
 
             char choix;
             do
@@ -65,18 +75,33 @@ namespace Demineur
                 Console.WriteLine("#                                                        #");
                 Console.WriteLine("#                 4.  MENU PRINCIPAL                     #");
                 Console.WriteLine("#                                                        #");
+                Console.WriteLine("#                                                        #");
+                Console.WriteLine("#                                                        #");
                 Console.WriteLine("##########################################################");
-
-                choix = Console.ReadLine()[0];
-            } while (choix != '1' || choix != '2' || choix != '3' || choix != '4');
+                Console.Write("Quel est votre choix ? >> ");
+                choix = Console.ReadKey().KeyChar;
+            } while (choix != '1' && choix != '2' && choix != '3' && choix != '4');
             optionsDePartie[0] = choix;
-            return optionsDePartie;
+            return choix;
         }
 
-        public static int[] MenuJouerDifficulte(int[] optionsDePartie)
+        public static char MenuJouerDifficulte()
         {
 
             char choix;
+            
+            switch (optionsDePartie[0]) {
+                case '1':
+                    recap += "PETIT ";
+                    break;
+                case '2':
+                    recap += "MOYEN ";
+                    break;
+                case '3':
+                    recap += "GRAND ";
+                    break;
+            }
+
             do
             {
                 Console.Clear();
@@ -95,22 +120,37 @@ namespace Demineur
                 Console.WriteLine("#                                                        #");
                 Console.WriteLine("#                 4.  MENU PRINCIPAL                     #");
                 Console.WriteLine("#                                                        #");
+                Console.Write("#        Options : " + recap); for (int x = 1; x < (58 - (19 + recap.Length)); x++) { Console.Write(" "); }
+                Console.WriteLine("#                                                        #");
                 Console.WriteLine("##########################################################");
-
-                choix = Console.ReadLine()[0];
-            } while (choix != '1' || choix != '2' || choix != '3' || choix != '4');
+                Console.Write("Quel est votre choix ? >> ");
+                choix = Console.ReadKey().KeyChar;
+            } while (choix != '1' && choix != '2' && choix != '3' && choix != '4');
             optionsDePartie[1] = choix;
-            return optionsDePartie;
+            return choix;
         }
 
-        public static int[] MenuJouerAI(int[] optionsDePartie)
+        public static char MenuJouerAI()
         {
 
             char choix;
+
+            switch (optionsDePartie[1])
+            {
+                case '1':
+                    recap += ", FACILE ";
+                    break;
+                case '2':
+                    recap += ", NORMAL ";
+                    break;
+                case '3':
+                    recap += ", DIFFICILE ";
+                    break;
+            }
             do
             {
                 Console.Clear();
-                Console.WriteLine("##########################################################");
+                Console.WriteLine("##########################################################"); // 58 characteres
                 Console.WriteLine("#                                                        #");
                 Console.WriteLine("#                   Options de partie                    #");
                 Console.WriteLine("#                                                        #");
@@ -125,21 +165,61 @@ namespace Demineur
                 Console.WriteLine("#                                                        #");
                 Console.WriteLine("#                 4.  MENU PRINCIPAL                     #");
                 Console.WriteLine("#                                                        #");
+                Console.Write("#        Options : " + recap); for (int x = 1; x < (58 - (19 + recap.Length)); x++) { Console.Write(" "); }
+                Console.WriteLine("#                                                        #");
                 Console.WriteLine("##########################################################");
-
-                choix = Console.ReadLine()[0];
-            } while (choix != '1' || choix != '2' || choix != '3' || choix != '4');
+                Console.Write("Quel est votre choix ? >> ");
+                choix = Console.ReadKey().KeyChar;
+            } while (choix != '1' && choix != '2' && choix != '3' && choix != '4');
             optionsDePartie[2] = choix;
-            return optionsDePartie;
+            return choix;
         }
 
-        public static int[] AfficherClassement() {
-            return null;
+        public static char RecapFinal() {
+
+            switch (optionsDePartie[2])
+            {
+                case '1':
+                    recap += ", SANS AI ";
+                    break;
+                case '2':
+                    recap += ", AVEC AI ";
+                    break;
+                case '3':
+                    recap += ", AUTOMATIQUE ";
+                    break;
+            }
+
+            Console.Clear();
+            Console.WriteLine("##########################################################");
+            Console.WriteLine("#                                                        #");
+            Console.WriteLine("#                    Début de partie                     #");
+            Console.WriteLine("#                                                        #");
+            Console.WriteLine("#                                                        #");
+            Console.WriteLine("#     Vous êtez sur le point de commencer la partie.     #");
+            Console.WriteLine("#                                                        #");
+            Console.WriteLine("#                                                        #");
+            Console.WriteLine("#               Appuyez sur 4 pour annuler               #");
+            Console.WriteLine("#                          ou                            #");
+            Console.WriteLine("#        sur n'importe quel touche pour commencer.       #");
+            Console.WriteLine("#                                                        #");
+            Console.WriteLine("#                                                        #");
+            Console.WriteLine("#                                                        #");
+            Console.WriteLine("#                                                        #");
+            Console.Write("#        Options : " + recap); for (int x = 1; x < (58 - (19 + recap.Length)); x++) { Console.Write(" "); } // auto
+            Console.WriteLine("#                                                        #");
+            Console.WriteLine("##########################################################");
+            return Console.ReadKey().KeyChar;
         }
+
 
         public static char[] OptionDePartie()//Grandeur [P 10x6:1,M 16x8:2,G 22x10:3], Difficulter [EZ:0.1,Medium:0.2,TOUGH:Sizex0.3], AI[T,F,A]
         {
-            return null;
+            return optionsDePartie;
+        }
+
+        public static void AfficherClassement() {
+            Console.WriteLine("Classement... Veuillez appuyez sur un touche pour continuer.");
         }
 
         public static string DemanderNom()
@@ -147,7 +227,10 @@ namespace Demineur
             string nom;
 
             do
+            {
+                Console.Write("Quel nom voulez-vous utiliser ?");
                 nom = Console.ReadLine();
+            }
             while (nom.Length >= 3);
             return nom;
         }

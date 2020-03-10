@@ -11,11 +11,22 @@ namespace Demineur
         Demineur()
         {
             m_EnMarche = true;
-            //m_Partie = new Partie();
 
             m_Classement = new Classements();
-            Menu.AfficherMenu();
-            m_Partie = new Partie(Menu.OptionDePartie());
+
+            switch (Menu.AfficherMenu()) {
+                case 1 :
+                    m_Partie = new Partie(Menu.OptionDePartie());
+                    break;
+                case 2  :
+                    Menu.AfficherClassement();
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    Menu.AfficherMenu();
+                    break;
+            }
         }
 
 
