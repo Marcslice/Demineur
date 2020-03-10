@@ -6,8 +6,8 @@ namespace Demineur
 {
     public static class Menu
     {
-        static char[] optionsDePartie;
-        static string recap;
+        static char[] optionsDePartie; // Sera retourné à Démineur afin qu'il puisse démarrer une partie ayant ces options là.
+        static string recap; // Permet d'afficher une récapilation des choix du joueur.
         public static short AfficherMenu()
         {
             char choix;
@@ -16,7 +16,7 @@ namespace Demineur
             
             do {
                 Console.Clear();
-                Console.WriteLine("##########################################################");
+                Console.WriteLine("##########################################################"); // Largeur de 58
                 Console.WriteLine("#                                                        #");
                 Console.WriteLine("#                         MENU                           #");
                 Console.WriteLine("#                                                        #");
@@ -57,6 +57,7 @@ namespace Demineur
         public static char MenuJouerGrosseur() {
 
             char choix;
+
             do
             {
                 Console.Clear();
@@ -120,7 +121,7 @@ namespace Demineur
                 Console.WriteLine("#                                                        #");
                 Console.WriteLine("#                 4.  MENU PRINCIPAL                     #");
                 Console.WriteLine("#                                                        #");
-                Console.Write("#        Options : " + recap); for (int x = 1; x < (58 - (19 + recap.Length)); x++) { Console.Write(" "); } Console.WriteLine("#");
+                Console.Write("#        Options : " + recap); for (int x = 1; x < (58 - (19 + recap.Length)); x++) { Console.Write(" "); } Console.WriteLine("#"); // Ajustement auto
                 Console.WriteLine("#                                                        #");
                 Console.WriteLine("##########################################################");
                 Console.Write("Quel est votre choix ? >> ");
@@ -147,10 +148,11 @@ namespace Demineur
                     recap += ", DIFFICILE ";
                     break;
             }
+
             do
             {
                 Console.Clear();
-                Console.WriteLine("##########################################################"); // 58 characteres
+                Console.WriteLine("##########################################################");
                 Console.WriteLine("#                                                        #");
                 Console.WriteLine("#                   Options de partie                    #");
                 Console.WriteLine("#                                                        #");
@@ -165,7 +167,7 @@ namespace Demineur
                 Console.WriteLine("#                                                        #");
                 Console.WriteLine("#                 4.  MENU PRINCIPAL                     #");
                 Console.WriteLine("#                                                        #");
-                Console.Write("#        Options : " + recap); for (int x = 1; x < (58 - (19 + recap.Length)); x++) { Console.Write(" "); } Console.WriteLine("#");
+                Console.Write("#        Options : " + recap); for (int x = 1; x < (58 - (19 + recap.Length)); x++) { Console.Write(" "); } Console.WriteLine("#"); // Ajustement auto
                 Console.WriteLine("#                                                        #");
                 Console.WriteLine("##########################################################");
                 Console.Write("Quel est votre choix ? >> ");
@@ -206,7 +208,7 @@ namespace Demineur
             Console.WriteLine("#                                                        #");
             Console.WriteLine("#                                                        #");
             Console.WriteLine("#                                                        #");
-            Console.Write("#        Options : " + recap); for (int x = 1; x < (58 - (19 + recap.Length)); x++) { Console.Write(" "); } Console.WriteLine("#"); // auto
+            Console.Write("#        Options : " + recap); for (int x = 1; x < (58 - (19 + recap.Length)); x++) { Console.Write(" "); } Console.WriteLine("#"); // Ajustement auto
             Console.WriteLine("#                                                        #");
             Console.WriteLine("##########################################################");
             return Console.ReadKey().KeyChar;

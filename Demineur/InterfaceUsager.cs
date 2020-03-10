@@ -4,30 +4,28 @@ using System.Text;
 
 namespace Demineur
 {   
+
     public static class InterfaceUsager //static pour test
     {
-        public static void DessinerTitreJeu()
+        static string ModeDeJeuActif = "Contrôle par flèche";
+        public static void DessinerTitreJeu(int col)
         {
-
-            // Dessine le titre centré
             string titre = "Démineur 2020, année du JUGEMENT dernier.";
             int posTitre = (((16 * 4) / 2) - (titre.Length / 2)) + 4; // colonnes harcoder 16
-            DessinerInstructions(16 * 4 + 8); // colonnes harcoder 16
+            DessinerInstructions(col * 4 + 8); // colonnes harcoder 20
             Console.SetCursorPosition(posTitre, 0);
             Console.WriteLine(titre + "\n");
-            // Fin du titre
-
-
         }
 
-        public static void DessinerInstructions(int left)
-        {
-            Console.SetCursorPosition(left, 4);
+        public static void DessinerInstructions(int offset)
+        {           
+            Console.SetCursorPosition(offset, 4);
             Console.Write("Appuyez sur f pour utiliser les flèches.");
-            Console.SetCursorPosition(left, 5);
+            Console.SetCursorPosition(offset, 5);
             Console.Write("Appuyez sur c pour entrer des coordonnées au clavier.");
-            Console.SetCursorPosition(left, 6);
-            Console.Write("Appuyez sur r pour afficher les règles.");
+            Console.SetCursorPosition(offset, 9);
+            Console.Write("Mode de jeu actif : " + ModeDeJeuActif);
+
         }
 
 
@@ -70,8 +68,8 @@ namespace Demineur
         {
 
             Console.Clear();
-              Console.SetWindowSize(140,40);
-            DessinerTitreJeu();
+            Console.SetWindowSize(col*3 + 80,40);
+            DessinerTitreJeu(col);
 
             for (int x = 0; x < lig; x++)
             {
@@ -129,17 +127,16 @@ namespace Demineur
             DessinerPiedDePage(col, "marc", 3);
             Console.Write("\n   Quelle case souhaitez-vous ouvrir ? >> 1 1");
             Cout(col, lig, "ree"); // ree as string tab
-
         }
-
+        
         public static void Cout(int iCol, int iLig, string tab)
         {
             ConsoleKeyInfo arrow;
             bool boucle = true;
-            int[] positionActuelle;
+            int[] positionActuelle = new int[2] {6, 5}; // position au début de la partie
             string choix;
 
-            Console.SetCursorPosition(6, 5);
+            Console.SetCursorPosition(positionActuelle[0], positionActuelle[1]);
             while (boucle)
             {
 
@@ -179,26 +176,25 @@ namespace Demineur
                             Console.SetCursorPosition(Console.CursorLeft - 1, Console.CursorTop + 3);
 
                         positionActuelle = new int[2] { Console.CursorLeft, Console.CursorTop };
-
                         break;
                     case 13:
                         positionActuelle = new int[2] { Console.CursorLeft, Console.CursorTop };
                         boucle = false;
                         break;
-                    case 82: // r pour règlement
-                        positionActuelle = new int[2] { Console.CursorLeft, Console.CursorTop };
-                        break;
-                    case 70: // f pour controler avec fleches 
-                        positionActuelle = new int[2] { Console.CursorLeft, Console.CursorTop };
-                        boucle = false;
+                    case 70: // f pour controler avec fleches                      
+                     //   positionActuelle = new int[2] { Console.CursorLeft-1, Console.CursorTop };                       
+                        Console.Write("\b");
+                        ModeDeJeuActif = "Contrôle par flèche";
+                        DessinerInstructions(iCol * 4 + 8);                               
                         break;
                     case 67: // c pour coordonnées manuelles
-                        positionActuelle = new int[2] { Console.CursorLeft, Console.CursorTop };
-                        boucle = false;
+                     //   positionActuelle = new int[2] { Console.CursorLeft-1, Console.CursorTop };     
+                        ModeDeJeuActif = "Entrée manuscrite   ";
+                        Console.Write("\b");
+                        DessinerInstructions(iCol * 4 + 8);                   
                         break;
                     case 65: // a pour aciver l'intelligence artificiel
                         positionActuelle = new int[2] { Console.CursorLeft, Console.CursorTop };
-                        boucle = false;
                         break;
                     default:
                         positionActuelle = new int[2] { Console.CursorLeft, Console.CursorTop };
