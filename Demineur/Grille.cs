@@ -7,23 +7,39 @@ namespace Demineur
     public class Grille
     {
         Case[,] champs;
-        short nbBombeGrille;
+        int nbBombeGrille;
 
-        public Grille(short colonne, short ligne, short nbBombe)
+        public Grille(short colonne, short ligne, int difficulte)
         {
-            nbBombeGrille = nbBombe;
+            nbBombeGrille = CalculerBombes(colonne, ligne, difficulte);
             champs = new Case[colonne, ligne];
 
             for(int i = 0; i < colonne; i++)
             {
                 for(int j = 0; j < ligne; j++)
                 {
-                    new Case();
+                    champs[i,j] = new Case();
                 }
             }
 
             RencontreVoisin(colonne,ligne);
             DisperserBombes(colonne, ligne);
+        }
+
+        int CalculerBombes(short colonne, short ligne, int difficulte) {
+            double pourcentage = 0;
+            switch (difficulte) {
+                case 49:
+                    pourcentage = 0.1;
+                    break;
+                case 50:
+                    pourcentage = 0.2;
+                    break;
+                case 51:
+                    pourcentage = 0.3;
+                    break;
+            }
+            return Convert.ToInt32((colonne * ligne) * pourcentage);
         }
 
         public void DisperserBombes(short colonne, short ligne)
@@ -50,30 +66,30 @@ namespace Demineur
                 for (int j = 0; j < ligne; j++)
                 {
                     Case destination = champs[i, j];
-                    
+
                     if ((i - 1 > 0) && (j - 1 > 0))//NW
-                        destination[0] = champs[i - 1, j - 1];
+                        destination.SetCase(0, champs[i - 1, j - 1]);
 
                     if (j - 1 > 0)//N
-                        destination[1] = champs[i, j - 1];
+                        destination.SetCase(1, champs[i, j - 1]);
 
                     if ((i + 1 < colonne) && (j - 1 > 0))//NE
-                        destination[2] = champs[i + 1, j - 1];
+                        destination.SetCase(2, champs[i + 1, j - 1]);
 
                     if (i - 1 > 0)//W
-                        destination[3] = champs[i - 1, j];
+                        destination.SetCase(3, champs[i - 1, j]);
 
                     if (i + 1 < colonne)//E
-                        destination[4] = champs[i + 1, j];
+                        destination.SetCase(4, champs[i + 1, j]);
 
                     if ((i - 1 > 0) && (j + 1 < ligne))//SW
-                        destination[5] = champs[i - 1, j + 1];
+                        destination.SetCase(5, champs[i - 1, j + 1]);
 
                     if (j + 1 < ligne)//S
-                        destination[6] = champs[i, j + 1];
+                        destination.SetCase(6, champs[i, j + 1]);
 
                     if ((i + 1 < colonne) && (j + 1 < ligne))//SE
-                        destination[7] = champs[i + 1, j + 1];
+                        destination.SetCase(7, champs[i + 1, j + 1]);
                 }
             }
         }

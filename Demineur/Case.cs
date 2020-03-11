@@ -30,11 +30,14 @@ namespace Demineur
             get { return esTuBombe; }
         }
 
-        public Case this[int i]
-        {
-            set {casesVoisines[i] = value; }
-        }
+        // public Case this[int i]
+        // {
+        //     set {casesVoisines[i] = value; }
+        // }
 
+        public void SetCase(int i, Case voisin) {
+            this.casesVoisines[i] = voisin;
+        }
         public void CombienDanger()
         {
             for (int i = 0; i < 8; i++)
@@ -45,6 +48,5 @@ namespace Demineur
                 }
             }
         }
-
     }
 }

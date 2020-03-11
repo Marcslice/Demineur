@@ -6,12 +6,12 @@ namespace Demineur
 {
     public static class Menu
     {
-        static char[] optionsDePartie; // Sera retourné à Démineur afin qu'il puisse démarrer une partie ayant ces options là.
+        static int[] optionsDePartie; // Sera retourné à Démineur afin qu'il puisse démarrer une partie ayant ces options là.
         static string recap; // Permet d'afficher une récapilation des choix du joueur.
-        public static short AfficherMenu()
+        public static int AfficherMenu()
         {
             char choix;
-            optionsDePartie = new char[] { '0', '0', '0' };
+            optionsDePartie = new int[] { 0,0,0 };
             recap = "";
             
             do {
@@ -82,7 +82,7 @@ namespace Demineur
                 Console.Write("Quel est votre choix ? >> ");
                 choix = Console.ReadKey().KeyChar;
             } while (choix != '1' && choix != '2' && choix != '3' && choix != '4');
-            optionsDePartie[0] = choix;
+            optionsDePartie[0] = Convert.ToInt32(choix);
             return choix;
         }
 
@@ -92,13 +92,13 @@ namespace Demineur
             char choix;
             
             switch (optionsDePartie[0]) {
-                case '1':
+                case 1:
                     recap += "PETIT ";
                     break;
-                case '2':
+                case 2:
                     recap += "MOYEN ";
                     break;
-                case '3':
+                case 3:
                     recap += "GRAND ";
                     break;
             }
@@ -121,13 +121,13 @@ namespace Demineur
                 Console.WriteLine("#                                                        #");
                 Console.WriteLine("#                 4.  MENU PRINCIPAL                     #");
                 Console.WriteLine("#                                                        #");
-                Console.Write("#        Options : " + recap); for (int x = 1; x < (58 - (19 + recap.Length)); x++) { Console.Write(" "); } Console.WriteLine("#"); // Ajustement auto
+                Console.Write("#        Options : " + recap); for (short x = 1; x < (58 - (19 + recap.Length)); x++) { Console.Write(" "); } Console.WriteLine("#"); // Ajustement auto
                 Console.WriteLine("#                                                        #");
                 Console.WriteLine("##########################################################");
                 Console.Write("Quel est votre choix ? >> ");
                 choix = Console.ReadKey().KeyChar;
             } while (choix != '1' && choix != '2' && choix != '3' && choix != '4');
-            optionsDePartie[1] = choix;
+            optionsDePartie[1] = Convert.ToInt32(choix);
             return choix;
         }
 
@@ -138,13 +138,13 @@ namespace Demineur
 
             switch (optionsDePartie[1])
             {
-                case '1':
+                case 1:
                     recap += ", FACILE ";
                     break;
-                case '2':
+                case 2:
                     recap += ", NORMAL ";
                     break;
-                case '3':
+                case 3:
                     recap += ", DIFFICILE ";
                     break;
             }
@@ -167,13 +167,13 @@ namespace Demineur
                 Console.WriteLine("#                                                        #");
                 Console.WriteLine("#                 4.  MENU PRINCIPAL                     #");
                 Console.WriteLine("#                                                        #");
-                Console.Write("#        Options : " + recap); for (int x = 1; x < (58 - (19 + recap.Length)); x++) { Console.Write(" "); } Console.WriteLine("#"); // Ajustement auto
+                Console.Write("#        Options : " + recap); for (short x = 1; x < (58 - (19 + recap.Length)); x++) { Console.Write(" "); } Console.WriteLine("#"); // Ajustement auto
                 Console.WriteLine("#                                                        #");
                 Console.WriteLine("##########################################################");
                 Console.Write("Quel est votre choix ? >> ");
                 choix = Console.ReadKey().KeyChar;
             } while (choix != '1' && choix != '2' && choix != '3' && choix != '4');
-            optionsDePartie[2] = choix;
+            optionsDePartie[2] = Convert.ToInt32(choix);
             return choix;
         }
 
@@ -181,13 +181,13 @@ namespace Demineur
 
             switch (optionsDePartie[2])
             {
-                case '1':
+                case 1:
                     recap += ", SANS AI ";
                     break;
-                case '2':
+                case 2:
                     recap += ", AVEC AI ";
                     break;
-                case '3':
+                case 3:
                     recap += ", AUTOMATIQUE ";
                     break;
             }
@@ -208,19 +208,20 @@ namespace Demineur
             Console.WriteLine("#                                                        #");
             Console.WriteLine("#                                                        #");
             Console.WriteLine("#                                                        #");
-            Console.Write("#        Options : " + recap); for (int x = 1; x < (58 - (19 + recap.Length)); x++) { Console.Write(" "); } Console.WriteLine("#"); // Ajustement auto
+            Console.Write("#        Options : " + recap); for (short x = 1; x < (58 - (19 + recap.Length)); x++) { Console.Write(" "); } Console.WriteLine("#"); // Ajustement auto
             Console.WriteLine("#                                                        #");
             Console.WriteLine("##########################################################");
             return Console.ReadKey().KeyChar;
         }
 
 
-        public static char[] OptionDePartie()//Grandeur [P 10x6:1,M 16x8:2,G 22x10:3], Difficulter [EZ:0.1,Medium:0.2,TOUGH:Sizex0.3], AI[T,F,A]
+        public static int[] OptionDePartie()//Grandeur [P 10x6:1,M 16x8:2,G 22x10:3], Difficulter [EZ:0.1,Medium:0.2,TOUGH:Sizex0.3], AI[T,F,A]
         {
             return optionsDePartie;
         }
 
-        public static void AfficherClassement() {
+        public static void AfficherClassement()
+        {
             Console.WriteLine("Classement... Veuillez appuyez sur un touche pour continuer.");
         }
 

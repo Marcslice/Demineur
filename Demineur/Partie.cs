@@ -12,23 +12,26 @@ namespace Demineur
         string tempsEcoule;
         bool automatique;
 
-        public Partie(char[] optionDePartie)
+        public Partie(int[] optionDePartie)
         {
-            switch ((short)optionDePartie[0])
+            switch (optionDePartie[0])
             {
-                case 1:
-                    m_Grille = new Grille(10, 6, (short)optionDePartie[1]);
-                    CestUnDepart();
+                case 49:
+                    m_Grille = new Grille(10, 6, optionDePartie[1]);
+                    InterfaceUsager.DessinerGrille(10, 6, "ree", 1, 1);    // ajout ligne, colonne donnée membre grille 
+                  //  CestUnDepart();
                     break;
 
-                case 2:
-                    m_Grille = new Grille(16, 8, (short)optionDePartie[1]);
-                    CestUnDepart();
+                case 50:
+                    m_Grille = new Grille(16, 8, optionDePartie[1]);
+                    InterfaceUsager.DessinerGrille(16, 8, "ree", 1, 1);    
+                  //  CestUnDepart();
                     break;
 
-                case 3:
-                    m_Grille = new Grille(22, 10, (short)optionDePartie[1]);
-                    CestUnDepart();
+                case 51:
+                    m_Grille = new Grille(22, 10, optionDePartie[1]);
+                    InterfaceUsager.DessinerGrille(22, 10, "ree", 1, 1);    
+                  //  CestUnDepart();
                     break;
             }
         }

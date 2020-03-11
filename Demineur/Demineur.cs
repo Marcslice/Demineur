@@ -10,7 +10,7 @@ namespace Demineur
 
         Demineur()
         {
-            short choix;
+            int choix;
             m_Classement = new Classements();
 
             do
@@ -20,8 +20,7 @@ namespace Demineur
             switch (choix)
             {
                 case 1:
-                    InterfaceUsager.DessinerGrille(16, 8, "ree", 1, 1);
-                    //m_Partie = new Partie(Menu.OptionDePartie());
+                    m_Partie = new Partie(Menu.OptionDePartie());     
                     break;
                 case 2:
                     Menu.AfficherClassement();
