@@ -4,28 +4,29 @@ namespace Demineur
 {
     class Demineur
     {
-        bool m_EnMarche;
+
         Partie m_Partie;
         Classements m_Classement;
 
         Demineur()
         {
-            m_EnMarche = true;
-
+            short choix;
             m_Classement = new Classements();
 
-            switch (Menu.AfficherMenu()) {
-                case 1 :
-                    InterfaceUsager.DessinerGrille(16, 8,"ree", 1,1);
+            do
+                choix = Menu.AfficherMenu();
+            while (choix == 4);
+            
+            switch (choix)
+            {
+                case 1:
+                    InterfaceUsager.DessinerGrille(16, 8, "ree", 1, 1);
                     //m_Partie = new Partie(Menu.OptionDePartie());
                     break;
-                case 2  :
+                case 2:
                     Menu.AfficherClassement();
                     break;
                 case 3:
-                    break;
-                case 4:
-                    Menu.AfficherMenu();
                     break;
             }
         }

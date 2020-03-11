@@ -40,7 +40,6 @@ namespace Demineur
 
         void CestUnDepart()
         {
-            m_Grille.DisperserBombes();
             //if(case.bombe)
             //case.bombe = false
             //decouvrir case
