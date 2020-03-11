@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\marc_\\Desktop\\Demineur\\Demineur\\Demineur.csproj": {}
+    "P:\\prog-3\\TP\\demineur\\Demineur\\Demineur.csproj": {}
   },
   "projects": {
-    "C:\\Users\\marc_\\Desktop\\Demineur\\Demineur\\Demineur.csproj": {
+    "P:\\prog-3\\TP\\demineur\\Demineur\\Demineur.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\marc_\\Desktop\\Demineur\\Demineur\\Demineur.csproj",
+        "projectUniqueName": "P:\\prog-3\\TP\\demineur\\Demineur\\Demineur.csproj",
         "projectName": "Demineur",
-        "projectPath": "C:\\Users\\marc_\\Desktop\\Demineur\\Demineur\\Demineur.csproj",
-        "packagesPath": "C:\\Users\\marc_\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\marc_\\Desktop\\Demineur\\Demineur\\obj\\",
+        "projectPath": "P:\\prog-3\\TP\\demineur\\Demineur\\Demineur.csproj",
+        "packagesPath": "C:\\Users\\1276544\\.nuget\\packages\\",
+        "outputPath": "P:\\prog-3\\TP\\demineur\\Demineur\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\marc_\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\1276544\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -38,21 +41,10 @@
       "frameworks": {
         "netcoreapp3.1": {
           "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48"
+            "net461"
           ],
           "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "warn": true
         }
       }
     }

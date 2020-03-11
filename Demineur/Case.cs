@@ -15,6 +15,7 @@ namespace Demineur
             esTuBombe = false;
             nbDanger = 0;
             casesVoisines = new Case[8]{null, null, null, null, null, null, null, null};
+            //Case 0 = NW | 1 = N | 2 = NE | 3 = W | 4 = E | 5 = SW | 6 = S | 7 = SE 
         }
 
         public short Value
