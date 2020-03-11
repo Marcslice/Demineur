@@ -9,7 +9,7 @@ namespace Demineur
         Case[,] champs;
         int nbBombeGrille;
 
-        public Grille(short colonne, short ligne, int difficulte)
+        public Grille(short colonne, short ligne, char difficulte)
         {
             nbBombeGrille = CalculerBombes(colonne, ligne, difficulte);
             champs = new Case[colonne, ligne];
@@ -26,16 +26,16 @@ namespace Demineur
             DisperserBombes(colonne, ligne);
         }
 
-        int CalculerBombes(short colonne, short ligne, int difficulte) {
+        int CalculerBombes(short colonne, short ligne, char difficulte) {
             double pourcentage = 0;
             switch (difficulte) {
-                case 49:
+                case '1':
                     pourcentage = 0.1;
                     break;
-                case 50:
+                case '2':
                     pourcentage = 0.2;
                     break;
-                case 51:
+                case '3':
                     pourcentage = 0.3;
                     break;
             }
