@@ -6,12 +6,13 @@ namespace Demineur
 {
     public static class Menu
     {
-        static int[] optionsDePartie; // Sera retourné à Démineur afin qu'il puisse démarrer une partie ayant ces options là.
+        static char[] optionsDePartie; // Sera retourné à Démineur afin qu'il puisse démarrer une partie ayant ces options là.
         static string recap; // Permet d'afficher une récapilation des choix du joueur.
-        public static int AfficherMenu()
+
+        public static char AfficherMenu()
         {
             char choix;
-            optionsDePartie = new int[] { 0,0,0 };
+            optionsDePartie = new char[] { '0','0','0' };
             recap = "";
             
             do {
@@ -38,19 +39,19 @@ namespace Demineur
             {
                 case '1': // Jouer
                     if (MenuJouerGrosseur() == '4') // 4 = retour au menu principal
-                        return 4;
+                        return '4';
                     if (MenuJouerDifficulte() == '4')
-                        return 4;
+                        return '4';
                     if (MenuJouerAI() == '4')
-                        return 4;
+                        return '4';
                     if (RecapFinal() == '4')
-                        return 4;
-                    return 1;
+                        return '4';
+                    return '1';
                 case '2': // Afficher classement
-                    return 2;
+                    return '2';
                 case '3': // Quitter
                 default:
-                    return 3;
+                    return '3';
             }
         }
 
@@ -82,7 +83,7 @@ namespace Demineur
                 Console.Write("Quel est votre choix ? >> ");
                 choix = Console.ReadKey().KeyChar;
             } while (choix != '1' && choix != '2' && choix != '3' && choix != '4');
-            optionsDePartie[0] = Convert.ToInt32(choix);
+            optionsDePartie[0] = choix;
             return choix;
         }
 
@@ -92,13 +93,13 @@ namespace Demineur
             char choix;
             
             switch (optionsDePartie[0]) {
-                case 1:
+                case '1':
                     recap += "PETIT ";
                     break;
-                case 2:
+                case '2':
                     recap += "MOYEN ";
                     break;
-                case 3:
+                case '3':
                     recap += "GRAND ";
                     break;
             }
@@ -127,7 +128,7 @@ namespace Demineur
                 Console.Write("Quel est votre choix ? >> ");
                 choix = Console.ReadKey().KeyChar;
             } while (choix != '1' && choix != '2' && choix != '3' && choix != '4');
-            optionsDePartie[1] = Convert.ToInt32(choix);
+            optionsDePartie[1] = choix;
             return choix;
         }
 
@@ -138,13 +139,13 @@ namespace Demineur
 
             switch (optionsDePartie[1])
             {
-                case 1:
+                case '1':
                     recap += ", FACILE ";
                     break;
-                case 2:
+                case '2':
                     recap += ", NORMAL ";
                     break;
-                case 3:
+                case '3':
                     recap += ", DIFFICILE ";
                     break;
             }
@@ -173,7 +174,7 @@ namespace Demineur
                 Console.Write("Quel est votre choix ? >> ");
                 choix = Console.ReadKey().KeyChar;
             } while (choix != '1' && choix != '2' && choix != '3' && choix != '4');
-            optionsDePartie[2] = Convert.ToInt32(choix);
+            optionsDePartie[2] = choix;
             return choix;
         }
 
@@ -181,13 +182,13 @@ namespace Demineur
 
             switch (optionsDePartie[2])
             {
-                case 1:
+                case '1':
                     recap += ", SANS AI ";
                     break;
-                case 2:
+                case '2':
                     recap += ", AVEC AI ";
                     break;
-                case 3:
+                case '3':
                     recap += ", AUTOMATIQUE ";
                     break;
             }
@@ -215,7 +216,7 @@ namespace Demineur
         }
 
 
-        public static int[] OptionDePartie()//Grandeur [P 10x6:1,M 16x8:2,G 22x10:3], Difficulter [EZ:0.1,Medium:0.2,TOUGH:Sizex0.3], AI[T,F,A]
+        public static char[] OptionDePartie()//Grandeur [P 10x6:1,M 16x8:2,G 22x10:3], Difficulter [EZ:0.1,Medium:0.2,TOUGH:Sizex0.3], AI[T,F,A]
         {
             return optionsDePartie;
         }

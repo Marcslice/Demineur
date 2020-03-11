@@ -688,23 +688,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\1276544\\.nuget\\packages\\": {},
+    "C:\\Users\\1212151\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "P:\\prog-3\\TP\\demineur\\Demineur\\Demineur.csproj",
+      "projectUniqueName": "C:\\Users\\1212151\\Desktop\\Demineur\\Demineur\\Demineur.csproj",
       "projectName": "Demineur",
-      "projectPath": "P:\\prog-3\\TP\\demineur\\Demineur\\Demineur.csproj",
-      "packagesPath": "C:\\Users\\1276544\\.nuget\\packages\\",
-      "outputPath": "P:\\prog-3\\TP\\demineur\\Demineur\\obj\\",
+      "projectPath": "C:\\Users\\1212151\\Desktop\\Demineur\\Demineur\\Demineur.csproj",
+      "packagesPath": "C:\\Users\\1212151\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\1212151\\Desktop\\Demineur\\Demineur\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\1276544\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\1212151\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
