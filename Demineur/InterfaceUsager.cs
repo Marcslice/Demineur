@@ -9,11 +9,13 @@ namespace Demineur
     {
         static string ModeDeJeuActif = "Contrôle par flèche";
         static string marge = "    "; // Unité d'espacement.
+        static bool modeDeSaisie = true; // true = mode avec flèche
+        static int[] positionDeReponse;
+
         static void DessinerTitreJeu(int col)
         {
             string titre = "Démineur 2020, année du JUGEMENT dernier.";
             int posTitre = (((col * 4) / 2) - (titre.Length / 2)) + 4; // Centrage automatique
-            DessinerInstructions(col * 4 + 8);
             Console.SetCursorPosition(posTitre, 0);
             Console.WriteLine(titre + "\n");
         }
@@ -26,13 +28,15 @@ namespace Demineur
             Console.Write("Appuyez sur c pour entrer des coordonnées au clavier.");
             Console.SetCursorPosition(offset, 6);
             Console.Write("Appuyez sur Entrer pour confirmer votre sélection.");
+        }
+
+        static void DessinerModeDeSaisie(int offset){
             Console.SetCursorPosition(offset, 10);
             Console.Write("Mode de jeu actif : " + ModeDeJeuActif);
         }
 
-
         static void DessinerStats(int nColonne, string nomJoueur, int nbCouts)
-        { //Dessine le timer, le nom du joueur et le petit bonhomme
+        {
 
             DessinerLigneDuHaut(nColonne);
 
@@ -64,17 +68,23 @@ namespace Demineur
 
         public static void DessinerGrille(int nColonne, int nRange, string grille, short posX, short posY)
         {
-            Console.SetWindowSize(nColonne*3 + 80,40);
+            Console.SetWindowSize(nColonne * 3 + 80, 40);
+            positionDeReponse = new int[2] {43, nRange * 3 + 11};
             Console.Clear();
             
             DessinerTitreJeu(nColonne);
+            DessinerInstructions(nColonne * 4 + 8);
+            DessinerModeDeSaisie(nColonne * 4 + 8);
+
+            Console.SetCursorPosition(0, 2); // Nécessaire pour dessiner la grille au bonne endroit.
+
             DessinerChiffreColonne(nColonne);
             DessinerLigneDuHaut(nColonne);
 
             for (int x = 0; x < nRange; x++)
             {
                 DessinerRangeHautCase(nColonne);
-                DessinerRangeCentraleCase(nColonne, nRange);
+                DessinerRangeCentraleCase(nColonne, x);
                 DessinerRangeBasCase(nColonne, nRange);              
             }
 
@@ -104,7 +114,7 @@ namespace Demineur
         }
 
         static void DessinerRangeHautCase(int col){
-            Console.Write("    |   |");
+            Console.Write(marge + "|   |");
             for (int y = 1; y < col; y++)
                 Console.Write("   |"); //Ajoute ligne vertical de droite pour chaque autre colonne.
             Console.Write("\n");
@@ -122,7 +132,7 @@ namespace Demineur
         }
 
         static void DessinerRangeBasCase(int col, int range){
-            Console.Write("    |___|");
+            Console.Write(marge + "|___|");
             for (int y = 1; y < col; y++)
                 Console.Write("___|");
             Console.Write("\n");
@@ -136,21 +146,28 @@ namespace Demineur
         public static int[] Cout(int iCol, int iLig, string tab)
         {
             int[] positionActuelle = new int[2] {6, 5}; // Position au début de la partie.
-            ConsoleKeyInfo arrow;                       // Info de la flèche appuyé.                     
-            int[] choix = new int[2];                               // Coordonnées choisies
-
+            int[] coordonnees = new int[2];                   // Coordonnées choisies
+            ConsoleKeyInfo touche;                       // Info de la flèche appuyé.
+ 
             Console.SetCursorPosition(positionActuelle[0], positionActuelle[1]);
             do
             {
-                arrow = Console.ReadKey();
+                touche = Console.ReadKey();
 
-                switch ((int)arrow.Key)
+                /*
+                    if(a)
+                        AIPLAY();
+                    else if(modeDeSaisie)
+                        Detecte(c, up, down, right, left, enter)
+                    else
+                        Detecte(f, digits, spacebar)              
+                */
+
+                switch ((int)touche.Key)
                 {
                     case 37: // left arrow
                         if (Console.CursorLeft < 10)
-                        {
                             Console.SetCursorPosition((iCol * 4) + 2, Console.CursorTop);
-                        }
                         else
                             Console.SetCursorPosition(Console.CursorLeft - 5, Console.CursorTop);
                         positionActuelle = new int[2] { Console.CursorLeft, Console.CursorTop };
@@ -160,7 +177,6 @@ namespace Demineur
                             Console.SetCursorPosition(6, Console.CursorTop);
                         else
                             Console.SetCursorPosition(Console.CursorLeft + 3, Console.CursorTop);
-
                         positionActuelle = new int[2] { Console.CursorLeft, Console.CursorTop };
                         break;
                     case 38: // up arrow
@@ -168,61 +184,75 @@ namespace Demineur
                             Console.SetCursorPosition(Console.CursorLeft - 1, (iLig * 3) + 2);
                         else
                             Console.SetCursorPosition(Console.CursorLeft - 1, Console.CursorTop - 3);
-
                         positionActuelle = new int[2] { Console.CursorLeft, Console.CursorTop };
                         break;
-                    case 40: //down arrow
+                    case 40: // down arrow
                         if (Console.CursorTop > iLig * 3)
                             Console.SetCursorPosition(Console.CursorLeft - 1, 5);
                         else
                             Console.SetCursorPosition(Console.CursorLeft - 1, Console.CursorTop + 3);
-
                         positionActuelle = new int[2] { Console.CursorLeft, Console.CursorTop };
                         break;
-                    case 13:
+                    case 13: // enter key
                         positionActuelle = new int[2] { Console.CursorLeft, Console.CursorTop };
                         break;
                     case 70: // f pour controler avec fleches                                          
-                        Console.Write("\b");
                         ModeDeJeuActif = "Contrôle par flèche";
-                        DessinerInstructions(iCol * 4 + 8);                               
+                        DessinerModeDeSaisie(iCol * 4 + 8);
+                        modeDeSaisie = true;                             
                         break;
                     case 67: // c pour coordonnées manuelles    
-                        ModeDeJeuActif = "Entrée manuscrite   ";
-                        Console.Write("\b");
-                        DessinerInstructions(iCol * 4 + 8);                   
+                        ModeDeJeuActif = "Entrée manuelle     ";
+                        DessinerModeDeSaisie(iCol * 4 + 8);
+                        Console.SetCursorPosition(positionDeReponse[0], positionDeReponse[1]);
+                        modeDeSaisie = false;
                         break;
                     case 65: // a pour aciver l'intelligence artificiel
 
                         break;
-                    default:
+                    default: // autres touche non supportés
                         Console.Clear();
                         DessinerGrille(iCol, iLig, tab, (short)Console.CursorLeft, (short)Console.CursorTop);
                         break;
                 }
-                Console.SetCursorPosition(43, iLig * 3 + 11);
-                Console.Write("      ");
-                Console.SetCursorPosition(43, iLig * 3 + 11);
-                Console.Write(positionActuelle[0] / 4 + " " + positionActuelle[1] / 3);
-                Console.SetCursorPosition(positionActuelle[0], positionActuelle[1]);
-            }while(arrow.Key != ConsoleKey.Enter);
-            return choix;
-        }
+                if(modeDeSaisie){
+                    Console.SetCursorPosition(positionDeReponse[0], positionDeReponse[1]);
+                    Console.Write(positionActuelle[0] / 4 + " " + positionActuelle[1] / 3 + "    ");
+                    Console.SetCursorPosition(positionActuelle[0], positionActuelle[1]);
+                }else{
+                    Console.Write("       ");
+                    Console.SetCursorPosition(positionDeReponse[0], positionDeReponse[1]);
+                    string manuelle = "";
+                    ConsoleKeyInfo toucheM;
+                    do{
+                        toucheM = Console.ReadKey();
+                        manuelle += toucheM.KeyChar;
+                    }while(manuelle.Length-1 != 'c' && (int)toucheM.Key != 13);
+                    if((int)toucheM.Key == 13){
+                        //split string to fit as coords.
+                        // return enter
+                    }
+                }
 
+            }while(touche.Key != ConsoleKey.Enter);
+            return coordonnees;
+        }
 
         /*  public void AfficherChronometre(string temps)
         {
 
         }
        */
-        /*  public void MessageVictoire()
+        static void MessageVictoire()
         {
-
+            Console.Clear();
+            Console.WriteLine("Vous êtes un champion du démineur!");
         }
-        */
-        /*  public void MessageDefaite()
+        static void MessageDefaite()
         {
-
-        }*/
+            Console.Clear();
+            Console.WriteLine("Je te juge.");
+            //Dessin du prof
+        }
     }
 }
