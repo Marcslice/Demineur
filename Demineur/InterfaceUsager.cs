@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Text;
 
 namespace Demineur
@@ -7,10 +8,10 @@ namespace Demineur
 
     public static class InterfaceUsager //static pour test
     {
-        static string ModeDeJeuActif = "Contrôle par flèche";
         static string marge = "    "; // Unité d'espacement.
         static bool modeDeSaisie = true; // true = mode avec flèche
         static int[] positionDeReponse;
+        static int positionDuGuide;
 
         static void DessinerTitreJeu(int col)
         {
@@ -23,16 +24,21 @@ namespace Demineur
         static void DessinerInstructions(int offset)
         {           
             Console.SetCursorPosition(offset, 4);
-            Console.Write("Appuyez sur f pour utiliser les flèches.");
+            Console.Write("Appuyez sur f et entrer en mode manuel");
             Console.SetCursorPosition(offset, 5);
-            Console.Write("Appuyez sur c pour entrer des coordonnées au clavier.");
+            Console.Write(" pour retrouver le contrôle avec flèches.");
             Console.SetCursorPosition(offset, 6);
+            Console.Write("Appuyez sur c pour entrer des coordonnées au clavier.");
+            Console.SetCursorPosition(offset, 7);
             Console.Write("Appuyez sur Entrer pour confirmer votre sélection.");
         }
 
         static void DessinerModeDeSaisie(int offset){
             Console.SetCursorPosition(offset, 10);
-            Console.Write("Mode de jeu actif : " + ModeDeJeuActif);
+            if(modeDeSaisie)
+                Console.Write("Mode de jeu actif : Contrôle avec flèches");
+            else
+                Console.Write("Mode de jeu actif : Saisie manuelle      ");
         }
 
         static void DessinerStats(int nColonne, string nomJoueur, int nbCouts)
@@ -70,11 +76,12 @@ namespace Demineur
         {
             Console.SetWindowSize(nColonne * 3 + 80, 40);
             positionDeReponse = new int[2] {43, nRange * 3 + 11};
+            positionDuGuide = nColonne * 4 + 8;
             Console.Clear();
             
             DessinerTitreJeu(nColonne);
-            DessinerInstructions(nColonne * 4 + 8);
-            DessinerModeDeSaisie(nColonne * 4 + 8);
+            DessinerInstructions(positionDuGuide);
+            DessinerModeDeSaisie(positionDuGuide);
 
             Console.SetCursorPosition(0, 2); // Nécessaire pour dessiner la grille au bonne endroit.
 
@@ -146,7 +153,7 @@ namespace Demineur
         public static int[] Cout(int iCol, int iLig, string tab)
         {
             int[] positionActuelle = new int[2] {6, 5}; // Position au début de la partie.
-            int[] coordonnees = new int[2];                   // Coordonnées choisies
+            string entreeUtilisateur = "";
             ConsoleKeyInfo touche;                       // Info de la flèche appuyé.
  
             Console.SetCursorPosition(positionActuelle[0], positionActuelle[1]);
@@ -162,14 +169,15 @@ namespace Demineur
                     else
                         Detecte(f, digits, spacebar)              
                 */
-
                 switch ((int)touche.Key)
                 {
                     case 37: // left arrow
+                    
                         if (Console.CursorLeft < 10)
                             Console.SetCursorPosition((iCol * 4) + 2, Console.CursorTop);
                         else
                             Console.SetCursorPosition(Console.CursorLeft - 5, Console.CursorTop);
+                        
                         positionActuelle = new int[2] { Console.CursorLeft, Console.CursorTop };
                         break;
                     case 39: // right arrow
@@ -197,12 +205,10 @@ namespace Demineur
                         positionActuelle = new int[2] { Console.CursorLeft, Console.CursorTop };
                         break;
                     case 70: // f pour controler avec fleches                                          
-                        ModeDeJeuActif = "Contrôle par flèche";
                         DessinerModeDeSaisie(iCol * 4 + 8);
                         modeDeSaisie = true;                             
                         break;
                     case 67: // c pour coordonnées manuelles    
-                        ModeDeJeuActif = "Entrée manuelle     ";
                         DessinerModeDeSaisie(iCol * 4 + 8);
                         Console.SetCursorPosition(positionDeReponse[0], positionDeReponse[1]);
                         modeDeSaisie = false;
@@ -211,38 +217,32 @@ namespace Demineur
 
                         break;
                     default: // autres touche non supportés
-                        Console.Clear();
                         DessinerGrille(iCol, iLig, tab, (short)Console.CursorLeft, (short)Console.CursorTop);
                         break;
                 }
-                if(modeDeSaisie){
-                    Console.SetCursorPosition(positionDeReponse[0], positionDeReponse[1]);
+
+                DessinerModeDeSaisie(iCol * 4 + 8);
+
+                Console.SetCursorPosition(positionDeReponse[0], positionDeReponse[1]);
+
+                if(modeDeSaisie){                   
                     Console.Write(positionActuelle[0] / 4 + " " + positionActuelle[1] / 3 + "    ");
                     Console.SetCursorPosition(positionActuelle[0], positionActuelle[1]);
                 }else{
                     Console.Write("       ");
                     Console.SetCursorPosition(positionDeReponse[0], positionDeReponse[1]);
-                    string manuelle = "";
-                    ConsoleKeyInfo toucheM;
-                    do{
-                        toucheM = Console.ReadKey();
-                        manuelle += toucheM.KeyChar;
-                    }while(manuelle.Length-1 != 'c' && (int)toucheM.Key != 13);
-                    if((int)toucheM.Key == 13){
-                        //split string to fit as coords.
-                        // return enter
-                    }
+                    entreeUtilisateur = Console.ReadLine();
+                    if(entreeUtilisateur == "f"){
+                        Console.Clear();
+                        modeDeSaisie = true;
+                        DessinerGrille(iCol, iLig, tab, (short)Console.CursorLeft, (short)Console.CursorTop);     
+                    }else;
+                       // filtre data entreeUtilisateur                 
                 }
 
             }while(touche.Key != ConsoleKey.Enter);
-            return coordonnees;
+            return null; // filtered data
         }
-
-        /*  public void AfficherChronometre(string temps)
-        {
-
-        }
-       */
         static void MessageVictoire()
         {
             Console.Clear();
