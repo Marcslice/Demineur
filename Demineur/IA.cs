@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Demineur
 {
-    class IA
+    public class IA
     {
     }
 }
