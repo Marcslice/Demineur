@@ -35,10 +35,10 @@ namespace Demineur
             {
                 destination = champs[randomI % colonne][randomJ % ligne];
 
-                if(destination.Bombe)
+                while(destination.Bombe)
                     destination = champs[randomI % colonne][randomJ % ligne];
-                else
-                    destination.Bombe = true;
+
+                destination.Bombe = true;
             }
         }
 
@@ -49,21 +49,29 @@ namespace Demineur
                 for (int j = 0; j < ligne; j++)
                 {
                     destination = champs[i][j];
-                    if ((i - 1 > 0) && (j - 1 > 0))
+                    
+                    if ((i - 1 > 0) && (j - 1 > 0))//NW
                         destination[0] = champs[i - 1][j - 1];
-                    if (j - 1 > 0)
+
+                    if (j - 1 > 0)//N
                         destination[1] = champs[i][j - 1];
-                    if ((i + 1 < colonne) && (j - 1 > 0))
+
+                    if ((i + 1 < colonne) && (j - 1 > 0))//NE
                         destination[2] = champs[i + 1][j - 1];
-                    if (i - 1 > 0)
+
+                    if (i - 1 > 0)//W
                         destination[3] = champs[i - 1][j];
-                    if (i + 1 < colonne)
+
+                    if (i + 1 < colonne)//E
                         destination[4] = champs[i + 1][j];
-                    if ((i - 1 > 0) && (j + 1 < ligne))
+
+                    if ((i - 1 > 0) && (j + 1 < ligne))//SW
                         destination[5] = champs[i - 1][j + 1];
-                    if (j + 1 < ligne)
+
+                    if (j + 1 < ligne)//S
                         destination[6] = champs[i][j + 1];
-                    if ((i + 1 < colonne) && (j + 1 < ligne))
+
+                    if ((i + 1 < colonne) && (j + 1 < ligne))//SE
                         destination[7] = champs[i + 1][j + 1];
                 }
             }
