@@ -18,3 +18,9 @@ C:\Users\Marc-André\Desktop\Demineur\Demineur\bin\Debug\netcoreapp2.1\Demineur.
 C:\Users\Marc-André\Desktop\Demineur\Demineur\bin\Debug\netcoreapp2.1\Demineur.runtimeconfig.dev.json
 C:\Users\Marc-André\Desktop\Demineur\Demineur\bin\Debug\netcoreapp2.1\Demineur.dll
 C:\Users\Marc-André\Desktop\Demineur\Demineur\bin\Debug\netcoreapp2.1\Demineur.pdb
+P:\prog-3\TP\demineur\Demineur\obj\Debug\netcoreapp2.1\Demineur.csprojAssemblyReference.cache
+P:\prog-3\TP\demineur\Demineur\obj\Debug\netcoreapp2.1\Demineur.csproj.CoreCompileInputs.cache
+P:\prog-3\TP\demineur\Demineur\obj\Debug\netcoreapp2.1\Demineur.AssemblyInfoInputs.cache
+P:\prog-3\TP\demineur\Demineur\obj\Debug\netcoreapp2.1\Demineur.AssemblyInfo.cs
+P:\prog-3\TP\demineur\Demineur\obj\Debug\netcoreapp2.1\Demineur.dll
+P:\prog-3\TP\demineur\Demineur\obj\Debug\netcoreapp2.1\Demineur.pdb
