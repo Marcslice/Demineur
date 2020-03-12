@@ -20,9 +20,15 @@ namespace Demineur
             Thread.Sleep(2000);
         }
 
-        public void AfficherClassement()//top 10 par difficulte
+        public void AfficherClassement()//À trier
         {
-
+            Console.Clear();
+            Console.WriteLine("Joueur;Facile[p,m,g],Normal[p,m,g],Difficile[p,m,g]\n");
+            foreach (Joueur j in m_ListeJoueurs)
+                Console.WriteLine(j.ToString());
+            
+            Console.Write("\nAppuyez sur une touche pour revenir au menu principale.");
+            Console.ReadKey();
         }
 
         public void MettreAJourJoueuer(string NomJoueur, string Temps, string Difficulte)

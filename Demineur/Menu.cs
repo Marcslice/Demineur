@@ -12,7 +12,7 @@ namespace Demineur
         public static short AfficherMenu()
         {
             char choix;
-            optionsDePartie = new short[] { 0,0,0 };
+            optionsDePartie = new short[] { 0,0,0,0 };
             recap = "";
             
             do {
@@ -83,7 +83,20 @@ namespace Demineur
                 Console.Write("Quel est votre choix ? >> ");
                 choix = Console.ReadKey().KeyChar;
             } while (choix != '1' && choix != '2' && choix != '3' && choix != '4');
-            optionsDePartie[0] = Int16.Parse(choix.ToString());
+            switch (choix) {
+                case '1':
+                    optionsDePartie[0] = 10;
+                    optionsDePartie[1] = 6;
+                    break;
+                case '2':
+                    optionsDePartie[0] = 16;
+                    optionsDePartie[1] = 8;
+                    break;
+                case '3':
+                    optionsDePartie[0] = 22;
+                    optionsDePartie[1] = 10;
+                    break;
+            }
             return Int16.Parse(choix.ToString());
         }
 
@@ -93,13 +106,13 @@ namespace Demineur
             char choix;
             
             switch (optionsDePartie[0]) {
-                case 1:
+                case 10:
                     recap += "PETIT ";
                     break;
-                case 2:
+                case 16:
                     recap += "MOYEN ";
                     break;
-                case 3:
+                case 22:
                     recap += "GRAND ";
                     break;
             }
@@ -128,7 +141,7 @@ namespace Demineur
                 Console.Write("Quel est votre choix ? >> ");
                 choix = Console.ReadKey().KeyChar;
             } while (choix != '1' && choix != '2' && choix != '3' && choix != '4');
-            optionsDePartie[1] = Int16.Parse(choix.ToString());
+            optionsDePartie[2] = Int16.Parse(choix.ToString());
             return Int16.Parse(choix.ToString());
         }
         static short MenuJouerAI()
@@ -136,7 +149,7 @@ namespace Demineur
 
             char choix;
 
-            switch (optionsDePartie[1])
+            switch (optionsDePartie[2])
             {
                 case 1:
                     recap += ", FACILE ";
@@ -173,7 +186,7 @@ namespace Demineur
                 Console.Write("Quel est votre choix ? >> ");
                 choix = Console.ReadKey().KeyChar;
             } while (choix != '1' && choix != '2' && choix != '3' && choix != '4');
-            optionsDePartie[2] = Int16.Parse(choix.ToString());
+            optionsDePartie[3] = Int16.Parse(choix.ToString());
             return Int16.Parse(choix.ToString());
         }
 

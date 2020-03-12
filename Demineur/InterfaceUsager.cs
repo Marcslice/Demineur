@@ -9,8 +9,8 @@ namespace Demineur
     public static class InterfaceUsager //static pour test
     {
         static string marge = "    "; // Unité d'espacement.
-        static bool modeDeSaisie = true; // true = mode avec flèche
-        static int[] positionDeReponse;
+        static bool saisie = true; // true = mode avec flèche
+        static int[] positionDeReponse, positionActuelle;
         static int positionDuGuide;
 
         static void DessinerTitreJeu(int col)
@@ -35,10 +35,14 @@ namespace Demineur
 
         static void DessinerModeDeSaisie(int offset){
             Console.SetCursorPosition(offset, 10);
-            if(modeDeSaisie)
+            if(Saisie)
                 Console.Write("Mode de jeu actif : Contrôle avec flèches");
             else
                 Console.Write("Mode de jeu actif : Saisie manuelle      ");
+        }
+
+        public static void PositionnerCursorPourRepondre() {
+            Console.SetCursorPosition(positionDeReponse[0], positionDeReponse[1]);
         }
 
         static void DessinerStats(int nColonne, string nomJoueur, int nbCouts)
@@ -72,7 +76,7 @@ namespace Demineur
             }
         }
 
-        public static void DessinerGrille(int nColonne, int nRange, string grille, short posX, short posY)
+        public static void DessinerGrille(int nColonne, int nRange, string grille)
         {
             Console.SetWindowSize(nColonne * 4 + 65, nRange * 4 + 10);
             positionDeReponse = new int[2] {43, nRange * 3 + 11};
@@ -97,9 +101,7 @@ namespace Demineur
 
             DessinerStats(nColonne, "marc", 3);
 
-            Console.Write("\n"+ marge + "Quelle case souhaitez-vous ouvrir ? >> 1 1");
-            
-            Cout(nColonne, nRange, grille); 
+            Console.Write("\n"+ marge + "Quelle case souhaitez-vous ouvrir ? >> 1 1");          
         }
         
         static void DessinerChiffreColonne(int col){
@@ -150,105 +152,18 @@ namespace Demineur
                 Console.Write(marge);
         }
 
-        public static int[] Cout(int iCol, int iLig, string tab)
-        {
-            int[] positionActuelle = new int[2] {6, 5}; // Position au début de la partie.
-            string entreeUtilisateur = "";
-            ConsoleKeyInfo touche;                       // Info de la flèche appuyé.
- 
-            Console.SetCursorPosition(positionActuelle[0], positionActuelle[1]);
-            do
-            {
-                
-                touche = Console.ReadKey();
+        public static bool Saisie {
 
-                /*
-                    if(a)
-                        AIPLAY();
-                    else if(modeDeSaisie)
-                        Detecte(c, up, down, right, left, enter)
-                    else
-                        Detecte(f, digits, spacebar)              
-                */
-                switch ((int)touche.Key)
-                {
-                    case 37: // left arrow
-                    
-                        if (Console.CursorLeft < 10)
-                            Console.SetCursorPosition((iCol * 4) + 2, Console.CursorTop);
-                        else
-                            Console.SetCursorPosition(Console.CursorLeft - 5, Console.CursorTop);
-                        
-                        positionActuelle = new int[2] { Console.CursorLeft, Console.CursorTop };
-                        break;
-                    case 39: // right arrow
-                        if (Console.CursorLeft > (iCol * 4))
-                            Console.SetCursorPosition(6, Console.CursorTop);
-                        else
-                            Console.SetCursorPosition(Console.CursorLeft + 3, Console.CursorTop);
-                        positionActuelle = new int[2] { Console.CursorLeft, Console.CursorTop };
-                        break;
-                    case 38: // up arrow
-                        if (Console.CursorTop < 8)
-                            Console.SetCursorPosition(Console.CursorLeft - 1, (iLig * 3) + 2);
-                        else
-                            Console.SetCursorPosition(Console.CursorLeft - 1, Console.CursorTop - 3);
-                        positionActuelle = new int[2] { Console.CursorLeft, Console.CursorTop };
-                        break;
-                    case 40: // down arrow
-                        if (Console.CursorTop > iLig * 3)
-                            Console.SetCursorPosition(Console.CursorLeft - 1, 5);
-                        else
-                            Console.SetCursorPosition(Console.CursorLeft - 1, Console.CursorTop + 3);
-                        positionActuelle = new int[2] { Console.CursorLeft, Console.CursorTop };
-                        break;
-                    case 13: // enter key
-                        positionActuelle = new int[2] { Console.CursorLeft, Console.CursorTop };
-                        break;
-                    case 70: // f pour controler avec fleches                                          
-                        DessinerModeDeSaisie(iCol * 4 + 8);
-                        modeDeSaisie = true;                             
-                        break;
-                    case 67: // c pour coordonnées manuelles    
-                        DessinerModeDeSaisie(iCol * 4 + 8);
-                        Console.SetCursorPosition(positionDeReponse[0], positionDeReponse[1]);
-                        modeDeSaisie = false;
-                        break;
-                    case 65: // a pour aciver l'intelligence artificiel
-
-                        break;
-                    default: // autres touche non supportés
-                        DessinerGrille(iCol, iLig, tab, (short)Console.CursorLeft, (short)Console.CursorTop);
-                        break;
-                }
-
-                DessinerModeDeSaisie(iCol * 4 + 8);
-
-                Console.SetCursorPosition(positionDeReponse[0], positionDeReponse[1]);
-
-                if(modeDeSaisie){                   
-                    Console.Write(positionActuelle[0] / 4 + " " + positionActuelle[1] / 3 + "    ");
-                    Console.SetCursorPosition(positionActuelle[0], positionActuelle[1]);
-                }else{
-                    Console.Write("       ");
-                    Console.SetCursorPosition(positionDeReponse[0], positionDeReponse[1]);
-                    entreeUtilisateur = Console.ReadLine();
-                    if(entreeUtilisateur == "f"){
-                        Console.Clear();
-                        modeDeSaisie = true;
-                        DessinerGrille(iCol, iLig, tab, (short)Console.CursorLeft, (short)Console.CursorTop);     
-                    }else;
-                       // filtre data entreeUtilisateur                 
-                }
-
-            }while(touche.Key != ConsoleKey.Enter);
-            return null; // filtered data
+            get { return saisie; }
+            set { saisie = value; }
         }
+
         static void MessageVictoire()
         {
             Console.Clear();
             Console.WriteLine("Vous êtes un champion du démineur!");
         }
+
         static void MessageDefaite()
         {
             Console.Clear();
