@@ -58,8 +58,17 @@ namespace Demineur
                 destination.Bombe = true;
             }
         }
+        
+        public Case this[int x, int y] {
 
-        public void RencontreVoisin(short colonne, short ligne)
+            get { return champs[x, y]; }
+            set {
+                for (int r = x - 1; r < x + 1; r++)
+                    for (int c = y - 1; c < y + 1; c++)
+                        RencontreVoisin(r, c);
+                }
+        }
+        public void RencontreVoisin(int colonne, int ligne)
         {
             for (int i = 0; i < colonne; i++)
             {
@@ -104,9 +113,11 @@ namespace Demineur
             foreach (Case c in champs) {
                 if (!c.estTuOuverte())
                     grille += '?';
-                else if (c.Value == 0)
+                else if (c.estTuOuverte() && c.Bombe)
+                    grille += '¤';
+                else if (c.estTuOuverte() && c.Value == 0)
                     grille += ' ';
-                else
+                else if (c.estTuOuverte() && c.Value > 0)
                     grille += c.Value;
             }
             return grille;

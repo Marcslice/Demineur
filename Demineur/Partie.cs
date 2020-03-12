@@ -9,6 +9,7 @@ namespace Demineur
         Grille m_Grille;
         bool enMarche;
         int[] prochainePosition = new int[2];
+        int nombreCouts = 0;
         //Joueur m_Joueur;
         //IA m_IA;
         //string tempsEcoule;
@@ -21,9 +22,14 @@ namespace Demineur
 
             InterfaceUsager.DessinerGrille(optionDePartie[0], optionDePartie[1], m_Grille.ToString());
             prochainePosition = Cout(optionDePartie[0], optionDePartie[1], m_Grille.ToString(), 6, 5);
-            while (enMarche)
-                prochainePosition = Cout(optionDePartie[0], optionDePartie[1], m_Grille.ToString(), prochainePosition[0], prochainePosition[1]);
 
+            if (m_Grille[prochainePosition[0], prochainePosition[1]].Bombe) // sauve le joueur au premier tour
+                m_Grille[prochainePosition[0], prochainePosition[1]].Bombe = false;
+
+            while (enMarche)
+            {
+                VerifierEntree(prochainePosition = Cout(optionDePartie[0], optionDePartie[1], m_Grille.ToString(), prochainePosition[0], prochainePosition[1]));
+            }
         }
 
         public static int[] Cout(int iCol, int iLig, string tab, int xActuel, int yActuel)
@@ -106,9 +112,9 @@ namespace Demineur
                         Console.Clear();
                         InterfaceUsager.Saisie = true;
                         InterfaceUsager.DessinerGrille(iCol, iLig, tab);
+                        Console.SetCursorPosition(6, 5);
                     }
-                    else;
-                    // filtre data entreeUtilisateur                 
+                    else;                              
                 }
 
             } while (touche.Key != ConsoleKey.Enter);
@@ -116,10 +122,21 @@ namespace Demineur
         }
 
 
+        public bool VerifierEntree(int[] entree)
+        {
+            Case selection = m_Grille[entree[0], entree[1]];
+            if (selection.estTuOuverte())
+                return false;
+            else
+            {
+                selection.Ouvert = true;
+                return true;
+            }
+        }
+
         public string ObtenirMetadonneesDeLaPartieActuellementTerminee()
         {
             return null;
         }
-
     }
 }

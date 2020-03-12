@@ -41,6 +41,12 @@ namespace Demineur
             get { return esTuBombe; }
         }
 
+        public bool Ouvert
+        {
+            set { estOuverte = value; }
+            get { return estOuverte; }
+        }
+
         public bool estTuOuverte() {
             return estOuverte;
         }
