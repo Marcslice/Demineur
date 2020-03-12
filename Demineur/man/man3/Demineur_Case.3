@@ -1,4 +1,4 @@
-.TH "Demineur.Case" 3 "Tue Mar 10 2020" "Demineur" \" -*- nroff -*-
+.TH "Demineur.Case" 3 "Thu Mar 12 2020" "My Project" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -12,6 +12,11 @@ Demineur.Case
 .ti -1c
 .RI "\fBCase\fP ()"
 .br
+.RI "Construit une case sans bombe avec un danger par défaut de 0\&. \fBCase\fP 0 = NW | 1 = N | 2 = NE | 3 = W | 4 = E | 5 = SW | 6 = S | 7 = SE "
+.ti -1c
+.RI "void \fBSetCase\fP (int i, \fBCase\fP voisin)"
+.br
+.RI "Affecte au tableau casesVoisines les voisins de la case active\&. "
 .ti -1c
 .RI "void \fBCombienDanger\fP ()"
 .br
@@ -22,30 +27,46 @@ Demineur.Case
 .ti -1c
 .RI "short \fBValue\fP\fC [get]\fP"
 .br
+.RI "Retourne la valeur numérique du danger autour de la case\&. "
 .ti -1c
 .RI "bool \fBBombe\fP\fC [get, set]\fP"
 .br
-.ti -1c
-.RI "\fBCase\fP \fBthis[int i]\fP\fC [set]\fP"
-.br
+.RI "Retourne si la case contient une bombe\&. "
 .in -1c
 .SH "Constructor & Destructor Documentation"
 .PP 
 .SS "Demineur\&.Case\&.Case ()\fC [inline]\fP"
 
+.PP
+Construit une case sans bombe avec un danger par défaut de 0\&. \fBCase\fP 0 = NW | 1 = N | 2 = NE | 3 = W | 4 = E | 5 = SW | 6 = S | 7 = SE 
 .SH "Member Function Documentation"
 .PP 
 .SS "void Demineur\&.Case\&.CombienDanger ()\fC [inline]\fP"
+
+.SS "void Demineur\&.Case\&.SetCase (int i, \fBCase\fP voisin)\fC [inline]\fP"
+
+.PP
+Affecte au tableau casesVoisines les voisins de la case active\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIi\fP Index du voisin
+.br
+\fIvoisin\fP \fBCase\fP voisine
+.RE
+.PP
 
 .SH "Property Documentation"
 .PP 
 .SS "bool Demineur\&.Case\&.Bombe\fC [get]\fP, \fC [set]\fP"
 
-.SS "\fBCase\fP Demineur\&.Case\&.this[int i]\fC [set]\fP"
-
+.PP
+Retourne si la case contient une bombe\&. 
 .SS "short Demineur\&.Case\&.Value\fC [get]\fP"
 
+.PP
+Retourne la valeur numérique du danger autour de la case\&. 
 
 .SH "Author"
 .PP 
-Generated automatically by Doxygen for Demineur from the source code\&.
+Generated automatically by Doxygen for My Project from the source code\&.

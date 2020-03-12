@@ -1,4 +1,4 @@
-.TH "Demineur.Classements" 3 "Tue Mar 10 2020" "Demineur" \" -*- nroff -*-
+.TH "Demineur.Classements" 3 "Thu Mar 12 2020" "My Project" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -16,8 +16,12 @@ Demineur.Classements
 .RI "void \fBAfficherClassement\fP ()"
 .br
 .ti -1c
-.RI "void \fBMettreAJour\fP (string NomJoueur, string Temps, string Difficulte)"
+.RI "void \fBMettreAJourJoueuer\fP (string NomJoueur, string Temps, string Difficulte)"
 .br
+.ti -1c
+.RI "void \fBFichierClassement\fP ()"
+.br
+.RI "Est appelé lors de la construction de Classement\&. Créer la liste de joueur si le fichier text existe\&. Créer un fichier text vide si il n'existe pas\&. "
 .in -1c
 .SH "Constructor & Destructor Documentation"
 .PP 
@@ -27,9 +31,13 @@ Demineur.Classements
 .PP 
 .SS "void Demineur\&.Classements\&.AfficherClassement ()\fC [inline]\fP"
 
-.SS "void Demineur\&.Classements\&.MettreAJour (string NomJoueur, string Temps, string Difficulte)\fC [inline]\fP"
+.SS "void Demineur\&.Classements\&.FichierClassement ()\fC [inline]\fP"
+
+.PP
+Est appelé lors de la construction de Classement\&. Créer la liste de joueur si le fichier text existe\&. Créer un fichier text vide si il n'existe pas\&. 
+.SS "void Demineur\&.Classements\&.MettreAJourJoueuer (string NomJoueur, string Temps, string Difficulte)\fC [inline]\fP"
 
 
 .SH "Author"
 .PP 
-Generated automatically by Doxygen for Demineur from the source code\&.
+Generated automatically by Doxygen for My Project from the source code\&.

@@ -91,7 +91,7 @@ namespace Demineur
             for (int x = 0; x < nRange; x++)
             {
                 DessinerRangeHautCase(nColonne);
-                DessinerRangeCentraleCase(nColonne, x);
+                DessinerRangeCentraleCase(nColonne, x, grille);
                 DessinerRangeBasCase(nColonne, nRange);              
             }
 
@@ -99,7 +99,7 @@ namespace Demineur
 
             Console.Write("\n"+ marge + "Quelle case souhaitez-vous ouvrir ? >> 1 1");
             
-            Cout(nColonne, nRange, "ree"); // Recevra le toString du tableau.
+            Cout(nColonne, nRange, grille); 
         }
         
         static void DessinerChiffreColonne(int col){
@@ -127,14 +127,14 @@ namespace Demineur
             Console.Write("\n");
         }
 
-        static void DessinerRangeCentraleCase(int col, int range){
+        static void DessinerRangeCentraleCase(int col, int range, string grille){
 
             if (range + 1 < 10)
                 Console.Write(" " + (range + 1) + "  | "); // spacing de gauche pour les chiffres des rangés < 10
             else
                 Console.Write(" " + (range + 1) + " | "); // spacing de gauche pour les chiffres des rangés >= 10
             for (int y = 0; y < col; y++)
-                Console.Write('*' + " | "); // Contenue de tableau hardcoder
+                Console.Write(grille[y * range+1] + " | "); // Contenue de tableau en test
             Console.Write("\n");
         }
 
@@ -159,6 +159,7 @@ namespace Demineur
             Console.SetCursorPosition(positionActuelle[0], positionActuelle[1]);
             do
             {
+                
                 touche = Console.ReadKey();
 
                 /*

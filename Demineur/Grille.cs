@@ -66,32 +66,50 @@ namespace Demineur
                 for (int j = 0; j < ligne; j++)
                 {
                     Case destination = champs[i, j];
+                    Case voisin = champs[i,j]; // initialisation obligatoire.
 
                     if ((i - 1 > 0) && (j - 1 > 0))//NW
-                        destination.SetCase(0, champs[i - 1, j - 1]);
+                        destination.SetCase(0, voisin = champs[i - 1, j - 1]);
 
                     if (j - 1 > 0)//N
-                        destination.SetCase(1, champs[i, j - 1]);
+                        destination.SetCase(1, voisin = champs[i, j - 1]);
 
                     if ((i + 1 < colonne) && (j - 1 > 0))//NE
-                        destination.SetCase(2, champs[i + 1, j - 1]);
+                        destination.SetCase(2, voisin = champs[i + 1, j - 1]);
 
                     if (i - 1 > 0)//W
-                        destination.SetCase(3, champs[i - 1, j]);
+                        destination.SetCase(3, voisin = champs[i - 1, j]);
 
                     if (i + 1 < colonne)//E
-                        destination.SetCase(4, champs[i + 1, j]);
+                        destination.SetCase(4, voisin = champs[i + 1, j]);
 
                     if ((i - 1 > 0) && (j + 1 < ligne))//SW
-                        destination.SetCase(5, champs[i - 1, j + 1]);
+                        destination.SetCase(5, voisin = champs[i - 1, j + 1]);
 
                     if (j + 1 < ligne)//S
-                        destination.SetCase(6, champs[i, j + 1]);
+                        destination.SetCase(6, voisin = champs[i, j + 1]);
 
                     if ((i + 1 < colonne) && (j + 1 < ligne))//SE
-                        destination.SetCase(7, champs[i + 1, j + 1]);
+                        destination.SetCase(7, voisin = champs[i + 1, j + 1]);
+
+                    if (voisin.Bombe)
+                        destination.Value++;
                 }
             }
+        }
+
+        public override string ToString()
+        {
+            string grille = "";
+            foreach (Case c in champs) {
+                if (!c.estTuOuverte())
+                    grille += '?';
+                else if (c.Value == 0)
+                    grille += ' ';
+                else
+                    grille += c.Value;
+            }
+            return grille;
         }
     }
 }

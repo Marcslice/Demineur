@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['menu_2ecs_17',['Menu.cs',['../_menu_8cs.html',1,'']]],
-  ['mettreajour_18',['MettreAJour',['../class_demineur_1_1_classements.html#a0604f49252b2e3b7fcdbbb6d8c5c7566',1,'Demineur::Classements']]],
-  ['modifierscore_19',['ModifierScore',['../class_demineur_1_1_joueur.html#aef4baf604914c1d82ada0991e653df2c',1,'Demineur::Joueur']]]
+  ['joueur_16',['Joueur',['../class_demineur_1_1_joueur.html',1,'Demineur.Joueur'],['../class_demineur_1_1_joueur.html#a08f72848aa1b76594839606d34b91f9c',1,'Demineur.Joueur.Joueur(string p_Nom)'],['../class_demineur_1_1_joueur.html#a5f659169afa9e9a598811e09052214e7',1,'Demineur.Joueur.Joueur(string p_Nom, string[] p_Scores)']]],
+  ['joueur_2ecs_17',['Joueur.cs',['../_joueur_8cs.html',1,'']]]
 ];

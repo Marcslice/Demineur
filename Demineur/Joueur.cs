@@ -17,7 +17,8 @@ namespace Demineur
 
         public Joueur(string p_Nom, string[] p_Scores){
             m_Nom = p_Nom;
-            m_Scores = new string[9] { p_Scores[0], p_Scores[1], p_Scores[2], p_Scores[3], p_Scores[4], p_Scores[5], p_Scores[6], p_Scores[7], p_Scores[8] };
+            m_Scores = new string[9] { p_Scores[0], p_Scores[1], p_Scores[2], 
+                p_Scores[3], p_Scores[4], p_Scores[5], p_Scores[6], p_Scores[7], p_Scores[8] };
         }
 
         public string ObtenirNom()

@@ -14,7 +14,8 @@ namespace Demineur
 
         public Classements()
         {
-            LireFichierClassement();
+            m_ListeJoueurs = new List<Joueur>();
+            FichierClassement();
             Console.WriteLine("Nous contruisons le classement...");
             Thread.Sleep(2000);
         }
@@ -28,25 +29,26 @@ namespace Demineur
         {
 
         }
-
-        public void LireFichierClassement(){
+        /// <summary>
+        /// Est appelé lors de la construction de Classement.
+        /// Créer la liste de joueur si le fichier text existe.
+        /// Créer un fichier text vide si il n'existe pas.
+        /// </summary>
+        public void FichierClassement(){
 
             string cheminFichier = @"..\..\..\classement\classement.txt";
-            m_ListeJoueurs = new List<Joueur>();
-            string[] tableauScore = new string[9];
-            StreamReader sr;
-            FileStream fs;
-            string ligne;           
-                      
-            if(File.Exists(cheminFichier)){
-                fs = File.OpenRead(cheminFichier);
-                sr = new StreamReader(fs,UTF8Encoding.UTF8);
+                                                               
+            if(File.Exists(cheminFichier)){            
+                FileStream  fs = File.OpenRead(cheminFichier);
+                StreamReader sr = new StreamReader(fs,UTF8Encoding.UTF8);
+                string[] tableauScore = new string[9];
+                string ligne; 
                 while ((ligne = sr.ReadLine()) != null){
                     string nomJoueur = ligne.Split(';',StringSplitOptions.RemoveEmptyEntries)[0];
-                    short count = 0;
+                    short index = 0;
                     foreach(string note in ligne.Substring(nomJoueur.Length+1).Split(',',9,StringSplitOptions.RemoveEmptyEntries)){                      
-                        tableauScore[count] = note;
-                        count++;
+                        tableauScore[index] = note;
+                        index++;
                     }
                     m_ListeJoueurs.Add(new Joueur(nomJoueur, tableauScore));                  
                 }

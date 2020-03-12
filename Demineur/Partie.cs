@@ -19,17 +19,17 @@ namespace Demineur
                 case 1:
                     
                     m_Grille = new Grille(10, 6, optionDePartie[1]);
-                    InterfaceUsager.DessinerGrille(10, 6, "ree", 1, 1);    // ajout ligne, colonne donnée membre grille 
+                    InterfaceUsager.DessinerGrille(10, 6, m_Grille.ToString(), 1, 1);    // ajout ligne, colonne donnée membre grille 
                     break;
 
                 case 2:
                     m_Grille = new Grille(16, 8, optionDePartie[1]);
-                    InterfaceUsager.DessinerGrille(16, 8, "ree", 1, 1);    
+                    InterfaceUsager.DessinerGrille(16, 8, m_Grille.ToString(), 1, 1);    
                     break;
 
                 case 3:
                     m_Grille = new Grille(22, 10, optionDePartie[1]);
-                    InterfaceUsager.DessinerGrille(22, 10, "ree", 1, 1);    
+                    InterfaceUsager.DessinerGrille(22, 10, m_Grille.ToString(), 1, 1);    
                     break;
             }
         }
