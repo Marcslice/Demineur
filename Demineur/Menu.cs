@@ -55,7 +55,7 @@ namespace Demineur
             }
         }
 
-        public static char MenuJouerGrosseur() {
+        static char MenuJouerGrosseur() {
 
             char choix;
 
@@ -87,7 +87,7 @@ namespace Demineur
             return choix;
         }
 
-        public static char MenuJouerDifficulte()
+        static char MenuJouerDifficulte()
         {
 
             char choix;
@@ -131,8 +131,7 @@ namespace Demineur
             optionsDePartie[1] = choix;
             return choix;
         }
-
-        public static char MenuJouerAI()
+        static char MenuJouerAI()
         {
 
             char choix;
@@ -178,7 +177,7 @@ namespace Demineur
             return choix;
         }
 
-        public static char RecapFinal() {
+        static char RecapFinal() {
 
             switch (optionsDePartie[2])
             {

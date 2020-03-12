@@ -74,7 +74,7 @@ namespace Demineur
 
         public static void DessinerGrille(int nColonne, int nRange, string grille, short posX, short posY)
         {
-            Console.SetWindowSize(nColonne * 4 + 70, 35 + nRange);
+            Console.SetWindowSize(nColonne * 4 + 65, nRange * 4 + 10);
             positionDeReponse = new int[2] {43, nRange * 3 + 11};
             positionDuGuide = nColonne * 4 + 8;
             Console.Clear();
@@ -253,6 +253,11 @@ namespace Demineur
             Console.Clear();
             Console.WriteLine("Je te juge.");
             //Dessin du prof
+        }
+
+        static string QuiEtesVous(){
+            Console.Write("Qui êtes-vous ? >> ");
+            return Console.ReadLine();
         }
     }
 }

@@ -13,6 +13,9 @@ namespace Demineur
             char choix;
             m_Classement = new Classements();
 
+            m_Classement.LireFichierClassement(); // ici pour test
+            Console.ReadLine(); // pause
+            
             do
                 choix = Menu.AfficherMenu();
             while (choix == '4');
