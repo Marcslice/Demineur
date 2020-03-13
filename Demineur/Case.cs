@@ -29,7 +29,6 @@ namespace Demineur
         public int Value
         {
             get { return nbDanger; }
-            //set { nbDanger = value; }
         }
 
         /// <summary>
