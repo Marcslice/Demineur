@@ -8,11 +8,14 @@ namespace Demineur
     {
         Case[,] champs;
         int nbBombeGrille;
+        int colonne, ligne;
 
         public Grille(short colonne, short ligne, short difficulte)
         {
             nbBombeGrille = CalculerBombes(colonne, ligne, difficulte);
             champs = new Case[colonne, ligne];
+            this.colonne = colonne;
+            this.ligne = ligne;
 
             for(int i = 0; i < colonne; i++)
             {
@@ -21,7 +24,6 @@ namespace Demineur
                     champs[i,j] = new Case();
                 }
             }
-
             RencontreVoisin(colonne,ligne);
             DisperserBombes(colonne, ligne);
         }
@@ -75,7 +77,7 @@ namespace Demineur
                 for (int j = 0; j < ligne; j++)
                 {
                     Case destination = champs[i, j];
-                    Case voisin = champs[i,j]; // initialisation obligatoire.
+                    Case voisin;
 
                     if ((i - 1 > 0) && (j - 1 > 0))//NW
                         destination.SetCase(0, voisin = champs[i - 1, j - 1]);
@@ -101,8 +103,8 @@ namespace Demineur
                     if ((i + 1 < colonne) && (j + 1 < ligne))//SE
                         destination.SetCase(7, voisin = champs[i + 1, j + 1]);
 
-                    if (voisin.Bombe)
-                        destination.Value++;
+                   //  if (voisin.Bombe)
+                   //     destination.Value++;
                 }
             }
         }
@@ -110,17 +112,26 @@ namespace Demineur
         public override string ToString()
         {
             string grille = "";
-            foreach (Case c in champs) {
-                if (!c.estTuOuverte())
-                    grille += '?';
-                else if (c.estTuOuverte() && c.Bombe)
-                    grille += '¤';
-                else if (c.estTuOuverte() && c.Value == 0)
-                    grille += ' ';
-                else if (c.estTuOuverte() && c.Value > 0)
-                    grille += c.Value;
+
+            for (int x = 0; x < ligne; x++)
+            {
+                for (int y = 0; y < colonne; y++)
+                {
+                    /* if (!this[x, y].Ouvert)
+                         grille += '?';
+                     else if (this[x, y].Ouvert && this[x, y].Bombe)
+                         grille += '¤';
+                     else if (this[x, y].Ouvert && this[x, y].Value == 0)
+                         grille += 'O';
+                     else if (this[x, y].Ouvert && this[x, y].Value > 0)
+                         grille += this[x, y].Value;*/
+                    if (!this[x, y].Ouvert)
+                        grille += 'F';
+                    else if (this[x, y].Ouvert)
+                        grille += 'O';
+                }
             }
-            return grille;
+            return grille;                   
         }
     }
 }

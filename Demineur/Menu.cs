@@ -17,7 +17,7 @@ namespace Demineur
             
             do {
                 Console.Clear();
-                Console.WriteLine("##########################################################"); // Largeur de 58
+                Console.WriteLine("##########################################################");
                 Console.WriteLine("#                                                        #");
                 Console.WriteLine("#                         MENU                           #");
                 Console.WriteLine("#                                                        #");
@@ -141,8 +141,7 @@ namespace Demineur
                 Console.Write("Quel est votre choix ? >> ");
                 choix = Console.ReadKey().KeyChar;
             } while (choix != '1' && choix != '2' && choix != '3' && choix != '4');
-            optionsDePartie[2] = Int16.Parse(choix.ToString());
-            return Int16.Parse(choix.ToString());
+            return optionsDePartie[2] = Int16.Parse(choix.ToString());
         }
         static short MenuJouerAI()
         {
@@ -186,8 +185,7 @@ namespace Demineur
                 Console.Write("Quel est votre choix ? >> ");
                 choix = Console.ReadKey().KeyChar;
             } while (choix != '1' && choix != '2' && choix != '3' && choix != '4');
-            optionsDePartie[3] = Int16.Parse(choix.ToString());
-            return Int16.Parse(choix.ToString());
+            return optionsDePartie[3] = Int16.Parse(choix.ToString());
         }
 
         static short RecapFinal() {
@@ -207,33 +205,35 @@ namespace Demineur
                     break;
             }
 
-            Console.Clear();
-            Console.WriteLine("##########################################################");
-            Console.WriteLine("#                                                        #");
-            Console.WriteLine("#                    Début de partie                     #");
-            Console.WriteLine("#                                                        #");
-            Console.WriteLine("#                                                        #");
-            Console.WriteLine("#     Vous êtez sur le point de commencer la partie.     #");
-            Console.WriteLine("#                                                        #");
-            Console.WriteLine("#                                                        #");
-            Console.WriteLine("#               Appuyez sur 4 pour annuler               #");
-            Console.WriteLine("#                          ou                            #");
-            Console.WriteLine("#        sur n'importe quel touche pour commencer.       #");
-            Console.WriteLine("#                                                        #");
-            Console.WriteLine("#                                                        #");
-            Console.WriteLine("#                                                        #");
-            Console.WriteLine("#                                                        #");
-            Console.Write("#        Options : " + recap); for (short x = 1; x < (58 - (19 + recap.Length)); x++) { Console.Write(" "); } Console.WriteLine("#"); // Ajustement auto
-            Console.WriteLine("#                                                        #");
-            Console.WriteLine("##########################################################");
-            choix = Console.ReadKey().KeyChar;
-            if (Int16.Parse(choix.ToString()) == 4)
+            do
+            {
+                Console.Clear();
+                Console.WriteLine("##########################################################");
+                Console.WriteLine("#                                                        #");
+                Console.WriteLine("#                    Début de partie                     #");
+                Console.WriteLine("#                                                        #");
+                Console.WriteLine("#                                                        #");
+                Console.WriteLine("#     Vous êtez sur le point de commencer la partie.     #");
+                Console.WriteLine("#                                                        #");
+                Console.WriteLine("#                                                        #");
+                Console.WriteLine("#               Appuyez sur 4 pour annuler               #");
+                Console.WriteLine("#                          ou                            #");
+                Console.WriteLine("#                   sur C pour commencer.                #");
+                Console.WriteLine("#                                                        #");
+                Console.WriteLine("#                                                        #");
+                Console.WriteLine("#                                                        #");
+                Console.WriteLine("#                                                        #");
+                Console.Write("#        Options : " + recap); for (short x = 1; x < (58 - (19 + recap.Length)); x++) { Console.Write(" "); } Console.WriteLine("#"); // Ajustement auto
+                Console.WriteLine("#                                                        #");
+                Console.WriteLine("##########################################################");
+                choix = Console.ReadKey().KeyChar;
+            } while (choix != '4' && choix != 'c' && choix != 'C') ;
+            if (choix == '4')
                 return 4;
-            return 0;
+            return 0;          
         }
 
-
-        public static short[] OptionDePartie()//Grandeur [P 10x6:1,M 16x8:2,G 22x10:3], Difficulter [EZ:0.1,Medium:0.2,TOUGH:Sizex0.3], AI[T,F,A]
+        public static short[] OptionDePartie()
         {
             return optionsDePartie;
         }

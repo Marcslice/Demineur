@@ -17,7 +17,7 @@ namespace Demineur
             m_ListeJoueurs = new List<Joueur>();
             FichierClassement();
             Console.WriteLine("Nous contruisons le classement...");
-            Thread.Sleep(2000);
+            //Thread.Sleep(2000);
         }
 
         public void AfficherClassement()//À trier
@@ -35,6 +35,7 @@ namespace Demineur
         {
 
         }
+
         /// <summary>
         /// Est appelé lors de la construction de Classement.
         /// Créer la liste de joueur si le fichier text existe.

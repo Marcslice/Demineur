@@ -24,17 +24,17 @@ namespace Demineur
         static void DessinerInstructions(int offset)
         {           
             Console.SetCursorPosition(offset, 4);
-            Console.Write("Appuyez sur f et entrer en mode manuel");
+            Console.Write("Appuyez sur f et entrer en mode manuel pour");
             Console.SetCursorPosition(offset, 5);
-            Console.Write(" pour retrouver le contrôle avec flèches.");
-            Console.SetCursorPosition(offset, 6);
-            Console.Write("Appuyez sur c pour entrer des coordonnées au clavier.");
+            Console.Write("retrouver le contrôle avec flèches.");
             Console.SetCursorPosition(offset, 7);
+            Console.Write("Appuyez sur c pour entrer des coordonnées au clavier.");
+            Console.SetCursorPosition(offset, 9);
             Console.Write("Appuyez sur Entrer pour confirmer votre sélection.");
         }
 
         static void DessinerModeDeSaisie(int offset){
-            Console.SetCursorPosition(offset, 10);
+            Console.SetCursorPosition(offset, 11);
             if(Saisie)
                 Console.Write("Mode de jeu actif : Contrôle avec flèches");
             else
@@ -135,8 +135,8 @@ namespace Demineur
                 Console.Write(" " + (range + 1) + "  | "); // spacing de gauche pour les chiffres des rangés < 10
             else
                 Console.Write(" " + (range + 1) + " | "); // spacing de gauche pour les chiffres des rangés >= 10
-            for (int y = 0; y < col; y++)
-                Console.Write(grille[y * range+1] + " | "); // Contenue de tableau en test
+            for (int x = 0; x < col; x++)
+                 Console.Write(grille[x + col * range] + " | "); // Contenue de tableau en test
             Console.Write("\n");
         }
 

@@ -1,6 +1,7 @@
-﻿using System;
+﻿using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using System.Text;
+using System;
 
 namespace Demineur
 {
@@ -19,16 +20,12 @@ namespace Demineur
         {
             enMarche = true;
             m_Grille = new Grille(optionDePartie[0], optionDePartie[1], optionDePartie[2]); //Ajouter AI plus tard
-
+            m_Grille[9, 0].Ouvert = true;
             InterfaceUsager.DessinerGrille(optionDePartie[0], optionDePartie[1], m_Grille.ToString());
-            prochainePosition = Cout(optionDePartie[0], optionDePartie[1], m_Grille.ToString(), 6, 5);
-
-            if (m_Grille[prochainePosition[0], prochainePosition[1]].Bombe) // sauve le joueur au premier tour
-                m_Grille[prochainePosition[0], prochainePosition[1]].Bombe = false;
 
             while (enMarche)
             {
-                VerifierEntree(prochainePosition = Cout(optionDePartie[0], optionDePartie[1], m_Grille.ToString(), prochainePosition[0], prochainePosition[1]));
+
             }
         }
 
@@ -79,9 +76,7 @@ namespace Demineur
                         positionActuelle = new int[2] { Console.CursorLeft, Console.CursorTop };
                         break;
                     case 13: // enter key
-                        positionActuelle = new int[2] { Console.CursorLeft, Console.CursorTop };
-                        return positionActuelle;
-
+                        break;
                     case 70: // f pour controler avec fleches                                          
                         InterfaceUsager.Saisie = true;
                         InterfaceUsager.DessinerGrille(iCol, iLig, tab);
@@ -113,25 +108,11 @@ namespace Demineur
                         InterfaceUsager.Saisie = true;
                         InterfaceUsager.DessinerGrille(iCol, iLig, tab);
                         Console.SetCursorPosition(6, 5);
-                    }
-                    else;                              
+                    }                        
                 }
 
             } while (touche.Key != ConsoleKey.Enter);
-            return null; // filtered data
-        }
-
-
-        public bool VerifierEntree(int[] entree)
-        {
-            Case selection = m_Grille[entree[0], entree[1]];
-            if (selection.estTuOuverte())
-                return false;
-            else
-            {
-                selection.Ouvert = true;
-                return true;
-            }
+            return positionActuelle; 
         }
 
         public string ObtenirMetadonneesDeLaPartieActuellementTerminee()
