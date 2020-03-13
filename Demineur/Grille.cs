@@ -108,11 +108,26 @@ namespace Demineur
             }
         }
 
-        public void OuvrirCase(int ligne, int colonne)
+        public bool OuvrirCase(int ligne, int colonne)
         {
-            Case cible = champs[ligne, colonne];
+            Case cible = champs[ligne, colonne];//retour maintenant un bool pour le gameover
             cible.Ouvert = true;
+            if (cible.Bombe)
+                return false;
             cible.CalculerDanger();
+            return true;
+        }
+
+        public void DecouvrirBombes()
+        {
+            for(int l = 0; l < ligne; l++)
+            {
+                for(int c =0; c < colonne; c++)
+                {
+                    if (champs[l, c].Bombe)
+                        champs[l, c].Ouvert = true;
+                }
+            }
         }
 
         public override string ToString()

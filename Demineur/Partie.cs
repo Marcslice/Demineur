@@ -27,6 +27,7 @@ namespace Demineur
                 InterfaceUsager.DessinerGrille(optionDePartie[0], optionDePartie[1], m_Grille.ToString());
                 VerificationSelection(selection = Cout(optionDePartie[1], optionDePartie[0], m_Grille.ToString(), selection[0], selection[1]));
             }
+            InterfaceUsager.DessinerGrille(optionDePartie[0], optionDePartie[1], m_Grille.ToString());//dessine la grille on game over
         }
 
         public static int[] Cout(int iCol, int iLig, string tab, int xActuel, int yActuel)
@@ -116,7 +117,11 @@ namespace Demineur
         }
 
         void VerificationSelection(int[] selection) {
-            m_Grille.OuvrirCase(selection[1] / 3 - 1, selection[0] / 4 - 1);
+            if (m_Grille.OuvrirCase(selection[1] / 3 - 1, selection[0] / 4 - 1) == false)//modifier pour permettre le game over
+            {
+                m_Grille.DecouvrirBombes();
+                enMarche = false;
+            }
         }
 
         public string ObtenirMetadonneesDeLaPartieActuellementTerminee()
