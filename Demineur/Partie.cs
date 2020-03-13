@@ -9,7 +9,7 @@ namespace Demineur
     {
         Grille m_Grille;
         bool enMarche;
-        int[] prochainePosition = new int[2];
+        int[] selection = new int[2];
         int nombreCouts = 0;
         //Joueur m_Joueur;
         //IA m_IA;
@@ -20,12 +20,12 @@ namespace Demineur
         {
             enMarche = true;
             m_Grille = new Grille(optionDePartie[0], optionDePartie[1], optionDePartie[2]); //Ajouter AI plus tard
-            m_Grille[9, 0].Ouvert = true;
             InterfaceUsager.DessinerGrille(optionDePartie[0], optionDePartie[1], m_Grille.ToString());
-
+            VerificationSelection(selection = Cout(optionDePartie[1], optionDePartie[0], m_Grille.ToString(), 6, 5));
             while (enMarche)
             {
-
+                InterfaceUsager.DessinerGrille(optionDePartie[0], optionDePartie[1], m_Grille.ToString());
+                VerificationSelection(selection = Cout(optionDePartie[1], optionDePartie[0], m_Grille.ToString(), selection[0], selection[1]));
             }
         }
 
@@ -113,6 +113,10 @@ namespace Demineur
 
             } while (touche.Key != ConsoleKey.Enter);
             return positionActuelle; 
+        }
+
+        void VerificationSelection(int[] selection) {
+            m_Grille[selection[1] / 3 - 1, selection[0] / 4 - 1].Ouvert = true;
         }
 
         public string ObtenirMetadonneesDeLaPartieActuellementTerminee()

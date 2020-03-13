@@ -85,16 +85,16 @@ namespace Demineur
             } while (choix != '1' && choix != '2' && choix != '3' && choix != '4');
             switch (choix) {
                 case '1':
-                    optionsDePartie[0] = 10;
-                    optionsDePartie[1] = 6;
+                    optionsDePartie[0] = 6; // ligne
+                    optionsDePartie[1] = 10;  // colonne
                     break;
                 case '2':
-                    optionsDePartie[0] = 16;
-                    optionsDePartie[1] = 8;
+                    optionsDePartie[0] = 8;
+                    optionsDePartie[1] = 16;
                     break;
                 case '3':
-                    optionsDePartie[0] = 22;
-                    optionsDePartie[1] = 10;
+                    optionsDePartie[0] = 10;
+                    optionsDePartie[1] = 22;
                     break;
             }
             return Int16.Parse(choix.ToString());
@@ -105,7 +105,7 @@ namespace Demineur
 
             char choix;
             
-            switch (optionsDePartie[0]) {
+            switch (optionsDePartie[1]) { //check nb colonne
                 case 10:
                     recap += "PETIT ";
                     break;

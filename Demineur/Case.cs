@@ -8,7 +8,7 @@ namespace Demineur
     {
         bool esTuBombe;
         bool estOuverte;
-        short nbDanger;
+        int nbDanger;
         Case[] casesVoisines;
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace Demineur
         /// <summary>
         /// Retourne la valeur numérique du danger autour de la case.
         /// </summary>
-        public short Value
+        public int Value
         {
             get { return nbDanger; }
             set { nbDanger = value; }

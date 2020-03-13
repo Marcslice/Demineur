@@ -13,10 +13,10 @@ namespace Demineur
         static int[] positionDeReponse, positionActuelle;
         static int positionDuGuide;
 
-        static void DessinerTitreJeu(int col)
+        static void DessinerTitreJeu(int colonne)
         {
             string titre = "Démineur 2020, année du JUGEMENT dernier.";
-            int posTitre = (((col * 4) / 2) - (titre.Length / 2)) + 4; // Centrage automatique
+            int posTitre = (((colonne * 4) / 2) - (titre.Length / 2)) + 4; // Centrage automatique
             Console.SetCursorPosition(posTitre, 0);
             Console.WriteLine(titre + "\n");
         }
@@ -47,23 +47,23 @@ namespace Demineur
 
         static void DessinerStats(int nColonne, string nomJoueur, int nbCouts)
         {
-
+            int hauteurStats = 5;
             DessinerLigneDuHaut(nColonne);
 
-            for (int x = 0; x < 5; x++) // Dessine ligne 
+            for (int h = 0; h < hauteurStats; h++) // Dessine ligne 
             {
                 Console.Write(marge + "|");
-                if (x == 4)
-                    for (int y = 0; y < nColonne; y++)
+                if (h == 4)
+                    for (int c = 0; c < nColonne; c++)
                         Console.Write("___ ");
-                else if (x == 2)    //Dessine ligne 3 de l'entete (Nom, yeux, nbCout)
+                else if (h == 2)    //Dessine ligne 3 de l'entete (Nom, yeux, nbCout)
                 {
-                    for (int y = 0; y < nColonne; y++)
-                        if (y == 1)
+                    for (int c = 0; c < nColonne; c++)
+                        if (c == 1)
                             Console.Write(nomJoueur);
-                        else if (y == nColonne - 2)
+                        else if (c == nColonne - 2)
                             Console.Write(nbCouts); // doit être formatté pour prendre un espace fixe.
-                        else if (y == (nColonne / 2) - 1)
+                        else if (c == (nColonne / 2) - 1)
                             Console.Write("  :D   ");
                         else
                             Console.Write(marge);
@@ -76,10 +76,10 @@ namespace Demineur
             }
         }
 
-        public static void DessinerGrille(int nColonne, int nRange, string grille)
+        public static void DessinerGrille(int nLigne, int nColonne, string grille)
         {
-            Console.SetWindowSize(nColonne * 4 + 65, nRange * 4 + 10);
-            positionDeReponse = new int[2] {43, nRange * 3 + 11};
+            Console.SetWindowSize(nColonne * 4 + 65, nLigne * 4 + 10);
+            positionDeReponse = new int[2] {43, nLigne * 3 + 11};
             positionDuGuide = nColonne * 4 + 8;
             Console.Clear();
             
@@ -92,11 +92,11 @@ namespace Demineur
             DessinerChiffreColonne(nColonne);
             DessinerLigneDuHaut(nColonne);
 
-            for (int x = 0; x < nRange; x++)
+            for (int l = 0; l < nLigne; l++)
             {
                 DessinerRangeHautCase(nColonne);
-                DessinerRangeCentraleCase(nColonne, x, grille);
-                DessinerRangeBasCase(nColonne, nRange);              
+                DessinerRangeCentraleCase(l, nColonne, grille);
+                DessinerRangeBasCase(nColonne);              
             }
 
             DessinerStats(nColonne, "marc", 3);
@@ -104,51 +104,51 @@ namespace Demineur
             Console.Write("\n"+ marge + "Quelle case souhaitez-vous ouvrir ? >> 1 1");          
         }
         
-        static void DessinerChiffreColonne(int col){
+        static void DessinerChiffreColonne(int colonne){
             Console.Write(marge);
-            for (int y = 0; y < col; y++)
+            for (int c = 0; c < colonne; c++)
             {
-                if (y < 10) // spacing between top numbers
+                if (c < 10) // spacing between top numbers
                     Console.Write(" ");
-                Console.Write(" " + (y + 1) + " ");
+                Console.Write(" " + (c + 1) + " ");
             }
             Console.Write("\n");
         }
 
-        static void DessinerLigneDuHaut(int col){
+        static void DessinerLigneDuHaut(int colonne){
             Console.Write(marge);
-            for (int y = 0; y < col; y++)
+            for (int y = 0; y < colonne; y++)
                 Console.Write(" ___");
             Console.Write("\n");
         }
 
-        static void DessinerRangeHautCase(int col){
+        static void DessinerRangeHautCase(int colonne){
             Console.Write(marge + "|   |");
-            for (int y = 1; y < col; y++)
+            for (int c = 1; c < colonne; c++)
                 Console.Write("   |"); //Ajoute ligne vertical de droite pour chaque autre colonne.
             Console.Write("\n");
         }
 
-        static void DessinerRangeCentraleCase(int col, int range, string grille){
+        static void DessinerRangeCentraleCase(int ligne, int colonne, string grille){
 
-            if (range + 1 < 10)
-                Console.Write(" " + (range + 1) + "  | "); // spacing de gauche pour les chiffres des rangés < 10
+            if (ligne + 1 < 10)
+                Console.Write(" " + (ligne + 1) + "  | "); // spacing de gauche pour les chiffres des rangés < 10
             else
-                Console.Write(" " + (range + 1) + " | "); // spacing de gauche pour les chiffres des rangés >= 10
-            for (int x = 0; x < col; x++)
-                 Console.Write(grille[x + col * range] + " | "); // Contenue de tableau en test
+                Console.Write(" " + (ligne + 1) + " | "); // spacing de gauche pour les chiffres des rangés >= 10
+            for (int c = 0; c < colonne; c++)
+                 Console.Write(grille[c + (ligne) * (colonne)] + " | "); // Contenue de tableau en test
             Console.Write("\n");
         }
 
-        static void DessinerRangeBasCase(int col, int range){
+        static void DessinerRangeBasCase(int colonne){
             Console.Write(marge + "|___|");
-            for (int y = 1; y < col; y++)
+            for (int c = 1; c < colonne; c++)
                 Console.Write("___|");
             Console.Write("\n");
         }
 
         static void DessinerRangeVide(int nColonne){
-            for (int y = 0; y < nColonne; y++)
+            for (int c = 0; c < nColonne; c++)
                 Console.Write(marge);
         }
 

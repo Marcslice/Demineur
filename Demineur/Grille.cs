@@ -10,25 +10,26 @@ namespace Demineur
         int nbBombeGrille;
         int colonne, ligne;
 
-        public Grille(short colonne, short ligne, short difficulte)
+        // arrays in c# rows, columns
+        public Grille(short ligne, short colonne, short difficulte)
         {
-            nbBombeGrille = CalculerBombes(colonne, ligne, difficulte);
-            champs = new Case[colonne, ligne];
-            this.colonne = colonne;
+            nbBombeGrille = CalculerBombes(ligne, colonne, difficulte);
+            champs = new Case[ligne, colonne];
             this.ligne = ligne;
-
-            for(int i = 0; i < colonne; i++)
+            this.colonne = colonne;
+            
+            for(int i = 0; i < ligne; i++)
             {
-                for(int j = 0; j < ligne; j++)
+                for(int j = 0; j < colonne; j++)
                 {
                     champs[i,j] = new Case();
                 }
             }
-            RencontreVoisin(colonne,ligne);
-            DisperserBombes(colonne, ligne);
+            RencontreVoisin(ligne, colonne);
+            DisperserBombes(ligne, colonne);
         }
 
-        int CalculerBombes(short colonne, short ligne, short difficulte) {
+        int CalculerBombes(short ligne, short colonne, short difficulte) {
             double pourcentage = 0;
             switch (difficulte) {
                 case 1:
@@ -41,10 +42,10 @@ namespace Demineur
                     pourcentage = 0.3;
                     break;
             }
-            return Convert.ToInt32((colonne * ligne) * pourcentage);
+            return Convert.ToInt32((ligne * colonne) * pourcentage);
         }
 
-        public void DisperserBombes(short colonne, short ligne)
+        public void DisperserBombes(short ligne, short colonne)
         {
             Random random = new Random();
 
@@ -52,59 +53,82 @@ namespace Demineur
 
             for (int k = nbBombeGrille; k > 0; k--)
             {
-                destination = champs[random.Next(0, colonne), random.Next(0, ligne)];
+                destination = champs[random.Next(0, ligne), random.Next(0, colonne)];
 
                 while(destination.Bombe)
-                    destination = champs[random.Next(0, colonne), random.Next(0, ligne)];
+                    destination = champs[random.Next(0, ligne), random.Next(0, colonne)];
 
                 destination.Bombe = true;
             }
         }
         
-        public Case this[int x, int y] {
+        public Case this[int ligne, int colonne] {
 
-            get { return champs[x, y]; }
+            get { return champs[ligne, colonne]; }
             set {
-                for (int r = x - 1; r < x + 1; r++)
-                    for (int c = y - 1; c < y + 1; c++)
-                        RencontreVoisin(r, c);
-                }
+                for (int l = ligne - 1; l < ligne + 1; l++)
+                    for (int c = colonne - 1; c < colonne + 1; c++)
+                        RencontreVoisin(l, c);
+            }
         }
-        public void RencontreVoisin(int colonne, int ligne)
+
+        public void RencontreVoisin(int ligne, int colonne)
         {
-            for (int i = 0; i < colonne; i++)
+            for (int l = 0; l < ligne; l++)
             {
-                for (int j = 0; j < ligne; j++)
+                for (int c = 0; c < colonne; c++)
                 {
-                    Case destination = champs[i, j];
+                    Case destination = champs[l, c];
                     Case voisin;
 
-                    if ((i - 1 > 0) && (j - 1 > 0))//NW
-                        destination.SetCase(0, voisin = champs[i - 1, j - 1]);
+                    if ((l > 0) && (c > 0))
+                    {//NW
+                        destination.SetCase(0, voisin = champs[l - 1, c - 1]);
+                        if (voisin.Bombe)
+                            destination.Value = destination.Value + 1;
+                    }
+                    if (l > 0) {//N
+                        destination.SetCase(1, voisin = champs[l - 1, c]);
+                        if (voisin.Bombe)
+                            destination.Value = destination.Value + 1;
+                    }
+                    if ((l > 0) && (c + 1 < colonne))
+                    {//NE
+                        destination.SetCase(2, voisin = champs[l - 1, c + 1]);
+                        if (voisin.Bombe)
+                            destination.Value = destination.Value + 1;
+                    }
+                    if (c > 0)
+                    {//W
+                        destination.SetCase(3, voisin = champs[l, c - 1]);
+                        if (voisin.Bombe)
+                            destination.Value = destination.Value + 1;
+                    }
+                    if (c + 1 < colonne)
+                    {//E
+                        destination.SetCase(4, voisin = champs[l, c + 1]);
+                        if (voisin.Bombe)
+                            destination.Value = destination.Value + 1;
+                    }
+                    if ((l + 1 < ligne) && (c - 1 > 0))
+                    {//SW
+                        destination.SetCase(5, voisin = champs[l + 1, c - 1]);
+                        if (voisin.Bombe)
+                            destination.Value = destination.Value + 1;
+                    }
+                    if (l + 1 < ligne)
+                    {//S
+                        destination.SetCase(6, voisin = champs[l + 1, c]);
+                        if (voisin.Bombe)
+                            destination.Value = destination.Value + 1;
+                    }
 
-                    if (j - 1 > 0)//N
-                        destination.SetCase(1, voisin = champs[i, j - 1]);
-
-                    if ((i + 1 < colonne) && (j - 1 > 0))//NE
-                        destination.SetCase(2, voisin = champs[i + 1, j - 1]);
-
-                    if (i - 1 > 0)//W
-                        destination.SetCase(3, voisin = champs[i - 1, j]);
-
-                    if (i + 1 < colonne)//E
-                        destination.SetCase(4, voisin = champs[i + 1, j]);
-
-                    if ((i - 1 > 0) && (j + 1 < ligne))//SW
-                        destination.SetCase(5, voisin = champs[i - 1, j + 1]);
-
-                    if (j + 1 < ligne)//S
-                        destination.SetCase(6, voisin = champs[i, j + 1]);
-
-                    if ((i + 1 < colonne) && (j + 1 < ligne))//SE
-                        destination.SetCase(7, voisin = champs[i + 1, j + 1]);
-
-                   //  if (voisin.Bombe)
-                   //     destination.Value++;
+                    if ((l + 1 < ligne) && (c + 1 < colonne))
+                    {//SE
+                        destination.SetCase(7, voisin = champs[l + 1, c + 1]);
+                        if (voisin.Bombe)
+                            destination.Value++;
+                    }                
                 }
             }
         }
@@ -113,22 +137,18 @@ namespace Demineur
         {
             string grille = "";
 
-            for (int x = 0; x < ligne; x++)
+            for (int l = 0; l < ligne; l++)
             {
-                for (int y = 0; y < colonne; y++)
+                for (int c = 0; c < colonne; c++)
                 {
-                    /* if (!this[x, y].Ouvert)
+                     if (!this[l, c].Ouvert)
                          grille += '?';
-                     else if (this[x, y].Ouvert && this[x, y].Bombe)
+                     else if (this[l, c].Ouvert && this[l, c].Bombe)
                          grille += '¤';
-                     else if (this[x, y].Ouvert && this[x, y].Value == 0)
-                         grille += 'O';
-                     else if (this[x, y].Ouvert && this[x, y].Value > 0)
-                         grille += this[x, y].Value;*/
-                    if (!this[x, y].Ouvert)
-                        grille += 'F';
-                    else if (this[x, y].Ouvert)
-                        grille += 'O';
+                     else if (this[l, c].Ouvert && this[l, c].Value == 0)
+                         grille += ' ';
+                     else if (this[l, c].Ouvert && this[l, c].Value > 0)
+                         grille += this[l, c].Value;
                 }
             }
             return grille;                   
