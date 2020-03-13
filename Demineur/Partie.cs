@@ -116,7 +116,7 @@ namespace Demineur
         }
 
         void VerificationSelection(int[] selection) {
-            m_Grille[selection[1] / 3 - 1, selection[0] / 4 - 1].Ouvert = true;
+            m_Grille.OuvrirCase(selection[1] / 3 - 1, selection[0] / 4 - 1);
         }
 
         public string ObtenirMetadonneesDeLaPartieActuellementTerminee()

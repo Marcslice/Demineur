@@ -24,7 +24,7 @@ namespace Demineur
                 Console.WriteLine("#          Bienvenue dans l'ultime expérience            #");
                 Console.WriteLine("#                 Démineur du JUGEMENT                   #");
                 Console.WriteLine("#                                                        #");
-                Console.WriteLine("#                 1.  JOUEUR                             #");
+                Console.WriteLine("#                 1.  JOUER                              #");
                 Console.WriteLine("#                                                        #");
                 Console.WriteLine("#                 2.  AFFICHER CLASSEMENT                #");
                 Console.WriteLine("#                                                        #");

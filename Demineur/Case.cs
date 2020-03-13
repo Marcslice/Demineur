@@ -29,7 +29,7 @@ namespace Demineur
         public int Value
         {
             get { return nbDanger; }
-            set { nbDanger = value; }
+            //set { nbDanger = value; }
         }
 
         /// <summary>
@@ -54,6 +54,17 @@ namespace Demineur
         /// <param name="voisin">Case voisine</param>
         public void SetCase(int i, Case voisin) {
             this.casesVoisines[i] = voisin;
+        }
+
+        public int CalculerDanger()
+        {
+            for(int i = 0; i < 8; i++)
+            {
+                if(this.casesVoisines[i] != null)
+                    if (this.casesVoisines[i].Bombe)
+                        nbDanger++;
+            }
+            return nbDanger;
         }
     }
 }

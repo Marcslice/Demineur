@@ -33,13 +33,13 @@ namespace Demineur
             double pourcentage = 0;
             switch (difficulte) {
                 case 1:
-                    pourcentage = 0.1;
-                    break;
-                case 2:
                     pourcentage = 0.2;
                     break;
+                case 2:
+                    pourcentage = 0.4;
+                    break;
                 case 3:
-                    pourcentage = 0.3;
+                    pourcentage = 0.6;
                     break;
             }
             return Convert.ToInt32((ligne * colonne) * pourcentage);
@@ -81,56 +81,38 @@ namespace Demineur
                     Case destination = champs[l, c];
                     Case voisin;
 
-                    if ((l > 0) && (c > 0))
-                    {//NW
+                    if ((l > 0) && (c > 0))//NW
                         destination.SetCase(0, voisin = champs[l - 1, c - 1]);
-                        if (voisin.Bombe)
-                            destination.Value = destination.Value + 1;
-                    }
-                    if (l > 0) {//N
+                    
+                    if (l > 0)//N
                         destination.SetCase(1, voisin = champs[l - 1, c]);
-                        if (voisin.Bombe)
-                            destination.Value = destination.Value + 1;
-                    }
-                    if ((l > 0) && (c + 1 < colonne))
-                    {//NE
+                    
+                    if ((l > 0) && (c + 1 < colonne))//NE
                         destination.SetCase(2, voisin = champs[l - 1, c + 1]);
-                        if (voisin.Bombe)
-                            destination.Value = destination.Value + 1;
-                    }
-                    if (c > 0)
-                    {//W
+                    
+                    if (c > 0)//W
                         destination.SetCase(3, voisin = champs[l, c - 1]);
-                        if (voisin.Bombe)
-                            destination.Value = destination.Value + 1;
-                    }
-                    if (c + 1 < colonne)
-                    {//E
-                        destination.SetCase(4, voisin = champs[l, c + 1]);
-                        if (voisin.Bombe)
-                            destination.Value = destination.Value + 1;
-                    }
-                    if ((l + 1 < ligne) && (c - 1 > 0))
-                    {//SW
-                        destination.SetCase(5, voisin = champs[l + 1, c - 1]);
-                        if (voisin.Bombe)
-                            destination.Value = destination.Value + 1;
-                    }
-                    if (l + 1 < ligne)
-                    {//S
-                        destination.SetCase(6, voisin = champs[l + 1, c]);
-                        if (voisin.Bombe)
-                            destination.Value = destination.Value + 1;
-                    }
 
-                    if ((l + 1 < ligne) && (c + 1 < colonne))
-                    {//SE
-                        destination.SetCase(7, voisin = champs[l + 1, c + 1]);
-                        if (voisin.Bombe)
-                            destination.Value++;
-                    }                
+                    if (c + 1 < colonne)//E
+                        destination.SetCase(4, voisin = champs[l, c + 1]);                        
+
+                    if ((l + 1 < ligne) && (c - 1 > 0))//SW
+                        destination.SetCase(5, voisin = champs[l + 1, c - 1]);
+                        
+                    if (l + 1 < ligne)//S
+                        destination.SetCase(6, voisin = champs[l + 1, c]);                       
+
+                    if ((l + 1 < ligne) && (c + 1 < colonne))//SE
+                        destination.SetCase(7, voisin = champs[l + 1, c + 1]);                                        
                 }
             }
+        }
+
+        public void OuvrirCase(int ligne, int colonne)
+        {
+            Case cible = champs[ligne, colonne];
+            cible.Ouvert = true;
+            cible.CalculerDanger();
         }
 
         public override string ToString()
