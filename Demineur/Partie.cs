@@ -117,10 +117,21 @@ namespace Demineur
         }
 
         void VerificationSelection(int[] selection) {
-            if (m_Grille.OuvrirCase(selection[1] / 3 - 1, selection[0] / 4 - 1) == false)//modifier pour permettre le game over
+            int[] cible = new int[2];
+            cible[1] = selection[1] / 3 - 1;
+            cible[0] = selection[0] / 4 - 1;
+
+            if (m_Grille.OuvrirCase(cible[1], cible[0]) == false)//modifier pour permettre le game over
             {
                 m_Grille.DecouvrirBombes();
                 enMarche = false;
+            }
+            else
+            {
+                if(m_Grille[cible[1], cible[0]].Value == 0)
+                {
+
+                }
             }
         }
 
