@@ -1,31 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\marc_\\Desktop\\Demineur\\Demineur\\Demineur.csproj": {}
+    "C:\\Users\\marc_\\source\\repos\\IntelligenceArtificielDemineur\\IntelligenceArtificielDemineur.csproj": {}
   },
   "projects": {
-    "C:\\Users\\marc_\\Desktop\\Demineur\\Demineur\\Demineur.csproj": {
+    "C:\\Users\\marc_\\source\\repos\\IntelligenceArtificielDemineur\\IntelligenceArtificielDemineur.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\marc_\\Desktop\\Demineur\\Demineur\\Demineur.csproj",
-        "projectName": "Demineur",
-        "projectPath": "C:\\Users\\marc_\\Desktop\\Demineur\\Demineur\\Demineur.csproj",
+        "projectUniqueName": "C:\\Users\\marc_\\source\\repos\\IntelligenceArtificielDemineur\\IntelligenceArtificielDemineur.csproj",
+        "projectName": "IntelligenceArtificielDemineur",
+        "projectPath": "C:\\Users\\marc_\\source\\repos\\IntelligenceArtificielDemineur\\IntelligenceArtificielDemineur.csproj",
         "packagesPath": "C:\\Users\\marc_\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\marc_\\Desktop\\Demineur\\Demineur\\obj\\",
+        "outputPath": "C:\\Users\\marc_\\source\\repos\\IntelligenceArtificielDemineur\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\marc_\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp2.1"
+          "netstandard2.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp2.1": {
+          "netstandard2.0": {
             "projectReferences": {}
           }
         },
@@ -36,12 +36,12 @@
         }
       },
       "frameworks": {
-        "netcoreapp2.1": {
+        "netstandard2.0": {
           "dependencies": {
-            "Microsoft.NETCore.App": {
+            "NETStandard.Library": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[2.1.0, )",
+              "version": "[2.0.3, )",
               "autoReferenced": true
             }
           },

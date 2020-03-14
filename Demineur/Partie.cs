@@ -12,7 +12,7 @@ namespace Demineur
         int[] selection = new int[2];
         int nombreCouts = 0;
         //Joueur m_Joueur;
-        //IA m_IA;
+        IA m_IA;
         //string tempsEcoule;
         //bool automatique;
 
@@ -20,6 +20,7 @@ namespace Demineur
         {
             enMarche = true;
             m_Grille = new Grille(optionDePartie[0], optionDePartie[1], optionDePartie[2]); //Ajouter AI plus tard
+            m_IA = new IA(optionDePartie[0], optionDePartie[1]);
             InterfaceUsager.DessinerGrille(optionDePartie[0], optionDePartie[1], m_Grille.ToString());
             VerificationSelection(selection = Cout(optionDePartie[1], optionDePartie[0], m_Grille.ToString(), 6, 5));
             while (enMarche)

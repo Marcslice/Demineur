@@ -7,12 +7,11 @@ namespace Demineur
 
         Partie m_Partie;
         Classements m_Classement;
-
         Demineur()
         {
             short choix;
             m_Classement = new Classements();
-
+            
             do
             {
                 choix = Menu.AfficherMenu();
