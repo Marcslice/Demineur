@@ -158,20 +158,20 @@ namespace Demineur
             set { saisie = value; }
         }
 
-        static void MessageVictoire()
+        public static void MessageVictoire()
         {
             Console.Clear();
             Console.WriteLine("Vous êtes un champion du démineur!");
         }
 
-        static void MessageDefaite()
+        public static void MessageDefaite()
         {
-            Console.Clear();
+            //Console.Clear();
             Console.WriteLine("Je te juge.");
             //Dessin du prof
         }
 
-        static string QuiEtesVous(){
+        public static string QuiEtesVous(){
             Console.Write("Qui êtes-vous ? >> ");
             return Console.ReadLine();
         }

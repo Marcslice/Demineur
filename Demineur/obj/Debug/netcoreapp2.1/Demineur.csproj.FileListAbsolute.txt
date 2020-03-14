@@ -40,7 +40,6 @@ C:\Users\lxhit\Desktop\Travaux\Prog-3\Demineur\Demineur\Demineur\bin\Debug\netco
 C:\Users\lxhit\Desktop\Travaux\Prog-3\Demineur\Demineur\Demineur\bin\Debug\netcoreapp2.1\Demineur.runtimeconfig.dev.json
 C:\Users\lxhit\Desktop\Travaux\Prog-3\Demineur\Demineur\Demineur\bin\Debug\netcoreapp2.1\Demineur.dll
 C:\Users\lxhit\Desktop\Travaux\Prog-3\Demineur\Demineur\Demineur\bin\Debug\netcoreapp2.1\Demineur.pdb
-C:\Users\lxhit\Desktop\Travaux\Prog-3\Demineur\Demineur\Demineur\obj\Debug\netcoreapp2.1\Demineur.csprojAssemblyReference.cache
 C:\Users\lxhit\Desktop\Travaux\Prog-3\Demineur\Demineur\Demineur\obj\Debug\netcoreapp2.1\Demineur.AssemblyInfoInputs.cache
 C:\Users\lxhit\Desktop\Travaux\Prog-3\Demineur\Demineur\Demineur\obj\Debug\netcoreapp2.1\Demineur.AssemblyInfo.cs
 C:\Users\lxhit\Desktop\Travaux\Prog-3\Demineur\Demineur\Demineur\obj\Debug\netcoreapp2.1\Demineur.dll

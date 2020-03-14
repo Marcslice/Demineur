@@ -46,6 +46,12 @@ namespace Demineur
             get { return estOuverte; }
         }
 
+        public Case this [int i]
+        {
+            get { return casesVoisines[i]; }
+            set { casesVoisines[i] = value; }
+        }
+
         /// <summary>
         /// Affecte au tableau casesVoisines les voisins de la case active.
         /// </summary>
@@ -59,8 +65,8 @@ namespace Demineur
         {
             for(int i = 0; i < 8; i++)
             {
-                if(this.casesVoisines[i] != null)
-                    if (this.casesVoisines[i].Bombe)
+                if(casesVoisines[i] != null)
+                    if (casesVoisines[i].Bombe)
                         nbDanger++;
             }
             return nbDanger;

@@ -9,6 +9,7 @@ namespace Demineur
         Case[,] champs;
         int nbBombeGrille;
         int colonne, ligne;
+        Stack<Case> aOuvrir;
 
         // arrays in c# rows, columns
         public Grille(short ligne, short colonne, short difficulte)
@@ -110,11 +111,36 @@ namespace Demineur
 
         public bool OuvrirCase(int ligne, int colonne)
         {
+            aOuvrir = new Stack<Case>();
+
             Case cible = champs[ligne, colonne];//retour maintenant un bool pour le gameover
             cible.Ouvert = true;
             if (cible.Bombe)
                 return false;
-            cible.CalculerDanger();
+            if (cible.CalculerDanger() == 0)
+                for (int i = 0; i < 8; i++)
+                {
+                    if(cible[i] != null)
+                        OuvrirCase(cible[i]);
+                }
+            return true;
+        }
+
+        bool OuvrirCase(Case voisin)
+        {
+            if (!voisin.Ouvert)
+            {
+                voisin.Ouvert = true;
+                if (voisin.CalculerDanger() == 0)
+                    aOuvrir.Push(voisin);
+
+                if (voisin.CalculerDanger() == 0)
+                    for(int j = 0; j < 8; j++)
+                    {
+                        if (voisin[j] != null)
+                            OuvrirCase(voisin[j]);
+                    }
+            }
             return true;
         }
 
@@ -152,3 +178,4 @@ namespace Demineur
         }
     }
 }
+
