@@ -192,7 +192,7 @@ namespace Demineur
 
             char choix;
 
-            switch (optionsDePartie[2])
+            switch (optionsDePartie[3])
             {
                 case 1:
                     recap += ", SANS AI ";
