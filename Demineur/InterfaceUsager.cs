@@ -71,12 +71,11 @@ namespace Demineur
                 else
                     DessinerRangeVide(nColonne);
 
-                Console.Write("\b|");
-                Console.Write("\n");
+                Console.Write("\b|\n");
             }
         }
 
-        public static void DessinerGrille(int nLigne, int nColonne, string grille)
+        public static void DessinerGrille(int nLigne, int nColonne, string grille, int[] positionActuel)
         {
             Console.SetWindowSize(nColonne * 4 + 65, nLigne * 4 + 10);
             positionDeReponse = new int[2] {43, nLigne * 3 + 11};
@@ -101,7 +100,7 @@ namespace Demineur
 
             DessinerStats(nColonne, "marc", 3);
 
-            Console.Write("\n"+ marge + "Quelle case souhaitez-vous ouvrir ? >> 1 1");          
+            Console.Write("\n"+ marge + "Quelle case souhaitez-vous ouvrir ? >> " + (positionActuel[0] % 4 - 1) + " " + (positionActuel[1] % 3 - 1));          
         }
         
         static void DessinerChiffreColonne(int colonne){

@@ -9,9 +9,9 @@ namespace Demineur
     {
         Grille m_Grille;
         bool enMarche;
-        int[] selection = new int[2];
+        int[] selection;
+        Regex rx;
         //int nombreCouts = 0;
-        Regex rx = new Regex(@"^\d+\s\d+$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
         //Joueur m_Joueur;
         //IA m_IA;
         //string tempsEcoule;
@@ -19,17 +19,22 @@ namespace Demineur
 
         public Partie(short[] optionDePartie)
         {
-            enMarche = true;
-            m_Grille = new Grille(optionDePartie[0], optionDePartie[1], optionDePartie[2]); //Ajouter AI plus tard
+            enMarche = false;
+            selection = new int[2] {6,5};
+            rx = new Regex(@"^\d+\s\d+$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+            m_Grille = new Grille(optionDePartie[0], optionDePartie[1], optionDePartie[2]); //Ajouter AI plus tard     
+            
             //m_IA = new IA(optionDePartie[0], optionDePartie[1]);
-            InterfaceUsager.DessinerGrille(optionDePartie[0], optionDePartie[1], m_Grille.ToString());
-            VerificationSelection(selection = Cout(optionDePartie[1], optionDePartie[0], m_Grille.ToString(), 6, 5));
+
+            InterfaceUsager.DessinerGrille(optionDePartie[0], optionDePartie[1], m_Grille.ToString(), selection);
+            VerificationSelection(selection = Cout(optionDePartie[1], optionDePartie[0], m_Grille.ToString(), selection[0], selection[1]));
+            enMarche = true;
             while (enMarche)
             {
-                InterfaceUsager.DessinerGrille(optionDePartie[0], optionDePartie[1], m_Grille.ToString());
+                InterfaceUsager.DessinerGrille(optionDePartie[0], optionDePartie[1], m_Grille.ToString(), selection);
                 VerificationSelection(selection = Cout(optionDePartie[1], optionDePartie[0], m_Grille.ToString(), selection[0], selection[1]));
             }
-            InterfaceUsager.DessinerGrille(optionDePartie[0], optionDePartie[1], m_Grille.ToString());//dessine la grille on game over
+            InterfaceUsager.DessinerGrille(optionDePartie[0], optionDePartie[1], m_Grille.ToString(), selection);//dessine la grille on game over
             //InterfaceUsager.MessageDefaite();
         }
 
@@ -85,14 +90,11 @@ namespace Demineur
                             positionActuelle = new int[2] { Console.CursorLeft, Console.CursorTop };
                         } while (m_Grille[positionActuelle[1] / 3 - 1, positionActuelle[0] / 4 - 1].Ouvert && m_Grille[positionActuelle[1] / 3 - 1, positionActuelle[0] / 4 - 1].Value == 0);
                         break;
-                    case 13: // enter key
-                        break;
                     case 70: // f pour controler avec fleches                                          
                         InterfaceUsager.Saisie = true;
-                        InterfaceUsager.DessinerGrille(iCol, iLig, tab);
+                        InterfaceUsager.DessinerGrille(iLig, iCol, tab, selection);
                         break;
-                    case 67: // c pour coordonnées manuelles    
-                        
+                    case 67: // c pour coordonnées manuelles                      
                         InterfaceUsager.Saisie = false;
                         InterfaceUsager.PositionnerCursorPourRepondre();
                         break;
@@ -118,7 +120,7 @@ namespace Demineur
                     {
                         Console.Clear();
                         InterfaceUsager.Saisie = true;
-                        InterfaceUsager.DessinerGrille(iCol, iLig, tab);
+                        InterfaceUsager.DessinerGrille(iCol, iLig, tab, selection);
                         Console.SetCursorPosition(6, 5);
                     }
                     else if (matches.Count == 1) {
@@ -138,25 +140,25 @@ namespace Demineur
             cible[1] = selection[1] / 3 - 1;
             cible[0] = selection[0] / 4 - 1;
 
-            if (!m_Grille[cible[1], cible[0]].Ouvert) // N'ouvre pas case déjà ouverte.
+            if (!m_Grille[cible[1], cible[0]].Ouvert) // N'ouvre pas case déjà ouverte et fix les nombre qui changent.
             {
-
-                if (m_Grille.OuvrirCase(cible[1], cible[0]) == false)//modifier pour permettre le game over
+                if (m_Grille.OuvrirCase(cible[1], cible[0]) == false && enMarche)//modifier pour permettre le game over
                 {
+
                     m_Grille.DecouvrirBombes();
                     enMarche = false;
                 }
+                else if (m_Grille.OuvrirCase(cible[1], cible[0]) == false && !enMarche)
+                    m_Grille[cible[1], cible[0]].Bombe = false;
             }
-<<<<<<< Updated upstream
-=======
-           /* else
-            {
-                if (m_Grille[cible[1], cible[0]].Value == 0)
-                {
+        }
 
-                }
-            }*/
->>>>>>> Stashed changes
+        public bool VerificationFormatDeLentree(string entree) {
+            return false;
+        }
+
+        public bool VerificationDesMinMaxDeLentree(string entree) { 
+            return false;
         }
 
         public string ObtenirMetadonneesDeLaPartieActuellementTerminee()

@@ -109,7 +109,7 @@ namespace Demineur
             }
         }
 
-        public bool OuvrirCase(int ligne, int colonne)
+        public bool OuvrirCase(int ligne, int colonne) //étape 1 ouvre case, si bombe arrete sinon appel OuvrirCase étape 2
         {
             aOuvrir = new Stack<Case>();
 
@@ -126,7 +126,7 @@ namespace Demineur
             return true;
         }
 
-        bool OuvrirCase(Case voisin)
+        bool OuvrirCase(Case voisin) // Ouvre les case vides adjacentes.
         {
             if (!voisin.Ouvert)
             {
@@ -144,11 +144,11 @@ namespace Demineur
             return true;
         }
 
-        public void DecouvrirBombes()
+        public void DecouvrirBombes() //ok
         {
             for(int l = 0; l < ligne; l++)
             {
-                for(int c =0; c < colonne; c++)
+                for(int c = 0; c < colonne; c++)
                 {
                     if (champs[l, c].Bombe)
                         champs[l, c].Ouvert = true;
@@ -156,7 +156,7 @@ namespace Demineur
             }
         }
 
-        public override string ToString()
+        public override string ToString() //ok
         {
             string grille = "";
 
