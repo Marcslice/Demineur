@@ -8,29 +8,30 @@ namespace Demineur
     {
         Case[,] champs;
         int nbBombeGrille;
-        int colonne, ligne;
+        int colonnes, lignes, casesFermer;
         Stack<Case> aOuvrir;
 
         // arrays in c# rows, columns
-        public Grille(short ligne, short colonne, short difficulte)
+        public Grille(short lignes, short colonnes, short difficulte)
         {
-            nbBombeGrille = CalculerBombes(ligne, colonne, difficulte);
-            champs = new Case[ligne, colonne];
-            this.ligne = ligne;
-            this.colonne = colonne;
+            nbBombeGrille = CalculerBombes(lignes, colonnes, difficulte);
+            champs = new Case[lignes, colonnes];
+            this.lignes = lignes;
+            this.colonnes = colonnes;
+            this.casesFermer = lignes * colonnes;
             
-            for(int i = 0; i < ligne; i++)
+            for(int i = 0; i < lignes; i++)
             {
-                for(int j = 0; j < colonne; j++)
+                for(int j = 0; j < colonnes; j++)
                 {
                     champs[i,j] = new Case();
                 }
             }
-            RencontreVoisin(ligne, colonne);
-            DisperserBombes(ligne, colonne);
+            RencontreVoisin(lignes, colonnes);
+            DisperserBombes(lignes, colonnes);
         }
 
-        int CalculerBombes(short ligne, short colonne, short difficulte) {
+        int CalculerBombes(short lignes, short colonnes, short difficulte) {
             double pourcentage = 0;
             switch (difficulte) {
                 case 1:
@@ -43,10 +44,10 @@ namespace Demineur
                     pourcentage = 0.6;
                     break;
             }
-            return Convert.ToInt32((ligne * colonne) * pourcentage);
+            return Convert.ToInt32((lignes * colonnes) * pourcentage);
         }
 
-        public void DisperserBombes(short ligne, short colonne)
+        public void DisperserBombes(short lignes, short colonnes)
         {
             Random random = new Random();
 
@@ -54,10 +55,10 @@ namespace Demineur
 
             for (int k = nbBombeGrille; k > 0; k--)
             {
-                destination = champs[random.Next(0, ligne), random.Next(0, colonne)];
+                destination = champs[random.Next(0, lignes), random.Next(0, colonnes)];
 
                 while(destination.Bombe)
-                    destination = champs[random.Next(0, ligne), random.Next(0, colonne)];
+                    destination = champs[random.Next(0, lignes), random.Next(0, colonnes)];
 
                 destination.Bombe = true;
             }
@@ -123,6 +124,7 @@ namespace Demineur
                     if(cible[i] != null)
                         OuvrirCase(cible[i]);
                 }
+            casesFermer--;
             return true;
         }
 
@@ -146,9 +148,9 @@ namespace Demineur
 
         public void DecouvrirBombes() //ok
         {
-            for(int l = 0; l < ligne; l++)
+            for(int l = 0; l < lignes; l++)
             {
-                for(int c = 0; c < colonne; c++)
+                for(int c = 0; c < colonnes; c++)
                 {
                     if (champs[l, c].Bombe)
                         champs[l, c].Ouvert = true;
@@ -156,13 +158,21 @@ namespace Demineur
             }
         }
 
+        public int Colonnes() { return colonnes; }
+
+        public int Lignes(){ return lignes; }
+
+        public int CasesFermer() { return casesFermer; }
+
+        public int NombreDeBombes() { return nbBombeGrille; }
+
         public override string ToString() //ok
         {
             string grille = "";
 
-            for (int l = 0; l < ligne; l++)
+            for (int l = 0; l < lignes; l++)
             {
-                for (int c = 0; c < colonne; c++)
+                for (int c = 0; c < colonnes; c++)
                 {
                      if (!this[l, c].Ouvert)
                          grille += '?';

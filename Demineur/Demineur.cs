@@ -19,6 +19,7 @@ namespace Demineur
                 {
                     case 1:
                         m_Partie = new Partie(Menu.OptionDePartie());
+                        m_Partie.CommencerPartie();
                         break;
                     case 2:
                         m_Classement.AfficherClassement();
@@ -27,7 +28,7 @@ namespace Demineur
                         break;
                 }
             }
-            while (choix == 4 || choix == 2);            
+            while (choix != 3);            
         }
 
         static void Main()

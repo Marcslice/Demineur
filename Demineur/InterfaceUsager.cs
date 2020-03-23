@@ -10,8 +10,7 @@ namespace Demineur
     {
         static string marge = "    "; // Unité d'espacement.
         static bool saisie = true; // true = mode avec flèche
-        static int[] positionDeReponse, positionActuelle;
-        static int positionDuGuide;
+        static int[] positionDeReponse, positionDeMessage;
 
         static void DessinerTitreJeu(int colonne)
         {
@@ -43,49 +42,67 @@ namespace Demineur
 
         public static void PositionnerCursorPourRepondre() {
             Console.SetCursorPosition(positionDeReponse[0], positionDeReponse[1]);
+            Console.Write("                                                    ");
+            Console.SetCursorPosition(positionDeReponse[0], positionDeReponse[1]);
+        }
+
+        public static void PositionnerCursorPourMessageErreur()
+        { 
+            Console.SetCursorPosition(positionDeMessage[0], positionDeMessage[1]);
+            Console.ForegroundColor = ConsoleColor.Red;
         }
 
         static void DessinerStats(int nColonne, string nomJoueur, int nbCouts)
         {
-            int hauteurStats = 5;
-            DessinerLigneDuHaut(nColonne);
 
-            for (int h = 0; h < hauteurStats; h++) // Dessine ligne 
-            {
-                Console.Write(marge + "|");
-                if (h == 4)
-                    for (int c = 0; c < nColonne; c++)
-                        Console.Write("___ ");
-                else if (h == 2)    //Dessine ligne 3 de l'entete (Nom, yeux, nbCout)
-                {
-                    for (int c = 0; c < nColonne; c++)
-                        if (c == 1)
-                            Console.Write(nomJoueur);
-                        else if (c == nColonne - 2)
-                            Console.Write(nbCouts); // doit être formatté pour prendre un espace fixe.
-                        else if (c == (nColonne / 2) - 1)
-                            Console.Write("  :D   ");
-                        else
-                            Console.Write(marge);
-                }
+            DessinerLigneDuHaut(nColonne); // ligne horizontale dessus
+            Console.Write(marge + "|");
+            DessinerRangeVide(nColonne);  // rangé vide
+            Console.WriteLine("\b|");
+
+            Console.Write(marge + "|");
+            DessinerRangeVide(nColonne); // rangé vide
+            Console.WriteLine("\b|");
+
+            Console.Write(marge + "|");
+            for (int c = 0; c < nColonne; c++)
+                if (c == 1)
+                    Console.Write(nomJoueur);
+                else if (c == nColonne - 2)
+                    Console.Write(nbCouts); // doit être formatté pour prendre un espace fixe.
+                else if (c == (nColonne / 2) - 1)
+                    Console.Write("  :D   ");
                 else
-                    DessinerRangeVide(nColonne);
+                    Console.Write(marge);
+            Console.WriteLine("\b|");
 
+            Console.Write(marge + "|");
+            DessinerRangeVide(nColonne); // rangé vide
+            Console.WriteLine("\b|");
+
+            Console.Write(marge + "|");
+            for (int c = 0; c < nColonne; c++) // ligne du bas
+                Console.Write("___ ");
                 Console.Write("\b|\n");
-            }
+        
         }
 
-        public static void DessinerGrille(int nLigne, int nColonne, string grille, int[] positionActuel)
+        public static void DessinerPlateau(int nLigne, int nColonne, string grille, int[] positionActuelle)
         {
             Console.SetWindowSize(nColonne * 4 + 65, nLigne * 4 + 10);
+            positionDeMessage = new int[2] {4, nLigne * 3 + 14};
             positionDeReponse = new int[2] {43, nLigne * 3 + 11};
-            positionDuGuide = nColonne * 4 + 8;
+            int positionDuGuide = nColonne * 4 + 8;
             Console.Clear();
             
             DessinerTitreJeu(nColonne);
             DessinerInstructions(positionDuGuide);
             DessinerModeDeSaisie(positionDuGuide);
 
+            DessinerGrille(nLigne, nColonne, grille, positionActuelle);           
+        }
+
+        public static void DessinerGrille(int nLigne, int nColonne, string grille, int[] positionActuelle) {
             Console.SetCursorPosition(0, 2); // Nécessaire pour dessiner la grille au bonne endroit.
 
             DessinerChiffreColonne(nColonne);
@@ -95,14 +112,21 @@ namespace Demineur
             {
                 DessinerRangeHautCase(nColonne);
                 DessinerRangeCentraleCase(l, nColonne, grille);
-                DessinerRangeBasCase(nColonne);              
+                DessinerRangeBasCase(nColonne);
             }
 
             DessinerStats(nColonne, "marc", 3);
 
-            Console.Write("\n"+ marge + "Quelle case souhaitez-vous ouvrir ? >> " + (positionActuel[0] % 4 - 1) + " " + (positionActuel[1] % 3 - 1));          
+            Console.Write("\n" + marge + "Quelle case souhaitez-vous ouvrir ? >> ");
+            MettreAJourSelection(positionActuelle);
         }
-        
+
+        public static void MettreAJourSelection(int[] positionActuelle) {
+            InterfaceUsager.PositionnerCursorPourRepondre();
+            Console.Write(positionActuelle[0] / 4 + " " + positionActuelle[1] / 3 + "    ");
+            Console.SetCursorPosition(positionActuelle[0], positionActuelle[1]);
+        }
+
         static void DessinerChiffreColonne(int colonne){
             Console.Write(marge);
             for (int c = 0; c < colonne; c++)
@@ -135,7 +159,15 @@ namespace Demineur
             else
                 Console.Write(" " + (ligne + 1) + " | "); // spacing de gauche pour les chiffres des rangés >= 10
             for (int c = 0; c < colonne; c++)
-                 Console.Write(grille[c + (ligne) * (colonne)] + " | "); // Contenue de tableau en test
+            {
+                if (grille[c + (ligne) * (colonne)] == '?')
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                else if (grille[c + (ligne) * (colonne)] == '¤')
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.Write(grille[c + (ligne) * (colonne)]); // Contenue
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Write(" | ");
+            }
             Console.Write("\n");
         }
 
@@ -159,17 +191,49 @@ namespace Demineur
 
         public static void MessageVictoire()
         {
-            Console.Clear();
+            PositionnerCursorPourMessageErreur();
             Console.WriteLine("Vous êtes un champion du démineur!");
+            Console.ReadLine();
         }
 
         public static void MessageDefaite()
         {
-            //Console.Clear();
-            Console.WriteLine("Je te juge.");
+            PositionnerCursorPourMessageErreur();
+            Console.WriteLine("Tu as perdu et j'te juge.");
+            Console.ReadLine();
             //Dessin du prof
         }
 
+        public static void MessageCaseDejaOuverte() {
+            PositionnerCursorPourMessageErreur();
+            Console.WriteLine("Désolé cette case est déjà ouverte. Appuyez sur entrer pour continuer...");
+            Console.ReadLine();
+            PositionnerCursorPourMessageErreur();
+            Console.WriteLine("                                                                        ");           
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        public static void MessageFormatDentreeErronee()
+        {
+            PositionnerCursorPourMessageErreur();
+            Console.WriteLine("Désolé veuillez vous assurez d'entrer vos coordonnées comme suit : (colonne ligne). \n" +
+                marge + "Appuyez sur une entrer pour continuer.");            
+            Console.ReadLine();
+            PositionnerCursorPourMessageErreur();
+            Console.WriteLine("                                                                                    \n" +
+                "                                          ");
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        public static void MessageHorsLimites()
+        {
+            PositionnerCursorPourMessageErreur();
+            Console.WriteLine("Hé, ho tu ne vois pas les chiffres en haut et à gauche ? Appuie sur entrer la...");           
+            Console.ReadLine();
+            PositionnerCursorPourMessageErreur();
+            Console.WriteLine("                                                                                ");
+            Console.ForegroundColor = ConsoleColor.White;
+        }
         public static string QuiEtesVous(){
             Console.Write("Qui êtes-vous ? >> ");
             return Console.ReadLine();

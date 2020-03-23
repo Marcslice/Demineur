@@ -17,7 +17,6 @@ namespace Demineur
             m_ListeJoueurs = new List<Joueur>();
             FichierClassement();
             Console.WriteLine("Nous contruisons le classement...");
-            //Thread.Sleep(2000);
         }
 
         public void AfficherClassement()//À trier
@@ -31,7 +30,7 @@ namespace Demineur
             Console.ReadKey();
         }
 
-        public void MettreAJourJoueuer(string NomJoueur, string Temps, string Difficulte)
+        public void MettreAJourJoueur(string NomJoueur, string Temps, string Difficulte)
         {
 
         }

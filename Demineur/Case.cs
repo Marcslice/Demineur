@@ -63,6 +63,7 @@ namespace Demineur
 
         public int CalculerDanger()
         {
+            nbDanger = 0;
             for(int i = 0; i < 8; i++)
             {
                 if(casesVoisines[i] != null)

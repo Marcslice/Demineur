@@ -1,5 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System;
 
@@ -7,157 +8,226 @@ namespace Demineur
 {
     public class Partie
     {
+        Regex rx = new Regex(@"^\d+\s\d+$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        int[] positionActuelle,
+              selection;
         Grille m_Grille;
-        bool enMarche;
-        int[] selection;
-        Regex rx;
-        //int nombreCouts = 0;
-        //Joueur m_Joueur;
-        //IA m_IA;
-        //string tempsEcoule;
-        //bool automatique;
-
+        bool enMarche, mort;
+        
         public Partie(short[] optionDePartie)
         {
-            enMarche = false;
-            selection = new int[2] {6,5};
-            rx = new Regex(@"^\d+\s\d+$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
-            m_Grille = new Grille(optionDePartie[0], optionDePartie[1], optionDePartie[2]); //Ajouter AI plus tard     
-            
-            //m_IA = new IA(optionDePartie[0], optionDePartie[1]);
+            enMarche = mort = false;
+            selection = new int[2] { 6, 5 }; // 1,1 dans l'interface graphique
+            m_Grille = new Grille(optionDePartie[0], optionDePartie[1], optionDePartie[2]);              
+        }
 
-            InterfaceUsager.DessinerGrille(optionDePartie[0], optionDePartie[1], m_Grille.ToString(), selection);
-            VerificationSelection(selection = Cout(optionDePartie[1], optionDePartie[0], m_Grille.ToString(), selection[0], selection[1]));
+        public void CommencerPartie()
+        {
+            Stopwatch minuterie = new Stopwatch();
+            minuterie.Start();
+
+            //Premier Tour            
+            InterfaceUsager.DessinerPlateau(m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection);
+            VerificationOuvertureEtContenue(selection = Touches(m_Grille.Colonnes(), m_Grille.Lignes(), m_Grille.ToString(), selection[0], selection[1]));
+
+            //Autres Tours
             enMarche = true;
             while (enMarche)
             {
-                InterfaceUsager.DessinerGrille(optionDePartie[0], optionDePartie[1], m_Grille.ToString(), selection);
-                VerificationSelection(selection = Cout(optionDePartie[1], optionDePartie[0], m_Grille.ToString(), selection[0], selection[1]));
+                InterfaceUsager.DessinerGrille(m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection);
+                VerificationOuvertureEtContenue(selection = Touches(m_Grille.Colonnes(), m_Grille.Lignes(), m_Grille.ToString(), selection[0], selection[1]));
             }
-            InterfaceUsager.DessinerGrille(optionDePartie[0], optionDePartie[1], m_Grille.ToString(), selection);//dessine la grille on game over
-            //InterfaceUsager.MessageDefaite();
+
+            minuterie.Stop();
+
+            if (mort)
+            {
+                InterfaceUsager.DessinerGrille(m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection); //Dessine la grille on game over
+                InterfaceUsager.MessageDefaite();
+            }
+            else
+                InterfaceUsager.MessageVictoire();
         }
 
-        public int[] Cout(int iCol, int iLig, string tab, int xActuel, int yActuel)
+        public int[] Touches(int iCol, int iLig, string s_Grille, int xActuel, int yActuel)
         {
-            int[] positionActuelle = new int[2] { xActuel, yActuel };
-            string entreeUtilisateur = "";
+            positionActuelle = new int[2] { xActuel, yActuel };
             ConsoleKeyInfo touche;
+            string entree = "";
 
-            Console.SetCursorPosition(positionActuelle[0], positionActuelle[1]);
             do
             {
-                touche = Console.ReadKey(true);
-
-                switch ((int)touche.Key)
-                {
-                    case 37: // left arrow
-                        do
-                        {
-                            if (Console.CursorLeft < 10)
-                                Console.SetCursorPosition((iCol * 4) + 2, Console.CursorTop);
-                            else
-                                Console.SetCursorPosition(Console.CursorLeft - 4, Console.CursorTop);
-                            positionActuelle = new int[2] { Console.CursorLeft, Console.CursorTop };
-                        } while (m_Grille[positionActuelle[1] / 3 - 1, positionActuelle[0] / 4 - 1].Ouvert && m_Grille[positionActuelle[1] / 3 - 1, positionActuelle[0] / 4 - 1].Value == 0);                      
-                        break;
-                    case 39: // right arrow
-                        do
-                        {
-                            if (Console.CursorLeft > (iCol * 4))
-                                Console.SetCursorPosition(6, Console.CursorTop);
-                            else
-                                Console.SetCursorPosition(Console.CursorLeft + 4, Console.CursorTop);
-                            positionActuelle = new int[2] { Console.CursorLeft, Console.CursorTop };
-                        } while (m_Grille[positionActuelle[1] / 3 - 1, positionActuelle[0] / 4 - 1].Ouvert && m_Grille[positionActuelle[1] / 3 - 1, positionActuelle[0] / 4 - 1].Value == 0);
-                        break;
-                    case 38: // up arrow
-                        do
-                        {
-                            if (Console.CursorTop < 8)
-                                Console.SetCursorPosition(Console.CursorLeft, (iLig * 3) + 2);
-                            else
-                                Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop - 3);
-                            positionActuelle = new int[2] { Console.CursorLeft, Console.CursorTop };
-                        } while (m_Grille[positionActuelle[1] / 3 - 1, positionActuelle[0] / 4 - 1].Ouvert && m_Grille[positionActuelle[1] / 3 - 1, positionActuelle[0] / 4 - 1].Value == 0) ;
-                        break;
-                    case 40: // down arrow
-                        do { 
-                            if (Console.CursorTop > iLig * 3)
-                                Console.SetCursorPosition(Console.CursorLeft, 5);
-                            else
-                                Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop + 3);
-                            positionActuelle = new int[2] { Console.CursorLeft, Console.CursorTop };
-                        } while (m_Grille[positionActuelle[1] / 3 - 1, positionActuelle[0] / 4 - 1].Ouvert && m_Grille[positionActuelle[1] / 3 - 1, positionActuelle[0] / 4 - 1].Value == 0);
-                        break;
-                    case 70: // f pour controler avec fleches                                          
-                        InterfaceUsager.Saisie = true;
-                        InterfaceUsager.DessinerGrille(iLig, iCol, tab, selection);
-                        break;
-                    case 67: // c pour coordonnées manuelles                      
-                        InterfaceUsager.Saisie = false;
-                        InterfaceUsager.PositionnerCursorPourRepondre();
-                        break;
-                    case 65: // a pour aciver l'intelligence artificiel
-                        break;
-                }
-
-
                 if (InterfaceUsager.Saisie)
                 {
-                    InterfaceUsager.PositionnerCursorPourRepondre();
-                    Console.Write(positionActuelle[0] / 4 + " " + positionActuelle[1] / 3 + "    ");
-                    Console.SetCursorPosition(positionActuelle[0], positionActuelle[1]);
+                    ActiverModeFleche();
+                    do
+                    {
+                        touche = Console.ReadKey(true);
+
+                        switch ((int)touche.Key)
+                        {
+                            case 37:
+                                AllerGauche();
+                                InterfaceUsager.MettreAJourSelection(positionActuelle);
+                                break;
+                            case 39:
+                                AllerDroite();
+                                InterfaceUsager.MettreAJourSelection(positionActuelle);
+                                break;
+                            case 38:
+                                AllerHaut();
+                                InterfaceUsager.MettreAJourSelection(positionActuelle);
+                                break;
+                            case 40:
+                                AllerBas();
+                                InterfaceUsager.MettreAJourSelection(positionActuelle);
+                                break;
+                            case 67: // c pour coordonnées manuelles                      
+                                ActiverModeSaisieManuelle();
+                                break;
+                            case 65: // a pour aciver l'intelligence artificiel
+                                break;
+                        }
+                    } while (InterfaceUsager.Saisie && touche.Key != ConsoleKey.Enter);
                 }
                 else
-                {                  
-                    InterfaceUsager.PositionnerCursorPourRepondre();
-                    Console.Write("       ");
-                    InterfaceUsager.PositionnerCursorPourRepondre();
-                    entreeUtilisateur = Console.ReadLine();
-                    MatchCollection matches = rx.Matches(entreeUtilisateur);
-                    if (entreeUtilisateur == "f")
+                    do
                     {
-                        Console.Clear();
-                        InterfaceUsager.Saisie = true;
-                        InterfaceUsager.DessinerGrille(iCol, iLig, tab, selection);
-                        Console.SetCursorPosition(6, 5);
-                    }
-                    else if (matches.Count == 1) {
-                        positionActuelle[0] = Int32.Parse(entreeUtilisateur.Split(' ', StringSplitOptions.RemoveEmptyEntries)[0]) * 4 + 2;
-                        positionActuelle[1] = Int32.Parse(entreeUtilisateur.Split(' ', StringSplitOptions.RemoveEmptyEntries)[1]) * 3 + 2;
-                        Console.SetCursorPosition(positionActuelle[0], positionActuelle[1]);
-                        return positionActuelle;
-                    }
-                }
-
-            } while (touche.Key != ConsoleKey.Enter);
-            return positionActuelle; 
+                        ActiverModeSaisieManuelle();
+                        entree = Console.ReadLine();
+                    } while (!EntreeManuelle(entree));
+            } while ((entree.Length < 3 || entree == "f") && !InterfaceUsager.Saisie);
+            return positionActuelle;
         }
 
-        void VerificationSelection(int[] selection) {
+        public void AllerGauche()//OK
+        {
+            do
+            {
+                if (Console.CursorLeft < 10)
+                    Console.SetCursorPosition((m_Grille.Colonnes() * 4) + 2, Console.CursorTop);
+                else
+                    Console.SetCursorPosition(Console.CursorLeft - 4, Console.CursorTop);
+                positionActuelle[0] = Console.CursorLeft;
+                positionActuelle[1] = Console.CursorTop;
+            } while (m_Grille[positionActuelle[1] / 3 - 1, positionActuelle[0] / 4 - 1].Ouvert && m_Grille[positionActuelle[1] / 3 - 1, positionActuelle[0] / 4 - 1].Value == 0);
+        }
+
+        public void AllerDroite()//OK
+        {
+            do
+            {
+                if (Console.CursorLeft > (m_Grille.Colonnes() * 4))
+                    Console.SetCursorPosition(6, Console.CursorTop);
+                else
+                    Console.SetCursorPosition(Console.CursorLeft + 4, Console.CursorTop);
+                positionActuelle[0] = Console.CursorLeft;
+                positionActuelle[1] = Console.CursorTop;
+            } while (m_Grille[positionActuelle[1] / 3 - 1, positionActuelle[0] / 4 - 1].Ouvert && m_Grille[positionActuelle[1] / 3 - 1, positionActuelle[0] / 4 - 1].Value == 0);
+        }
+
+        public void AllerHaut()//OK
+        {
+            do
+            {
+                if (Console.CursorTop < 8)
+                    Console.SetCursorPosition(Console.CursorLeft, (m_Grille.Lignes() * 3) + 2);
+                else
+                    Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop - 3);
+                positionActuelle[0] = Console.CursorLeft;
+                positionActuelle[1] = Console.CursorTop;
+            } while (m_Grille[positionActuelle[1] / 3 - 1, positionActuelle[0] / 4 - 1].Ouvert && m_Grille[positionActuelle[1] / 3 - 1, positionActuelle[0] / 4 - 1].Value == 0);
+        }
+
+        public void AllerBas()//OK
+        {
+            do
+            {
+                if (Console.CursorTop > m_Grille.Lignes() * 3)
+                    Console.SetCursorPosition(Console.CursorLeft, 5);
+                else
+                    Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop + 3);
+                positionActuelle[0] = Console.CursorLeft;
+                positionActuelle[1] = Console.CursorTop;
+            } while (m_Grille[positionActuelle[1] / 3 - 1, positionActuelle[0] / 4 - 1].Ouvert && m_Grille[positionActuelle[1] / 3 - 1, positionActuelle[0] / 4 - 1].Value == 0);
+        }
+
+        public void ActiverModeFleche()//OK
+        {
+            InterfaceUsager.Saisie = true;
+            Console.SetCursorPosition(positionActuelle[0], positionActuelle[1]);
+        }
+
+        void ActiverModeSaisieManuelle()//OK
+        {
+            InterfaceUsager.Saisie = false;
+            InterfaceUsager.PositionnerCursorPourRepondre();
+        }
+
+        public bool EntreeManuelle(string entree)
+        {
+            if (entree.Length > 2)
+            {
+                if (VerificationFormatDeLentree(entree))
+                {
+                    positionActuelle[0] = Int32.Parse(entree.Split(' ', StringSplitOptions.RemoveEmptyEntries)[0]) * 4 + 2;
+                    positionActuelle[1] = Int32.Parse(entree.Split(' ', StringSplitOptions.RemoveEmptyEntries)[1]) * 3 + 2;
+                    return true;
+                }
+            }
+            else if (entree == "f")
+            {
+                ActiverModeFleche();
+                return true;
+            }
+            InterfaceUsager.MessageFormatDentreeErronee();
+            return false;
+        }
+
+        bool VerificationOuvertureEtContenue(int[] selection)//OK
+        {
             int[] cible = new int[2];
-            cible[1] = selection[1] / 3 - 1;
-            cible[0] = selection[0] / 4 - 1;
+            cible[1] = selection[1] / 3 - 1; // Conversion coordonnées pour tableau grille
+            cible[0] = selection[0] / 4 - 1; // Conversion coordonnées pour tableau grille
 
             if (!m_Grille[cible[1], cible[0]].Ouvert) // N'ouvre pas case déjà ouverte et fix les nombre qui changent.
             {
                 if (m_Grille.OuvrirCase(cible[1], cible[0]) == false && enMarche)//modifier pour permettre le game over
                 {
-
                     m_Grille.DecouvrirBombes();
+                    mort = true;
                     enMarche = false;
                 }
                 else if (m_Grille.OuvrirCase(cible[1], cible[0]) == false && !enMarche)
                     m_Grille[cible[1], cible[0]].Bombe = false;
+                return true;
             }
-        }
-
-        public bool VerificationFormatDeLentree(string entree) {
+            InterfaceUsager.MessageCaseDejaOuverte();
             return false;
         }
 
-        public bool VerificationDesMinMaxDeLentree(string entree) { 
+        public bool VerificationFormatDeLentree(string entree)
+        {
+            MatchCollection matches = rx.Matches(entree);
+
+            if (matches.Count == 1)
+                return VerificationDesMinMaxDeLentree(entree);
+            InterfaceUsager.MessageFormatDentreeErronee();
+            return false;
+        }
+
+        public bool VerificationDesMinMaxDeLentree(string entree)
+        {
+            if (Int32.Parse(entree.Split(' ', StringSplitOptions.RemoveEmptyEntries)[0]) <= m_Grille.Colonnes() &&
+                Int32.Parse(entree.Split(' ', StringSplitOptions.RemoveEmptyEntries)[1]) <= m_Grille.Lignes())
+                return true;
+            InterfaceUsager.MessageHorsLimites();
+            return false;
+        }
+
+        private bool EstCeGagner() {
+            if (m_Grille.CasesFermer() <= m_Grille.NombreDeBombes())
+                return true;
             return false;
         }
 

@@ -8,14 +8,12 @@ namespace Demineur
     {
         static short[] optionsDePartie; // Sera retourné à Démineur afin qu'il puisse démarrer une partie ayant ces options là.
         static string recap; // Permet d'afficher une récapilation des choix du joueur.
-
         public static short AfficherMenu()
         {
             char choix;
             optionsDePartie = new short[] { 0,0,0,0 };
             recap = "";
-            
-            do {
+                
                 Console.Clear();
                 Console.WriteLine("##########################################################");
                 Console.WriteLine("#                                                        #");
@@ -32,8 +30,10 @@ namespace Demineur
                 Console.WriteLine("#                                                        #");
                 Console.WriteLine("##########################################################");
                 Console.Write("Quel est votre choix ? >> ");
-                choix = Console.ReadKey().KeyChar;
-            } while (choix != '1' && choix != '2' && choix != '3');
+            do
+                choix = Console.ReadKey(true).KeyChar;
+            while (choix != '1' && choix != '2' && choix != '3');
+                
 
             switch (choix)
             {
@@ -59,8 +59,6 @@ namespace Demineur
 
             char choix;
 
-            do
-            {
                 Console.Clear();
                 Console.WriteLine("##########################################################");
                 Console.WriteLine("#                                                        #");
@@ -81,8 +79,10 @@ namespace Demineur
                 Console.WriteLine("#                                                        #");
                 Console.WriteLine("##########################################################");
                 Console.Write("Quel est votre choix ? >> ");
-                choix = Console.ReadKey().KeyChar;
-            } while (choix != '1' && choix != '2' && choix != '3' && choix != '4');
+            do
+                choix = Console.ReadKey(true).KeyChar;
+            while (choix != '1' && choix != '2' && choix != '3' && choix != '4');
+
             switch (choix) {
                 case '1':
                     optionsDePartie[0] = 6; // ligne
@@ -117,8 +117,6 @@ namespace Demineur
                     break;
             }
 
-            do
-            {
                 Console.Clear();
                 Console.WriteLine("##########################################################");
                 Console.WriteLine("#                                                        #");
@@ -139,8 +137,9 @@ namespace Demineur
                 Console.WriteLine("#                                                        #");
                 Console.WriteLine("##########################################################");
                 Console.Write("Quel est votre choix ? >> ");
-                choix = Console.ReadKey().KeyChar;
-            } while (choix != '1' && choix != '2' && choix != '3' && choix != '4');
+            do
+                choix = Console.ReadKey(true).KeyChar;
+            while (choix != '1' && choix != '2' && choix != '3' && choix != '4');
             return optionsDePartie[2] = Int16.Parse(choix.ToString());
         }
         static short MenuJouerAI()
@@ -161,8 +160,6 @@ namespace Demineur
                     break;
             }
 
-            do
-            {
                 Console.Clear();
                 Console.WriteLine("##########################################################");
                 Console.WriteLine("#                                                        #");
@@ -183,8 +180,9 @@ namespace Demineur
                 Console.WriteLine("#                                                        #");
                 Console.WriteLine("##########################################################");
                 Console.Write("Quel est votre choix ? >> ");
-                choix = Console.ReadKey().KeyChar;
-            } while (choix != '1' && choix != '2' && choix != '3' && choix != '4');
+            do
+                choix = Console.ReadKey(true).KeyChar;
+            while (choix != '1' && choix != '2' && choix != '3' && choix != '4');
             return optionsDePartie[3] = Int16.Parse(choix.ToString());
         }
 
@@ -205,8 +203,6 @@ namespace Demineur
                     break;
             }
 
-            do
-            {
                 Console.Clear();
                 Console.WriteLine("##########################################################");
                 Console.WriteLine("#                                                        #");
@@ -226,8 +222,9 @@ namespace Demineur
                 Console.Write("#        Options : " + recap); for (short x = 1; x < (58 - (19 + recap.Length)); x++) { Console.Write(" "); } Console.WriteLine("#"); // Ajustement auto
                 Console.WriteLine("#                                                        #");
                 Console.WriteLine("##########################################################");
-                choix = Console.ReadKey().KeyChar;
-            } while (choix != '4' && choix != 'c' && choix != 'C') ;
+            do
+                choix = Console.ReadKey(true).KeyChar;
+            while (choix != '4' && choix != 'c' && choix != 'C') ;
             if (choix == '4')
                 return 4;
             return 0;          
