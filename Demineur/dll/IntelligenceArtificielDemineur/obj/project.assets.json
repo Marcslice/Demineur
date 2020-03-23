@@ -180,19 +180,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\marc_\\.nuget\\packages\\": {}
+    "C:\\Users\\lxhit\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\marc_\\source\\repos\\IntelligenceArtificielDemineur\\IntelligenceArtificielDemineur.csproj",
+      "projectUniqueName": "C:\\Users\\lxhit\\Desktop\\Travaux\\Prog-3\\Demineur\\Demineur\\Demineur\\dll\\IntelligenceArtificielDemineur\\IntelligenceArtificielDemineur.csproj",
       "projectName": "IntelligenceArtificielDemineur",
-      "projectPath": "C:\\Users\\marc_\\source\\repos\\IntelligenceArtificielDemineur\\IntelligenceArtificielDemineur.csproj",
-      "packagesPath": "C:\\Users\\marc_\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\marc_\\source\\repos\\IntelligenceArtificielDemineur\\obj\\",
+      "projectPath": "C:\\Users\\lxhit\\Desktop\\Travaux\\Prog-3\\Demineur\\Demineur\\Demineur\\dll\\IntelligenceArtificielDemineur\\IntelligenceArtificielDemineur.csproj",
+      "packagesPath": "C:\\Users\\lxhit\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\lxhit\\Desktop\\Travaux\\Prog-3\\Demineur\\Demineur\\Demineur\\dll\\IntelligenceArtificielDemineur\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\marc_\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\lxhit\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

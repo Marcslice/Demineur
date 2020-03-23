@@ -162,8 +162,11 @@ namespace Demineur
             {
                 if (grille[c + (ligne) * (colonne)] == '?')
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
+<<<<<<< Updated upstream
                 else if (grille[c + (ligne) * (colonne)] == '¤')
                     Console.ForegroundColor = ConsoleColor.DarkRed;
+=======
+>>>>>>> Stashed changes
                 Console.Write(grille[c + (ligne) * (colonne)]); // Contenue
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.Write(" | ");

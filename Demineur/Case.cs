@@ -64,7 +64,11 @@ namespace Demineur
         public int CalculerDanger()
         {
             nbDanger = 0;
+<<<<<<< Updated upstream
             for(int i = 0; i < 8; i++)
+=======
+            for (int i = 0; i < 8; i++)
+>>>>>>> Stashed changes
             {
                 if(casesVoisines[i] != null)
                     if (casesVoisines[i].Bombe)
