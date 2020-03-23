@@ -21,6 +21,12 @@ namespace Demineur
                 p_Scores[3], p_Scores[4], p_Scores[5], p_Scores[6], p_Scores[7], p_Scores[8] };
         }
 
+        public Joueur(string p_Nom, int index, string score) {
+            m_Nom = p_Nom;
+            m_Scores = new string[] { null, null, null, null, null, null, null, null, null };
+            m_Scores[index] = score;
+        }
+
         public string ObtenirNom()
         {
             return this.m_Nom;
@@ -31,10 +37,14 @@ namespace Demineur
             return m_Scores;
         }
 
-        public bool ModifierScore(char grosseur, char difficulte, string temps)
+        public bool ModifierScore(int index, string temp)
         {
-            
-            return true;
+            if (Double.Parse(m_Scores[index]) > Double.Parse(temp) || m_Scores[index] == "0" || m_Scores[index] == null) {
+                m_Scores[index] = temp;
+                return true;
+            }
+            else
+                return false;
         }
 
         public override string ToString()

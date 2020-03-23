@@ -16,12 +16,16 @@ namespace Demineur
             {
                 choix = Menu.AfficherMenu();
                 switch (choix)
+
                 {
                     case 1:
                         m_Partie = new Partie(Menu.OptionDePartie());
                         m_Partie.CommencerPartie();
+                        //if (m_Partie.CommencerPartie())
+                        m_Classement.MettreAJourJoueur(m_Partie.InfoDepartie());
+                        m_Classement.SauvegardeDuClassement();
                         break;
-                    case 2:
+                    case 2:                    
                         m_Classement.AfficherClassement();
                         break;
                     case 3:
@@ -30,6 +34,8 @@ namespace Demineur
             }
             while (choix != 3);            
         }
+
+
 
         static void Main()
         {

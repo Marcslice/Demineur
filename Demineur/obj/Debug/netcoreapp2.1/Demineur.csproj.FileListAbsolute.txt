@@ -46,6 +46,5 @@ C:\Users\marc_\Desktop\Demineur\Demineur\obj\Debug\netcoreapp2.1\Demineur.dll
 C:\Users\marc_\Desktop\Demineur\Demineur\obj\Debug\netcoreapp2.1\Demineur.pdb
 <<<<<<< Updated upstream
 =======
-C:\Users\marc_\Desktop\Demineur\Demineur\obj\Debug\netcoreapp2.1\Demineur.csprojAssemblyReference.cache
 C:\Users\lxhit\Desktop\Travaux\Prog-3\Demineur\Demineur\Demineur\obj\Debug\netcoreapp2.1\Demineur.csprojAssemblyReference.cache
 >>>>>>> Stashed changes

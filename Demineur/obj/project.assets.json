@@ -688,19 +688,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\lxhit\\.nuget\\packages\\": {}
+    "C:\\Users\\marc_\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lxhit\\Desktop\\Travaux\\Prog-3\\Demineur\\Demineur\\Demineur\\Demineur.csproj",
+      "projectUniqueName": "C:\\Users\\marc_\\Desktop\\Demineur\\Demineur\\Demineur.csproj",
       "projectName": "Demineur",
-      "projectPath": "C:\\Users\\lxhit\\Desktop\\Travaux\\Prog-3\\Demineur\\Demineur\\Demineur\\Demineur.csproj",
-      "packagesPath": "C:\\Users\\lxhit\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\lxhit\\Desktop\\Travaux\\Prog-3\\Demineur\\Demineur\\Demineur\\obj\\",
+      "projectPath": "C:\\Users\\marc_\\Desktop\\Demineur\\Demineur\\Demineur.csproj",
+      "packagesPath": "C:\\Users\\marc_\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\marc_\\Desktop\\Demineur\\Demineur\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\lxhit\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\marc_\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

@@ -22,7 +22,7 @@ namespace Demineur
         public void AfficherClassement()//À trier
         {
             Console.Clear();
-            Console.WriteLine("Joueur;Facile[p,m,g],Normal[p,m,g],Difficile[p,m,g]\n");
+            Console.WriteLine("Joueur ; Facile[p,m,g] , Normal[p,m,g] , Difficile[p,m,g]\n");
             foreach (Joueur j in m_ListeJoueurs)
                 Console.WriteLine(j.ToString());
             
@@ -30,9 +30,25 @@ namespace Demineur
             Console.ReadKey();
         }
 
-        public void MettreAJourJoueur(string NomJoueur, string Temps, string Difficulte)
+        public void MettreAJourJoueur(string[] info)
         {
+            Joueur aModifier;
+            if ((aModifier = m_ListeJoueurs.Find(j => j.ObtenirNom() == info[0])) != null)
+            {
+                int nbLignes = Int32.Parse(info[1]);
+                int nbLignesConvertie = nbLignes / 2 + 3;
+                int difficulte = Int32.Parse(info[2]) - 1;
+                int index = (nbLignes - nbLignesConvertie) * 3 + difficulte;
+                if (aModifier.ModifierScore(index,info[3]))
+                    Console.WriteLine("C'est un nouveau record!");
+            }
+            else
+            {
+                m_ListeJoueurs.Add(new Joueur(info[0], Int32.Parse(info[1]) - 1 * 3 + Int32.Parse(info[2]) - 1, info[3]));
+                //add sort and filter
+            }
 
+            Console.ReadLine();
         }
 
         /// <summary>
@@ -47,20 +63,39 @@ namespace Demineur
             if(File.Exists(cheminFichier)){            
                 FileStream  fs = File.OpenRead(cheminFichier);
                 StreamReader sr = new StreamReader(fs,UTF8Encoding.UTF8);
-                string[] tableauScore = new string[9];
+                
                 string ligne; 
-                while ((ligne = sr.ReadLine()) != null){
-                    string nomJoueur = ligne.Split(';',StringSplitOptions.RemoveEmptyEntries)[0];
-                    short index = 0;
-                    foreach(string note in ligne.Substring(nomJoueur.Length+1).Split(',',9,StringSplitOptions.RemoveEmptyEntries)){                      
-                        tableauScore[index] = note;
-                        index++;
-                    }
-                    m_ListeJoueurs.Add(new Joueur(nomJoueur, tableauScore));                  
-                }
+                while ((ligne = sr.ReadLine()) != null)
+                    DeStringAJoueur(ligne);
+                sr.Close();
+                fs.Close();
             } 
             else
                 File.Create(cheminFichier);
+            
+        }
+
+        public void SauvegardeDuClassement() {
+            string cheminFichier = @"..\..\..\classement\classement.txt";
+            FileStream fs = File.OpenWrite(cheminFichier);
+            StreamWriter sw = new StreamWriter(fs, UTF8Encoding.UTF8);
+            foreach (Joueur j in m_ListeJoueurs)
+                sw.WriteLine(j.ToString());
+
+            sw.Close();
+            fs.Close();
+        }
+
+        void DeStringAJoueur(string joueurStats) {
+            string nomJoueur = joueurStats.Split(';', StringSplitOptions.RemoveEmptyEntries)[0];
+            string[] tableauScore = new string[9];
+            short index = 0;
+            foreach (string note in joueurStats.Substring(nomJoueur.Length + 1).Split(',', 9, StringSplitOptions.RemoveEmptyEntries))
+            {
+                tableauScore[index] = note;
+                index++;
+            }
+            m_ListeJoueurs.Add(new Joueur(nomJoueur, tableauScore));
         }
     }
 }

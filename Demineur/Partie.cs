@@ -13,15 +13,20 @@ namespace Demineur
               selection;
         Grille m_Grille;
         bool enMarche, mort;
+        Joueur j;
+        string difficulte, temps, grosseur;
         
         public Partie(short[] optionDePartie)
         {
             enMarche = mort = false;
             selection = new int[2] { 6, 5 }; // 1,1 dans l'interface graphique
-            m_Grille = new Grille(optionDePartie[0], optionDePartie[1], optionDePartie[2]);              
+            m_Grille = new Grille(optionDePartie[0], optionDePartie[1], optionDePartie[2]);
+            j = new Joueur(InterfaceUsager.QuiEtesVous());
+            difficulte = Convert.ToString(optionDePartie[2]);
+            grosseur = Convert.ToString(optionDePartie[0]);
         }
 
-        public void CommencerPartie()
+        public bool CommencerPartie()
         {
             Stopwatch minuterie = new Stopwatch();
             minuterie.Start();
@@ -36,27 +41,35 @@ namespace Demineur
             {
                 InterfaceUsager.DessinerGrille(m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection);
                 VerificationOuvertureEtContenue(selection = Touches(m_Grille.Colonnes(), m_Grille.Lignes(), m_Grille.ToString(), selection[0], selection[1]));
+                EstCeGagner();
             }
 
+            //Partie Terminé
             minuterie.Stop();
+            temps = minuterie.Elapsed.TotalSeconds.ToString("F");
 
             if (mort)
             {
                 InterfaceUsager.DessinerGrille(m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection); //Dessine la grille on game over
                 InterfaceUsager.MessageDefaite();
+                return false;
             }
             else
+            {
                 InterfaceUsager.MessageVictoire();
+                return true;
+            }
+
         }
 
         public int[] Touches(int iCol, int iLig, string s_Grille, int xActuel, int yActuel)
         {
             positionActuelle = new int[2] { xActuel, yActuel };
             ConsoleKeyInfo touche;
-            string entree = "";
-
+            string entree;
             do
             {
+                entree = "";
                 if (InterfaceUsager.Saisie)
                 {
                     ActiverModeFleche();
@@ -96,60 +109,50 @@ namespace Demineur
                         ActiverModeSaisieManuelle();
                         entree = Console.ReadLine();
                     } while (!EntreeManuelle(entree));
-            } while ((entree.Length < 3 || entree == "f") && !InterfaceUsager.Saisie);
+            } while ((entree.Length < 3 && !InterfaceUsager.Saisie ) || (entree == "f" && InterfaceUsager.Saisie));
             return positionActuelle;
         }
 
         public void AllerGauche()//OK
         {
-            do
-            {
+
                 if (Console.CursorLeft < 10)
                     Console.SetCursorPosition((m_Grille.Colonnes() * 4) + 2, Console.CursorTop);
                 else
                     Console.SetCursorPosition(Console.CursorLeft - 4, Console.CursorTop);
                 positionActuelle[0] = Console.CursorLeft;
                 positionActuelle[1] = Console.CursorTop;
-            } while (m_Grille[positionActuelle[1] / 3 - 1, positionActuelle[0] / 4 - 1].Ouvert && m_Grille[positionActuelle[1] / 3 - 1, positionActuelle[0] / 4 - 1].Value == 0);
         }
 
         public void AllerDroite()//OK
         {
-            do
-            {
+
                 if (Console.CursorLeft > (m_Grille.Colonnes() * 4))
                     Console.SetCursorPosition(6, Console.CursorTop);
                 else
                     Console.SetCursorPosition(Console.CursorLeft + 4, Console.CursorTop);
                 positionActuelle[0] = Console.CursorLeft;
                 positionActuelle[1] = Console.CursorTop;
-            } while (m_Grille[positionActuelle[1] / 3 - 1, positionActuelle[0] / 4 - 1].Ouvert && m_Grille[positionActuelle[1] / 3 - 1, positionActuelle[0] / 4 - 1].Value == 0);
         }
 
         public void AllerHaut()//OK
         {
-            do
-            {
                 if (Console.CursorTop < 8)
                     Console.SetCursorPosition(Console.CursorLeft, (m_Grille.Lignes() * 3) + 2);
                 else
                     Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop - 3);
                 positionActuelle[0] = Console.CursorLeft;
-                positionActuelle[1] = Console.CursorTop;
-            } while (m_Grille[positionActuelle[1] / 3 - 1, positionActuelle[0] / 4 - 1].Ouvert && m_Grille[positionActuelle[1] / 3 - 1, positionActuelle[0] / 4 - 1].Value == 0);
+                positionActuelle[1] = Console.CursorTop;       
         }
 
         public void AllerBas()//OK
         {
-            do
-            {
                 if (Console.CursorTop > m_Grille.Lignes() * 3)
                     Console.SetCursorPosition(Console.CursorLeft, 5);
                 else
                     Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop + 3);
                 positionActuelle[0] = Console.CursorLeft;
                 positionActuelle[1] = Console.CursorTop;
-            } while (m_Grille[positionActuelle[1] / 3 - 1, positionActuelle[0] / 4 - 1].Ouvert && m_Grille[positionActuelle[1] / 3 - 1, positionActuelle[0] / 4 - 1].Value == 0);
         }
 
         public void ActiverModeFleche()//OK
@@ -180,7 +183,8 @@ namespace Demineur
                 ActiverModeFleche();
                 return true;
             }
-            InterfaceUsager.MessageFormatDentreeErronee();
+            else
+                InterfaceUsager.MessageFormatDentreeErronee();
             return false;
         }
 
@@ -199,7 +203,10 @@ namespace Demineur
                     enMarche = false;
                 }
                 else if (m_Grille.OuvrirCase(cible[1], cible[0]) == false && !enMarche)
+                {
                     m_Grille[cible[1], cible[0]].Bombe = false;
+                    m_Grille[cible[1], cible[0]].CalculerDanger();
+                }
                 return true;
             }
             InterfaceUsager.MessageCaseDejaOuverte();
@@ -225,15 +232,20 @@ namespace Demineur
             return false;
         }
 
-        private bool EstCeGagner() {
+        private bool EstCeGagner() 
+        {
             if (m_Grille.CasesFermer() <= m_Grille.NombreDeBombes())
+            {
+                enMarche = false;
                 return true;
+            }
             return false;
         }
 
-        public string ObtenirMetadonneesDeLaPartieActuellementTerminee()
+        public  string[] InfoDepartie()
         {
-            return null;
+
+            return new string[] { j.ObtenirNom(), grosseur, difficulte, temps };
         }
     }
 }

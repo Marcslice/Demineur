@@ -89,7 +89,7 @@ namespace Demineur
 
         public static void DessinerPlateau(int nLigne, int nColonne, string grille, int[] positionActuelle)
         {
-            Console.SetWindowSize(nColonne * 4 + 65, nLigne * 4 + 10);
+            Console.SetWindowSize(nColonne * 4 + 65, nLigne * 4 + 14);
             positionDeMessage = new int[2] {4, nLigne * 3 + 14};
             positionDeReponse = new int[2] {43, nLigne * 3 + 11};
             int positionDuGuide = nColonne * 4 + 8;
@@ -162,11 +162,9 @@ namespace Demineur
             {
                 if (grille[c + (ligne) * (colonne)] == '?')
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
-<<<<<<< Updated upstream
                 else if (grille[c + (ligne) * (colonne)] == '¤')
                     Console.ForegroundColor = ConsoleColor.DarkRed;
-=======
->>>>>>> Stashed changes
+
                 Console.Write(grille[c + (ligne) * (colonne)]); // Contenue
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.Write(" | ");
@@ -197,6 +195,7 @@ namespace Demineur
             PositionnerCursorPourMessageErreur();
             Console.WriteLine("Vous êtes un champion du démineur!");
             Console.ReadLine();
+            Console.ForegroundColor = ConsoleColor.White;
         }
 
         public static void MessageDefaite()
@@ -204,6 +203,7 @@ namespace Demineur
             PositionnerCursorPourMessageErreur();
             Console.WriteLine("Tu as perdu et j'te juge.");
             Console.ReadLine();
+            Console.ForegroundColor = ConsoleColor.White;
             //Dessin du prof
         }
 
@@ -238,8 +238,14 @@ namespace Demineur
             Console.ForegroundColor = ConsoleColor.White;
         }
         public static string QuiEtesVous(){
-            Console.Write("Qui êtes-vous ? >> ");
-            return Console.ReadLine();
+            string nom;
+            do
+            {
+                Console.Write("Qui êtes-vous ? (Le nom doit contenir plus de 3 caractères) >> ");
+                nom = Console.ReadLine();
+            } while (nom.Length < 3);
+
+            return nom;
         }
     }
 }
