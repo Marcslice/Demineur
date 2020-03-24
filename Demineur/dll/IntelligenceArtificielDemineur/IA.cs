@@ -28,7 +28,7 @@ namespace IntelligenceArtificielDemineur
 
         public float[] MeilleurCoup(string grilleDeJeu)
         {
-            meilleurCoup = new float[3];//ligne, colonne, valeurDanger
+            meilleurCoup = new float[3] { 0,0,0};//ligne, colonne, valeurDanger
             GenererGrille(grilleDeJeu);
             return meilleurCoup;
         }

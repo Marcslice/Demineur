@@ -15,6 +15,7 @@ namespace Demineur
         bool enMarche, mort;
         Joueur j;
         string difficulte, temps, grosseur;
+        IA intelligence;
         
         public Partie(short[] optionDePartie)
         {
@@ -24,6 +25,8 @@ namespace Demineur
             j = new Joueur(InterfaceUsager.QuiEtesVous());
             difficulte = Convert.ToString(optionDePartie[2]);
             grosseur = Convert.ToString(optionDePartie[0]);
+            if(optionDePartie[3] > 1)
+                intelligence = new IA(optionDePartie[0], optionDePartie[1]);
         }
 
         public bool CommencerPartie()
@@ -59,7 +62,6 @@ namespace Demineur
                 InterfaceUsager.MessageVictoire();
                 return true;
             }
-
         }
 
         public int[] Touches(int iCol, int iLig, string s_Grille, int xActuel, int yActuel)
@@ -99,6 +101,9 @@ namespace Demineur
                                 ActiverModeSaisieManuelle();
                                 break;
                             case 65: // a pour aciver l'intelligence artificiel
+                                float[] retourIA = intelligence.JouerTour(m_Grille.ToString());
+                                positionActuelle[0] = (int)retourIA[0];
+                                positionActuelle[1] = (int)retourIA[1];
                                 break;
                         }
                     } while (InterfaceUsager.Saisie && touche.Key != ConsoleKey.Enter);
@@ -202,7 +207,7 @@ namespace Demineur
                     mort = true;
                     enMarche = false;
                 }
-                else if (m_Grille.OuvrirCase(cible[1], cible[0]) == false && !enMarche)
+                else if (m_Grille.OuvrirCase(cible[1], cible[0]) == false && !enMarche) //Bouger pour l'OO dans grille
                 {
                     m_Grille[cible[1], cible[0]].Bombe = false;
                     m_Grille[cible[1], cible[0]].CalculerDanger();

@@ -237,6 +237,17 @@ namespace Demineur
             Console.WriteLine("                                                                                ");
             Console.ForegroundColor = ConsoleColor.White;
         }
+
+        public static void MessageIAInactif() 
+        {
+            PositionnerCursorPourMessageErreur();
+            Console.WriteLine("L'intelligence artificiel n'est pas active.");
+            Console.ReadLine();
+            PositionnerCursorPourMessageErreur();
+            Console.WriteLine("                                                                                ");
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
         public static string QuiEtesVous(){
             string nom;
             do

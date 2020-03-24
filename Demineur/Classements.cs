@@ -47,7 +47,6 @@ namespace Demineur
                 m_ListeJoueurs.Add(new Joueur(info[0], Int32.Parse(info[1]) - 1 * 3 + Int32.Parse(info[2]) - 1, info[3]));
                 //add sort and filter
             }
-
             Console.ReadLine();
         }
 
@@ -71,8 +70,7 @@ namespace Demineur
                 fs.Close();
             } 
             else
-                File.Create(cheminFichier);
-            
+                File.Create(cheminFichier);         
         }
 
         public void SauvegardeDuClassement() {
