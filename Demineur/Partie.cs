@@ -101,12 +101,13 @@ namespace Demineur
                                 ActiverModeSaisieManuelle();
                                 break;
                             case 65: // a pour aciver l'intelligence artificiel
-                                float[] retourIA = intelligence.JouerTour(m_Grille.ToString());
-                                positionActuelle[0] = (int)retourIA[0];
-                                positionActuelle[1] = (int)retourIA[1];
+                                int[] retourIA = intelligence.JouerTour(m_Grille.ToString()); //Methode 
+                                positionActuelle[0] = (retourIA[1]+1) * 4 + 2;
+                                positionActuelle[1] = (retourIA[0]+1) * 3 + 2;
+                                InterfaceUsager.MettreAJourSelection(positionActuelle);
                                 break;
                         }
-                    } while (InterfaceUsager.Saisie && touche.Key != ConsoleKey.Enter);
+                    } while (InterfaceUsager.Saisie && touche.Key != ConsoleKey.Enter && touche.Key != ConsoleKey.A);
                 }
                 else
                     do

@@ -21,7 +21,7 @@ namespace Demineur
             bot = Activator.CreateInstance(classes[0],ligCol); //classes[0] pour la premiere classe du dll.     
         }
 
-        public float[] JouerTour(string grille) {
+        public int[] JouerTour(string grille) {
             MethodInfo IATour = classes[0].GetMethod("MeilleurCoup");           
             return IATour.Invoke(bot, new object[1] { grille });
         }
