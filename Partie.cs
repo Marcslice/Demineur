@@ -16,8 +16,9 @@ namespace Demineur
         bool enMarche, mort, auto;
         Joueur j;
         string difficulte, temps, grosseur;
-        IA intelligence;
-        
+        //IA intelligence;
+        AITest intel;
+
         public Partie(string nom, short[] optionDePartie)
         {
             enMarche = mort = false;
@@ -27,7 +28,8 @@ namespace Demineur
             difficulte = Convert.ToString(optionDePartie[2]);
             grosseur = Convert.ToString(optionDePartie[0]);
             if(optionDePartie[3] > 1)
-                intelligence = new IA(optionDePartie[0], optionDePartie[1]);
+                //intelligence = new IA(optionDePartie[0], optionDePartie[1]);
+                intel= new AITest(optionDePartie[0], optionDePartie[1]);
             if (optionDePartie[3] > 2)
                 auto = true;
             else
@@ -113,7 +115,7 @@ namespace Demineur
                                 ActiverModeSaisieManuelle();
                                 break;
                             case 65: // a pour aciver l'intelligence artificiel
-                                int[] retourIA = intelligence.JouerTour(m_Grille.ToString()); //Methode 
+                                int[] retourIA = intel.MeilleurCoup(m_Grille.ToString()); //Methode 
                                 positionActuelle[0] = (retourIA[1]+1) * 4 + 2;
                                 positionActuelle[1] = (retourIA[0]+1) * 3 + 2;
                                 InterfaceUsager.MettreAJourSelection(positionActuelle);
