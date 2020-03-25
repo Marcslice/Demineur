@@ -39,7 +39,7 @@ namespace Demineur
 
         public bool ModifierScore(int index, string temp)
         {
-            if (Double.Parse(m_Scores[index]) > Double.Parse(temp) || m_Scores[index] == "0" || m_Scores[index] == null)
+            if (Double.Parse(m_Scores[index]) > Double.Parse(temp) || m_Scores[index] == "00.00")
             {
                 m_Scores[index] = temp;
                 return true;

@@ -50,17 +50,17 @@ namespace Demineur
                 InterfaceUsager.DessinerGrille(m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection);
                 VerificationOuvertureEtContenue(selection = Touches(m_Grille.Colonnes(), m_Grille.Lignes(), m_Grille.ToString(), selection[0], selection[1]));
                 InterfaceUsager.DessinerGrille(m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection);
-                EstCeGagner();
+                EstCeTerminer();
             }
 
             //Partie Terminé
             minuterie.Stop();
-            temps = minuterie.Elapsed.TotalSeconds.ToString("F");
+            temps = minuterie.Elapsed.TotalMinutes.ToString("F");
 
             if (mort)
             {
                 InterfaceUsager.DessinerGrille(m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection); //Dessine la grille on game over
-                InterfaceUsager.MessageDefaite();
+                InterfaceUsager.MessageDefaite();              
                 return false;
             }
             else
@@ -248,7 +248,7 @@ namespace Demineur
             return false;
         }
 
-        private bool EstCeGagner()
+        private bool EstCeTerminer()
         {
             if (m_Grille.CalculerNbCaseFermer() == m_Grille.NombreDeBombes)
             {

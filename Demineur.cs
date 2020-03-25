@@ -18,9 +18,8 @@
                 {
                     case 1:
                         m_Partie = new Partie(Menu.DemanderNom(), Menu.OptionDePartie());
-                        m_Partie.CommencerPartie();
-                        //if (m_Partie.CommencerPartie())
-                        m_Classement.MettreAJourJoueur(m_Partie.InfoDepartie());
+                        if (m_Partie.CommencerPartie())
+                            m_Classement.MettreAJourJoueur(m_Partie.InfoDepartie());
                         m_Classement.SauvegardeDuClassement();
                         break;
                     case 2:

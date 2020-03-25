@@ -47,7 +47,6 @@ namespace Demineur
                 m_ListeJoueurs.Add(new Joueur(info[0], Int32.Parse(info[1]) - 1 * 3 + Int32.Parse(info[2]) - 1, info[3]));
                 //add sort and filter
             }
-            Console.ReadLine();
         }
 
         /// <summary>
@@ -66,7 +65,7 @@ namespace Demineur
                 StreamReader sr = new StreamReader(fs, UTF8Encoding.UTF8);
 
                 string ligne;
-                while ((ligne = sr.ReadLine()) != null)
+                while ((ligne = sr.ReadLine()) != "")
                     DeStringAJoueur(ligne);
                 sr.Close();
                 fs.Close();
