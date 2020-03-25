@@ -1,6 +1,7 @@
 ﻿using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Threading;
 using System.Text;
 using System;
 
@@ -12,7 +13,7 @@ namespace Demineur
         int[] positionActuelle,
               selection;
         Grille m_Grille;
-        bool enMarche, mort;
+        bool enMarche, mort, auto;
         Joueur j;
         string difficulte, temps, grosseur;
         IA intelligence;
@@ -27,6 +28,10 @@ namespace Demineur
             grosseur = Convert.ToString(optionDePartie[0]);
             if(optionDePartie[3] > 1)
                 intelligence = new IA(optionDePartie[0], optionDePartie[1]);
+            if (optionDePartie[3] > 2)
+                auto = true;
+            else
+                auto = false;
         }
 
         public bool CommencerPartie()
@@ -77,7 +82,13 @@ namespace Demineur
                     ActiverModeFleche();
                     do
                     {
-                        touche = Console.ReadKey(true);
+                        if (auto)
+                        {
+                            touche = new ConsoleKeyInfo('a', ConsoleKey.A, false, false, false);
+                            Thread.Sleep(1000);
+                        }
+                        else
+                            touche = Console.ReadKey(true);
 
                         switch ((int)touche.Key)
                         {
@@ -209,10 +220,8 @@ namespace Demineur
                     enMarche = false;
                 }
                 else if (m_Grille.OuvrirCase(cible[1], cible[0]) == false && !enMarche) //Bouger pour l'OO dans grille
-                {
-                    m_Grille[cible[1], cible[0]].Bombe = false;
-                    m_Grille[cible[1], cible[0]].CalculerDanger();
-                }
+                    m_Grille.BombePremierTour(cible);                   
+
                 return true;
             }
             InterfaceUsager.MessageCaseDejaOuverte();
@@ -240,7 +249,7 @@ namespace Demineur
 
         private bool EstCeGagner() 
         {
-            if (m_Grille.CasesFermer() <= m_Grille.NombreDeBombes())
+            if (m_Grille.CasesFermer() == m_Grille.NombreDeBombes)
             {
                 enMarche = false;
                 return true;
@@ -250,7 +259,6 @@ namespace Demineur
 
         public  string[] InfoDepartie()
         {
-
             return new string[] { j.ObtenirNom(), grosseur, difficulte, temps };
         }
     }

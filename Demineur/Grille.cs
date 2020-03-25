@@ -146,6 +146,13 @@ namespace Demineur
             return true;
         }
 
+        public void BombePremierTour(int[] cible) {
+            champs[cible[1], cible[0]].Bombe = false;
+            champs[cible[1], cible[0]].CalculerDanger();
+            nbBombeGrille--;
+            //updater les cases voisines suite a une suppresion de bombe.
+        }
+
         public void DecouvrirBombes() //ok
         {
             for(int l = 0; l < lignes; l++)
@@ -164,7 +171,10 @@ namespace Demineur
 
         public int CasesFermer() { return casesFermer; }
 
-        public int NombreDeBombes() { return nbBombeGrille; }
+        public int NombreDeBombes {
+            get{ return nbBombeGrille; }
+            set{ nbBombeGrille = value; }
+        }
 
         public override string ToString() //ok
         {
