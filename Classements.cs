@@ -21,6 +21,7 @@ namespace Demineur
         public void AfficherClassement()//À trier
         {
             Console.Clear();
+            Console.WriteLine("                              Temps en Minutes par catégories                         \n");
             Console.WriteLine("Joueur       |         Facile        |         Normal        |       Difficile       |\n");
             Console.WriteLine("             |   P       M       G   |   P       M       G   |   P       M       G   |\n");
             foreach (Joueur j in m_ListeJoueurs)
@@ -35,10 +36,7 @@ namespace Demineur
             Joueur aModifier;
             if ((aModifier = m_ListeJoueurs.Find(j => j.ObtenirNom() == info[0])) != null)
             {
-                int nbLignes = Int32.Parse(info[1]);
-                int nbLignesConvertie = nbLignes / 2 + 3;
-                int difficulte = Int32.Parse(info[2]) - 1;
-                int index = (nbLignes - nbLignesConvertie) * 3 + difficulte;
+                int index = (Int32.Parse(info[1]) - (Int32.Parse(info[1]) / 2 + 3)) * 3 + (Int32.Parse(info[2]) - 1);
                 if (aModifier.ModifierScore(index, info[3]))
                     Console.WriteLine("C'est un nouveau record!");
             }
@@ -65,8 +63,11 @@ namespace Demineur
                 StreamReader sr = new StreamReader(fs, UTF8Encoding.UTF8);
 
                 string ligne;
-                while ((ligne = sr.ReadLine()) != "")
+                ligne = sr.ReadLine();
+                while (ligne != null && ligne != "") {
                     DeStringAJoueur(ligne);
+                    ligne = sr.ReadLine();
+                }
                 sr.Close();
                 fs.Close();
             }

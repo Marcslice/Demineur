@@ -113,10 +113,7 @@ namespace Demineur
                                 ActiverModeSaisieManuelle();
                                 break;
                             case 65: // a pour aciver l'intelligence artificiel
-                                int[] retourIA = intel.MeilleurCoup(m_Grille.ToString()); //Methode 
-                                positionActuelle[0] = (retourIA[1] + 1) * 4 + 2;
-                                positionActuelle[1] = (retourIA[0] + 1) * 3 + 2;
-                                InterfaceUsager.MettreAJourSelection(positionActuelle);
+                                AppelerIA();
                                 break;
                         }
                     } while (InterfaceUsager.Saisie && touche.Key != ConsoleKey.Enter && touche.Key != ConsoleKey.A);
@@ -173,6 +170,19 @@ namespace Demineur
             positionActuelle[1] = Console.CursorTop;
         }
 
+        public bool AppelerIA() {
+            if (intel != null)
+            {
+                int[] retourIA = intel.MeilleurCoup(m_Grille.ToString()); //Methode 
+                positionActuelle[0] = (retourIA[1] + 1) * 4 + 2;
+                positionActuelle[1] = (retourIA[0] + 1) * 3 + 2;
+                InterfaceUsager.MettreAJourSelection(positionActuelle);
+                return true;
+            }
+            InterfaceUsager.MessageIAInactif();
+            return false;
+        }
+
         public void ActiverModeFleche()//OK
         {
             InterfaceUsager.Saisie = true;
@@ -201,6 +211,8 @@ namespace Demineur
                 ActiverModeFleche();
                 return true;
             }
+            else if (entree == "a")          
+                return AppelerIA();
             else
                 InterfaceUsager.MessageFormatDentreeErronee();
             return false;
