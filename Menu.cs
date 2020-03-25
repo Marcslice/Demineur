@@ -2,10 +2,23 @@
 
 namespace Demineur
 {
+    /// <summary>
+    /// La classe Menu guide l'utilisateur à travers les différentes options de partie.
+    /// Il peut Joueur, afficher le classement ou quitter.
+    /// </summary>
     public static class Menu
     {
         static short[] optionsDePartie; // Sera retourné à Démineur afin qu'il puisse démarrer une partie ayant ces options là.
         static string recap; // Permet d'afficher une récapilation des choix du joueur.
+
+        /// <summary>
+        /// Dessine la Première page du menu principale.
+        /// </summary>
+        /// <returns>Short : Retourne le choix 
+        /// 1 : jouer
+        /// 2 : Afficher le classement
+        /// 3 : Quitter 
+        /// </returns>
         public static short AfficherMenu()
         {
             char choix;
@@ -53,6 +66,14 @@ namespace Demineur
             }
         }
 
+        /// <summary>
+        /// S'affiche lorsque le joueur choisi de jouer. Permet de choisir la grosseur du plateau
+        /// </summary>
+        /// <returns> short : Retourne le choix 
+        /// 1 : Petit
+        /// 2 : Moyen
+        /// 3 : Grand
+        /// </returns>
         static short MenuJouerGrosseur()
         {
 
@@ -100,6 +121,14 @@ namespace Demineur
             return Int16.Parse(choix.ToString());
         }
 
+        /// <summary>
+        /// S'affiche lorsque le joueur a choisi la grosseur du plateau. Permet de choisir la difficulté de la partie.
+        /// </summary>
+        /// <returns> short : Retourne le choix 
+        /// 1 : Facile
+        /// 2 : Normal
+        /// 3 : Difficile
+        /// </returns>
         static short MenuJouerDifficulte()
         {
 
@@ -144,6 +173,15 @@ namespace Demineur
             while (choix != '1' && choix != '2' && choix != '3' && choix != '4');
             return optionsDePartie[2] = Int16.Parse(choix.ToString());
         }
+
+        /// <summary>
+        /// S'affiche lorsque le joueur a choisi sa difficulté. Permet de choisir l'aide de l'intelligence artificiel.
+        /// </summary>
+        /// <returns> short : Retourne le choix 
+        /// 1 : Sans
+        /// 2 : Avec
+        /// 3 : Automatique
+        /// </returns>
         static short MenuJouerAI()
         {
 
@@ -189,6 +227,14 @@ namespace Demineur
             return optionsDePartie[3] = Int16.Parse(choix.ToString());
         }
 
+        /// <summary>
+        /// S'affiche lorsque le joueur a choisi le type d'assistance désiré. Le joueur voit ce qu'il a sélectionné.
+        /// Il peut commencer la partie ou modifier les options de partie.
+        /// </summary>
+        /// <returns> short : Retourne le choix 
+        /// C : Commencer -> retourne 0
+        /// 4 : Recommencer
+        /// </returns>
         static short RecapFinal()
         {
 
@@ -235,16 +281,35 @@ namespace Demineur
             return 0;
         }
 
+        /// <summary>
+        /// Dessine le classement.
+        /// </summary>
+        static public void AfficherClassement(string p_Classement)//À trier
+        {
+            Console.Clear();
+            Console.WriteLine("                              Temps en Minutes par catégories                         \n");
+            Console.WriteLine("Joueur       |         Facile        |         Normal        |       Difficile       |\n");
+            Console.WriteLine("             |   P       M       G   |   P       M       G   |   P       M       G   |\n");
+            Console.WriteLine(p_Classement);
+            Console.Write("\nAppuyez sur une touche pour revenir au menu principale.");
+            Console.ReadKey();
+        }
+
+        /// <summary>
+        /// Retourne le tableau d'options de partie.
+        /// Est appelé lors dela création d'une nouvelle partie.
+        /// </summary>
+        /// <returns>short[] optionsDePartie</returns>
         public static short[] OptionDePartie()
         {
             return optionsDePartie;
         }
 
-        public static void AfficherClassement()
-        {
-            Console.WriteLine("Classement... Veuillez appuyez sur un touche pour continuer.");
-        }
-
+        /// <summary>
+        /// Demande le nom du joueur après qu'il ait confirmer le début de la partie.
+        /// Est appelé lors dela création d'une nouvelle partie.
+        /// </summary>
+        /// <returns>string : nom</returns>
         public static string DemanderNom()
         {
             string nom;

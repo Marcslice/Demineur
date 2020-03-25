@@ -1,9 +1,15 @@
 ﻿namespace Demineur
 {
+    /// <summary>
+    /// Représente une case du démineur. Le grille génére sa grille en créant "Lignes X Colonne" cases. 
+    /// Bool esTuBombe détermine si un case est une bombe ou non.
+    /// Bool estOuverte détermine si la case est ouverte ou non.
+    /// int nbDanger détermine combien de bombe entoure la case ouverte.
+    /// Case[] casesVoisines contient les cases qui entourent cette case.
+    /// </summary>
     public class Case
     {
-        bool esTuBombe;
-        bool estOuverte;
+        bool esTuBombe, estOuverte;
         int nbDanger;
         Case[] casesVoisines;
 
@@ -37,12 +43,20 @@
             get { return esTuBombe; }
         }
 
+        /// <summary>
+        /// Retourne l'état de la case. (Ouverte/Fermé)
+        /// </summary>
         public bool Ouvert
         {
             set { estOuverte = value; }
             get { return estOuverte; }
         }
 
+        /// <summary>
+        /// Permet de naviguer les voisins d'une case.
+        /// </summary>
+        /// <param name="i">index</param>
+        /// <returns>Case : Retourne une case</returns>
         public Case this[int i]
         {
             get { return casesVoisines[i]; }
@@ -59,16 +73,18 @@
             this.casesVoisines[i] = voisin;
         }
 
+        /// <summary>
+        /// Parcour les voisin d'une case pour affecter la valeur de danger à la case active.
+        /// </summary>
+        /// <returns>Int : nbDanger</returns>
         public int CalculerDanger()
         {
             nbDanger = 0;
             for (int i = 0; i < 8; i++)
-
-            {
                 if (casesVoisines[i] != null)
                     if (casesVoisines[i].Bombe)
                         nbDanger++;
-            }
+
             return nbDanger;
         }
     }

@@ -7,6 +7,10 @@ using System.Text;
 
 namespace Demineur
 {
+    /// <summary>
+    /// Classement est une extension de démineur. 
+    /// Elle permet de créer et lire le fichier texte contenant les données des joueurs.
+    /// </summary>
     public class Classements
     {
         List<Joueur> m_ListeJoueurs;
@@ -18,19 +22,12 @@ namespace Demineur
             Console.WriteLine("Nous contruisons le classement...");
         }
 
-        public void AfficherClassement()//À trier
-        {
-            Console.Clear();
-            Console.WriteLine("                              Temps en Minutes par catégories                         \n");
-            Console.WriteLine("Joueur       |         Facile        |         Normal        |       Difficile       |\n");
-            Console.WriteLine("             |   P       M       G   |   P       M       G   |   P       M       G   |\n");
-            foreach (Joueur j in m_ListeJoueurs)
-                Console.WriteLine(j.FormatClassement());
-
-            Console.Write("\nAppuyez sur une touche pour revenir au menu principale.");
-            Console.ReadKey();
-        }
-
+        /// <summary>
+        /// Est appelé si le joueur bat son record.
+        /// index est le calcule permettant de passer d'un tableau 2D en tableau 1D,
+        ///     le calcule permet de modifier le bon score dans le tableau de score du joueur.
+        /// </summary>
+        /// <param name="info">info[] {nom, grosseur, difficulté, tempsEnMinutes}</param>
         public void MettreAJourJoueur(string[] info)
         {
             Joueur aModifier;
@@ -76,9 +73,12 @@ namespace Demineur
                 var nouveauClassement = File.Create(cheminFichier);
                 nouveauClassement.Close();
             }
-
         }
 
+        /// <summary>
+        /// Est appelé après la partie.
+        /// Permet de sauvegarder automatiquement les informations des joueurs du classement.
+        /// </summary>
         public void SauvegardeDuClassement()
         {
             string cheminFichier = @"..\..\..\classement\classement.txt";
@@ -91,6 +91,10 @@ namespace Demineur
             fs.Close();
         }
 
+        /// <summary>
+        /// Créer les joueurs à partir du fichier texte.
+        /// </summary>
+        /// <param name="joueurStats">Ligne lu par le programme.</param>
         void DeStringAJoueur(string joueurStats)
         {
             string nomJoueur = joueurStats.Split(';', StringSplitOptions.RemoveEmptyEntries)[0];
@@ -102,6 +106,18 @@ namespace Demineur
                 index++;
             }
             m_ListeJoueurs.Add(new Joueur(nomJoueur, tableauScore));
+        }
+
+        /// <summary>
+        /// Retourne le classement sous forme de string
+        /// </summary>
+        /// <returns>string : classement</returns>
+        public override string ToString() {
+            string classement = "";
+
+            foreach (Joueur j in m_ListeJoueurs)
+                classement += j.FormatClassement() + "\n";
+            return classement;
         }
     }
 }

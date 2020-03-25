@@ -2,7 +2,13 @@
 
 namespace Demineur
 {
-
+    /// <summary>
+    /// Dessine l'interface usagé
+    /// Titre
+    /// Grille
+    /// Statistiques
+    /// Instructions
+    /// </summary>
     public static class InterfaceUsager //static pour test
     {
         static string marge = "    "; // Unité d'espacement.
