@@ -218,15 +218,19 @@ namespace Demineur
                 /*Console.WriteLine(grille[coordL, coordC] * 100);
                 Console.WriteLine(((grille[coordL, coordC]) - nbBombes)*100);
                 Console.WriteLine((((grille[coordL, coordC]) - nbBombes) * 100) / nbCaseFermer);*/
-                if (nbCaseFermer > 0)
+
+                
+                if (nbCaseFermer != 0)
                 {
                     score = (((grille[coordL, coordC] - nbBombes) * 100) / nbCaseFermer);
+
+
                     if (score == 100)
-                        nouvelleBombe = true;//la case non decouvert est une bombe
+                        nouvelleBombe = true; //la case non decouvert est une bombe
                     else if (score < meilleurCoup[2])
                     {
                         meilleurCoup[2] = score;
-                        return true;//changement
+                        return true; //changement
                     }
                 }
             }
