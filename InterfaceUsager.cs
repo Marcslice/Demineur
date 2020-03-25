@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Text;
 
 namespace Demineur
-{   
+{
 
     public static class InterfaceUsager //static pour test
     {
@@ -21,7 +18,7 @@ namespace Demineur
         }
 
         static void DessinerInstructions(int offset)
-        {           
+        {
             Console.SetCursorPosition(offset, 4);
             Console.Write("Appuyez sur f et entrer en mode manuel pour");
             Console.SetCursorPosition(offset, 5);
@@ -32,22 +29,24 @@ namespace Demineur
             Console.Write("Appuyez sur Entrer pour confirmer votre sélection.");
         }
 
-        static void DessinerModeDeSaisie(int offset){
+        static void DessinerModeDeSaisie(int offset)
+        {
             Console.SetCursorPosition(offset, 11);
-            if(Saisie)
+            if (Saisie)
                 Console.Write("Mode de jeu actif : Contrôle avec flèches");
             else
                 Console.Write("Mode de jeu actif : Saisie manuelle      ");
         }
 
-        public static void PositionnerCursorPourRepondre() {
+        public static void PositionnerCursorPourRepondre()
+        {
             Console.SetCursorPosition(positionDeReponse[0], positionDeReponse[1]);
             Console.Write("                                                    ");
             Console.SetCursorPosition(positionDeReponse[0], positionDeReponse[1]);
         }
 
         public static void PositionnerCursorPourMessageErreur()
-        { 
+        {
             Console.SetCursorPosition(positionDeMessage[0], positionDeMessage[1]);
             Console.ForegroundColor = ConsoleColor.Red;
         }
@@ -83,26 +82,27 @@ namespace Demineur
             Console.Write(marge + "|");
             for (int c = 0; c < nColonne; c++) // ligne du bas
                 Console.Write("___ ");
-                Console.Write("\b|\n");
-        
+            Console.Write("\b|\n");
+
         }
 
         public static void DessinerPlateau(int nLigne, int nColonne, string grille, int[] positionActuelle)
         {
             Console.SetWindowSize(nColonne * 4 + 65, nLigne * 4 + 14);
-            positionDeMessage = new int[2] {4, nLigne * 3 + 14};
-            positionDeReponse = new int[2] {43, nLigne * 3 + 11};
+            positionDeMessage = new int[2] { 4, nLigne * 3 + 14 };
+            positionDeReponse = new int[2] { 43, nLigne * 3 + 11 };
             int positionDuGuide = nColonne * 4 + 8;
             Console.Clear();
-            
+
             DessinerTitreJeu(nColonne);
             DessinerInstructions(positionDuGuide);
             DessinerModeDeSaisie(positionDuGuide);
 
-            DessinerGrille(nLigne, nColonne, grille, positionActuelle);           
+            DessinerGrille(nLigne, nColonne, grille, positionActuelle);
         }
 
-        public static void DessinerGrille(int nLigne, int nColonne, string grille, int[] positionActuelle) {
+        public static void DessinerGrille(int nLigne, int nColonne, string grille, int[] positionActuelle)
+        {
             Console.SetCursorPosition(0, 2); // Nécessaire pour dessiner la grille au bonne endroit.
 
             DessinerChiffreColonne(nColonne);
@@ -121,13 +121,15 @@ namespace Demineur
             MettreAJourSelection(positionActuelle);
         }
 
-        public static void MettreAJourSelection(int[] positionActuelle) {
+        public static void MettreAJourSelection(int[] positionActuelle)
+        {
             InterfaceUsager.PositionnerCursorPourRepondre();
             Console.Write(positionActuelle[0] / 4 + " " + positionActuelle[1] / 3 + "    ");
             Console.SetCursorPosition(positionActuelle[0], positionActuelle[1]);
         }
 
-        static void DessinerChiffreColonne(int colonne){
+        static void DessinerChiffreColonne(int colonne)
+        {
             Console.Write(marge);
             for (int c = 0; c < colonne; c++)
             {
@@ -138,21 +140,24 @@ namespace Demineur
             Console.Write("\n");
         }
 
-        static void DessinerLigneDuHaut(int colonne){
+        static void DessinerLigneDuHaut(int colonne)
+        {
             Console.Write(marge);
             for (int y = 0; y < colonne; y++)
                 Console.Write(" ___");
             Console.Write("\n");
         }
 
-        static void DessinerRangeHautCase(int colonne){
+        static void DessinerRangeHautCase(int colonne)
+        {
             Console.Write(marge + "|   |");
             for (int c = 1; c < colonne; c++)
                 Console.Write("   |"); //Ajoute ligne vertical de droite pour chaque autre colonne.
             Console.Write("\n");
         }
 
-        static void DessinerRangeCentraleCase(int ligne, int colonne, string grille){
+        static void DessinerRangeCentraleCase(int ligne, int colonne, string grille)
+        {
 
             if (ligne + 1 < 10)
                 Console.Write(" " + (ligne + 1) + "  | "); // spacing de gauche pour les chiffres des rangés < 10
@@ -172,19 +177,22 @@ namespace Demineur
             Console.Write("\n");
         }
 
-        static void DessinerRangeBasCase(int colonne){
+        static void DessinerRangeBasCase(int colonne)
+        {
             Console.Write(marge + "|___|");
             for (int c = 1; c < colonne; c++)
                 Console.Write("___|");
             Console.Write("\n");
         }
 
-        static void DessinerRangeVide(int nColonne){
+        static void DessinerRangeVide(int nColonne)
+        {
             for (int c = 0; c < nColonne; c++)
                 Console.Write(marge);
         }
 
-        public static bool Saisie {
+        public static bool Saisie
+        {
 
             get { return saisie; }
             set { saisie = value; }
@@ -207,12 +215,13 @@ namespace Demineur
             //Dessin du prof
         }
 
-        public static void MessageCaseDejaOuverte() {
+        public static void MessageCaseDejaOuverte()
+        {
             PositionnerCursorPourMessageErreur();
             Console.WriteLine("Désolé cette case est déjà ouverte. Appuyez sur entrer pour continuer...");
             Console.ReadLine();
             PositionnerCursorPourMessageErreur();
-            Console.WriteLine("                                                                        ");           
+            Console.WriteLine("                                                                        ");
             Console.ForegroundColor = ConsoleColor.White;
         }
 
@@ -220,7 +229,7 @@ namespace Demineur
         {
             PositionnerCursorPourMessageErreur();
             Console.WriteLine("Désolé veuillez vous assurez d'entrer vos coordonnées comme suit : (colonne ligne). \n" +
-                marge + "Appuyez sur une entrer pour continuer.");            
+                marge + "Appuyez sur une entrer pour continuer.");
             Console.ReadLine();
             PositionnerCursorPourMessageErreur();
             Console.WriteLine("                                                                                    \n" +
@@ -231,14 +240,14 @@ namespace Demineur
         public static void MessageHorsLimites()
         {
             PositionnerCursorPourMessageErreur();
-            Console.WriteLine("Hé, ho tu ne vois pas les chiffres en haut et à gauche ? Appuie sur entrer la...");           
+            Console.WriteLine("Hé, ho tu ne vois pas les chiffres en haut et à gauche ? Appuie sur entrer la...");
             Console.ReadLine();
             PositionnerCursorPourMessageErreur();
             Console.WriteLine("                                                                                ");
             Console.ForegroundColor = ConsoleColor.White;
         }
 
-        public static void MessageIAInactif() 
+        public static void MessageIAInactif()
         {
             PositionnerCursorPourMessageErreur();
             Console.WriteLine("L'intelligence artificiel n'est pas active.");

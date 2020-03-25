@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Demineur
 {
@@ -19,21 +18,23 @@ namespace Demineur
             this.lignes = lignes;
             this.colonnes = colonnes;
             this.casesFermer = lignes * colonnes;
-            
-            for(int i = 0; i < lignes; i++)
+
+            for (int i = 0; i < lignes; i++)
             {
-                for(int j = 0; j < colonnes; j++)
+                for (int j = 0; j < colonnes; j++)
                 {
-                    champs[i,j] = new Case();
+                    champs[i, j] = new Case();
                 }
             }
             RencontreVoisin(lignes, colonnes);
             DisperserBombes(lignes, colonnes);
         }
 
-        int CalculerBombes(short lignes, short colonnes, short difficulte) {
+        int CalculerBombes(short lignes, short colonnes, short difficulte)
+        {
             double pourcentage = 0;
-            switch (difficulte) {
+            switch (difficulte)
+            {
                 case 1:
                     pourcentage = 0.2;
                     break;
@@ -57,17 +58,19 @@ namespace Demineur
             {
                 destination = champs[random.Next(0, lignes), random.Next(0, colonnes)];
 
-                while(destination.Bombe)
+                while (destination.Bombe)
                     destination = champs[random.Next(0, lignes), random.Next(0, colonnes)];
 
                 destination.Bombe = true;
             }
         }
-        
-        public Case this[int ligne, int colonne] {
+
+        public Case this[int ligne, int colonne]
+        {
 
             get { return champs[ligne, colonne]; }
-            set {
+            set
+            {
                 for (int l = ligne - 1; l < ligne + 1; l++)
                     for (int c = colonne - 1; c < colonne + 1; c++)
                         RencontreVoisin(l, c);
@@ -85,29 +88,61 @@ namespace Demineur
 
                     if ((l > 0) && (c > 0))//NW
                         destination.SetCase(0, voisin = champs[l - 1, c - 1]);
-                    
+
                     if (l > 0)//N
                         destination.SetCase(1, voisin = champs[l - 1, c]);
-                    
+
                     if ((l > 0) && (c + 1 < colonne))//NE
                         destination.SetCase(2, voisin = champs[l - 1, c + 1]);
-                    
+
                     if (c > 0)//W
                         destination.SetCase(3, voisin = champs[l, c - 1]);
 
                     if (c + 1 < colonne)//E
-                        destination.SetCase(4, voisin = champs[l, c + 1]);                        
+                        destination.SetCase(4, voisin = champs[l, c + 1]);
 
                     if ((l + 1 < ligne) && (c - 1 > 0))//SW
                         destination.SetCase(5, voisin = champs[l + 1, c - 1]);
-                        
+
                     if (l + 1 < ligne)//S
-                        destination.SetCase(6, voisin = champs[l + 1, c]);                       
+                        destination.SetCase(6, voisin = champs[l + 1, c]);
 
                     if ((l + 1 < ligne) && (c + 1 < colonne))//SE
-                        destination.SetCase(7, voisin = champs[l + 1, c + 1]);                                        
+                        destination.SetCase(7, voisin = champs[l + 1, c + 1]);
                 }
             }
+        }
+
+        public void MettreAJourVoisin(int ligne, int colonne, int l, int c)
+        {
+
+            Case destination = champs[l, c];
+            Case voisin;
+
+            if ((l > 0) && (c > 0))//NW
+                destination.SetCase(0, voisin = champs[l - 1, c - 1]);
+
+            if (l > 0)//N
+                destination.SetCase(1, voisin = champs[l - 1, c]);
+
+            if ((l > 0) && (c + 1 < colonne))//NE
+                destination.SetCase(2, voisin = champs[l - 1, c + 1]);
+
+            if (c > 0)//W
+                destination.SetCase(3, voisin = champs[l, c - 1]);
+
+            if (c + 1 < colonne)//E
+                destination.SetCase(4, voisin = champs[l, c + 1]);
+
+            if ((l + 1 < ligne) && (c - 1 > 0))//SW
+                destination.SetCase(5, voisin = champs[l + 1, c - 1]);
+
+            if (l + 1 < ligne)//S
+                destination.SetCase(6, voisin = champs[l + 1, c]);
+
+            if ((l + 1 < ligne) && (c + 1 < colonne))//SE
+                destination.SetCase(7, voisin = champs[l + 1, c + 1]);
+
         }
 
         public bool OuvrirCase(int ligne, int colonne) //étape 1 ouvre case, si bombe arrete sinon appel OuvrirCase étape 2
@@ -121,9 +156,9 @@ namespace Demineur
             if (cible.CalculerDanger() == 0)
                 for (int i = 0; i < 8; i++)
                 {
-                    if(cible[i] != null)
-                        OuvrirCase(cible[i]);                  
-                }         
+                    if (cible[i] != null)
+                        OuvrirCase(cible[i]);
+                }
             return true;
         }
 
@@ -136,7 +171,7 @@ namespace Demineur
                     aOuvrir.Push(voisin);
 
                 if (voisin.CalculerDanger() == 0)
-                    for(int j = 0; j < 8; j++)
+                    for (int j = 0; j < 8; j++)
                     {
                         if (voisin[j] != null)
                             OuvrirCase(voisin[j]);
@@ -145,18 +180,20 @@ namespace Demineur
             return true;
         }
 
-        public void BombePremierTour(int[] cible) {
+        public void BombePremierTour(int[] cible)
+        {
             champs[cible[1], cible[0]].Bombe = false;
             champs[cible[1], cible[0]].CalculerDanger();
             nbBombeGrille--;
-            //updater les cases voisines suite a une suppresion de bombe.
+            MettreAJourVoisin(this.lignes, this.colonnes, cible[1], cible[0]);
+            champs[cible[1], cible[0]].Value = champs[cible[1], cible[0]].CalculerDanger();
         }
 
         public void DecouvrirBombes() //ok
         {
-            for(int l = 0; l < lignes; l++)
+            for (int l = 0; l < lignes; l++)
             {
-                for(int c = 0; c < colonnes; c++)
+                for (int c = 0; c < colonnes; c++)
                 {
                     if (champs[l, c].Bombe)
                         champs[l, c].Ouvert = true;
@@ -166,11 +203,12 @@ namespace Demineur
 
         public int Colonnes() { return colonnes; }
 
-        public int Lignes(){ return lignes; }
+        public int Lignes() { return lignes; }
 
-        public int NombreDeBombes {
-            get{ return nbBombeGrille; }
-            set{ nbBombeGrille = value; }
+        public int NombreDeBombes
+        {
+            get { return nbBombeGrille; }
+            set { nbBombeGrille = value; }
         }
 
         public override string ToString() //ok
@@ -181,17 +219,17 @@ namespace Demineur
             {
                 for (int c = 0; c < colonnes; c++)
                 {
-                     if (!this[l, c].Ouvert)
-                         grille += '?';
-                     else if (this[l, c].Ouvert && this[l, c].Bombe)
-                         grille += '¤';
-                     else if (this[l, c].Ouvert && this[l, c].Value == 0)
-                         grille += ' ';
-                     else if (this[l, c].Ouvert && this[l, c].Value > 0)
-                         grille += this[l, c].Value;
+                    if (!this[l, c].Ouvert)
+                        grille += '?';
+                    else if (this[l, c].Ouvert && this[l, c].Bombe)
+                        grille += '¤';
+                    else if (this[l, c].Ouvert && this[l, c].Value == 0)
+                        grille += ' ';
+                    else if (this[l, c].Ouvert && this[l, c].Value > 0)
+                        grille += this[l, c].Value;
                 }
             }
-            return grille;                   
+            return grille;
         }
 
         public int CalculerNbCaseFermer()

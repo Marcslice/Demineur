@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Threading;
-using System.Text;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
-using System;
+using System.Text;
 
 
 
@@ -26,7 +25,7 @@ namespace Demineur
             Console.WriteLine("             |   P       M       G   |   P       M       G   |   P       M       G   |\n");
             foreach (Joueur j in m_ListeJoueurs)
                 Console.WriteLine(j.FormatClassement());
-            
+
             Console.Write("\nAppuyez sur une touche pour revenir au menu principale.");
             Console.ReadKey();
         }
@@ -40,7 +39,7 @@ namespace Demineur
                 int nbLignesConvertie = nbLignes / 2 + 3;
                 int difficulte = Int32.Parse(info[2]) - 1;
                 int index = (nbLignes - nbLignesConvertie) * 3 + difficulte;
-                if (aModifier.ModifierScore(index,info[3]))
+                if (aModifier.ModifierScore(index, info[3]))
                     Console.WriteLine("C'est un nouveau record!");
             }
             else
@@ -56,7 +55,8 @@ namespace Demineur
         /// Créer la liste de joueur si le fichier text existe.
         /// Créer un fichier text vide si il n'existe pas.
         /// </summary>
-        public void FichierClassement(){
+        public void FichierClassement()
+        {
 
             string cheminFichier = @"..\..\..\classement\classement.txt";
 
@@ -73,13 +73,14 @@ namespace Demineur
             }
             else
             {
-                var nouveauClassement =  File.Create(cheminFichier);
+                var nouveauClassement = File.Create(cheminFichier);
                 nouveauClassement.Close();
             }
-                
+
         }
 
-        public void SauvegardeDuClassement() {
+        public void SauvegardeDuClassement()
+        {
             string cheminFichier = @"..\..\..\classement\classement.txt";
             FileStream fs = File.OpenWrite(cheminFichier);
             StreamWriter sw = new StreamWriter(fs, UTF8Encoding.UTF8);
@@ -90,7 +91,8 @@ namespace Demineur
             fs.Close();
         }
 
-        void DeStringAJoueur(string joueurStats) {
+        void DeStringAJoueur(string joueurStats)
+        {
             string nomJoueur = joueurStats.Split(';', StringSplitOptions.RemoveEmptyEntries)[0];
             string[] tableauScore = new string[9];
             short index = 0;

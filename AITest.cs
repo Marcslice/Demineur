@@ -29,7 +29,7 @@ namespace Demineur
         {
             meilleurCoup = new int[3] { 0, 0, 0 };//ligne, colonne, valeurDanger
             GenererGrille(grilleDeJeu);
-            
+
             if (meilleurCoup[2] == 420)
             {
                 var rand = new Random();
@@ -218,14 +218,16 @@ namespace Demineur
                 /*Console.WriteLine(grille[coordL, coordC] * 100);
                 Console.WriteLine(((grille[coordL, coordC]) - nbBombes)*100);
                 Console.WriteLine((((grille[coordL, coordC]) - nbBombes) * 100) / nbCaseFermer);*/
-
-                score = (((grille[coordL, coordC] - nbBombes) * 100) / nbCaseFermer);
-                if (score == 100)
-                    nouvelleBombe = true;//la case non decouvert est une bombe
-                else if (score < meilleurCoup[2])
+                if (nbCaseFermer > 0)
                 {
-                    meilleurCoup[2] = score;
-                    return true;//changement
+                    score = (((grille[coordL, coordC] - nbBombes) * 100) / nbCaseFermer);
+                    if (score == 100)
+                        nouvelleBombe = true;//la case non decouvert est une bombe
+                    else if (score < meilleurCoup[2])
+                    {
+                        meilleurCoup[2] = score;
+                        return true;//changement
+                    }
                 }
             }
             return false;//ne pas tenir compte

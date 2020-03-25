@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Demineur
+﻿namespace Demineur
 {
     class Demineur
     {
@@ -11,7 +9,7 @@ namespace Demineur
         {
             short choix;
             m_Classement = new Classements();
-            
+
             do
             {
                 choix = Menu.AfficherMenu();
@@ -19,20 +17,20 @@ namespace Demineur
 
                 {
                     case 1:
-                        m_Partie = new Partie(Menu.DemanderNom(),Menu.OptionDePartie());
+                        m_Partie = new Partie(Menu.DemanderNom(), Menu.OptionDePartie());
                         m_Partie.CommencerPartie();
                         //if (m_Partie.CommencerPartie())
                         m_Classement.MettreAJourJoueur(m_Partie.InfoDepartie());
                         m_Classement.SauvegardeDuClassement();
                         break;
-                    case 2:                    
+                    case 2:
                         m_Classement.AfficherClassement();
                         break;
                     case 3:
                         break;
                 }
             }
-            while (choix != 3);            
+            while (choix != 3);
         }
 
 

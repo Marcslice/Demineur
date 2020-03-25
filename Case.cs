@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Demineur
+﻿namespace Demineur
 {
     public class Case
     {
@@ -29,6 +25,7 @@ namespace Demineur
         public int Value
         {
             get { return nbDanger; }
+            set { nbDanger = value; }
         }
 
         /// <summary>
@@ -46,7 +43,7 @@ namespace Demineur
             get { return estOuverte; }
         }
 
-        public Case this [int i]
+        public Case this[int i]
         {
             get { return casesVoisines[i]; }
             set { casesVoisines[i] = value; }
@@ -57,17 +54,18 @@ namespace Demineur
         /// </summary>
         /// <param name="i">Index du voisin</param>
         /// <param name="voisin">Case voisine</param>
-        public void SetCase(int i, Case voisin) {
+        public void SetCase(int i, Case voisin)
+        {
             this.casesVoisines[i] = voisin;
         }
 
         public int CalculerDanger()
         {
             nbDanger = 0;
-            for(int i = 0; i < 8; i++)
+            for (int i = 0; i < 8; i++)
 
             {
-                if(casesVoisines[i] != null)
+                if (casesVoisines[i] != null)
                     if (casesVoisines[i].Bombe)
                         nbDanger++;
             }
