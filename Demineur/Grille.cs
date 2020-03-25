@@ -122,9 +122,8 @@ namespace Demineur
                 for (int i = 0; i < 8; i++)
                 {
                     if(cible[i] != null)
-                        OuvrirCase(cible[i]);
-                }
-            casesFermer--;
+                        OuvrirCase(cible[i]);                  
+                }         
             return true;
         }
 
@@ -169,8 +168,6 @@ namespace Demineur
 
         public int Lignes(){ return lignes; }
 
-        public int CasesFermer() { return casesFermer; }
-
         public int NombreDeBombes {
             get{ return nbBombeGrille; }
             set{ nbBombeGrille = value; }
@@ -195,6 +192,19 @@ namespace Demineur
                 }
             }
             return grille;                   
+        }
+
+        public int CalculerNbCaseFermer()
+        {
+
+            casesFermer = lignes * colonnes;
+            for (int l = 0; l < lignes; l++)
+            {
+                for (int c = 0; c < colonnes; c++)
+                    if (this[l, c].Ouvert)
+                        casesFermer--;
+            }
+            return casesFermer;
         }
     }
 }

@@ -46,9 +46,10 @@ namespace Demineur
             //Autres Tours
             enMarche = true;
             while (enMarche)
-            {
+            {       
                 InterfaceUsager.DessinerGrille(m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection);
                 VerificationOuvertureEtContenue(selection = Touches(m_Grille.Colonnes(), m_Grille.Lignes(), m_Grille.ToString(), selection[0], selection[1]));
+                InterfaceUsager.DessinerGrille(m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection);
                 EstCeGagner();
             }
 
@@ -211,7 +212,7 @@ namespace Demineur
             cible[1] = selection[1] / 3 - 1; // Conversion coordonnées pour tableau grille
             cible[0] = selection[0] / 4 - 1; // Conversion coordonnées pour tableau grille
 
-            if (!m_Grille[cible[1], cible[0]].Ouvert) // N'ouvre pas case déjà ouverte et fix les nombre qui changent.
+            if (!m_Grille[cible[1], cible[0]].Ouvert) // N'ouvre pas case déjà ouverte.
             {
                 if (m_Grille.OuvrirCase(cible[1], cible[0]) == false && enMarche)//modifier pour permettre le game over
                 {
@@ -249,7 +250,7 @@ namespace Demineur
 
         private bool EstCeGagner() 
         {
-            if (m_Grille.CasesFermer() == m_Grille.NombreDeBombes)
+            if (m_Grille.CalculerNbCaseFermer() == m_Grille.NombreDeBombes)
             {
                 enMarche = false;
                 return true;
