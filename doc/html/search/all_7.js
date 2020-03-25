@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['joueur_16',['Joueur',['../class_demineur_1_1_joueur.html',1,'Demineur.Joueur'],['../class_demineur_1_1_joueur.html#a08f72848aa1b76594839606d34b91f9c',1,'Demineur.Joueur.Joueur(string p_Nom)'],['../class_demineur_1_1_joueur.html#a5f659169afa9e9a598811e09052214e7',1,'Demineur.Joueur.Joueur(string p_Nom, string[] p_Scores)']]],
-  ['joueur_2ecs_17',['Joueur.cs',['../_joueur_8cs.html',1,'']]]
+  ['ia_27',['IA',['../class_demineur_1_1_i_a.html',1,'Demineur.IA'],['../class_demineur_1_1_i_a.html#a2db33257dc6e7ee86006e7c5f0e69a3f',1,'Demineur.IA.IA()']]],
+  ['ia_2ecs_28',['IA.cs',['../_i_a_8cs.html',1,'']]],
+  ['infodepartie_29',['InfoDepartie',['../class_demineur_1_1_partie.html#a6113f50e502874fd8cb71ad57035728c',1,'Demineur::Partie']]],
+  ['interfaceusager_2ecs_30',['InterfaceUsager.cs',['../_interface_usager_8cs.html',1,'']]]
 ];

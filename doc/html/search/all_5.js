@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['grille_11',['Grille',['../class_demineur_1_1_grille.html',1,'Demineur.Grille'],['../class_demineur_1_1_grille.html#a508a171b82fdfb35c37819783008e537',1,'Demineur.Grille.Grille()']]],
-  ['grille_2ecs_12',['Grille.cs',['../_grille_8cs.html',1,'']]]
+  ['fichierclassement_23',['FichierClassement',['../class_demineur_1_1_classements.html#a0cae5a8cdb49db79efb51c5d99467e63',1,'Demineur::Classements']]],
+  ['formatclassement_24',['FormatClassement',['../class_demineur_1_1_joueur.html#abfd3970656430e9f8573158baa3b2ed5',1,'Demineur::Joueur']]]
 ];

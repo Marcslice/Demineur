@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['grille_53',['Grille',['../class_demineur_1_1_grille.html#a508a171b82fdfb35c37819783008e537',1,'Demineur::Grille']]]
+  ['entreemanuelle_92',['EntreeManuelle',['../class_demineur_1_1_partie.html#ac037320ce32788b410183ab89b773c4d',1,'Demineur::Partie']]]
 ];

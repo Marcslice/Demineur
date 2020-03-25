@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['tostring_28',['ToString',['../class_demineur_1_1_joueur.html#ab4f32d4cbd90297a5d6aabc64d681dc0',1,'Demineur::Joueur']]]
+  ['partie_45',['Partie',['../class_demineur_1_1_partie.html',1,'Demineur.Partie'],['../class_demineur_1_1_partie.html#a4344cad6ccbcc00761833363f23c042e',1,'Demineur.Partie.Partie()']]],
+  ['partie_2ecs_46',['Partie.cs',['../_partie_8cs.html',1,'']]]
 ];

@@ -1,5 +1,8 @@
 var files_dup =
 [
+    [ "AITest.cs", "_a_i_test_8cs.html", [
+      [ "AITest", "class_demineur_1_1_a_i_test.html", "class_demineur_1_1_a_i_test" ]
+    ] ],
     [ "Case.cs", "_case_8cs.html", [
       [ "Case", "class_demineur_1_1_case.html", "class_demineur_1_1_case" ]
     ] ],
@@ -13,7 +16,7 @@ var files_dup =
       [ "Grille", "class_demineur_1_1_grille.html", "class_demineur_1_1_grille" ]
     ] ],
     [ "IA.cs", "_i_a_8cs.html", [
-      [ "IA", "class_demineur_1_1_i_a.html", null ]
+      [ "IA", "class_demineur_1_1_i_a.html", "class_demineur_1_1_i_a" ]
     ] ],
     [ "InterfaceUsager.cs", "_interface_usager_8cs.html", null ],
     [ "Joueur.cs", "_joueur_8cs.html", [

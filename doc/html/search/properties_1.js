@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['value_65',['Value',['../class_demineur_1_1_case.html#af245e7b50c6d2b33b83ce941187045db',1,'Demineur::Case']]]
+  ['nombredebombes_117',['NombreDeBombes',['../class_demineur_1_1_grille.html#ae3d6add44843c1cf2661c5c1c7e6e146',1,'Demineur::Grille']]]
 ];

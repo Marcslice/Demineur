@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['partie_24',['Partie',['../class_demineur_1_1_partie.html',1,'Demineur.Partie'],['../class_demineur_1_1_partie.html#a69dedbe8660b44090c2170ab5f6804d7',1,'Demineur.Partie.Partie()']]],
-  ['partie_2ecs_25',['Partie.cs',['../_partie_8cs.html',1,'']]]
+  ['meilleurcoup_35',['MeilleurCoup',['../class_demineur_1_1_a_i_test.html#aa7971193a90b7e1413edc86f07e05379',1,'Demineur::AITest']]],
+  ['menu_2ecs_36',['Menu.cs',['../_menu_8cs.html',1,'']]],
+  ['mettreajourjoueur_37',['MettreAJourJoueur',['../class_demineur_1_1_classements.html#a419a42ecd6c3d06cede2c4afa68c0f4d',1,'Demineur::Classements']]],
+  ['mettreajourvoisin_38',['MettreAJourVoisin',['../class_demineur_1_1_grille.html#ad4c27bb08c774aa5137fae403827bfd3',1,'Demineur::Grille']]],
+  ['modifierscore_39',['ModifierScore',['../class_demineur_1_1_joueur.html#a995f5b7c64c345cf6c2fb0a62db151a9',1,'Demineur::Joueur']]]
 ];
