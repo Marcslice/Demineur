@@ -33,7 +33,7 @@ namespace Demineur
             Joueur aModifier;
             if ((aModifier = m_ListeJoueurs.Find(j => j.ObtenirNom() == info[0])) != null)
             {
-                int index = (Int32.Parse(info[1]) - (Int32.Parse(info[1]) / 2 + 3)) * 3 + (Int32.Parse(info[2]) - 1);
+                int index = ((Int32.Parse(info[1]) - (Int32.Parse(info[1]) / 2 + 3))) * 3 + (Int32.Parse(info[2]) - 1);
                 if (aModifier.ModifierScore(index, info[3]))
                     Console.WriteLine("C'est un nouveau record!");
             }
@@ -61,7 +61,8 @@ namespace Demineur
 
                 string ligne;
                 ligne = sr.ReadLine();
-                while (ligne != null && ligne != "") {
+                while (ligne != null && ligne != "")
+                {
                     DeStringAJoueur(ligne);
                     ligne = sr.ReadLine();
                 }
@@ -112,7 +113,8 @@ namespace Demineur
         /// Retourne le classement sous forme de string
         /// </summary>
         /// <returns>string : classement</returns>
-        public override string ToString() {
+        public override string ToString()
+        {
             string classement = "";
 
             foreach (Joueur j in m_ListeJoueurs)

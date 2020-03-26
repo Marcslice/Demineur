@@ -89,7 +89,8 @@ namespace Demineur
             for (short x = 1; x <= (10 - this.m_Nom.Length); x++)
                 espacement += " ";
 
-            foreach (string s in m_Scores) {
+            foreach (string s in m_Scores)
+            {
                 if (s.Length < 5)
                     for (int x = 0; x < (5 - s.Length); x++)
                         formatClassement += "0";

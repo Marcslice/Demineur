@@ -230,11 +230,10 @@ namespace Demineur
         /// <param name="cible">Case sélectionnée.</param>
         public void BombePremierTour(int[] cible)
         {
-            champs[cible[1], cible[0]].Bombe = false;
-            champs[cible[1], cible[0]].CalculerDanger();
+            this[cible[1], cible[0]].Bombe = false;
+            this[cible[1], cible[0]].CalculerDanger();
             nbBombeGrille--;
             MettreAJourVoisin(this.lignes, this.colonnes, cible[1], cible[0]);
-            champs[cible[1], cible[0]].Value = champs[cible[1], cible[0]].CalculerDanger();
         }
 
         /// <summary>

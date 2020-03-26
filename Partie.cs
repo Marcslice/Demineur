@@ -27,7 +27,7 @@ namespace Demineur
             grosseur = Convert.ToString(optionDePartie[0]);
             if (optionDePartie[3] > 1)
                 //intelligence = new IA(optionDePartie[0], optionDePartie[1]);
-                intel = new AITest(optionDePartie[0], optionDePartie[1]);
+                intel = new AITest(optionDePartie[0], optionDePartie[1], optionDePartie[2]);
             if (optionDePartie[3] > 2)
                 auto = true;
             else
@@ -44,16 +44,16 @@ namespace Demineur
             minuterie.Start();
 
             //Premier Tour            
-            InterfaceUsager.DessinerPlateau(j.ObtenirNom(),m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection, m_Grille.NombreDeBombes);
+            InterfaceUsager.DessinerPlateau(j.ObtenirNom(), m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection, m_Grille.NombreDeBombes);
             VerificationOuvertureEtContenue(selection = Touches(m_Grille.Colonnes(), m_Grille.Lignes(), m_Grille.ToString(), selection[0], selection[1]));
 
             //Autres Tours
             enMarche = true;
             while (enMarche)
             {
-                InterfaceUsager.DessinerGrille(j.ObtenirNom(),m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection, m_Grille.NombreDeBombes);
+                InterfaceUsager.DessinerGrille(j.ObtenirNom(), m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection, m_Grille.NombreDeBombes);
                 VerificationOuvertureEtContenue(selection = Touches(m_Grille.Colonnes(), m_Grille.Lignes(), m_Grille.ToString(), selection[0], selection[1]));
-                InterfaceUsager.DessinerGrille(j.ObtenirNom(),m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection, m_Grille.NombreDeBombes);
+                InterfaceUsager.DessinerGrille(j.ObtenirNom(), m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection, m_Grille.NombreDeBombes);
                 EstCeTerminer();
             }
 
@@ -63,8 +63,8 @@ namespace Demineur
 
             if (mort)
             {
-                InterfaceUsager.DessinerGrille(j.ObtenirNom(),m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection, m_Grille.NombreDeBombes); //Dessine la grille on game over
-                InterfaceUsager.MessageDefaite();              
+                InterfaceUsager.DessinerGrille(j.ObtenirNom(), m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection, m_Grille.NombreDeBombes); //Dessine la grille on game over
+                InterfaceUsager.MessageDefaite();
                 return false;
             }
             else
@@ -77,7 +77,7 @@ namespace Demineur
         public int[] Touches(int iCol, int iLig, string s_Grille, int xActuel, int yActuel)
         {
             positionActuelle = new int[2] { xActuel, yActuel };
-            ConsoleKeyInfo touche = new ConsoleKeyInfo(' ',ConsoleKey.Spacebar, false,false,false);
+            ConsoleKeyInfo touche = new ConsoleKeyInfo(' ', ConsoleKey.Spacebar, false, false, false);
             string entree;
             do
             {
@@ -126,7 +126,7 @@ namespace Demineur
                         entree = Console.ReadLine();
                     } while (!EntreeManuelle(entree));
 
-                if(touche.Key == ConsoleKey.A)
+                if (touche.Key == ConsoleKey.A)
                     AppelerIA();
 
             } while ((entree.Length < 3 && !InterfaceUsager.Saisie) || (entree == "f" && InterfaceUsager.Saisie));
@@ -191,7 +191,8 @@ namespace Demineur
         /// Appele l'intelligence artificiel.
         /// </summary>
         /// <returns>bool : vrai si IA actif, faux si partie sans IA</returns>
-        public bool AppelerIA() {
+        public bool AppelerIA()
+        {
             if (intel != null)
             {
                 int[] retourIA = intel.MeilleurCoup(m_Grille.ToString()); //Methode 
@@ -248,7 +249,7 @@ namespace Demineur
                 ActiverModeFleche();
                 return true;
             }
-            else if (entree == "a")          
+            else if (entree == "a")
                 return AppelerIA();
             else
                 InterfaceUsager.MessageFormatDentreeErronee();

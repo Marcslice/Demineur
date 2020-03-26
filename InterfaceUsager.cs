@@ -152,7 +152,7 @@ namespace Demineur
             DessinerInstructions();
             DessinerModeDeSaisie();
 
-            DessinerGrille(p_NomJoueur,nLigne, nColonne, grille, positionActuelle,nbBombes);
+            DessinerGrille(p_NomJoueur, nLigne, nColonne, grille, positionActuelle, nbBombes);
         }
 
         /// <summary>
@@ -285,7 +285,7 @@ namespace Demineur
             for (int c = 0; c < nColonne; c++)
                 Console.Write(marge);
         }
-        
+
         /// <summary>
         /// Affiche le message de victoire.
         /// </summary>
@@ -305,7 +305,7 @@ namespace Demineur
             PositionnerCursorPourMessageErreur();
             Console.WriteLine("Tu as perdu et j'te juge.");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.ReadKey(true);           
+            Console.ReadKey(true);
             //Dessin du prof
         }
 
@@ -319,7 +319,7 @@ namespace Demineur
             Console.ReadKey(true);
             PositionnerCursorPourMessageErreur();
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("                                                                        ");        
+            Console.WriteLine("                                                                        ");
         }
 
         /// <summary>
@@ -334,7 +334,7 @@ namespace Demineur
             PositionnerCursorPourMessageErreur();
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("                                                                                    \n" +
-                "                                          ");       
+                "                                          ");
         }
 
         /// <summary>
@@ -347,7 +347,7 @@ namespace Demineur
             Console.ReadKey(true);
             PositionnerCursorPourMessageErreur();
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("                                                                                ");          
+            Console.WriteLine("                                                                                ");
         }
 
         /// <summary>
