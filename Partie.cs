@@ -44,17 +44,16 @@ namespace Demineur
             minuterie.Start();
 
             //Premier Tour            
-            InterfaceUsager.DessinerPlateau(j.ObtenirNom(), m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection, m_Grille.NombreDeBombes);
+            InterfaceUsager.DessinerPlateau(j.ObtenirNom(),m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection, m_Grille.NombreDeBombes, mort);
             VerificationOuvertureEtContenue(selection = Touches(m_Grille.Colonnes(), m_Grille.Lignes(), m_Grille.ToString(), selection[0], selection[1]));
 
             //Autres Tours
             enMarche = true;
             while (enMarche)
             {
-                InterfaceUsager.DessinerGrille(j.ObtenirNom(), m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection, m_Grille.NombreDeBombes);
+                InterfaceUsager.DessinerGrille(j.ObtenirNom(),m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection, m_Grille.NombreDeBombes, mort);
                 VerificationOuvertureEtContenue(selection = Touches(m_Grille.Colonnes(), m_Grille.Lignes(), m_Grille.ToString(), selection[0], selection[1]));
-                InterfaceUsager.DessinerGrille(j.ObtenirNom(), m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection, m_Grille.NombreDeBombes);
-                EstCeTerminer();
+                InterfaceUsager.DessinerGrille(j.ObtenirNom(),m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection, m_Grille.NombreDeBombes, mort);
             }
 
             //Partie Terminé
@@ -63,8 +62,8 @@ namespace Demineur
 
             if (mort)
             {
-                InterfaceUsager.DessinerGrille(j.ObtenirNom(), m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection, m_Grille.NombreDeBombes); //Dessine la grille on game over
-                InterfaceUsager.MessageDefaite();
+                InterfaceUsager.DessinerGrille(j.ObtenirNom(),m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection, m_Grille.NombreDeBombes, mort); //Dessine la grille on game over
+                InterfaceUsager.MessageDefaite();              
                 return false;
             }
             else
@@ -126,10 +125,7 @@ namespace Demineur
                         entree = Console.ReadLine();
                     } while (!EntreeManuelle(entree));
 
-                if (touche.Key == ConsoleKey.A)
-                    AppelerIA();
-
-            } while ((entree.Length < 3 && !InterfaceUsager.Saisie) || (entree == "f" && InterfaceUsager.Saisie));
+            } while ((entree.Length < 3 && !InterfaceUsager.Saisie) || (entree == "f" && InterfaceUsager.Saisie) || (touche.Key == ConsoleKey.A && !AppelerIA()));
             return positionActuelle;
         }
 
@@ -277,7 +273,9 @@ namespace Demineur
                 }
                 else if (m_Grille.OuvrirCase(cible[1], cible[0]) == false && !enMarche) //Bouger pour l'OO dans grille
                     m_Grille.BombePremierTour(cible);
-
+                else
+                    if (m_Grille.CalculerNbCaseFermer() == m_Grille.NombreDeBombes)
+                        enMarche = false;
                 return true;
             }
             InterfaceUsager.MessageCaseDejaOuverte();
@@ -310,20 +308,6 @@ namespace Demineur
                 Int32.Parse(entree.Split(' ', StringSplitOptions.RemoveEmptyEntries)[1]) <= m_Grille.Lignes())
                 return true;
             InterfaceUsager.MessageHorsLimites();
-            return false;
-        }
-
-        /// <summary>
-        /// Retourne vrai lorsque la partie est gagné.
-        /// </summary>
-        /// <returns>bool : vrai Gagnant, faux continue</returns>
-        private bool EstCeTerminer()
-        {
-            if (m_Grille.CalculerNbCaseFermer() == m_Grille.NombreDeBombes)
-            {
-                enMarche = false;
-                return true;
-            }
             return false;
         }
 

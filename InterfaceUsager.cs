@@ -93,8 +93,11 @@ namespace Demineur
         /// <param name="nColonne">Nombre de colonnes de la grille.</param>
         /// <param name="nomJoueur">Nom du joueur.</param>
         /// <param name="nbBombes">Nom de bombes dans la grille.</param>
-        static void DessinerStats(int nColonne, string nomJoueur, int nbBombes)
+        static void DessinerStats(int nColonne, string nomJoueur, bool mort, int nbBombes)
         {
+            string etat = "  :D  ";
+            if (mort)
+                etat = "  X(  ";
 
             DessinerLigneDuHaut(nColonne); // ligne horizontale dessus
             Console.Write(marge + "|");
@@ -110,9 +113,9 @@ namespace Demineur
                 if (c == 1)
                     Console.Write(nomJoueur);
                 else if (c == nColonne - 2)
-                    Console.Write(nbBombes); // doit être formatté pour prendre un espace fixe.
+                    Console.Write(nbBombes);
                 else if (c == (nColonne / 2) - 1)
-                    Console.Write("  :D   ");
+                    Console.Write(etat);
                 else
                     Console.Write(marge);
             Console.WriteLine("\b|");
@@ -140,7 +143,7 @@ namespace Demineur
         /// <param name="grille">Grille en string</param>
         /// <param name="positionActuelle">Sélection du joueur.</param>
         /// <param name="nbBombes">Nombre de bombes dans la grille.</param>
-        public static void DessinerPlateau(string p_NomJoueur, int nLigne, int nColonne, string grille, int[] positionActuelle, int nbBombes)
+        public static void DessinerPlateau(string p_NomJoueur, int nLigne, int nColonne, string grille, int[] positionActuelle, int nbBombes, bool mort)
         {
             Console.SetWindowSize(nColonne * 4 + 65, nLigne * 4 + 14);
             positionDeMessage = new int[2] { 4, nLigne * 3 + 14 };
@@ -152,7 +155,7 @@ namespace Demineur
             DessinerInstructions();
             DessinerModeDeSaisie();
 
-            DessinerGrille(p_NomJoueur, nLigne, nColonne, grille, positionActuelle, nbBombes);
+            DessinerGrille(p_NomJoueur,nLigne, nColonne, grille, positionActuelle,nbBombes, mort);
         }
 
         /// <summary>
@@ -165,7 +168,7 @@ namespace Demineur
         /// <param name="grille">Grille en string</param>
         /// <param name="positionActuelle">Sélection du joueur.</param>
         /// <param name="nbBombes">Nombre de bombes dans la grille.</param>
-        public static void DessinerGrille(string p_NomJoueur, int nLigne, int nColonne, string grille, int[] positionActuelle, int nbBombes)
+        public static void DessinerGrille(string p_NomJoueur, int nLigne, int nColonne, string grille, int[] positionActuelle, int nbBombes, bool mort)
         {
             Console.SetCursorPosition(0, 2); // Nécessaire pour dessiner la grille au bonne endroit.
 
@@ -179,7 +182,7 @@ namespace Demineur
                 DessinerRangeBasCase(nColonne);
             }
 
-            DessinerStats(nColonne, p_NomJoueur, nbBombes);
+            DessinerStats(nColonne, p_NomJoueur, mort, nbBombes);
 
             Console.Write("\n" + marge + "Quelle case souhaitez-vous ouvrir ? >> ");
             MettreAJourSelection(positionActuelle);
@@ -305,7 +308,7 @@ namespace Demineur
             PositionnerCursorPourMessageErreur();
             Console.WriteLine("Tu as perdu et j'te juge.");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.ReadKey(true);
+            Console.ReadLine();
             //Dessin du prof
         }
 
