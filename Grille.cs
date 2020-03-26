@@ -52,13 +52,13 @@ namespace Demineur
             switch (difficulte)
             {
                 case 1:
-                    pourcentage = 0.2;
+                    pourcentage = 0.10;
                     break;
                 case 2:
-                    pourcentage = 0.4;
+                    pourcentage = 0.15;
                     break;
                 case 3:
-                    pourcentage = 0.6;
+                    pourcentage = 0.20;
                     break;
             }
             return Convert.ToInt32((lignes * colonnes) * pourcentage);

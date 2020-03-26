@@ -29,13 +29,13 @@ namespace Demineur
             switch (difficulte)
             {
                 case 1:
-                    ratioDiff = 20;
+                    ratioDiff = 10;
                     break;
                 case 2:
-                    ratioDiff = 40;
+                    ratioDiff = 15;
                     break;
                 case 3:
-                    ratioDiff = 60;
+                    ratioDiff = 20;
                     break;
             }
         }
@@ -45,7 +45,7 @@ namespace Demineur
             meilleurCoup = new int[3] { 0, 0, 0 };//ligne, colonne, valeurDanger
             GenererGrille(grilleDeJeu);
 
-            if (CalculerChanceRand() < 19)
+            if (CalculerChanceRand() < 30 && meilleurCoup[2] >= 50)
                 meilleurCoup[2] = 420;
 
             if (meilleurCoup[2] == 420)
