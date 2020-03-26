@@ -16,13 +16,19 @@ namespace Demineur
         static int[] positionDeReponse, positionDeMessage;
         static int positionDuGuide;
 
+        /// <summary>
+        /// Détecte le mode de saisie en cours.
+        /// </summary>
         public static bool Saisie
         {
-
             get { return saisie; }
             set { saisie = value; }
         }
 
+        /// <summary>
+        /// Affiche le titre du jeu.
+        /// </summary>
+        /// <param name="colonne"></param>
         static void DessinerTitreJeu(int colonne)
         {
             string titre = "Démineur 2020, année du JUGEMENT dernier.";
@@ -31,6 +37,9 @@ namespace Demineur
             Console.WriteLine(titre + "\n");
         }
 
+        /// <summary>
+        /// Affiche les instructions
+        /// </summary>
         static void DessinerInstructions()
         {
             Console.SetCursorPosition(positionDuGuide, 4);
@@ -47,6 +56,9 @@ namespace Demineur
             Console.Write("Appuyez sur Entrer pour confirmer votre sélection.");
         }
 
+        /// <summary>
+        /// Affiche le mode de saisie actuel.
+        /// </summary>
         public static void DessinerModeDeSaisie()
         {
             Console.SetCursorPosition(positionDuGuide, 15);
@@ -56,6 +68,9 @@ namespace Demineur
                 Console.Write("Mode de jeu actif : Saisie manuelle      ");
         }
 
+        /// <summary>
+        /// Positionne le cursor lorsqu'on doit mettre à jour l'affichage de la sélection(en bas à droite).
+        /// </summary>
         public static void PositionnerCursorPourRepondre()
         {
             Console.SetCursorPosition(positionDeReponse[0], positionDeReponse[1]);
@@ -63,13 +78,22 @@ namespace Demineur
             Console.SetCursorPosition(positionDeReponse[0], positionDeReponse[1]);
         }
 
+        /// <summary>
+        /// Positionne le cursor et change la couleur du texte pour afficher l'erreur.
+        /// </summary>
         public static void PositionnerCursorPourMessageErreur()
         {
             Console.SetCursorPosition(positionDeMessage[0], positionDeMessage[1]);
             Console.ForegroundColor = ConsoleColor.Red;
         }
 
-        static void DessinerStats(int nColonne, string nomJoueur, int nbCouts)
+        /// <summary>
+        /// Dessine le rectangle des statistiques.
+        /// </summary>
+        /// <param name="nColonne">Nombre de colonnes de la grille.</param>
+        /// <param name="nomJoueur">Nom du joueur.</param>
+        /// <param name="nbBombes">Nom de bombes dans la grille.</param>
+        static void DessinerStats(int nColonne, string nomJoueur, int nbBombes)
         {
 
             DessinerLigneDuHaut(nColonne); // ligne horizontale dessus
@@ -86,7 +110,7 @@ namespace Demineur
                 if (c == 1)
                     Console.Write(nomJoueur);
                 else if (c == nColonne - 2)
-                    Console.Write(nbCouts); // doit être formatté pour prendre un espace fixe.
+                    Console.Write(nbBombes); // doit être formatté pour prendre un espace fixe.
                 else if (c == (nColonne / 2) - 1)
                     Console.Write("  :D   ");
                 else
@@ -104,22 +128,44 @@ namespace Demineur
 
         }
 
-        public static void DessinerPlateau(int nLigne, int nColonne, string grille, int[] positionActuelle)
+        /// <summary>
+        /// Dessine tout le plateau.
+        /// Est appelé une fois au premier tour.
+        /// Ajuste la taille de la fenêtre de la console.
+        /// Calcule la position des modules de l'interface {titre, instruction, grille, statistique}
+        /// </summary>
+        /// <param name="p_NomJoueur">Nom du joueur</param>
+        /// <param name="nLigne">Nombre de lignes de la grille</param>
+        /// <param name="nColonne">Nombre de colonnes de la grille</param>
+        /// <param name="grille">Grille en string</param>
+        /// <param name="positionActuelle">Sélection du joueur.</param>
+        /// <param name="nbBombes">Nombre de bombes dans la grille.</param>
+        public static void DessinerPlateau(string p_NomJoueur, int nLigne, int nColonne, string grille, int[] positionActuelle, int nbBombes)
         {
             Console.SetWindowSize(nColonne * 4 + 65, nLigne * 4 + 14);
             positionDeMessage = new int[2] { 4, nLigne * 3 + 14 };
             positionDeReponse = new int[2] { 43, nLigne * 3 + 11 };
-            positionDuGuide = nColonne * 4 + 8;
+            positionDuGuide = nColonne * 4 + 8; //instructions
             Console.Clear();
 
             DessinerTitreJeu(nColonne);
             DessinerInstructions();
             DessinerModeDeSaisie();
 
-            DessinerGrille(nLigne, nColonne, grille, positionActuelle);
+            DessinerGrille(p_NomJoueur,nLigne, nColonne, grille, positionActuelle,nbBombes);
         }
 
-        public static void DessinerGrille(int nLigne, int nColonne, string grille, int[] positionActuelle)
+        /// <summary>
+        /// Dessine la grille de l'interface graphique.
+        /// Elle appel ce qu'elle a besoin.
+        /// </summary>
+        /// <param name="p_NomJoueur">Nom du joueur</param>
+        /// <param name="nLigne">Nombre de lignes de la grille</param>
+        /// <param name="nColonne">Nombre de colonnes de la grille</param>
+        /// <param name="grille">Grille en string</param>
+        /// <param name="positionActuelle">Sélection du joueur.</param>
+        /// <param name="nbBombes">Nombre de bombes dans la grille.</param>
+        public static void DessinerGrille(string p_NomJoueur, int nLigne, int nColonne, string grille, int[] positionActuelle, int nbBombes)
         {
             Console.SetCursorPosition(0, 2); // Nécessaire pour dessiner la grille au bonne endroit.
 
@@ -133,12 +179,17 @@ namespace Demineur
                 DessinerRangeBasCase(nColonne);
             }
 
-            DessinerStats(nColonne, "marc", 3);
+            DessinerStats(nColonne, p_NomJoueur, nbBombes);
 
             Console.Write("\n" + marge + "Quelle case souhaitez-vous ouvrir ? >> ");
             MettreAJourSelection(positionActuelle);
         }
 
+        /// <summary>
+        /// Lors de la navigation par flèche ou de l'utilisation de l'IA,
+        /// cela met à jour les coordonnées en bas à droite. 
+        /// </summary>
+        /// <param name="positionActuelle"></param>
         public static void MettreAJourSelection(int[] positionActuelle)
         {
             InterfaceUsager.PositionnerCursorPourRepondre();
@@ -146,6 +197,10 @@ namespace Demineur
             Console.SetCursorPosition(positionActuelle[0], positionActuelle[1]);
         }
 
+        /// <summary>
+        /// Dessine l'entête des colonnes de la grille de l'interface graphique.
+        /// </summary>
+        /// <param name="colonne">Nombre de colonnes de la grille.</param>
         static void DessinerChiffreColonne(int colonne)
         {
             Console.Write(marge);
@@ -158,6 +213,10 @@ namespace Demineur
             Console.Write("\n");
         }
 
+        /// <summary>
+        /// Dessine la ligne horizontal du haut de la grille de l'interface graphique.
+        /// </summary>
+        /// <param name="colonne"></param>
         static void DessinerLigneDuHaut(int colonne)
         {
             Console.Write(marge);
@@ -166,6 +225,9 @@ namespace Demineur
             Console.Write("\n");
         }
 
+        // <summary>
+        /// Dessine la rangé du haut de la grille de l'interface graphique.
+        /// </summary>
         static void DessinerRangeHautCase(int colonne)
         {
             Console.Write(marge + "|   |");
@@ -174,6 +236,13 @@ namespace Demineur
             Console.Write("\n");
         }
 
+        /// <summary>
+        /// Dessine la rangé du milieu de la grille de l'interface graphique.
+        /// Elle affiche les données des cases.
+        /// </summary>
+        /// <param name="ligne">Nombre de lignes de la grille.</param>
+        /// <param name="colonne">Nombre de colonnes de la grille.</param>
+        /// <param name="grille">La grille en string.</param>
         static void DessinerRangeCentraleCase(int ligne, int colonne, string grille)
         {
 
@@ -195,6 +264,10 @@ namespace Demineur
             Console.Write("\n");
         }
 
+        /// <summary>
+        /// Dessine le bas des cases dans la grille de l'interface graphique.
+        /// </summary>
+        /// <param name="colonne"></param>
         static void DessinerRangeBasCase(int colonne)
         {
             Console.Write(marge + "|___|");
@@ -203,6 +276,10 @@ namespace Demineur
             Console.Write("\n");
         }
 
+        /// <summary>
+        /// Dessine une rangé vide dans le tableau des statistiques de partie.
+        /// </summary>
+        /// <param name="nColonne">Nombre de colonnes de la grille.</param>
         static void DessinerRangeVide(int nColonne)
         {
             for (int c = 0; c < nColonne; c++)
