@@ -35,7 +35,7 @@ namespace Demineur
             {
                 int index = ((Int32.Parse(info[1]) - (Int32.Parse(info[1]) / 2 + 3))) * 3 + (Int32.Parse(info[2]) - 1);
                 if (aModifier.ModifierScore(index, info[3]))
-                    Console.WriteLine("C'est un nouveau record!");
+                    InterfaceUsager.MessageNouveauRecord();
             }
             else
             {

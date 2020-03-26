@@ -310,6 +310,13 @@ namespace Demineur
             Console.ReadLine();
         }
 
+        public static void MessageNouveauRecord() {
+            PositionnerCursorPourMessageErreur();
+            Console.WriteLine("C'est un nouveau record! Félicitation.");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.ReadLine();
+        }
+
         /// <summary>
         /// Affiche le message de Défaite.
         /// </summary>

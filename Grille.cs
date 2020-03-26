@@ -131,7 +131,7 @@ namespace Demineur
                     if (c + 1 < colonne)//E
                         destination.SetCase(4, voisin = champs[l, c + 1]);
 
-                    if ((l + 1 < ligne) && (c - 1 > 0))//SW
+                    if ((l + 1 < ligne) && (c > 0))//SW //attemp fix -> c -1 > 0
                         destination.SetCase(5, voisin = champs[l + 1, c - 1]);
 
                     if (l + 1 < ligne)//S
