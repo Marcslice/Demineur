@@ -14,6 +14,14 @@ namespace Demineur
         static string marge = "    "; // Unité d'espacement.
         static bool saisie = true; // true = mode avec flèche
         static int[] positionDeReponse, positionDeMessage;
+        static int positionDuGuide;
+
+        public static bool Saisie
+        {
+
+            get { return saisie; }
+            set { saisie = value; }
+        }
 
         static void DessinerTitreJeu(int colonne)
         {
@@ -23,21 +31,25 @@ namespace Demineur
             Console.WriteLine(titre + "\n");
         }
 
-        static void DessinerInstructions(int offset)
+        static void DessinerInstructions()
         {
-            Console.SetCursorPosition(offset, 4);
+            Console.SetCursorPosition(positionDuGuide, 4);
             Console.Write("Appuyez sur f et entrer en mode manuel pour");
-            Console.SetCursorPosition(offset, 5);
+            Console.SetCursorPosition(positionDuGuide, 5);
             Console.Write("retrouver le contrôle avec flèches.");
-            Console.SetCursorPosition(offset, 7);
+            Console.SetCursorPosition(positionDuGuide, 7);
             Console.Write("Appuyez sur c pour entrer des coordonnées au clavier.");
-            Console.SetCursorPosition(offset, 9);
+            Console.SetCursorPosition(positionDuGuide, 9);
+            Console.Write("Appuyez sur a(en mode fleche) ou a+Enter(en mode manuel) pour appeler l'intelligence artificiel.");
+            Console.SetCursorPosition(positionDuGuide, 10);
+            Console.Write("*** Ne fonctionne que si la partie a été créée avec un IA.");
+            Console.SetCursorPosition(positionDuGuide, 12);
             Console.Write("Appuyez sur Entrer pour confirmer votre sélection.");
         }
 
-        static void DessinerModeDeSaisie(int offset)
+        public static void DessinerModeDeSaisie()
         {
-            Console.SetCursorPosition(offset, 11);
+            Console.SetCursorPosition(positionDuGuide, 15);
             if (Saisie)
                 Console.Write("Mode de jeu actif : Contrôle avec flèches");
             else
@@ -97,12 +109,12 @@ namespace Demineur
             Console.SetWindowSize(nColonne * 4 + 65, nLigne * 4 + 14);
             positionDeMessage = new int[2] { 4, nLigne * 3 + 14 };
             positionDeReponse = new int[2] { 43, nLigne * 3 + 11 };
-            int positionDuGuide = nColonne * 4 + 8;
+            positionDuGuide = nColonne * 4 + 8;
             Console.Clear();
 
             DessinerTitreJeu(nColonne);
-            DessinerInstructions(positionDuGuide);
-            DessinerModeDeSaisie(positionDuGuide);
+            DessinerInstructions();
+            DessinerModeDeSaisie();
 
             DessinerGrille(nLigne, nColonne, grille, positionActuelle);
         }
@@ -139,7 +151,7 @@ namespace Demineur
             Console.Write(marge);
             for (int c = 0; c < colonne; c++)
             {
-                if (c < 10) // spacing between top numbers
+                if (c < 10) // Espacement entre les entêtes de colonnes.
                     Console.Write(" ");
                 Console.Write(" " + (c + 1) + " ");
             }
@@ -166,9 +178,9 @@ namespace Demineur
         {
 
             if (ligne + 1 < 10)
-                Console.Write(" " + (ligne + 1) + "  | "); // spacing de gauche pour les chiffres des rangés < 10
+                Console.Write(" " + (ligne + 1) + "  | "); // espacement de gauche pour les chiffres des rangés < 10
             else
-                Console.Write(" " + (ligne + 1) + " | "); // spacing de gauche pour les chiffres des rangés >= 10
+                Console.Write(" " + (ligne + 1) + " | "); // espacement de gauche pour les chiffres des rangés >= 10
             for (int c = 0; c < colonne; c++)
             {
                 if (grille[c + (ligne) * (colonne)] == '?')
@@ -196,71 +208,83 @@ namespace Demineur
             for (int c = 0; c < nColonne; c++)
                 Console.Write(marge);
         }
-
-        public static bool Saisie
-        {
-
-            get { return saisie; }
-            set { saisie = value; }
-        }
-
+        
+        /// <summary>
+        /// Affiche le message de victoire.
+        /// </summary>
         public static void MessageVictoire()
         {
             PositionnerCursorPourMessageErreur();
             Console.WriteLine("Vous êtes un champion du démineur!");
-            Console.ReadLine();
             Console.ForegroundColor = ConsoleColor.White;
+            Console.ReadKey(true);
         }
 
+        /// <summary>
+        /// Affiche le message de Défaite.
+        /// </summary>
         public static void MessageDefaite()
         {
             PositionnerCursorPourMessageErreur();
             Console.WriteLine("Tu as perdu et j'te juge.");
-            Console.ReadLine();
             Console.ForegroundColor = ConsoleColor.White;
+            Console.ReadKey(true);           
             //Dessin du prof
         }
 
+        /// <summary>
+        /// Affiche le message de case déjà ouverte.
+        /// </summary>
         public static void MessageCaseDejaOuverte()
         {
             PositionnerCursorPourMessageErreur();
             Console.WriteLine("Désolé cette case est déjà ouverte. Appuyez sur entrer pour continuer...");
-            Console.ReadLine();
+            Console.ReadKey(true);
             PositionnerCursorPourMessageErreur();
-            Console.WriteLine("                                                                        ");
             Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("                                                                        ");        
         }
 
+        /// <summary>
+        /// Affiche le message de format incorrecte si la siasie de respecte pas ^\d+\s\d+$.
+        /// </summary>
         public static void MessageFormatDentreeErronee()
         {
             PositionnerCursorPourMessageErreur();
             Console.WriteLine("Désolé veuillez vous assurez d'entrer vos coordonnées comme suit : (colonne ligne). \n" +
-                marge + "Appuyez sur une entrer pour continuer.");
-            Console.ReadLine();
+                marge + "Appuyez sur une touche pour continuer.");
+            Console.ReadKey(true);
             PositionnerCursorPourMessageErreur();
-            Console.WriteLine("                                                                                    \n" +
-                "                                          ");
             Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("                                                                                    \n" +
+                "                                          ");       
         }
 
+        /// <summary>
+        /// Affiche le message de Saisie hors limite si la saisie ne fait pas partie de la grille.
+        /// </summary>
         public static void MessageHorsLimites()
         {
             PositionnerCursorPourMessageErreur();
             Console.WriteLine("Hé, ho tu ne vois pas les chiffres en haut et à gauche ? Appuie sur entrer la...");
-            Console.ReadLine();
+            Console.ReadKey(true);
             PositionnerCursorPourMessageErreur();
-            Console.WriteLine("                                                                                ");
             Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("                                                                                ");          
         }
 
+        /// <summary>
+        /// Affiche le message intelligence inactif si le joueur a choisi une partie sans IA.
+        /// </summary>
         public static void MessageIAInactif()
         {
             PositionnerCursorPourMessageErreur();
             Console.WriteLine("L'intelligence artificiel n'est pas active.");
-            Console.ReadLine();
-            PositionnerCursorPourMessageErreur();
-            Console.WriteLine("                                                                                ");
             Console.ForegroundColor = ConsoleColor.White;
+            Console.ReadKey(true);
+            PositionnerCursorPourMessageErreur();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("                                                                                ");
         }
     }
 }

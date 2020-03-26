@@ -34,6 +34,10 @@ namespace Demineur
                 auto = false;
         }
 
+        /// <summary>
+        /// S'occupe du déroulement de la partie.
+        /// </summary>
+        /// <returns>bool : vrai si gagnée, faux si perdu.</returns>
         public bool CommencerPartie()
         {
             Stopwatch minuterie = new Stopwatch();
@@ -73,7 +77,7 @@ namespace Demineur
         public int[] Touches(int iCol, int iLig, string s_Grille, int xActuel, int yActuel)
         {
             positionActuelle = new int[2] { xActuel, yActuel };
-            ConsoleKeyInfo touche;
+            ConsoleKeyInfo touche = new ConsoleKeyInfo(' ',ConsoleKey.Spacebar, false,false,false);
             string entree;
             do
             {
@@ -112,9 +116,6 @@ namespace Demineur
                             case 67: // c pour coordonnées manuelles                      
                                 ActiverModeSaisieManuelle();
                                 break;
-                            case 65: // a pour aciver l'intelligence artificiel
-                                AppelerIA();
-                                break;
                         }
                     } while (InterfaceUsager.Saisie && touche.Key != ConsoleKey.Enter && touche.Key != ConsoleKey.A);
                 }
@@ -124,10 +125,17 @@ namespace Demineur
                         ActiverModeSaisieManuelle();
                         entree = Console.ReadLine();
                     } while (!EntreeManuelle(entree));
+
+                if(touche.Key == ConsoleKey.A)
+                    AppelerIA();
+
             } while ((entree.Length < 3 && !InterfaceUsager.Saisie) || (entree == "f" && InterfaceUsager.Saisie));
             return positionActuelle;
         }
 
+        /// <summary>
+        /// En mode flèche, selectionne la case à gauche.
+        /// </summary>
         public void AllerGauche()//OK
         {
 
@@ -139,6 +147,9 @@ namespace Demineur
             positionActuelle[1] = Console.CursorTop;
         }
 
+        /// <summary>
+        /// En mode flèche, selectionne la case à droite.
+        /// </summary>
         public void AllerDroite()//OK
         {
 
@@ -150,6 +161,9 @@ namespace Demineur
             positionActuelle[1] = Console.CursorTop;
         }
 
+        /// <summary>
+        /// En mode flèche, selectionne la case en haut.
+        /// </summary>
         public void AllerHaut()//OK
         {
             if (Console.CursorTop < 8)
@@ -160,6 +174,9 @@ namespace Demineur
             positionActuelle[1] = Console.CursorTop;
         }
 
+        /// <summary>
+        /// En mode flèche, selectionne la case en bas.
+        /// </summary>
         public void AllerBas()//OK
         {
             if (Console.CursorTop > m_Grille.Lignes() * 3)
@@ -170,6 +187,10 @@ namespace Demineur
             positionActuelle[1] = Console.CursorTop;
         }
 
+        /// <summary>
+        /// Appele l'intelligence artificiel.
+        /// </summary>
+        /// <returns>bool : vrai si IA actif, faux si partie sans IA</returns>
         public bool AppelerIA() {
             if (intel != null)
             {
@@ -183,18 +204,34 @@ namespace Demineur
             return false;
         }
 
-        public void ActiverModeFleche()//OK
+        /// <summary>
+        /// Active la sélection des cases avec les flèches.
+        /// </summary>
+        void ActiverModeFleche()//OK
         {
             InterfaceUsager.Saisie = true;
+            InterfaceUsager.DessinerModeDeSaisie();
             Console.SetCursorPosition(positionActuelle[0], positionActuelle[1]);
         }
 
+        /// <summary>
+        /// Active la sélection des cases avec les flèches.
+        /// </summary>
         void ActiverModeSaisieManuelle()//OK
         {
             InterfaceUsager.Saisie = false;
+            InterfaceUsager.DessinerModeDeSaisie();
             InterfaceUsager.PositionnerCursorPourRepondre();
         }
 
+        /// <summary>
+        /// Active la sélection manuelle des cases avec des coordonnées clavier.
+        /// Saisir 'f' active la saisie avec flèches
+        /// Saisir 'a' fait joueur l'IA si l'option de partie le permet.
+        /// Saisir autres choses qu'un coordonnées valide entrainera une erreur.
+        /// </summary>
+        /// <param name="entree">Saisie du joueur.</param>
+        /// <returns>bool : Retourne true si saisie valide, false si invalide.</returns>
         public bool EntreeManuelle(string entree)
         {
             if (entree.Length > 2)
@@ -218,6 +255,11 @@ namespace Demineur
             return false;
         }
 
+        /// <summary>
+        /// Une fois la saisie validé, une ouvre la case si elle n'est pas déjà ouverte.
+        /// </summary>
+        /// <param name="selection"></param>
+        /// <returns>bool : vrai si case a été ouverte, faux si case déjà ouverte.</returns>
         bool VerificationOuvertureEtContenue(int[] selection)//OK
         {
             int[] cible = new int[2];
@@ -241,6 +283,11 @@ namespace Demineur
             return false;
         }
 
+        /// <summary>
+        /// Agit comme un masque de saisie.
+        /// </summary>
+        /// <param name="entree">Saisie manuelle du l'utilisateur.</param>
+        /// <returns></returns>
         public bool VerificationFormatDeLentree(string entree)
         {
             MatchCollection matches = rx.Matches(entree);
@@ -251,6 +298,11 @@ namespace Demineur
             return false;
         }
 
+        /// <summary>
+        /// Vérifie si la saisie fait partie du tableau.
+        /// </summary>
+        /// <param name="entree">Saisie manuelle du l'utilisateur.</param>
+        /// <returns></returns>
         public bool VerificationDesMinMaxDeLentree(string entree)
         {
             if (Int32.Parse(entree.Split(' ', StringSplitOptions.RemoveEmptyEntries)[0]) <= m_Grille.Colonnes() &&
@@ -260,6 +312,10 @@ namespace Demineur
             return false;
         }
 
+        /// <summary>
+        /// Retourne vrai lorsque la partie est gagné.
+        /// </summary>
+        /// <returns>bool : vrai Gagnant, faux continue</returns>
         private bool EstCeTerminer()
         {
             if (m_Grille.CalculerNbCaseFermer() == m_Grille.NombreDeBombes)
@@ -270,6 +326,10 @@ namespace Demineur
             return false;
         }
 
+        /// <summary>
+        /// Utilise pour mettre à jour le score du joueur si la partie est gagnée.
+        /// </summary>
+        /// <returns>string[] : Informations de partie {nom_joueur, grosseur, difficulté, temps}</returns>
         public string[] InfoDepartie()
         {
             return new string[] { j.ObtenirNom(), grosseur, difficulte, temps };

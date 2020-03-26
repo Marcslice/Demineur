@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['this_5bint_20i_5d_119',['this[int i]',['../class_demineur_1_1_case.html#aedee3cbcf1e098787ce7b310d3ef7082',1,'Demineur::Case']]],
-  ['this_5bint_20ligne_2c_20int_20colonne_5d_120',['this[int ligne, int colonne]',['../class_demineur_1_1_grille.html#aaac104aecb34df70b072f101972cce59',1,'Demineur::Grille']]]
+  ['saisie_288',['Saisie',['../class_demineur_1_1_interface_usager.html#a2fdac8c41bef06db2f4839981a38a26a',1,'Demineur::InterfaceUsager']]]
 ];

@@ -31,7 +31,6 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Demineur
-   &#160;<span id="projectnumber">2.0</span>
    </div>
    <div id="projectbrief">Programmation 3 - Demineur</div>
   </td>
@@ -95,6 +94,8 @@ $(document).ready(function(){initNavTree('class_demineur_1_1_classements.html','
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_demineur_1_1_classements-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Demineur.Classements Class Reference</div>  </div>
@@ -120,6 +121,17 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a668c4616b8143a9618e73fd5961af147"><td class="memItemLeft" align="right" valign="top">override string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_classements.html#a668c4616b8143a9618e73fd5961af147">ToString</a> ()</td></tr>
 <tr class="memdesc:a668c4616b8143a9618e73fd5961af147"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le classement sous forme de string  <a href="class_demineur_1_1_classements.html#a668c4616b8143a9618e73fd5961af147">More...</a><br /></td></tr>
 <tr class="separator:a668c4616b8143a9618e73fd5961af147"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:ae8bde8e179dcf4c42c49eee2715c669b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_classements.html#ae8bde8e179dcf4c42c49eee2715c669b">DeStringAJoueur</a> (string joueurStats)</td></tr>
+<tr class="memdesc:ae8bde8e179dcf4c42c49eee2715c669b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Créer les joueurs à partir du fichier texte.  <a href="class_demineur_1_1_classements.html#ae8bde8e179dcf4c42c49eee2715c669b">More...</a><br /></td></tr>
+<tr class="separator:ae8bde8e179dcf4c42c49eee2715c669b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a13037998a70d24543f28c4fc8205efd1"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_demineur_1_1_joueur.html">Joueur</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_classements.html#a13037998a70d24543f28c4fc8205efd1">m_ListeJoueurs</a></td></tr>
+<tr class="separator:a13037998a70d24543f28c4fc8205efd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Classement est une extension de démineur. Elle permet de créer et lire le fichier texte contenant les données des joueurs. </p>
@@ -150,6 +162,40 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="ae8bde8e179dcf4c42c49eee2715c669b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8bde8e179dcf4c42c49eee2715c669b">&#9670;&nbsp;</a></span>DeStringAJoueur()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Demineur.Classements.DeStringAJoueur </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>joueurStats</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Créer les joueurs à partir du fichier texte. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">joueurStats</td><td>Ligne lu par le programme.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a0cae5a8cdb49db79efb51c5d99467e63"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0cae5a8cdb49db79efb51c5d99467e63">&#9670;&nbsp;</a></span>FichierClassement()</h2>
 
@@ -263,6 +309,29 @@ Public Member Functions</h2></td></tr>
 
 <p>Retourne le classement sous forme de string </p>
 <dl class="section return"><dt>Returns</dt><dd>string : classement</dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a13037998a70d24543f28c4fc8205efd1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13037998a70d24543f28c4fc8205efd1">&#9670;&nbsp;</a></span>m_ListeJoueurs</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt;<a class="el" href="class_demineur_1_1_joueur.html">Joueur</a>&gt; Demineur.Classements.m_ListeJoueurs</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>

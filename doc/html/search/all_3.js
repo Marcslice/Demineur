@@ -1,7 +1,23 @@
 var searchData=
 [
-  ['decouvrirbombes_18',['DecouvrirBombes',['../class_demineur_1_1_grille.html#af96b95cae8dd85c8d93bcba5b94302b5',1,'Demineur::Grille']]],
-  ['demineur_19',['Demineur',['../class_demineur_1_1_demineur.html',1,'Demineur.Demineur'],['../namespace_demineur.html',1,'Demineur']]],
-  ['demineur_2ecs_20',['Demineur.cs',['../_demineur_8cs.html',1,'']]],
-  ['disperserbombes_21',['DisperserBombes',['../class_demineur_1_1_grille.html#af79425cb94b43596af52dd754d1c6bbc',1,'Demineur::Grille']]]
+  ['decouvrirbombes_31',['DecouvrirBombes',['../class_demineur_1_1_grille.html#af96b95cae8dd85c8d93bcba5b94302b5',1,'Demineur::Grille']]],
+  ['demandernom_32',['DemanderNom',['../class_demineur_1_1_menu.html#a54e76955ca103eeaa6e535c7cb9c4fd2',1,'Demineur::Menu']]],
+  ['demineur_33',['Demineur',['../class_demineur_1_1_demineur.html',1,'Demineur.Demineur'],['../namespace_demineur.html',1,'Demineur'],['../class_demineur_1_1_demineur.html#aefe80980acdedfed27a28a64b9f7e448',1,'Demineur.Demineur.Demineur()']]],
+  ['demineur_2ecs_34',['Demineur.cs',['../_demineur_8cs.html',1,'']]],
+  ['dessinerchiffrecolonne_35',['DessinerChiffreColonne',['../class_demineur_1_1_interface_usager.html#ac68b2427397d0ecba150cdd4eb4c2511',1,'Demineur::InterfaceUsager']]],
+  ['dessinergrille_36',['DessinerGrille',['../class_demineur_1_1_interface_usager.html#ad1ef65e75ab190e828a237062bd8009f',1,'Demineur::InterfaceUsager']]],
+  ['dessinerinstructions_37',['DessinerInstructions',['../class_demineur_1_1_interface_usager.html#aff4105bccc12b3a87bc9f0e5567b325a',1,'Demineur::InterfaceUsager']]],
+  ['dessinerligneduhaut_38',['DessinerLigneDuHaut',['../class_demineur_1_1_interface_usager.html#a8c3a729a593638cdc4885ce57ab924ac',1,'Demineur::InterfaceUsager']]],
+  ['dessinermodedesaisie_39',['DessinerModeDeSaisie',['../class_demineur_1_1_interface_usager.html#aa1fa806cb800165d5bc61b7d84a34c21',1,'Demineur::InterfaceUsager']]],
+  ['dessinerplateau_40',['DessinerPlateau',['../class_demineur_1_1_interface_usager.html#a0315e227f196cd5dbe60f84d4a3a6d18',1,'Demineur::InterfaceUsager']]],
+  ['dessinerrangebascase_41',['DessinerRangeBasCase',['../class_demineur_1_1_interface_usager.html#a9b198981372734c5f99ea1725d7389bf',1,'Demineur::InterfaceUsager']]],
+  ['dessinerrangecentralecase_42',['DessinerRangeCentraleCase',['../class_demineur_1_1_interface_usager.html#aa0055ed586c050b715fe24c607f06fea',1,'Demineur::InterfaceUsager']]],
+  ['dessinerrangehautcase_43',['DessinerRangeHautCase',['../class_demineur_1_1_interface_usager.html#a11e6f5bd2e9efd5a9c8d55243d7c9565',1,'Demineur::InterfaceUsager']]],
+  ['dessinerrangevide_44',['DessinerRangeVide',['../class_demineur_1_1_interface_usager.html#ac9d4fa207988929ddce155bc2ffb0f24',1,'Demineur::InterfaceUsager']]],
+  ['dessinerstats_45',['DessinerStats',['../class_demineur_1_1_interface_usager.html#a8e6e5632f5628d997be562c87b642696',1,'Demineur::InterfaceUsager']]],
+  ['dessinertitrejeu_46',['DessinerTitreJeu',['../class_demineur_1_1_interface_usager.html#aa49faea71eea903fc1776919aa23954c',1,'Demineur::InterfaceUsager']]],
+  ['destringajoueur_47',['DeStringAJoueur',['../class_demineur_1_1_classements.html#ae8bde8e179dcf4c42c49eee2715c669b',1,'Demineur::Classements']]],
+  ['difficulte_48',['difficulte',['../class_demineur_1_1_partie.html#ad173a9c60913a4381bdc8a22243ae795',1,'Demineur::Partie']]],
+  ['disperserbombes_49',['DisperserBombes',['../class_demineur_1_1_grille.html#af79425cb94b43596af52dd754d1c6bbc',1,'Demineur::Grille']]],
+  ['dll_50',['dll',['../class_demineur_1_1_i_a.html#ae34f010d2dadfa30324c8e28e5ca6dd2',1,'Demineur::IA']]]
 ];

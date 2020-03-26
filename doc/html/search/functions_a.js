@@ -1,7 +1,19 @@
 var searchData=
 [
-  ['meilleurcoup_101',['MeilleurCoup',['../class_demineur_1_1_a_i_test.html#aa7971193a90b7e1413edc86f07e05379',1,'Demineur::AITest']]],
-  ['mettreajourjoueur_102',['MettreAJourJoueur',['../class_demineur_1_1_classements.html#a419a42ecd6c3d06cede2c4afa68c0f4d',1,'Demineur::Classements']]],
-  ['mettreajourvoisin_103',['MettreAJourVoisin',['../class_demineur_1_1_grille.html#ad4c27bb08c774aa5137fae403827bfd3',1,'Demineur::Grille']]],
-  ['modifierscore_104',['ModifierScore',['../class_demineur_1_1_joueur.html#a995f5b7c64c345cf6c2fb0a62db151a9',1,'Demineur::Joueur']]]
+  ['main_208',['Main',['../class_demineur_1_1_demineur.html#a23d1848f81e0a7e575b5e7f370c3d9d4',1,'Demineur::Demineur']]],
+  ['meilleur_209',['Meilleur',['../class_demineur_1_1_a_i_test.html#a70a17417f7c00a3a8f46a9368027240b',1,'Demineur::AITest']]],
+  ['meilleurcoup_210',['MeilleurCoup',['../class_demineur_1_1_a_i_test.html#aa7971193a90b7e1413edc86f07e05379',1,'Demineur::AITest']]],
+  ['menujouerai_211',['MenuJouerAI',['../class_demineur_1_1_menu.html#a04213619c79200d67ccd49d3588c8907',1,'Demineur::Menu']]],
+  ['menujouerdifficulte_212',['MenuJouerDifficulte',['../class_demineur_1_1_menu.html#a077c8208463744b61c304afc62c47603',1,'Demineur::Menu']]],
+  ['menujouergrosseur_213',['MenuJouerGrosseur',['../class_demineur_1_1_menu.html#ac171d1a48c6b914debf29231024272b3',1,'Demineur::Menu']]],
+  ['messagecasedejaouverte_214',['MessageCaseDejaOuverte',['../class_demineur_1_1_interface_usager.html#a30186be3fa5c56e6c68c960a9d793e9c',1,'Demineur::InterfaceUsager']]],
+  ['messagedefaite_215',['MessageDefaite',['../class_demineur_1_1_interface_usager.html#a959feb7808140f6c4bc4a9932da5c986',1,'Demineur::InterfaceUsager']]],
+  ['messageformatdentreeerronee_216',['MessageFormatDentreeErronee',['../class_demineur_1_1_interface_usager.html#ad4e95704ec8ceaccfb8e2aca33240418',1,'Demineur::InterfaceUsager']]],
+  ['messagehorslimites_217',['MessageHorsLimites',['../class_demineur_1_1_interface_usager.html#ad58d94f7dbb8da1499358997e7824e9b',1,'Demineur::InterfaceUsager']]],
+  ['messageiainactif_218',['MessageIAInactif',['../class_demineur_1_1_interface_usager.html#a0fb3b33152de52a54617038f796fdea8',1,'Demineur::InterfaceUsager']]],
+  ['messagevictoire_219',['MessageVictoire',['../class_demineur_1_1_interface_usager.html#a8a84f066b8d89f02aee1b2697e1ac6e4',1,'Demineur::InterfaceUsager']]],
+  ['mettreajourjoueur_220',['MettreAJourJoueur',['../class_demineur_1_1_classements.html#a419a42ecd6c3d06cede2c4afa68c0f4d',1,'Demineur::Classements']]],
+  ['mettreajourselection_221',['MettreAJourSelection',['../class_demineur_1_1_interface_usager.html#a57a9341779fdf6af2d7372ff6b485ae1',1,'Demineur::InterfaceUsager']]],
+  ['mettreajourvoisin_222',['MettreAJourVoisin',['../class_demineur_1_1_grille.html#ad4c27bb08c774aa5137fae403827bfd3',1,'Demineur::Grille']]],
+  ['modifierscore_223',['ModifierScore',['../class_demineur_1_1_joueur.html#a995f5b7c64c345cf6c2fb0a62db151a9',1,'Demineur::Joueur']]]
 ];

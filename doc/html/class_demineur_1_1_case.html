@@ -31,7 +31,6 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Demineur
-   &#160;<span id="projectnumber">2.0</span>
    </div>
    <div id="projectbrief">Programmation 3 - Demineur</div>
   </td>
@@ -96,6 +95,7 @@ $(document).ready(function(){initNavTree('class_demineur_1_1_case.html',''); ini
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_demineur_1_1_case-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Demineur.Case Class Reference</div>  </div>
@@ -131,6 +131,17 @@ Properties</h2></td></tr>
 <tr class="memitem:aedee3cbcf1e098787ce7b310d3ef7082"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_demineur_1_1_case.html">Case</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_case.html#aedee3cbcf1e098787ce7b310d3ef7082">this[int i]</a><code> [get, set]</code></td></tr>
 <tr class="memdesc:aedee3cbcf1e098787ce7b310d3ef7082"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet de naviguer les voisins d'une case.  <a href="class_demineur_1_1_case.html#aedee3cbcf1e098787ce7b310d3ef7082">More...</a><br /></td></tr>
 <tr class="separator:aedee3cbcf1e098787ce7b310d3ef7082"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:acff8ce1e194a3c5c2b5f20a461b004a9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_case.html#acff8ce1e194a3c5c2b5f20a461b004a9">esTuBombe</a></td></tr>
+<tr class="separator:acff8ce1e194a3c5c2b5f20a461b004a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97923098eb767ca15d8bb43aa0d12dee"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_case.html#a97923098eb767ca15d8bb43aa0d12dee">estOuverte</a></td></tr>
+<tr class="separator:a97923098eb767ca15d8bb43aa0d12dee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c7311f6d66653734c495df2ec606589"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_case.html#a1c7311f6d66653734c495df2ec606589">nbDanger</a></td></tr>
+<tr class="separator:a1c7311f6d66653734c495df2ec606589"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9540fe4adbe018ea440a3e0ad7685a45"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_demineur_1_1_case.html">Case</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_case.html#a9540fe4adbe018ea440a3e0ad7685a45">casesVoisines</a></td></tr>
+<tr class="separator:a9540fe4adbe018ea440a3e0ad7685a45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Représente une case du démineur. Le grille génére sa grille en créant "Lignes X Colonne" cases. Bool esTuBombe détermine si un case est une bombe ou non. Bool estOuverte détermine si la case est ouverte ou non. int nbDanger détermine combien de bombe entoure la case ouverte. <a class="el" href="class_demineur_1_1_case.html" title="Représente une case du démineur. Le grille génére sa grille en créant &quot;Lignes X Colonne&quot; cases....">Case</a>[] casesVoisines contient les cases qui entourent cette case. </p>
@@ -233,6 +244,95 @@ Properties</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a9540fe4adbe018ea440a3e0ad7685a45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9540fe4adbe018ea440a3e0ad7685a45">&#9670;&nbsp;</a></span>casesVoisines</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_demineur_1_1_case.html">Case</a> [] Demineur.Case.casesVoisines</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a97923098eb767ca15d8bb43aa0d12dee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97923098eb767ca15d8bb43aa0d12dee">&#9670;&nbsp;</a></span>estOuverte</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Demineur.Case.estOuverte</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acff8ce1e194a3c5c2b5f20a461b004a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acff8ce1e194a3c5c2b5f20a461b004a9">&#9670;&nbsp;</a></span>esTuBombe</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Demineur.Case.esTuBombe</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1c7311f6d66653734c495df2ec606589"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c7311f6d66653734c495df2ec606589">&#9670;&nbsp;</a></span>nbDanger</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Demineur.Case.nbDanger</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
