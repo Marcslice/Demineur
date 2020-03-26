@@ -96,6 +96,7 @@ namespace Demineur
         static void DessinerStats(int nColonne, string nomJoueur, bool mort, int nbBombes)
         {
             string etat = "  :D  ";
+            bool dessiner = false;
             if (mort)
                 etat = "  X(  ";
 
@@ -109,16 +110,25 @@ namespace Demineur
             Console.WriteLine("\b|");
 
             Console.Write(marge + "|");
-            for (int c = 0; c < nColonne; c++)
-                if (c == 1)
+            for (int c = 0; c < nColonne * 4; c++)
+                if (c == 3)
+                {
                     Console.Write(nomJoueur);
-                else if (c == nColonne - 2)
+                    c += nomJoueur.Length;
+                }
+                else if (c > nColonne * 4 - 5 && !dessiner)
+                {
                     Console.Write(nbBombes);
-                else if (c == (nColonne / 2) - 1)
+                    c += Convert.ToString(nbBombes).Length;
+                    dessiner = true;
+                }
+                else if (c == (((nColonne * 4) / 2) - 2)) {
                     Console.Write(etat);
+                    c += etat.Length;
+                }
                 else
-                    Console.Write(marge);
-            Console.WriteLine("\b|");
+                    Console.Write(" ");
+            Console.WriteLine("  |");
 
             Console.Write(marge + "|");
             DessinerRangeVide(nColonne); // rangé vide
@@ -297,7 +307,7 @@ namespace Demineur
             PositionnerCursorPourMessageErreur();
             Console.WriteLine("Vous êtes un champion du démineur!");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.ReadKey(true);
+            Console.ReadLine();
         }
 
         /// <summary>
