@@ -92,6 +92,7 @@ namespace Demineur
         /// </summary>
         /// <param name="nColonne">Nombre de colonnes de la grille.</param>
         /// <param name="nomJoueur">Nom du joueur.</param>
+        /// /// <param name="mort">Joueur est il mort</param>
         /// <param name="nbBombes">Nom de bombes dans la grille.</param>
         static void DessinerStats(int nColonne, string nomJoueur, bool mort, int nbBombes)
         {
@@ -336,7 +337,7 @@ namespace Demineur
         {
             PositionnerCursorPourMessageErreur();
             Console.WriteLine("Désolé cette case est déjà ouverte. Appuyez sur entrer pour continuer...");
-            Console.ReadKey(true);
+            Console.ReadLine();
             PositionnerCursorPourMessageErreur();
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("                                                                        ");
@@ -350,7 +351,7 @@ namespace Demineur
             PositionnerCursorPourMessageErreur();
             Console.WriteLine("Désolé veuillez vous assurez d'entrer vos coordonnées comme suit : (colonne ligne). \n" +
                 marge + "Appuyez sur une touche pour continuer.");
-            Console.ReadKey(true);
+            Console.ReadLine();
             PositionnerCursorPourMessageErreur();
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("                                                                                    \n" +
@@ -364,7 +365,7 @@ namespace Demineur
         {
             PositionnerCursorPourMessageErreur();
             Console.WriteLine("Hé, ho tu ne vois pas les chiffres en haut et à gauche ? Appuie sur entrer la...");
-            Console.ReadKey(true);
+            Console.ReadLine();
             PositionnerCursorPourMessageErreur();
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("                                                                                ");
@@ -378,7 +379,7 @@ namespace Demineur
             PositionnerCursorPourMessageErreur();
             Console.WriteLine("L'intelligence artificiel n'est pas active.");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.ReadKey(true);
+            Console.ReadLine();
             PositionnerCursorPourMessageErreur();
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("                                                                                ");
