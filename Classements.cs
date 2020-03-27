@@ -19,7 +19,6 @@ namespace Demineur
         {
             m_ListeJoueurs = new List<Joueur>();
             FichierClassement();
-            Console.WriteLine("Nous contruisons le classement...");
         }
 
         /// <summary>
@@ -31,7 +30,9 @@ namespace Demineur
         public void MettreAJourJoueur(string[] info)
         {
             Joueur aModifier;
+
             int index = ((Int32.Parse(info[1]) - (Int32.Parse(info[1]) / 2 + 3))) * 3 + (Int32.Parse(info[2]) - 1);
+
             if ((aModifier = m_ListeJoueurs.Find(j => j.ObtenirNom() == info[0])) != null)
             {
                 if (aModifier.ModifierScore(index, info[3]))
@@ -40,6 +41,7 @@ namespace Demineur
             else
             {
                 m_ListeJoueurs.Add(new Joueur(info[0], index, info[3]));
+                Console.WriteLine(m_ListeJoueurs[m_ListeJoueurs.Count - 1].ObtenirNom());
             }
         }
 
@@ -59,6 +61,7 @@ namespace Demineur
                 StreamReader sr = new StreamReader(fs, UTF8Encoding.UTF8);
 
                 string ligne;
+
                 ligne = sr.ReadLine();
                 while (ligne != null && ligne != "")
                 {
@@ -207,6 +210,9 @@ namespace Demineur
                             listTrier.RemoveAt(x);
                 }
             }
+            if (listTrier.Count == 1)
+                if (listTrier[0].ObtenirScore()[indexFacile] == "00.00")
+                    listTrier.RemoveAt(0);
             return listTrier;
         }
 
@@ -234,6 +240,9 @@ namespace Demineur
                             listTrier.RemoveAt(x);
                 }
             }
+            if (listTrier.Count == 1)
+                if (listTrier[0].ObtenirScore()[indexNormal] == "00.00")
+                    listTrier.RemoveAt(0);
             return listTrier;
         }
 
@@ -261,6 +270,9 @@ namespace Demineur
                             listTrier.RemoveAt(x);
                 }
             }
+            if (listTrier.Count == 1)
+                if (listTrier[0].ObtenirScore()[indexDifficile] == "00.00")
+                    listTrier.RemoveAt(0);
             return listTrier;
         }
     }

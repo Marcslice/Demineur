@@ -31,7 +31,7 @@ namespace Demineur
                         }
                         break;
                     case 2:
-                        short visionnement = 0;
+                        short visionnement = 0; //par défaut ne tri pas le classement
                         do
                             visionnement = (short)Menu.AfficherClassement(m_Classement.ToString(visionnement), visionnement);
                         while (visionnement != 4);

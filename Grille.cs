@@ -29,12 +29,9 @@ namespace Demineur
             this.casesFermer = lignes * colonnes;
 
             for (int i = 0; i < lignes; i++)
-            {
                 for (int j = 0; j < colonnes; j++)
-                {
                     champs[i, j] = new Case();
-                }
-            }
+
             RencontreVoisin(lignes, colonnes); // à mettre dans case ?
             DisperserBombes(lignes, colonnes);
         }

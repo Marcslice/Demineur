@@ -265,17 +265,16 @@ namespace Demineur
 
             if (!m_Grille[cible[1], cible[0]].Ouvert) // N'ouvre pas case déjà ouverte.
             {
-                if (m_Grille.OuvrirCase(cible[1], cible[0]) == false && enMarche)//modifier pour permettre le game over
+                if (m_Grille.OuvrirCase(cible[1], cible[0]) == false && enMarche)//stop la partie si le joueur meurt
                 {
                     m_Grille.DecouvrirBombes();
                     mort = true;
                     enMarche = false;
                 }
-                else if (m_Grille.OuvrirCase(cible[1], cible[0]) == false && !enMarche) //Bouger pour l'OO dans grille
+                else if (m_Grille.OuvrirCase(cible[1], cible[0]) == false && !enMarche) //Neutralize la bonne si au premier tour
                     m_Grille.BombePremierTour(cible);
-                else
-                    if (m_Grille.CalculerNbCaseFermer() == m_Grille.NombreDeBombes)
-                        enMarche = false;
+                else if (m_Grille.CalculerNbCaseFermer() == m_Grille.NombreDeBombes)
+                    enMarche = false;
                 return true;
             }
             InterfaceUsager.MessageCaseDejaOuverte();

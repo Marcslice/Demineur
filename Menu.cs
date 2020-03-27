@@ -287,7 +287,7 @@ namespace Demineur
         public static short AfficherClassement(string p_Classement, short tri)//À trier
         {
             string triEnCours = TypeDeTri(tri);
-
+            ConsoleKey reponse;
             Console.Clear();
             Console.WriteLine("Type de Tri : " + triEnCours + "\n");
             Console.WriteLine("                                  Temps en Minutes par catégories                         \n");
@@ -296,20 +296,26 @@ namespace Demineur
             Console.WriteLine(p_Classement);
             Console.Write("\n F = Afficher Facile en ordre, N = Afficher Normal en ordre, D = Afficher Difficile en ordre");
             Console.Write("\n S = Afficher le classement sans tri");
-            Console.Write("\n Appuyez sur Entrer pour continuer...");
-            ConsoleKey reponse = Console.ReadKey(true).Key;
-            if (reponse == ConsoleKey.S)
-                return 0;
-            else if (reponse == ConsoleKey.F)
-                return 1;
-            else if (reponse == ConsoleKey.N)
-                return 2;
-            else if (reponse == ConsoleKey.D)
-                return 3;
-            else if (reponse == ConsoleKey.Enter)
-                return 4;
-            else
-                return tri;
+            Console.Write("\n Appuyez sur Entrer pour revenir au menu principal...");
+            do
+                reponse = Console.ReadKey(true).Key;
+            while (reponse != ConsoleKey.S && reponse != ConsoleKey.F && reponse != ConsoleKey.N && reponse != ConsoleKey.D && reponse != ConsoleKey.Enter);
+
+            switch (reponse)
+            {
+                case ConsoleKey.S: //sans tri
+                    return 0;
+                case ConsoleKey.F: // tri Facile
+                    return 1;
+                case ConsoleKey.N: // tri Normal
+                    return 2;
+                case ConsoleKey.D: // tri Difficile
+                    return 3;
+                case ConsoleKey.Enter: //Retour au menu
+                    return 4;
+                default:
+                    return 0;
+            }
         }
 
         static string TypeDeTri(short tri) {
