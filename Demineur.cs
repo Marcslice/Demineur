@@ -1,4 +1,5 @@
-﻿namespace Demineur
+﻿using System;
+namespace Demineur
 {
     /// <summary>
     /// Point d'entrée du programme.
@@ -30,7 +31,10 @@
                         }
                         break;
                     case 2:
-                        Menu.AfficherClassement(m_Classement.ToString(0),0);
+                        short visionnement = 0;
+                        do
+                            visionnement = (short)Menu.AfficherClassement(m_Classement.ToString(visionnement), visionnement);
+                        while (visionnement != 0);
                         break;
                     case 3:
                         break;

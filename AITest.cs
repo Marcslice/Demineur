@@ -58,7 +58,6 @@ namespace Demineur
                     meilleurCoup[1] = rand.Next() % nbColonnes;
                 } while (grille[meilleurCoup[0], meilleurCoup[1]] != 10);
             }
-
             return meilleurCoup;
         }
 
@@ -76,7 +75,10 @@ namespace Demineur
                         nbBombeTrouve++;
                 }
             }
-            return (((nbLignes * nbColonnes * ratioDiff) - (nbBombeTrouve * 100))/nbCaseFermer );
+            if (nbCaseFermer == 0)
+                return 420;
+            else
+                return (((nbLignes * nbColonnes * ratioDiff) - (nbBombeTrouve * 100))/nbCaseFermer );
         }
 
         void GenererGrille(string aConvertir)
