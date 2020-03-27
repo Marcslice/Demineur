@@ -34,7 +34,7 @@ namespace Demineur
                         short visionnement = 0;
                         do
                             visionnement = (short)Menu.AfficherClassement(m_Classement.ToString(visionnement), visionnement);
-                        while (visionnement != 0);
+                        while (visionnement != 4);
                         break;
                     case 3:
                         break;

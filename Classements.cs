@@ -112,81 +112,154 @@ namespace Demineur
         /// Retourne le classement sous forme de string
         /// </summary>
         /// <returns>string : classement</returns>
-        public string ToString(short trie)
+        public string ToString(short tri)
         {
             string classement = "";
-            switch(trie){
+            switch(tri){
                 case 0:
                     foreach (Joueur j in m_ListeJoueurs)
                         classement += j.FormatClassement() + "\n";
                     return classement;
                 case 1:
-                    foreach(Joueur j in triFacile())
-                        classement += j.FormatClassement() + "\n";
+                    for (short x = 0; x < 7; x += 3)
+                    {
+                        switch (x) {
+                            case 0:
+                                classement += "\n                                       Facile et Petite grille                        \n\n";
+                                break;
+                            case 3:
+                                classement += "\n                                       Facile et Moyenne grille                       \n\n";
+                                break;
+                            case 6:
+                                classement += "\n                                       Facile et Grande grille                        \n\n";
+                                break;
+                        }
+                        foreach (Joueur j in triFacile(x))
+                            classement += j.FormatClassement() + "\n";
+                        classement += "\n\n";
+                    }
                     return classement;
                 case 2:
-                    foreach (Joueur j in triNormal())
-                        classement += j.FormatClassement() + "\n";
+                    for (short x = 1; x < 8; x += 3)
+                    {
+                        switch (x)
+                        {
+                            case 1:
+                                classement += "\n                                       Normal et Petite grille                        \n\n";
+                                break;
+                            case 4:
+                                classement += "\n                                       Normal et Moyenne grille                       \n\n";
+                                break;
+                            case 7:
+                                classement += "\n                                       Normal et Grande grille                        \n\n";
+                                break;
+                        }
+                        foreach (Joueur j in triNormal(x))
+                            classement += j.FormatClassement() + "\n";
+                        classement += "\n\n";
+                    }
                     return classement;
                 case 3:
-                    foreach (Joueur j in triDifficile())
-                        classement += j.FormatClassement() + "\n";
+                    for (short x = 2; x < 9; x += 3)
+                    {
+                        switch (x)
+                        {
+                            case 2:
+                                classement += "\n                                       Difficile et Petite grille                        \n\n";
+                                break;
+                            case 5:
+                                classement += "\n                                       Difficile et Moyenne grille                       \n\n";
+                                break;
+                            case 8:
+                                classement += "\n                                       Difficile et Grande grille                        \n\n";
+                                break;
+                        }
+                        foreach (Joueur j in triDifficile(x))
+                            classement += j.FormatClassement() + "\n";
+                        classement += "\n\n";
+                    }
                     return classement;
             }
             return classement;
         }
 
-        List<Joueur> triFacile()
+        List<Joueur> triFacile(short indexFacile)
         {
             List<Joueur> listTrier = new List<Joueur>(m_ListeJoueurs);
-            short indexFacile = 0;
 
             for (int x = 0; x < listTrier.Count - 1; x++)
             {
                 for (int y = x + 1; y < listTrier.Count; y++)
                 {
-                    if (Double.Parse(listTrier[x].ObtenirScore()[indexFacile]) > Double.Parse(listTrier[y].ObtenirScore()[indexFacile]) || listTrier[x].ObtenirScore()[indexFacile] == "00.00")
+                    if (Double.Parse(listTrier[x].ObtenirScore()[indexFacile]) > Double.Parse(listTrier[y].ObtenirScore()[indexFacile]) && listTrier[y].ObtenirScore()[indexFacile] != "00.00")
                     {
-                        Console.ReadLine();
                         Joueur aBouger = listTrier[x];
                         listTrier[x] = listTrier[y];
-                        listTrier[y] = aBouger;
+                        listTrier[y] = aBouger;                   
                     }
+                    if (listTrier[y].ObtenirScore()[indexFacile] == "00.00")
+                        listTrier.RemoveAt(y);
+                    if (listTrier[x].ObtenirScore()[indexFacile] == "00.00")
+                        listTrier.RemoveAt(x);
+
+                    if(listTrier.Count == 1)
+                        if (listTrier[x].ObtenirScore()[indexFacile] == "00.00")
+                            listTrier.RemoveAt(x);
                 }
             }
             return listTrier;
         }
 
-        List<Joueur> triNormal()
+        List<Joueur> triNormal(short indexNormal)
         {
             List<Joueur> listTrier = new List<Joueur>(m_ListeJoueurs);
-            short indexNormal = 4;
+
             for (int x = 0; x < listTrier.Count - 1; x++)
             {
                 for (int y = x + 1; y < listTrier.Count; y++)
-                    if (Double.Parse(listTrier[x].ObtenirScore()[indexNormal]) > Double.Parse(listTrier[y].ObtenirScore()[indexNormal]) || listTrier[x].ObtenirScore()[indexNormal] == "00.00")
+                {
+                    if (Double.Parse(listTrier[x].ObtenirScore()[indexNormal]) > Double.Parse(listTrier[y].ObtenirScore()[indexNormal]) && listTrier[y].ObtenirScore()[indexNormal] != "00.00")
                     {
                         Joueur aBouger = listTrier[x];
                         listTrier[x] = listTrier[y];
                         listTrier[y] = aBouger;
                     }
+                    if (listTrier[y].ObtenirScore()[indexNormal] == "00.00")
+                        listTrier.RemoveAt(y);
+                    if (listTrier[x].ObtenirScore()[indexNormal] == "00.00")
+                        listTrier.RemoveAt(x);
+
+                    if (listTrier.Count == 1)
+                        if (listTrier[x].ObtenirScore()[indexNormal] == "00.00")
+                            listTrier.RemoveAt(x);
+                }
             }
             return listTrier;
         }
 
-        List<Joueur> triDifficile()
+        List<Joueur> triDifficile(short indexDifficile)
         {
             List<Joueur> listTrier = new List<Joueur>(m_ListeJoueurs);
-            short indexDifficile = 7;
+
             for (int x = 0; x < listTrier.Count - 1; x++)
             {
                 for (int y = x + 1; y < listTrier.Count; y++)
-                    if (Double.Parse(listTrier[x].ObtenirScore()[indexDifficile]) > Double.Parse(listTrier[y].ObtenirScore()[indexDifficile]) || listTrier[x].ObtenirScore()[indexDifficile] == "00.00")
+                {
+                    if (Double.Parse(listTrier[x].ObtenirScore()[indexDifficile]) > Double.Parse(listTrier[y].ObtenirScore()[indexDifficile]) && listTrier[y].ObtenirScore()[indexDifficile] != "00.00")
                     {
                         Joueur aBouger = listTrier[x];
                         listTrier[x] = listTrier[y];
                         listTrier[y] = aBouger;
                     }
+                    if (listTrier[y].ObtenirScore()[indexDifficile] == "00.00")
+                        listTrier.RemoveAt(y);
+                    if (listTrier[x].ObtenirScore()[indexDifficile] == "00.00")
+                        listTrier.RemoveAt(x);
+
+                    if (listTrier.Count == 1)
+                        if (listTrier[x].ObtenirScore()[indexDifficile] == "00.00")
+                            listTrier.RemoveAt(x);
+                }
             }
             return listTrier;
         }

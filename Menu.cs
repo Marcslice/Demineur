@@ -290,21 +290,26 @@ namespace Demineur
 
             Console.Clear();
             Console.WriteLine("Type de Tri : " + triEnCours + "\n");
-            Console.WriteLine("                              Temps en Minutes par catégories                         \n");
+            Console.WriteLine("                                  Temps en Minutes par catégories                         \n");
             Console.WriteLine("Joueur       |         Facile        |         Normal        |       Difficile       |\n");
             Console.WriteLine("             |   P       M       G   |   P       M       G   |   P       M       G   |\n");
             Console.WriteLine(p_Classement);
             Console.Write("\n F = Afficher Facile en ordre, N = Afficher Normal en ordre, D = Afficher Difficile en ordre");
-            Console.Write("\n Appuyez sur une touche pour continuer...");
+            Console.Write("\n S = Afficher le classement sans tri");
+            Console.Write("\n Appuyez sur Entrer pour continuer...");
             ConsoleKey reponse = Console.ReadKey(true).Key;
-            if (reponse == ConsoleKey.F)
+            if (reponse == ConsoleKey.S)
+                return 0;
+            else if (reponse == ConsoleKey.F)
                 return 1;
             else if (reponse == ConsoleKey.N)
                 return 2;
             else if (reponse == ConsoleKey.D)
                 return 3;
+            else if (reponse == ConsoleKey.Enter)
+                return 4;
             else
-                return 0;
+                return tri;
         }
 
         static string TypeDeTri(short tri) {
