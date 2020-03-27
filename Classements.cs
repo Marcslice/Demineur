@@ -31,15 +31,15 @@ namespace Demineur
         public void MettreAJourJoueur(string[] info)
         {
             Joueur aModifier;
+            int index = ((Int32.Parse(info[1]) - (Int32.Parse(info[1]) / 2 + 3))) * 3 + (Int32.Parse(info[2]) - 1);
             if ((aModifier = m_ListeJoueurs.Find(j => j.ObtenirNom() == info[0])) != null)
             {
-                int index = ((Int32.Parse(info[1]) - (Int32.Parse(info[1]) / 2 + 3))) * 3 + (Int32.Parse(info[2]) - 1);
                 if (aModifier.ModifierScore(index, info[3]))
                     InterfaceUsager.MessageNouveauRecord();
             }
             else
             {
-                m_ListeJoueurs.Add(new Joueur(info[0], Int32.Parse(info[1]) - 1 * 3 + Int32.Parse(info[2]) - 1, info[3]));
+                m_ListeJoueurs.Add(new Joueur(info[0], index, info[3]));
                 //add sort and filter
             }
         }
