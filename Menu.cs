@@ -284,15 +284,32 @@ namespace Demineur
         /// <summary>
         /// Dessine le classement.
         /// </summary>
-        static public void AfficherClassement(string p_Classement)//À trier
+        static public void AfficherClassement(string p_Classement, short tri)//À trier
         {
+
+            string triEnCours = TypeDeTri(tri);
+            
             Console.Clear();
+            Console.WriteLine("Type de Tri : " + triEnCours + "\n");
             Console.WriteLine("                              Temps en Minutes par catégories                         \n");
             Console.WriteLine("Joueur       |         Facile        |         Normal        |       Difficile       |\n");
             Console.WriteLine("             |   P       M       G   |   P       M       G   |   P       M       G   |\n");
             Console.WriteLine(p_Classement);
             Console.Write("\nAppuyez sur une touche pour revenir au menu principale.");
             Console.ReadKey();
+        }
+
+        static string TypeDeTri(short tri) {
+            switch (tri) {
+                case 1:
+                    return "Tri Meilleur score en mode Facile";
+                case 2:
+                    return "Tri Meilleur score en mode Normal";
+                case 3:
+                    return "Tri Meilleur score en mode Difficile";
+                default:
+                    return "Aucun tri";
+            }      
         }
 
         /// <summary>

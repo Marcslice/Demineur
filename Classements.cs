@@ -40,7 +40,6 @@ namespace Demineur
             else
             {
                 m_ListeJoueurs.Add(new Joueur(info[0], index, info[3]));
-                //add sort and filter
             }
         }
 
@@ -113,13 +112,30 @@ namespace Demineur
         /// Retourne le classement sous forme de string
         /// </summary>
         /// <returns>string : classement</returns>
-        public override string ToString()
+        public string ToString(short trie)
         {
             string classement = "";
-
-            foreach (Joueur j in m_ListeJoueurs)
-                classement += j.FormatClassement() + "\n";
+            if (trie == 0)
+            {
+                foreach (Joueur j in m_ListeJoueurs)
+                    classement += j.FormatClassement() + "\n";
+            }
             return classement;
+        }
+
+        string triFacile()
+        {
+            return "";
+        }
+
+        string triNormal()
+        {
+            return "";
+        }
+
+        string triDifficile()
+        {
+            return "";
         }
     }
 }

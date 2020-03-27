@@ -70,7 +70,7 @@ namespace Demineur
             {
                 for (int c = 0; c < nbColonnes; c++)
                 {
-                    if (grille[l, c] == 10 // doit etre fixed pour les divisions / 0
+                    if (grille[l, c] == 10) // doit etre fixed pour les divisions / 0
                        nbCaseFermer++;
                     if (grille[l, c] == 9)
                         nbBombeTrouve++;

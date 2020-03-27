@@ -23,12 +23,14 @@
                 {
                     case 1:
                         m_Partie = new Partie(Menu.DemanderNom(), Menu.OptionDePartie());
-                        if (m_Partie.CommencerPartie()) // Si partie retourne true, alors le joueur a batu son record.
+                        if (m_Partie.CommencerPartie())
+                        { // Si partie retourne true, alors le joueur a batu son record.
                             m_Classement.MettreAJourJoueur(m_Partie.InfoDepartie());
-                        m_Classement.SauvegardeDuClassement();
+                            m_Classement.SauvegardeDuClassement();
+                        }
                         break;
                     case 2:
-                        Menu.AfficherClassement(m_Classement.ToString());
+                        Menu.AfficherClassement(m_Classement.ToString(0),0);
                         break;
                     case 3:
                         break;
