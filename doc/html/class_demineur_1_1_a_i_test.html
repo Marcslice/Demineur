@@ -31,8 +31,9 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Demineur
+   &#160;<span id="projectnumber">2.0</span>
    </div>
-   <div id="projectbrief">Programmation 3 - Demineur</div>
+   <div id="projectbrief">Programmation 3 - TP1 - Demineur</div>
   </td>
    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -104,13 +105,15 @@ $(document).ready(function(){initNavTree('class_demineur_1_1_a_i_test.html','');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a2d979e612f4e5e0739ead123d4f4aaa1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_a_i_test.html#a2d979e612f4e5e0739ead123d4f4aaa1">AITest</a> (int lignes, int colonnes)</td></tr>
-<tr class="separator:a2d979e612f4e5e0739ead123d4f4aaa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22ec1ee4c725481db407768cfcf8b963"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_a_i_test.html#a22ec1ee4c725481db407768cfcf8b963">AITest</a> (int lignes, int colonnes, int difficulte)</td></tr>
+<tr class="separator:a22ec1ee4c725481db407768cfcf8b963"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa7971193a90b7e1413edc86f07e05379"><td class="memItemLeft" align="right" valign="top">int[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_a_i_test.html#aa7971193a90b7e1413edc86f07e05379">MeilleurCoup</a> (string grilleDeJeu)</td></tr>
 <tr class="separator:aa7971193a90b7e1413edc86f07e05379"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
+<tr class="memitem:a28f9f88ec84636b9a76064996acd07df"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_a_i_test.html#a28f9f88ec84636b9a76064996acd07df">CalculerChanceRand</a> ()</td></tr>
+<tr class="separator:a28f9f88ec84636b9a76064996acd07df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a712b9c8d13b5bc75a480b8cbbb8f142e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_a_i_test.html#a712b9c8d13b5bc75a480b8cbbb8f142e">GenererGrille</a> (string aConvertir)</td></tr>
 <tr class="separator:a712b9c8d13b5bc75a480b8cbbb8f142e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a77e8cac84d52f7dafa0f50abcf962ca1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_a_i_test.html#a77e8cac84d52f7dafa0f50abcf962ca1">ComparerGrille</a> ()</td></tr>
@@ -121,6 +124,10 @@ Private Member Functions</h2></td></tr>
 <tr class="separator:aebd24a53fa8df7a50380856644533220"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a27d9bdcb68f1106c722c80c65ce9f2e6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_a_i_test.html#a27d9bdcb68f1106c722c80c65ce9f2e6">CalculerDanger</a> (int coordL, int coordC)</td></tr>
 <tr class="separator:a27d9bdcb68f1106c722c80c65ce9f2e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbb9c35b345a86c886628cbe1694cab4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_a_i_test.html#adbb9c35b345a86c886628cbe1694cab4">VerifierScore</a> (int coordL, int coordC, ref int valeurMaxDanger)</td></tr>
+<tr class="separator:adbb9c35b345a86c886628cbe1694cab4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3eb22299463c5bbccf2ab4adfab8a31e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_a_i_test.html#a3eb22299463c5bbccf2ab4adfab8a31e">ComparerDeuxScore</a> (int score1, int score2)</td></tr>
+<tr class="separator:a3eb22299463c5bbccf2ab4adfab8a31e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a70a17417f7c00a3a8f46a9368027240b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_a_i_test.html#a70a17417f7c00a3a8f46a9368027240b">Meilleur</a> (int ligne, int colonne)</td></tr>
 <tr class="separator:a70a17417f7c00a3a8f46a9368027240b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -138,10 +145,14 @@ Private Attributes</h2></td></tr>
 <tr class="separator:aded96cf3af02f59b4862b965e04240ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a481cab8232ef558e1a3fd2e0c51fad2f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_a_i_test.html#a481cab8232ef558e1a3fd2e0c51fad2f">nouvelleBombe</a></td></tr>
 <tr class="separator:a481cab8232ef558e1a3fd2e0c51fad2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13dab476a4c443ac5532e59ed5b77029"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_a_i_test.html#a13dab476a4c443ac5532e59ed5b77029">score</a></td></tr>
+<tr class="separator:a13dab476a4c443ac5532e59ed5b77029"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c2e200a7c3397f75d74a7e89eafa096"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_a_i_test.html#a3c2e200a7c3397f75d74a7e89eafa096">ratioDiff</a></td></tr>
+<tr class="separator:a3c2e200a7c3397f75d74a7e89eafa096"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a2d979e612f4e5e0739ead123d4f4aaa1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2d979e612f4e5e0739ead123d4f4aaa1">&#9670;&nbsp;</a></span>AITest()</h2>
+<a id="a22ec1ee4c725481db407768cfcf8b963"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22ec1ee4c725481db407768cfcf8b963">&#9670;&nbsp;</a></span>AITest()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -159,7 +170,13 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>colonnes</em>&#160;</td>
+          <td class="paramname"><em>colonnes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>difficulte</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -202,6 +219,31 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a28f9f88ec84636b9a76064996acd07df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28f9f88ec84636b9a76064996acd07df">&#9670;&nbsp;</a></span>CalculerChanceRand()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Demineur.AITest.CalculerChanceRand </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a27d9bdcb68f1106c722c80c65ce9f2e6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a27d9bdcb68f1106c722c80c65ce9f2e6">&#9670;&nbsp;</a></span>CalculerDanger()</h2>
 
@@ -222,6 +264,42 @@ Private Attributes</h2></td></tr>
           <td></td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>coordC</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3eb22299463c5bbccf2ab4adfab8a31e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3eb22299463c5bbccf2ab4adfab8a31e">&#9670;&nbsp;</a></span>ComparerDeuxScore()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Demineur.AITest.ComparerDeuxScore </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>score1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>score2</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -345,6 +423,48 @@ Private Attributes</h2></td></tr>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adbb9c35b345a86c886628cbe1694cab4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adbb9c35b345a86c886628cbe1694cab4">&#9670;&nbsp;</a></span>VerifierScore()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Demineur.AITest.VerifierScore </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>coordL</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>coordC</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref int&#160;</td>
+          <td class="paramname"><em>valeurMaxDanger</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -509,6 +629,50 @@ Private Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">bool Demineur.AITest.nouvelleBombe</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3c2e200a7c3397f75d74a7e89eafa096"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c2e200a7c3397f75d74a7e89eafa096">&#9670;&nbsp;</a></span>ratioDiff</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Demineur.AITest.ratioDiff</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a13dab476a4c443ac5532e59ed5b77029"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13dab476a4c443ac5532e59ed5b77029">&#9670;&nbsp;</a></span>score</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Demineur.AITest.score</td>
         </tr>
       </table>
   </td>

@@ -1,0 +1,138 @@
+.TH "Demineur.Joueur" 3 "Sun Mar 29 2020" "Version 2.0" "Demineur" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Demineur.Joueur \- Représente un joueur\&. string : m_nom est le nom du joueur\&. string[] : m_Scores et le tableau des scores(en temps) du joueur\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBJoueur\fP (string p_Nom)"
+.br
+.ti -1c
+.RI "\fBJoueur\fP (string p_Nom, string[] p_Scores)"
+.br
+.ti -1c
+.RI "\fBJoueur\fP (string p_Nom, int index, string score)"
+.br
+.ti -1c
+.RI "string \fBObtenirNom\fP ()"
+.br
+.RI "Retourne le nom de joueur "
+.ti -1c
+.RI "string[] \fBObtenirScore\fP ()"
+.br
+.RI "Retourne le tableau des scores du joueur "
+.ti -1c
+.RI "bool \fBModifierScore\fP (int index, string temp)"
+.br
+.RI "Modifie le score du joueur si c'est premier essaie victorieux ou s'il a fait un meilleur score\&. "
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.RI "Est utilisé pour écrire dans le fichier texte\&. "
+.ti -1c
+.RI "string \fBFormatClassement\fP ()"
+.br
+.RI "Dessine avec espacement automatique le tableau des scores\&. "
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "string \fBm_Nom\fP"
+.br
+.ti -1c
+.RI "string[] \fBm_Scores\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Représente un joueur\&. string : m_nom est le nom du joueur\&. string[] : m_Scores et le tableau des scores(en temps) du joueur\&. 
+
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Demineur\&.Joueur\&.Joueur (string p_Nom)\fC [inline]\fP"
+
+.SS "Demineur\&.Joueur\&.Joueur (string p_Nom, string[] p_Scores)\fC [inline]\fP"
+
+.SS "Demineur\&.Joueur\&.Joueur (string p_Nom, int index, string score)\fC [inline]\fP"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "string Demineur\&.Joueur\&.FormatClassement ()\fC [inline]\fP"
+
+.PP
+Dessine avec espacement automatique le tableau des scores\&. 
+.PP
+\fBReturns\fP
+.RS 4
+string ligne des scores d'un joueur\&.
+.RE
+.PP
+
+.SS "bool Demineur\&.Joueur\&.ModifierScore (int index, string temp)\fC [inline]\fP"
+
+.PP
+Modifie le score du joueur si c'est premier essaie victorieux ou s'il a fait un meilleur score\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIindex\fP Index à modifier dans le tableau des scores\&.
+.br
+\fItemp\fP La valeur à remplacer\&.
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.SS "string Demineur\&.Joueur\&.ObtenirNom ()\fC [inline]\fP"
+
+.PP
+Retourne le nom de joueur 
+.PP
+\fBReturns\fP
+.RS 4
+string nom
+.RE
+.PP
+
+.SS "string [] Demineur\&.Joueur\&.ObtenirScore ()\fC [inline]\fP"
+
+.PP
+Retourne le tableau des scores du joueur 
+.PP
+\fBReturns\fP
+.RS 4
+string[9] scores
+.RE
+.PP
+
+.SS "override string Demineur\&.Joueur\&.ToString ()\fC [inline]\fP"
+
+.PP
+Est utilisé pour écrire dans le fichier texte\&. 
+.PP
+\fBReturns\fP
+.RS 4
+string nom_joueur et scores[]
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "string Demineur\&.Joueur\&.m_Nom\fC [private]\fP"
+
+.SS "string [] Demineur\&.Joueur\&.m_Scores\fC [private]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Demineur from the source code\&.

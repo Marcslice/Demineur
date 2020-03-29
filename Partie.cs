@@ -58,8 +58,9 @@ namespace Demineur
 
             //Partie Terminé
             minuterie.Stop();
-            temps = minuterie.Elapsed.TotalMinutes.ToString("F");
-
+            temps = TimeSpan.FromMinutes(minuterie.Elapsed.TotalMinutes).ToString(@"mm\.ss");
+            Console.WriteLine(temps);
+            Console.ReadLine();
             if (mort)
             {
                 InterfaceUsager.DessinerGrille(j.ObtenirNom(),m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection, m_Grille.NombreDeBombes, mort); //Dessine la grille on game over
@@ -112,7 +113,7 @@ namespace Demineur
                                 AllerBas();
                                 InterfaceUsager.MettreAJourSelection(positionActuelle);
                                 break;
-                            case 67: // c pour coordonnées manuelles                      
+                            case 67:                     
                                 ActiverModeSaisieManuelle();
                                 break;
                         }

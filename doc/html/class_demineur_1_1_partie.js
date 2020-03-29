@@ -10,7 +10,6 @@ var class_demineur_1_1_partie =
     [ "AppelerIA", "class_demineur_1_1_partie.html#a77412e4eb3254d23e20b4c9b5e3a9a35", null ],
     [ "CommencerPartie", "class_demineur_1_1_partie.html#a28d4a1078d70229f217d30bc33f9cfb9", null ],
     [ "EntreeManuelle", "class_demineur_1_1_partie.html#ac037320ce32788b410183ab89b773c4d", null ],
-    [ "EstCeTerminer", "class_demineur_1_1_partie.html#af42657aba4d670f43037c62e78570133", null ],
     [ "InfoDepartie", "class_demineur_1_1_partie.html#a6113f50e502874fd8cb71ad57035728c", null ],
     [ "Touches", "class_demineur_1_1_partie.html#ac34a2b34c23f2079c2c64867e3413864", null ],
     [ "VerificationDesMinMaxDeLentree", "class_demineur_1_1_partie.html#a9720449199d00b268c31e81c71a70009", null ],

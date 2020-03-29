@@ -49,10 +49,12 @@ namespace Demineur
             Console.SetCursorPosition(positionDuGuide, 7);
             Console.Write("Appuyez sur c pour entrer des coordonnées au clavier.");
             Console.SetCursorPosition(positionDuGuide, 9);
-            Console.Write("Appuyez sur a(en mode fleche) ou a+Enter(en mode manuel) pour appeler l'intelligence artificiel.");
+            Console.Write("Appuyez sur a(en mode fleche) ou a+Enter(en mode manuel)");
             Console.SetCursorPosition(positionDuGuide, 10);
-            Console.Write("*** Ne fonctionne que si la partie a été créée avec un IA.");
+            Console.Write("pour appeler l'intelligence artificiel.");
             Console.SetCursorPosition(positionDuGuide, 12);
+            Console.Write("*** Ne fonctionne que si la partie a été créé avec un IA.");
+            Console.SetCursorPosition(positionDuGuide, 14);
             Console.Write("Appuyez sur Entrer pour confirmer votre sélection.");
         }
 
@@ -61,7 +63,7 @@ namespace Demineur
         /// </summary>
         public static void DessinerModeDeSaisie()
         {
-            Console.SetCursorPosition(positionDuGuide, 15);
+            Console.SetCursorPosition(positionDuGuide, 16);
             if (Saisie)
                 Console.Write("Mode de jeu actif : Contrôle avec flèches");
             else

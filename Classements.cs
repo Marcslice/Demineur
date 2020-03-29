@@ -186,6 +186,12 @@ namespace Demineur
             return classement;
         }
 
+        /// <summary>
+        /// Tri le tableau de joueur selon le tri demandé et le retourne
+        /// au toString() pour créer ce qui sera affiché à l'écran.
+        /// </summary>
+        /// <param name="indexFacile">0, 3, 6 sont les scores en mode facile dans le tableau de joueur.</param>
+        /// <returns>List trié de joueur.</returns>
         List<Joueur> triFacile(short indexFacile)
         {
             List<Joueur> listTrier = new List<Joueur>(m_ListeJoueurs);
@@ -216,6 +222,12 @@ namespace Demineur
             return listTrier;
         }
 
+        /// <summary>
+        /// Tri le tableau de joueur selon le tri demandé et le retourne
+        /// au toString() pour créer ce qui sera affiché à l'écran.
+        /// </summary>
+        /// <param name="indexFacile">1, 4, 7 sont les scores en mode Normal dans le tableau de joueur.</param>
+        /// <returns>List trié de joueur.</returns>
         List<Joueur> triNormal(short indexNormal)
         {
             List<Joueur> listTrier = new List<Joueur>(m_ListeJoueurs);
@@ -246,6 +258,12 @@ namespace Demineur
             return listTrier;
         }
 
+        /// <summary>
+        /// Tri le tableau de joueur selon le tri demandé et le retourne
+        /// au toString() pour créer ce qui sera affiché à l'écran.
+        /// </summary>
+        /// <param name="indexFacile">2, 5, 8 sont les scores en mode Difficile dans le tableau de joueur.</param>
+        /// <returns>List trié de joueur.</returns>
         List<Joueur> triDifficile(short indexDifficile)
         {
             List<Joueur> listTrier = new List<Joueur>(m_ListeJoueurs);

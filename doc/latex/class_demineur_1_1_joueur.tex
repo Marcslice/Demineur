@@ -1,0 +1,149 @@
+\hypertarget{class_demineur_1_1_joueur}{}\doxysection{Demineur.\+Joueur Class Reference}
+\label{class_demineur_1_1_joueur}\index{Demineur.Joueur@{Demineur.Joueur}}
+
+
+Représente un joueur. string \+: m\+\_\+nom est le nom du joueur. string\mbox{[}\mbox{]} \+: m\+\_\+\+Scores et le tableau des scores(en temps) du joueur.  
+
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_demineur_1_1_joueur_a08f72848aa1b76594839606d34b91f9c}{Joueur}} (string p\+\_\+\+Nom)
+\item 
+\mbox{\hyperlink{class_demineur_1_1_joueur_a5f659169afa9e9a598811e09052214e7}{Joueur}} (string p\+\_\+\+Nom, string\mbox{[}$\,$\mbox{]} p\+\_\+\+Scores)
+\item 
+\mbox{\hyperlink{class_demineur_1_1_joueur_a9254fd493903d1f0b0f26b411d0228aa}{Joueur}} (string p\+\_\+\+Nom, int index, string score)
+\item 
+string \mbox{\hyperlink{class_demineur_1_1_joueur_addb73c6aa0aa914535fe796383303dd3}{Obtenir\+Nom}} ()
+\begin{DoxyCompactList}\small\item\em Retourne le nom de joueur \end{DoxyCompactList}\item 
+string\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_demineur_1_1_joueur_ae13efc9f3cc1f82f22628c7371469c51}{Obtenir\+Score}} ()
+\begin{DoxyCompactList}\small\item\em Retourne le tableau des scores du joueur \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_demineur_1_1_joueur_a995f5b7c64c345cf6c2fb0a62db151a9}{Modifier\+Score}} (int index, string temp)
+\begin{DoxyCompactList}\small\item\em Modifie le score du joueur si c\textquotesingle{}est premier essaie victorieux ou s\textquotesingle{}il a fait un meilleur score. \end{DoxyCompactList}\item 
+override string \mbox{\hyperlink{class_demineur_1_1_joueur_ab4f32d4cbd90297a5d6aabc64d681dc0}{To\+String}} ()
+\begin{DoxyCompactList}\small\item\em Est utilisé pour écrire dans le fichier texte. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_demineur_1_1_joueur_abfd3970656430e9f8573158baa3b2ed5}{Format\+Classement}} ()
+\begin{DoxyCompactList}\small\item\em Dessine avec espacement automatique le tableau des scores. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{class_demineur_1_1_joueur_a52ea3e55fcb1b31c8babd0c1d73e9934}{m\+\_\+\+Nom}}
+\item 
+string\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_demineur_1_1_joueur_a4060f58dfd90af874c6388b5a495b6b5}{m\+\_\+\+Scores}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Représente un joueur. string \+: m\+\_\+nom est le nom du joueur. string\mbox{[}\mbox{]} \+: m\+\_\+\+Scores et le tableau des scores(en temps) du joueur. 
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_demineur_1_1_joueur_a08f72848aa1b76594839606d34b91f9c}\label{class_demineur_1_1_joueur_a08f72848aa1b76594839606d34b91f9c}} 
+\index{Demineur.Joueur@{Demineur.Joueur}!Joueur@{Joueur}}
+\index{Joueur@{Joueur}!Demineur.Joueur@{Demineur.Joueur}}
+\doxysubsubsection{\texorpdfstring{Joueur()}{Joueur()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Demineur.\+Joueur.\+Joueur (\begin{DoxyParamCaption}\item[{string}]{p\+\_\+\+Nom }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_demineur_1_1_joueur_a5f659169afa9e9a598811e09052214e7}\label{class_demineur_1_1_joueur_a5f659169afa9e9a598811e09052214e7}} 
+\index{Demineur.Joueur@{Demineur.Joueur}!Joueur@{Joueur}}
+\index{Joueur@{Joueur}!Demineur.Joueur@{Demineur.Joueur}}
+\doxysubsubsection{\texorpdfstring{Joueur()}{Joueur()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Demineur.\+Joueur.\+Joueur (\begin{DoxyParamCaption}\item[{string}]{p\+\_\+\+Nom,  }\item[{string\mbox{[}$\,$\mbox{]}}]{p\+\_\+\+Scores }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_demineur_1_1_joueur_a9254fd493903d1f0b0f26b411d0228aa}\label{class_demineur_1_1_joueur_a9254fd493903d1f0b0f26b411d0228aa}} 
+\index{Demineur.Joueur@{Demineur.Joueur}!Joueur@{Joueur}}
+\index{Joueur@{Joueur}!Demineur.Joueur@{Demineur.Joueur}}
+\doxysubsubsection{\texorpdfstring{Joueur()}{Joueur()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Demineur.\+Joueur.\+Joueur (\begin{DoxyParamCaption}\item[{string}]{p\+\_\+\+Nom,  }\item[{int}]{index,  }\item[{string}]{score }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_demineur_1_1_joueur_abfd3970656430e9f8573158baa3b2ed5}\label{class_demineur_1_1_joueur_abfd3970656430e9f8573158baa3b2ed5}} 
+\index{Demineur.Joueur@{Demineur.Joueur}!FormatClassement@{FormatClassement}}
+\index{FormatClassement@{FormatClassement}!Demineur.Joueur@{Demineur.Joueur}}
+\doxysubsubsection{\texorpdfstring{FormatClassement()}{FormatClassement()}}
+{\footnotesize\ttfamily string Demineur.\+Joueur.\+Format\+Classement (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Dessine avec espacement automatique le tableau des scores. 
+
+\begin{DoxyReturn}{Returns}
+string ligne des scores d\textquotesingle{}un joueur.
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_demineur_1_1_joueur_a995f5b7c64c345cf6c2fb0a62db151a9}\label{class_demineur_1_1_joueur_a995f5b7c64c345cf6c2fb0a62db151a9}} 
+\index{Demineur.Joueur@{Demineur.Joueur}!ModifierScore@{ModifierScore}}
+\index{ModifierScore@{ModifierScore}!Demineur.Joueur@{Demineur.Joueur}}
+\doxysubsubsection{\texorpdfstring{ModifierScore()}{ModifierScore()}}
+{\footnotesize\ttfamily bool Demineur.\+Joueur.\+Modifier\+Score (\begin{DoxyParamCaption}\item[{int}]{index,  }\item[{string}]{temp }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Modifie le score du joueur si c\textquotesingle{}est premier essaie victorieux ou s\textquotesingle{}il a fait un meilleur score. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & Index à modifier dans le tableau des scores.\\
+\hline
+{\em temp} & La valeur à remplacer.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_demineur_1_1_joueur_addb73c6aa0aa914535fe796383303dd3}\label{class_demineur_1_1_joueur_addb73c6aa0aa914535fe796383303dd3}} 
+\index{Demineur.Joueur@{Demineur.Joueur}!ObtenirNom@{ObtenirNom}}
+\index{ObtenirNom@{ObtenirNom}!Demineur.Joueur@{Demineur.Joueur}}
+\doxysubsubsection{\texorpdfstring{ObtenirNom()}{ObtenirNom()}}
+{\footnotesize\ttfamily string Demineur.\+Joueur.\+Obtenir\+Nom (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retourne le nom de joueur 
+
+\begin{DoxyReturn}{Returns}
+string nom
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_demineur_1_1_joueur_ae13efc9f3cc1f82f22628c7371469c51}\label{class_demineur_1_1_joueur_ae13efc9f3cc1f82f22628c7371469c51}} 
+\index{Demineur.Joueur@{Demineur.Joueur}!ObtenirScore@{ObtenirScore}}
+\index{ObtenirScore@{ObtenirScore}!Demineur.Joueur@{Demineur.Joueur}}
+\doxysubsubsection{\texorpdfstring{ObtenirScore()}{ObtenirScore()}}
+{\footnotesize\ttfamily string \mbox{[}$\,$\mbox{]} Demineur.\+Joueur.\+Obtenir\+Score (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retourne le tableau des scores du joueur 
+
+\begin{DoxyReturn}{Returns}
+string\mbox{[}9\mbox{]} scores
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_demineur_1_1_joueur_ab4f32d4cbd90297a5d6aabc64d681dc0}\label{class_demineur_1_1_joueur_ab4f32d4cbd90297a5d6aabc64d681dc0}} 
+\index{Demineur.Joueur@{Demineur.Joueur}!ToString@{ToString}}
+\index{ToString@{ToString}!Demineur.Joueur@{Demineur.Joueur}}
+\doxysubsubsection{\texorpdfstring{ToString()}{ToString()}}
+{\footnotesize\ttfamily override string Demineur.\+Joueur.\+To\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Est utilisé pour écrire dans le fichier texte. 
+
+\begin{DoxyReturn}{Returns}
+string nom\+\_\+joueur et scores\mbox{[}\mbox{]}
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_demineur_1_1_joueur_a52ea3e55fcb1b31c8babd0c1d73e9934}\label{class_demineur_1_1_joueur_a52ea3e55fcb1b31c8babd0c1d73e9934}} 
+\index{Demineur.Joueur@{Demineur.Joueur}!m\_Nom@{m\_Nom}}
+\index{m\_Nom@{m\_Nom}!Demineur.Joueur@{Demineur.Joueur}}
+\doxysubsubsection{\texorpdfstring{m\_Nom}{m\_Nom}}
+{\footnotesize\ttfamily string Demineur.\+Joueur.\+m\+\_\+\+Nom\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_demineur_1_1_joueur_a4060f58dfd90af874c6388b5a495b6b5}\label{class_demineur_1_1_joueur_a4060f58dfd90af874c6388b5a495b6b5}} 
+\index{Demineur.Joueur@{Demineur.Joueur}!m\_Scores@{m\_Scores}}
+\index{m\_Scores@{m\_Scores}!Demineur.Joueur@{Demineur.Joueur}}
+\doxysubsubsection{\texorpdfstring{m\_Scores}{m\_Scores}}
+{\footnotesize\ttfamily string \mbox{[}$\,$\mbox{]} Demineur.\+Joueur.\+m\+\_\+\+Scores\hspace{0.3cm}{\ttfamily [private]}}
+

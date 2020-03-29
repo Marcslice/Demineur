@@ -1,0 +1,167 @@
+.TH "Demineur.Classements" 3 "Sun Mar 29 2020" "Version 2.0" "Demineur" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Demineur.Classements \- Classement est une extension de démineur\&. Elle permet de créer et lire le fichier texte contenant les données des joueurs\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBClassements\fP ()"
+.br
+.ti -1c
+.RI "void \fBMettreAJourJoueur\fP (string[] info)"
+.br
+.RI "Est appelé si le joueur bat son record\&. index est le calcule permettant de passer d'un tableau 2D en tableau 1D, le calcule permet de modifier le bon score dans le tableau de score du joueur\&. "
+.ti -1c
+.RI "void \fBFichierClassement\fP ()"
+.br
+.RI "Est appelé lors de la construction de Classement\&. Créer la liste de joueur si le fichier text existe\&. Créer un fichier text vide si il n'existe pas\&. "
+.ti -1c
+.RI "void \fBSauvegardeDuClassement\fP ()"
+.br
+.RI "Est appelé après la partie\&. Permet de sauvegarder automatiquement les informations des joueurs du classement\&. "
+.ti -1c
+.RI "string \fBToString\fP (short tri)"
+.br
+.RI "Retourne le classement sous forme de string "
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBDeStringAJoueur\fP (string joueurStats)"
+.br
+.RI "Créer les joueurs à partir du fichier texte\&. "
+.ti -1c
+.RI "List< \fBJoueur\fP > \fBtriFacile\fP (short indexFacile)"
+.br
+.RI "Tri le tableau de joueur selon le tri demandé et le retourne au toString() pour créer ce qui sera affiché à l'écran\&. "
+.ti -1c
+.RI "List< \fBJoueur\fP > \fBtriNormal\fP (short indexNormal)"
+.br
+.RI "Tri le tableau de joueur selon le tri demandé et le retourne au toString() pour créer ce qui sera affiché à l'écran\&. "
+.ti -1c
+.RI "List< \fBJoueur\fP > \fBtriDifficile\fP (short indexDifficile)"
+.br
+.RI "Tri le tableau de joueur selon le tri demandé et le retourne au toString() pour créer ce qui sera affiché à l'écran\&. "
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "List< \fBJoueur\fP > \fBm_ListeJoueurs\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Classement est une extension de démineur\&. Elle permet de créer et lire le fichier texte contenant les données des joueurs\&. 
+
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Demineur\&.Classements\&.Classements ()\fC [inline]\fP"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void Demineur\&.Classements\&.DeStringAJoueur (string joueurStats)\fC [inline]\fP, \fC [private]\fP"
+
+.PP
+Créer les joueurs à partir du fichier texte\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIjoueurStats\fP Ligne lu par le programme\&.
+.RE
+.PP
+
+.SS "void Demineur\&.Classements\&.FichierClassement ()\fC [inline]\fP"
+
+.PP
+Est appelé lors de la construction de Classement\&. Créer la liste de joueur si le fichier text existe\&. Créer un fichier text vide si il n'existe pas\&. 
+.SS "void Demineur\&.Classements\&.MettreAJourJoueur (string[] info)\fC [inline]\fP"
+
+.PP
+Est appelé si le joueur bat son record\&. index est le calcule permettant de passer d'un tableau 2D en tableau 1D, le calcule permet de modifier le bon score dans le tableau de score du joueur\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIinfo\fP info[] {nom, grosseur, difficulté, tempsEnMinutes}
+.RE
+.PP
+
+.SS "void Demineur\&.Classements\&.SauvegardeDuClassement ()\fC [inline]\fP"
+
+.PP
+Est appelé après la partie\&. Permet de sauvegarder automatiquement les informations des joueurs du classement\&. 
+.SS "string Demineur\&.Classements\&.ToString (short tri)\fC [inline]\fP"
+
+.PP
+Retourne le classement sous forme de string 
+.PP
+\fBReturns\fP
+.RS 4
+string : classement
+.RE
+.PP
+
+.SS "List<\fBJoueur\fP> Demineur\&.Classements\&.triDifficile (short indexDifficile)\fC [inline]\fP, \fC [private]\fP"
+
+.PP
+Tri le tableau de joueur selon le tri demandé et le retourne au toString() pour créer ce qui sera affiché à l'écran\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIindexFacile\fP 2, 5, 8 sont les scores en mode Difficile dans le tableau de joueur\&.
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+List trié de joueur\&.
+.RE
+.PP
+
+.SS "List<\fBJoueur\fP> Demineur\&.Classements\&.triFacile (short indexFacile)\fC [inline]\fP, \fC [private]\fP"
+
+.PP
+Tri le tableau de joueur selon le tri demandé et le retourne au toString() pour créer ce qui sera affiché à l'écran\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIindexFacile\fP 0, 3, 6 sont les scores en mode facile dans le tableau de joueur\&.
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+List trié de joueur\&.
+.RE
+.PP
+
+.SS "List<\fBJoueur\fP> Demineur\&.Classements\&.triNormal (short indexNormal)\fC [inline]\fP, \fC [private]\fP"
+
+.PP
+Tri le tableau de joueur selon le tri demandé et le retourne au toString() pour créer ce qui sera affiché à l'écran\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIindexFacile\fP 1, 4, 7 sont les scores en mode Normal dans le tableau de joueur\&.
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+List trié de joueur\&.
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "List<\fBJoueur\fP> Demineur\&.Classements\&.m_ListeJoueurs\fC [private]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Demineur from the source code\&.

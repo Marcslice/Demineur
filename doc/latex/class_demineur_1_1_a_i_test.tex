@@ -1,0 +1,172 @@
+\hypertarget{class_demineur_1_1_a_i_test}{}\doxysection{Demineur.\+A\+I\+Test Class Reference}
+\label{class_demineur_1_1_a_i_test}\index{Demineur.AITest@{Demineur.AITest}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_demineur_1_1_a_i_test_a22ec1ee4c725481db407768cfcf8b963}{A\+I\+Test}} (int lignes, int colonnes, int difficulte)
+\item 
+int\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_demineur_1_1_a_i_test_aa7971193a90b7e1413edc86f07e05379}{Meilleur\+Coup}} (string grille\+De\+Jeu)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_demineur_1_1_a_i_test_a28f9f88ec84636b9a76064996acd07df}{Calculer\+Chance\+Rand}} ()
+\item 
+void \mbox{\hyperlink{class_demineur_1_1_a_i_test_a712b9c8d13b5bc75a480b8cbbb8f142e}{Generer\+Grille}} (string a\+Convertir)
+\item 
+void \mbox{\hyperlink{class_demineur_1_1_a_i_test_a77e8cac84d52f7dafa0f50abcf962ca1}{Comparer\+Grille}} ()
+\item 
+void \mbox{\hyperlink{class_demineur_1_1_a_i_test_af5e3905344dd2ac230d1cded3b67d87f}{Analyser\+Grille}} ()
+\item 
+void \mbox{\hyperlink{class_demineur_1_1_a_i_test_aebd24a53fa8df7a50380856644533220}{Voisin\+Ouvert}} (int coordL, int coordC)
+\item 
+bool \mbox{\hyperlink{class_demineur_1_1_a_i_test_a27d9bdcb68f1106c722c80c65ce9f2e6}{Calculer\+Danger}} (int coordL, int coordC)
+\item 
+void \mbox{\hyperlink{class_demineur_1_1_a_i_test_adbb9c35b345a86c886628cbe1694cab4}{Verifier\+Score}} (int coordL, int coordC, ref int valeur\+Max\+Danger)
+\item 
+bool \mbox{\hyperlink{class_demineur_1_1_a_i_test_a3eb22299463c5bbccf2ab4adfab8a31e}{Comparer\+Deux\+Score}} (int score1, int score2)
+\item 
+void \mbox{\hyperlink{class_demineur_1_1_a_i_test_a70a17417f7c00a3a8f46a9368027240b}{Meilleur}} (int ligne, int colonne)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_demineur_1_1_a_i_test_a281f4d434b66c4527de57ba47384e94e}{nb\+Lignes}}
+\item 
+int \mbox{\hyperlink{class_demineur_1_1_a_i_test_a7ddc3b241b8584406003263362425f7a}{nb\+Colonnes}}
+\item 
+int\mbox{[},\mbox{]} \mbox{\hyperlink{class_demineur_1_1_a_i_test_a4a7f46daa1e8fe13a88c18f798476539}{grille}}
+\item 
+string\mbox{[},\mbox{]} \mbox{\hyperlink{class_demineur_1_1_a_i_test_ab0f952ff045c75699842548cdfb165d3}{grille\+De\+Bombe}}
+\item 
+int\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_demineur_1_1_a_i_test_aded96cf3af02f59b4862b965e04240ff}{meilleur\+Coup}}
+\item 
+bool \mbox{\hyperlink{class_demineur_1_1_a_i_test_a481cab8232ef558e1a3fd2e0c51fad2f}{nouvelle\+Bombe}}
+\item 
+int \mbox{\hyperlink{class_demineur_1_1_a_i_test_a13dab476a4c443ac5532e59ed5b77029}{score}}
+\item 
+int \mbox{\hyperlink{class_demineur_1_1_a_i_test_a3c2e200a7c3397f75d74a7e89eafa096}{ratio\+Diff}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_demineur_1_1_a_i_test_a22ec1ee4c725481db407768cfcf8b963}\label{class_demineur_1_1_a_i_test_a22ec1ee4c725481db407768cfcf8b963}} 
+\index{Demineur.AITest@{Demineur.AITest}!AITest@{AITest}}
+\index{AITest@{AITest}!Demineur.AITest@{Demineur.AITest}}
+\doxysubsubsection{\texorpdfstring{AITest()}{AITest()}}
+{\footnotesize\ttfamily Demineur.\+A\+I\+Test.\+A\+I\+Test (\begin{DoxyParamCaption}\item[{int}]{lignes,  }\item[{int}]{colonnes,  }\item[{int}]{difficulte }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_demineur_1_1_a_i_test_af5e3905344dd2ac230d1cded3b67d87f}\label{class_demineur_1_1_a_i_test_af5e3905344dd2ac230d1cded3b67d87f}} 
+\index{Demineur.AITest@{Demineur.AITest}!AnalyserGrille@{AnalyserGrille}}
+\index{AnalyserGrille@{AnalyserGrille}!Demineur.AITest@{Demineur.AITest}}
+\doxysubsubsection{\texorpdfstring{AnalyserGrille()}{AnalyserGrille()}}
+{\footnotesize\ttfamily void Demineur.\+A\+I\+Test.\+Analyser\+Grille (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_demineur_1_1_a_i_test_a28f9f88ec84636b9a76064996acd07df}\label{class_demineur_1_1_a_i_test_a28f9f88ec84636b9a76064996acd07df}} 
+\index{Demineur.AITest@{Demineur.AITest}!CalculerChanceRand@{CalculerChanceRand}}
+\index{CalculerChanceRand@{CalculerChanceRand}!Demineur.AITest@{Demineur.AITest}}
+\doxysubsubsection{\texorpdfstring{CalculerChanceRand()}{CalculerChanceRand()}}
+{\footnotesize\ttfamily int Demineur.\+A\+I\+Test.\+Calculer\+Chance\+Rand (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_demineur_1_1_a_i_test_a27d9bdcb68f1106c722c80c65ce9f2e6}\label{class_demineur_1_1_a_i_test_a27d9bdcb68f1106c722c80c65ce9f2e6}} 
+\index{Demineur.AITest@{Demineur.AITest}!CalculerDanger@{CalculerDanger}}
+\index{CalculerDanger@{CalculerDanger}!Demineur.AITest@{Demineur.AITest}}
+\doxysubsubsection{\texorpdfstring{CalculerDanger()}{CalculerDanger()}}
+{\footnotesize\ttfamily bool Demineur.\+A\+I\+Test.\+Calculer\+Danger (\begin{DoxyParamCaption}\item[{int}]{coordL,  }\item[{int}]{coordC }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_demineur_1_1_a_i_test_a3eb22299463c5bbccf2ab4adfab8a31e}\label{class_demineur_1_1_a_i_test_a3eb22299463c5bbccf2ab4adfab8a31e}} 
+\index{Demineur.AITest@{Demineur.AITest}!ComparerDeuxScore@{ComparerDeuxScore}}
+\index{ComparerDeuxScore@{ComparerDeuxScore}!Demineur.AITest@{Demineur.AITest}}
+\doxysubsubsection{\texorpdfstring{ComparerDeuxScore()}{ComparerDeuxScore()}}
+{\footnotesize\ttfamily bool Demineur.\+A\+I\+Test.\+Comparer\+Deux\+Score (\begin{DoxyParamCaption}\item[{int}]{score1,  }\item[{int}]{score2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_demineur_1_1_a_i_test_a77e8cac84d52f7dafa0f50abcf962ca1}\label{class_demineur_1_1_a_i_test_a77e8cac84d52f7dafa0f50abcf962ca1}} 
+\index{Demineur.AITest@{Demineur.AITest}!ComparerGrille@{ComparerGrille}}
+\index{ComparerGrille@{ComparerGrille}!Demineur.AITest@{Demineur.AITest}}
+\doxysubsubsection{\texorpdfstring{ComparerGrille()}{ComparerGrille()}}
+{\footnotesize\ttfamily void Demineur.\+A\+I\+Test.\+Comparer\+Grille (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_demineur_1_1_a_i_test_a712b9c8d13b5bc75a480b8cbbb8f142e}\label{class_demineur_1_1_a_i_test_a712b9c8d13b5bc75a480b8cbbb8f142e}} 
+\index{Demineur.AITest@{Demineur.AITest}!GenererGrille@{GenererGrille}}
+\index{GenererGrille@{GenererGrille}!Demineur.AITest@{Demineur.AITest}}
+\doxysubsubsection{\texorpdfstring{GenererGrille()}{GenererGrille()}}
+{\footnotesize\ttfamily void Demineur.\+A\+I\+Test.\+Generer\+Grille (\begin{DoxyParamCaption}\item[{string}]{a\+Convertir }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_demineur_1_1_a_i_test_a70a17417f7c00a3a8f46a9368027240b}\label{class_demineur_1_1_a_i_test_a70a17417f7c00a3a8f46a9368027240b}} 
+\index{Demineur.AITest@{Demineur.AITest}!Meilleur@{Meilleur}}
+\index{Meilleur@{Meilleur}!Demineur.AITest@{Demineur.AITest}}
+\doxysubsubsection{\texorpdfstring{Meilleur()}{Meilleur()}}
+{\footnotesize\ttfamily void Demineur.\+A\+I\+Test.\+Meilleur (\begin{DoxyParamCaption}\item[{int}]{ligne,  }\item[{int}]{colonne }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_demineur_1_1_a_i_test_aa7971193a90b7e1413edc86f07e05379}\label{class_demineur_1_1_a_i_test_aa7971193a90b7e1413edc86f07e05379}} 
+\index{Demineur.AITest@{Demineur.AITest}!MeilleurCoup@{MeilleurCoup}}
+\index{MeilleurCoup@{MeilleurCoup}!Demineur.AITest@{Demineur.AITest}}
+\doxysubsubsection{\texorpdfstring{MeilleurCoup()}{MeilleurCoup()}}
+{\footnotesize\ttfamily int \mbox{[}$\,$\mbox{]} Demineur.\+A\+I\+Test.\+Meilleur\+Coup (\begin{DoxyParamCaption}\item[{string}]{grille\+De\+Jeu }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_demineur_1_1_a_i_test_adbb9c35b345a86c886628cbe1694cab4}\label{class_demineur_1_1_a_i_test_adbb9c35b345a86c886628cbe1694cab4}} 
+\index{Demineur.AITest@{Demineur.AITest}!VerifierScore@{VerifierScore}}
+\index{VerifierScore@{VerifierScore}!Demineur.AITest@{Demineur.AITest}}
+\doxysubsubsection{\texorpdfstring{VerifierScore()}{VerifierScore()}}
+{\footnotesize\ttfamily void Demineur.\+A\+I\+Test.\+Verifier\+Score (\begin{DoxyParamCaption}\item[{int}]{coordL,  }\item[{int}]{coordC,  }\item[{ref int}]{valeur\+Max\+Danger }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_demineur_1_1_a_i_test_aebd24a53fa8df7a50380856644533220}\label{class_demineur_1_1_a_i_test_aebd24a53fa8df7a50380856644533220}} 
+\index{Demineur.AITest@{Demineur.AITest}!VoisinOuvert@{VoisinOuvert}}
+\index{VoisinOuvert@{VoisinOuvert}!Demineur.AITest@{Demineur.AITest}}
+\doxysubsubsection{\texorpdfstring{VoisinOuvert()}{VoisinOuvert()}}
+{\footnotesize\ttfamily void Demineur.\+A\+I\+Test.\+Voisin\+Ouvert (\begin{DoxyParamCaption}\item[{int}]{coordL,  }\item[{int}]{coordC }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_demineur_1_1_a_i_test_a4a7f46daa1e8fe13a88c18f798476539}\label{class_demineur_1_1_a_i_test_a4a7f46daa1e8fe13a88c18f798476539}} 
+\index{Demineur.AITest@{Demineur.AITest}!grille@{grille}}
+\index{grille@{grille}!Demineur.AITest@{Demineur.AITest}}
+\doxysubsubsection{\texorpdfstring{grille}{grille}}
+{\footnotesize\ttfamily int \mbox{[},\mbox{]} Demineur.\+A\+I\+Test.\+grille\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_demineur_1_1_a_i_test_ab0f952ff045c75699842548cdfb165d3}\label{class_demineur_1_1_a_i_test_ab0f952ff045c75699842548cdfb165d3}} 
+\index{Demineur.AITest@{Demineur.AITest}!grilleDeBombe@{grilleDeBombe}}
+\index{grilleDeBombe@{grilleDeBombe}!Demineur.AITest@{Demineur.AITest}}
+\doxysubsubsection{\texorpdfstring{grilleDeBombe}{grilleDeBombe}}
+{\footnotesize\ttfamily string \mbox{[},\mbox{]} Demineur.\+A\+I\+Test.\+grille\+De\+Bombe\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_demineur_1_1_a_i_test_aded96cf3af02f59b4862b965e04240ff}\label{class_demineur_1_1_a_i_test_aded96cf3af02f59b4862b965e04240ff}} 
+\index{Demineur.AITest@{Demineur.AITest}!meilleurCoup@{meilleurCoup}}
+\index{meilleurCoup@{meilleurCoup}!Demineur.AITest@{Demineur.AITest}}
+\doxysubsubsection{\texorpdfstring{meilleurCoup}{meilleurCoup}}
+{\footnotesize\ttfamily int \mbox{[}$\,$\mbox{]} Demineur.\+A\+I\+Test.\+meilleur\+Coup\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_demineur_1_1_a_i_test_a7ddc3b241b8584406003263362425f7a}\label{class_demineur_1_1_a_i_test_a7ddc3b241b8584406003263362425f7a}} 
+\index{Demineur.AITest@{Demineur.AITest}!nbColonnes@{nbColonnes}}
+\index{nbColonnes@{nbColonnes}!Demineur.AITest@{Demineur.AITest}}
+\doxysubsubsection{\texorpdfstring{nbColonnes}{nbColonnes}}
+{\footnotesize\ttfamily int Demineur.\+A\+I\+Test.\+nb\+Colonnes\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_demineur_1_1_a_i_test_a281f4d434b66c4527de57ba47384e94e}\label{class_demineur_1_1_a_i_test_a281f4d434b66c4527de57ba47384e94e}} 
+\index{Demineur.AITest@{Demineur.AITest}!nbLignes@{nbLignes}}
+\index{nbLignes@{nbLignes}!Demineur.AITest@{Demineur.AITest}}
+\doxysubsubsection{\texorpdfstring{nbLignes}{nbLignes}}
+{\footnotesize\ttfamily int Demineur.\+A\+I\+Test.\+nb\+Lignes\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_demineur_1_1_a_i_test_a481cab8232ef558e1a3fd2e0c51fad2f}\label{class_demineur_1_1_a_i_test_a481cab8232ef558e1a3fd2e0c51fad2f}} 
+\index{Demineur.AITest@{Demineur.AITest}!nouvelleBombe@{nouvelleBombe}}
+\index{nouvelleBombe@{nouvelleBombe}!Demineur.AITest@{Demineur.AITest}}
+\doxysubsubsection{\texorpdfstring{nouvelleBombe}{nouvelleBombe}}
+{\footnotesize\ttfamily bool Demineur.\+A\+I\+Test.\+nouvelle\+Bombe\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_demineur_1_1_a_i_test_a3c2e200a7c3397f75d74a7e89eafa096}\label{class_demineur_1_1_a_i_test_a3c2e200a7c3397f75d74a7e89eafa096}} 
+\index{Demineur.AITest@{Demineur.AITest}!ratioDiff@{ratioDiff}}
+\index{ratioDiff@{ratioDiff}!Demineur.AITest@{Demineur.AITest}}
+\doxysubsubsection{\texorpdfstring{ratioDiff}{ratioDiff}}
+{\footnotesize\ttfamily int Demineur.\+A\+I\+Test.\+ratio\+Diff\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_demineur_1_1_a_i_test_a13dab476a4c443ac5532e59ed5b77029}\label{class_demineur_1_1_a_i_test_a13dab476a4c443ac5532e59ed5b77029}} 
+\index{Demineur.AITest@{Demineur.AITest}!score@{score}}
+\index{score@{score}!Demineur.AITest@{Demineur.AITest}}
+\doxysubsubsection{\texorpdfstring{score}{score}}
+{\footnotesize\ttfamily int Demineur.\+A\+I\+Test.\+score\hspace{0.3cm}{\ttfamily [private]}}
+

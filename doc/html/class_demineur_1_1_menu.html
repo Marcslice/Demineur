@@ -31,8 +31,9 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Demineur
+   &#160;<span id="projectnumber">2.0</span>
    </div>
-   <div id="projectbrief">Programmation 3 - Demineur</div>
+   <div id="projectbrief">Programmation 3 - TP1 - Demineur</div>
   </td>
    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -110,9 +111,9 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:af35b3bb9e95941bcebdcc3e8fc0a499a"><td class="memItemLeft" align="right" valign="top">static short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_menu.html#af35b3bb9e95941bcebdcc3e8fc0a499a">AfficherMenu</a> ()</td></tr>
 <tr class="memdesc:af35b3bb9e95941bcebdcc3e8fc0a499a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dessine la Première page du menu principale.  <a href="class_demineur_1_1_menu.html#af35b3bb9e95941bcebdcc3e8fc0a499a">More...</a><br /></td></tr>
 <tr class="separator:af35b3bb9e95941bcebdcc3e8fc0a499a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a78a3f044f33304695f11cccfd3a35f6b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_menu.html#a78a3f044f33304695f11cccfd3a35f6b">AfficherClassement</a> (string p_Classement)</td></tr>
-<tr class="memdesc:a78a3f044f33304695f11cccfd3a35f6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dessine le classement.  <a href="class_demineur_1_1_menu.html#a78a3f044f33304695f11cccfd3a35f6b">More...</a><br /></td></tr>
-<tr class="separator:a78a3f044f33304695f11cccfd3a35f6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1782a48cd023e443221f12784f778abf"><td class="memItemLeft" align="right" valign="top">static short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_menu.html#a1782a48cd023e443221f12784f778abf">AfficherClassement</a> (string p_Classement, short tri)</td></tr>
+<tr class="memdesc:a1782a48cd023e443221f12784f778abf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dessine le classement.  <a href="class_demineur_1_1_menu.html#a1782a48cd023e443221f12784f778abf">More...</a><br /></td></tr>
+<tr class="separator:a1782a48cd023e443221f12784f778abf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4f28c9a207aa7958369840147b012312"><td class="memItemLeft" align="right" valign="top">static short[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_menu.html#a4f28c9a207aa7958369840147b012312">OptionDePartie</a> ()</td></tr>
 <tr class="memdesc:a4f28c9a207aa7958369840147b012312"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le tableau d'options de partie. Est appelé lors dela création d'une nouvelle partie.  <a href="class_demineur_1_1_menu.html#a4f28c9a207aa7958369840147b012312">More...</a><br /></td></tr>
 <tr class="separator:a4f28c9a207aa7958369840147b012312"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -134,6 +135,8 @@ Static Private Member Functions</h2></td></tr>
 <tr class="memitem:a0441dc548eb0ac9895af84a50c77ef54"><td class="memItemLeft" align="right" valign="top">static short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_menu.html#a0441dc548eb0ac9895af84a50c77ef54">RecapFinal</a> ()</td></tr>
 <tr class="memdesc:a0441dc548eb0ac9895af84a50c77ef54"><td class="mdescLeft">&#160;</td><td class="mdescRight">S'affiche lorsque le joueur a choisi le type d'assistance désiré. Le joueur voit ce qu'il a sélectionné. Il peut commencer la partie ou modifier les options de partie.  <a href="class_demineur_1_1_menu.html#a0441dc548eb0ac9895af84a50c77ef54">More...</a><br /></td></tr>
 <tr class="separator:a0441dc548eb0ac9895af84a50c77ef54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a587389d2a10d4a2915bc3f4e939433b5"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_menu.html#a587389d2a10d4a2915bc3f4e939433b5">TypeDeTri</a> (short tri)</td></tr>
+<tr class="separator:a587389d2a10d4a2915bc3f4e939433b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
@@ -145,8 +148,8 @@ Static Private Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>La classe <a class="el" href="class_demineur_1_1_menu.html" title="La classe Menu guide l&#39;utilisateur à travers les différentes options de partie. Il peut Joueur,...">Menu</a> guide l'utilisateur à travers les différentes options de partie. Il peut <a class="el" href="class_demineur_1_1_joueur.html" title="Représente un joueur. string : m_nom est le nom du joueur. string[] : m_Scores et le tableau des scor...">Joueur</a>, afficher le classement ou quitter. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a78a3f044f33304695f11cccfd3a35f6b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a78a3f044f33304695f11cccfd3a35f6b">&#9670;&nbsp;</a></span>AfficherClassement()</h2>
+<a id="a1782a48cd023e443221f12784f778abf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1782a48cd023e443221f12784f778abf">&#9670;&nbsp;</a></span>AfficherClassement()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -155,11 +158,21 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void Demineur.Menu.AfficherClassement </td>
+          <td class="memname">static short Demineur.Menu.AfficherClassement </td>
           <td>(</td>
           <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>p_Classement</em></td><td>)</td>
+          <td class="paramname"><em>p_Classement</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">short&#160;</td>
+          <td class="paramname"><em>tri</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -366,6 +379,32 @@ Static Private Attributes</h2></td></tr>
 
 <p>S'affiche lorsque le joueur a choisi le type d'assistance désiré. Le joueur voit ce qu'il a sélectionné. Il peut commencer la partie ou modifier les options de partie. </p>
 <dl class="section return"><dt>Returns</dt><dd>short : Retourne le choix C : Commencer -&gt; retourne 0 4 : Recommencer </dd></dl>
+
+</div>
+</div>
+<a id="a587389d2a10d4a2915bc3f4e939433b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a587389d2a10d4a2915bc3f4e939433b5">&#9670;&nbsp;</a></span>TypeDeTri()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static string Demineur.Menu.TypeDeTri </td>
+          <td>(</td>
+          <td class="paramtype">short&#160;</td>
+          <td class="paramname"><em>tri</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>

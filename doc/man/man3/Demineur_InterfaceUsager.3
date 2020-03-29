@@ -1,0 +1,350 @@
+.TH "Demineur.InterfaceUsager" 3 "Sun Mar 29 2020" "Version 2.0" "Demineur" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Demineur.InterfaceUsager \- Dessine l'interface usagé Titre \fBGrille\fP Statistiques Instructions  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBDessinerModeDeSaisie\fP ()"
+.br
+.RI "Affiche le mode de saisie actuel\&. "
+.ti -1c
+.RI "static void \fBPositionnerCursorPourRepondre\fP ()"
+.br
+.RI "Positionne le cursor lorsqu'on doit mettre à jour l'affichage de la sélection(en bas à droite)\&. "
+.ti -1c
+.RI "static void \fBPositionnerCursorPourMessageErreur\fP ()"
+.br
+.RI "Positionne le cursor et change la couleur du texte pour afficher l'erreur\&. "
+.ti -1c
+.RI "static void \fBDessinerPlateau\fP (string p_NomJoueur, int nLigne, int nColonne, string grille, int[] positionActuelle, int nbBombes, bool mort)"
+.br
+.RI "Dessine tout le plateau\&. Est appelé une fois au premier tour\&. Ajuste la taille de la fenêtre de la console\&. Calcule la position des modules de l'interface {titre, instruction, grille, statistique} "
+.ti -1c
+.RI "static void \fBDessinerGrille\fP (string p_NomJoueur, int nLigne, int nColonne, string grille, int[] positionActuelle, int nbBombes, bool mort)"
+.br
+.RI "Dessine la grille de l'interface graphique\&. Elle appel ce qu'elle a besoin\&. "
+.ti -1c
+.RI "static void \fBMettreAJourSelection\fP (int[] positionActuelle)"
+.br
+.RI "Lors de la navigation par flèche ou de l'utilisation de l'\fBIA\fP, cela met à jour les coordonnées en bas à droite\&. "
+.ti -1c
+.RI "static void \fBMessageVictoire\fP ()"
+.br
+.RI "Affiche le message de victoire\&. "
+.ti -1c
+.RI "static void \fBMessageNouveauRecord\fP ()"
+.br
+.ti -1c
+.RI "static void \fBMessageDefaite\fP ()"
+.br
+.RI "Affiche le message de Défaite\&. "
+.ti -1c
+.RI "static void \fBMessageCaseDejaOuverte\fP ()"
+.br
+.RI "Affiche le message de case déjà ouverte\&. "
+.ti -1c
+.RI "static void \fBMessageFormatDentreeErronee\fP ()"
+.br
+.RI "Affiche le message de format incorrecte si la siasie de respecte pas ^\\d+\\s\\d+$\&. "
+.ti -1c
+.RI "static void \fBMessageHorsLimites\fP ()"
+.br
+.RI "Affiche le message de Saisie hors limite si la saisie ne fait pas partie de la grille\&. "
+.ti -1c
+.RI "static void \fBMessageIAInactif\fP ()"
+.br
+.RI "Affiche le message intelligence inactif si le joueur a choisi une partie sans \fBIA\fP\&. "
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "static bool \fBSaisie\fP\fC [get, set]\fP"
+.br
+.RI "Détecte le mode de saisie en cours\&. "
+.in -1c
+.SS "Static Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBDessinerTitreJeu\fP (int colonne)"
+.br
+.RI "Affiche le titre du jeu\&. "
+.ti -1c
+.RI "static void \fBDessinerInstructions\fP ()"
+.br
+.RI "Affiche les instructions "
+.ti -1c
+.RI "static void \fBDessinerStats\fP (int nColonne, string nomJoueur, bool mort, int nbBombes)"
+.br
+.RI "Dessine le rectangle des statistiques\&. "
+.ti -1c
+.RI "static void \fBDessinerChiffreColonne\fP (int colonne)"
+.br
+.RI "Dessine l'entête des colonnes de la grille de l'interface graphique\&. "
+.ti -1c
+.RI "static void \fBDessinerLigneDuHaut\fP (int colonne)"
+.br
+.RI "Dessine la ligne horizontal du haut de la grille de l'interface graphique\&. "
+.ti -1c
+.RI "static void \fBDessinerRangeHautCase\fP (int colonne)"
+.br
+.ti -1c
+.RI "static void \fBDessinerRangeCentraleCase\fP (int ligne, int colonne, string grille)"
+.br
+.RI "Dessine la rangé du milieu de la grille de l'interface graphique\&. Elle affiche les données des cases\&. "
+.ti -1c
+.RI "static void \fBDessinerRangeBasCase\fP (int colonne)"
+.br
+.RI "Dessine le bas des cases dans la grille de l'interface graphique\&. "
+.ti -1c
+.RI "static void \fBDessinerRangeVide\fP (int nColonne)"
+.br
+.RI "Dessine une rangé vide dans le tableau des statistiques de partie\&. "
+.in -1c
+.SS "Static Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "static string \fBmarge\fP = ' '"
+.br
+.ti -1c
+.RI "static bool \fBsaisie\fP = true"
+.br
+.ti -1c
+.RI "static int[] \fBpositionDeReponse\fP"
+.br
+.ti -1c
+.RI "static int[] \fBpositionDeMessage\fP"
+.br
+.ti -1c
+.RI "static int \fBpositionDuGuide\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Dessine l'interface usagé Titre \fBGrille\fP Statistiques Instructions 
+
+
+.SH "Member Function Documentation"
+.PP 
+.SS "static void Demineur\&.InterfaceUsager\&.DessinerChiffreColonne (int colonne)\fC [inline]\fP, \fC [static]\fP, \fC [private]\fP"
+
+.PP
+Dessine l'entête des colonnes de la grille de l'interface graphique\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcolonne\fP Nombre de colonnes de la grille\&.
+.RE
+.PP
+
+.SS "static void Demineur\&.InterfaceUsager\&.DessinerGrille (string p_NomJoueur, int nLigne, int nColonne, string grille, int[] positionActuelle, int nbBombes, bool mort)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Dessine la grille de l'interface graphique\&. Elle appel ce qu'elle a besoin\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIp_NomJoueur\fP Nom du joueur
+.br
+\fInLigne\fP Nombre de lignes de la grille
+.br
+\fInColonne\fP Nombre de colonnes de la grille
+.br
+\fIgrille\fP \fBGrille\fP en string
+.br
+\fIpositionActuelle\fP Sélection du joueur\&.
+.br
+\fInbBombes\fP Nombre de bombes dans la grille\&.
+.RE
+.PP
+
+.SS "static void Demineur\&.InterfaceUsager\&.DessinerInstructions ()\fC [inline]\fP, \fC [static]\fP, \fC [private]\fP"
+
+.PP
+Affiche les instructions 
+.SS "static void Demineur\&.InterfaceUsager\&.DessinerLigneDuHaut (int colonne)\fC [inline]\fP, \fC [static]\fP, \fC [private]\fP"
+
+.PP
+Dessine la ligne horizontal du haut de la grille de l'interface graphique\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcolonne\fP 
+.RE
+.PP
+
+.SS "static void Demineur\&.InterfaceUsager\&.DessinerModeDeSaisie ()\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Affiche le mode de saisie actuel\&. 
+.SS "static void Demineur\&.InterfaceUsager\&.DessinerPlateau (string p_NomJoueur, int nLigne, int nColonne, string grille, int[] positionActuelle, int nbBombes, bool mort)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Dessine tout le plateau\&. Est appelé une fois au premier tour\&. Ajuste la taille de la fenêtre de la console\&. Calcule la position des modules de l'interface {titre, instruction, grille, statistique} 
+.PP
+\fBParameters\fP
+.RS 4
+\fIp_NomJoueur\fP Nom du joueur
+.br
+\fInLigne\fP Nombre de lignes de la grille
+.br
+\fInColonne\fP Nombre de colonnes de la grille
+.br
+\fIgrille\fP \fBGrille\fP en string
+.br
+\fIpositionActuelle\fP Sélection du joueur\&.
+.br
+\fInbBombes\fP Nombre de bombes dans la grille\&.
+.RE
+.PP
+
+.SS "static void Demineur\&.InterfaceUsager\&.DessinerRangeBasCase (int colonne)\fC [inline]\fP, \fC [static]\fP, \fC [private]\fP"
+
+.PP
+Dessine le bas des cases dans la grille de l'interface graphique\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcolonne\fP 
+.RE
+.PP
+
+.SS "static void Demineur\&.InterfaceUsager\&.DessinerRangeCentraleCase (int ligne, int colonne, string grille)\fC [inline]\fP, \fC [static]\fP, \fC [private]\fP"
+
+.PP
+Dessine la rangé du milieu de la grille de l'interface graphique\&. Elle affiche les données des cases\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIligne\fP Nombre de lignes de la grille\&.
+.br
+\fIcolonne\fP Nombre de colonnes de la grille\&.
+.br
+\fIgrille\fP La grille en string\&.
+.RE
+.PP
+
+.SS "static void Demineur\&.InterfaceUsager\&.DessinerRangeHautCase (int colonne)\fC [inline]\fP, \fC [static]\fP, \fC [private]\fP"
+
+.PP
+Dessine la rangé du haut de la grille de l'interface graphique\&. 
+.SS "static void Demineur\&.InterfaceUsager\&.DessinerRangeVide (int nColonne)\fC [inline]\fP, \fC [static]\fP, \fC [private]\fP"
+
+.PP
+Dessine une rangé vide dans le tableau des statistiques de partie\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fInColonne\fP Nombre de colonnes de la grille\&.
+.RE
+.PP
+
+.SS "static void Demineur\&.InterfaceUsager\&.DessinerStats (int nColonne, string nomJoueur, bool mort, int nbBombes)\fC [inline]\fP, \fC [static]\fP, \fC [private]\fP"
+
+.PP
+Dessine le rectangle des statistiques\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fInColonne\fP Nombre de colonnes de la grille\&.
+.br
+\fInomJoueur\fP Nom du joueur\&.
+.RE
+.PP
+/// 
+.PP
+\fBParameters\fP
+.RS 4
+\fImort\fP \fBJoueur\fP est il mort
+.br
+\fInbBombes\fP Nom de bombes dans la grille\&.
+.RE
+.PP
+
+.SS "static void Demineur\&.InterfaceUsager\&.DessinerTitreJeu (int colonne)\fC [inline]\fP, \fC [static]\fP, \fC [private]\fP"
+
+.PP
+Affiche le titre du jeu\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcolonne\fP 
+.RE
+.PP
+
+.SS "static void Demineur\&.InterfaceUsager\&.MessageCaseDejaOuverte ()\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Affiche le message de case déjà ouverte\&. 
+.SS "static void Demineur\&.InterfaceUsager\&.MessageDefaite ()\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Affiche le message de Défaite\&. 
+.SS "static void Demineur\&.InterfaceUsager\&.MessageFormatDentreeErronee ()\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Affiche le message de format incorrecte si la siasie de respecte pas ^\\d+\\s\\d+$\&. 
+.SS "static void Demineur\&.InterfaceUsager\&.MessageHorsLimites ()\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Affiche le message de Saisie hors limite si la saisie ne fait pas partie de la grille\&. 
+.SS "static void Demineur\&.InterfaceUsager\&.MessageIAInactif ()\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Affiche le message intelligence inactif si le joueur a choisi une partie sans \fBIA\fP\&. 
+.SS "static void Demineur\&.InterfaceUsager\&.MessageNouveauRecord ()\fC [inline]\fP, \fC [static]\fP"
+
+.SS "static void Demineur\&.InterfaceUsager\&.MessageVictoire ()\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Affiche le message de victoire\&. 
+.SS "static void Demineur\&.InterfaceUsager\&.MettreAJourSelection (int[] positionActuelle)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Lors de la navigation par flèche ou de l'utilisation de l'\fBIA\fP, cela met à jour les coordonnées en bas à droite\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpositionActuelle\fP 
+.RE
+.PP
+
+.SS "static void Demineur\&.InterfaceUsager\&.PositionnerCursorPourMessageErreur ()\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Positionne le cursor et change la couleur du texte pour afficher l'erreur\&. 
+.SS "static void Demineur\&.InterfaceUsager\&.PositionnerCursorPourRepondre ()\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Positionne le cursor lorsqu'on doit mettre à jour l'affichage de la sélection(en bas à droite)\&. 
+.SH "Member Data Documentation"
+.PP 
+.SS "string Demineur\&.InterfaceUsager\&.marge = ' '\fC [static]\fP, \fC [private]\fP"
+
+.SS "int [] Demineur\&.InterfaceUsager\&.positionDeMessage\fC [static]\fP, \fC [private]\fP"
+
+.SS "int [] Demineur\&.InterfaceUsager\&.positionDeReponse\fC [static]\fP, \fC [private]\fP"
+
+.SS "int Demineur\&.InterfaceUsager\&.positionDuGuide\fC [static]\fP, \fC [private]\fP"
+
+.SS "bool Demineur\&.InterfaceUsager\&.saisie = true\fC [static]\fP, \fC [private]\fP"
+
+.SH "Property Documentation"
+.PP 
+.SS "bool Demineur\&.InterfaceUsager\&.Saisie\fC [static]\fP, \fC [get]\fP, \fC [set]\fP"
+
+.PP
+Détecte le mode de saisie en cours\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Demineur from the source code\&.

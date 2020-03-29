@@ -1,0 +1,311 @@
+.TH "Demineur.Grille" 3 "Sun Mar 29 2020" "Version 2.0" "Demineur" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Demineur.Grille \- \fBGrille\fP représente le plateau de jeu\&. Elle contient des cases de type \fBCase\fP\&. \fBCase\fP[,] : champs est le tableau 2D [Lignes x Colonnes] Int : nbBombeGrille contient le nombre de bombe que la grille contient\&. Int : colonnes Dimension X du tableau Int : lignes Dimension Y du table Int : casesFermer contient le nombre de base fermer en début de partie\&. Stack<Case> : aOuvrir Permet la recherche récursive pour l'ouverture automatique des cases dont le danger est de 0\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBGrille\fP (short \fBlignes\fP, short \fBcolonnes\fP, short difficulte)"
+.br
+.ti -1c
+.RI "void \fBDisperserBombes\fP (short \fBlignes\fP, short \fBcolonnes\fP)"
+.br
+.RI "Disperse les bombes dans la grille en mettant le boolean estTuBombe à true sur les cases ciblés\&. "
+.ti -1c
+.RI "void \fBRencontreVoisin\fP (int ligne, int colonne)"
+.br
+.RI "Fouille les case adjacentes à la case active pour remplir le tableau des cases voisines\&. "
+.ti -1c
+.RI "void \fBMettreAJourVoisin\fP (int ligne, int colonne, int l, int c)"
+.br
+.RI "Utilisé seulement lorsque la première case ouverte est une bombe\&. "
+.ti -1c
+.RI "bool \fBOuvrirCase\fP (int ligne, int colonne)"
+.br
+.RI "Ouvre une case suite à la confirmation du joueur\&. "
+.ti -1c
+.RI "void \fBBombePremierTour\fP (int[] cible)"
+.br
+.RI "Neutralise la case si la première case est une bombe\&. "
+.ti -1c
+.RI "void \fBDecouvrirBombes\fP ()"
+.br
+.RI "Ouvre les bombes lorsque le joueur explose\&. "
+.ti -1c
+.RI "int \fBColonnes\fP ()"
+.br
+.RI "Retourne le nombre de colonnes de la grille\&. "
+.ti -1c
+.RI "int \fBLignes\fP ()"
+.br
+.RI "Retourne le nombre de Lignes de la grille\&. "
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.RI "Retourne la grille sous forme de string\&. '?' signigie case fermer '¤' signifie bombe ' ' signigie Ouverte et danger 0 "
+.ti -1c
+.RI "int \fBCalculerNbCaseFermer\fP ()"
+.br
+.RI "Calcule le nombre de case fermer\&. Permet de mettre à jour le compte pour déterminer si la partie est gagné\&. "
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBCase\fP \fBthis[int ligne, int colonne]\fP\fC [get, set]\fP"
+.br
+.RI "Rempli le tableau des voisins d'une case\&. "
+.ti -1c
+.RI "int \fBNombreDeBombes\fP\fC [get, set]\fP"
+.br
+.RI "Retourne ou modifie le nombre de bombes dans la grille\&. Utile au premier tour\&. "
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBCalculerBombes\fP (short \fBlignes\fP, short \fBcolonnes\fP, short difficulte)"
+.br
+.RI "Détermine le nombre de bombe a générer selon la difficulté\&. Le calcule se fait en pourcentage de cases\&. "
+.ti -1c
+.RI "bool \fBOuvrirCase\fP (\fBCase\fP voisin)"
+.br
+.RI "Ouvre automatiquement les cases voisines de la sélection "
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBCase\fP[,] \fBchamps\fP"
+.br
+.ti -1c
+.RI "int \fBnbBombeGrille\fP"
+.br
+.ti -1c
+.RI "int \fBcolonnes\fP"
+.br
+.ti -1c
+.RI "int \fBlignes\fP"
+.br
+.ti -1c
+.RI "int \fBcasesFermer\fP"
+.br
+.ti -1c
+.RI "Stack< \fBCase\fP > \fBaOuvrir\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBGrille\fP représente le plateau de jeu\&. Elle contient des cases de type \fBCase\fP\&. \fBCase\fP[,] : champs est le tableau 2D [Lignes x Colonnes] Int : nbBombeGrille contient le nombre de bombe que la grille contient\&. Int : colonnes Dimension X du tableau Int : lignes Dimension Y du table Int : casesFermer contient le nombre de base fermer en début de partie\&. Stack<Case> : aOuvrir Permet la recherche récursive pour l'ouverture automatique des cases dont le danger est de 0\&. 
+
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Demineur\&.Grille\&.Grille (short lignes, short colonnes, short difficulte)\fC [inline]\fP"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void Demineur\&.Grille\&.BombePremierTour (int[] cible)\fC [inline]\fP"
+
+.PP
+Neutralise la case si la première case est une bombe\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcible\fP \fBCase\fP sélectionnée\&.
+.RE
+.PP
+
+.SS "int Demineur\&.Grille\&.CalculerBombes (short lignes, short colonnes, short difficulte)\fC [inline]\fP, \fC [private]\fP"
+
+.PP
+Détermine le nombre de bombe a générer selon la difficulté\&. Le calcule se fait en pourcentage de cases\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIlignes\fP Nombre de lignes qu'il y a dans la grille
+.br
+\fIcolonnes\fP Nombre de colonnes qu'il y a dans la grille
+.br
+\fIdifficulte\fP Difficulté {1,2,3}
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Int : Nombre de bombes
+.RE
+.PP
+
+.SS "int Demineur\&.Grille\&.CalculerNbCaseFermer ()\fC [inline]\fP"
+
+.PP
+Calcule le nombre de case fermer\&. Permet de mettre à jour le compte pour déterminer si la partie est gagné\&. 
+.PP
+\fBReturns\fP
+.RS 4
+
+.RE
+.PP
+
+.SS "int Demineur\&.Grille\&.Colonnes ()\fC [inline]\fP"
+
+.PP
+Retourne le nombre de colonnes de la grille\&. 
+.PP
+\fBReturns\fP
+.RS 4
+Int : Colonnes
+.RE
+.PP
+
+.SS "void Demineur\&.Grille\&.DecouvrirBombes ()\fC [inline]\fP"
+
+.PP
+Ouvre les bombes lorsque le joueur explose\&. 
+.SS "void Demineur\&.Grille\&.DisperserBombes (short lignes, short colonnes)\fC [inline]\fP"
+
+.PP
+Disperse les bombes dans la grille en mettant le boolean estTuBombe à true sur les cases ciblés\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIlignes\fP Nombre de lignes dans la grille de jeu\&.
+.br
+\fIcolonnes\fP Nombre de colonnes dans la grille de jeu\&.
+.RE
+.PP
+
+.SS "int Demineur\&.Grille\&.Lignes ()\fC [inline]\fP"
+
+.PP
+Retourne le nombre de Lignes de la grille\&. 
+.PP
+\fBReturns\fP
+.RS 4
+Int : Lignes
+.RE
+.PP
+
+.SS "void Demineur\&.Grille\&.MettreAJourVoisin (int ligne, int colonne, int l, int c)\fC [inline]\fP"
+
+.PP
+Utilisé seulement lorsque la première case ouverte est une bombe\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIligne\fP Ligne en cours de traitement
+.br
+\fIcolonne\fP Colonne en cours de traitement
+.br
+\fIl\fP Y de la bombe à neutraliser
+.br
+\fIc\fP X de la bombe à neutraliser
+.RE
+.PP
+
+.SS "bool Demineur\&.Grille\&.OuvrirCase (\fBCase\fP voisin)\fC [inline]\fP, \fC [private]\fP"
+
+.PP
+Ouvre automatiquement les cases voisines de la sélection 
+.PP
+\fBParameters\fP
+.RS 4
+\fIvoisin\fP Voisin de la case sélectionné\&.
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Retourne vrai si ?
+.RE
+.PP
+
+.SS "bool Demineur\&.Grille\&.OuvrirCase (int ligne, int colonne)\fC [inline]\fP"
+
+.PP
+Ouvre une case suite à la confirmation du joueur\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIligne\fP Coordonnée Y de la case à ouvrir\&.
+.br
+\fIcolonne\fP Coordonnée X de la case à ouvrir\&.
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Bool : Retourne faux si la case est une bombe, retourne vrai si elle n'est pas une bombe\&.
+.RE
+.PP
+
+.SS "void Demineur\&.Grille\&.RencontreVoisin (int ligne, int colonne)\fC [inline]\fP"
+
+.PP
+Fouille les case adjacentes à la case active pour remplir le tableau des cases voisines\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIligne\fP Ligne en cours de traitement
+.br
+\fIcolonne\fP Colonne en cours de traitement
+.RE
+.PP
+
+.SS "override string Demineur\&.Grille\&.ToString ()\fC [inline]\fP"
+
+.PP
+Retourne la grille sous forme de string\&. '?' signigie case fermer '¤' signifie bombe ' ' signigie Ouverte et danger 0 
+.PP
+\fBReturns\fP
+.RS 4
+string : grille
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "Stack<\fBCase\fP> Demineur\&.Grille\&.aOuvrir\fC [private]\fP"
+
+.SS "int Demineur\&.Grille\&.casesFermer\fC [private]\fP"
+
+.SS "\fBCase\fP [,] Demineur\&.Grille\&.champs\fC [private]\fP"
+
+.SS "int Demineur\&.Grille\&.colonnes\fC [private]\fP"
+
+.SS "int Demineur\&.Grille\&.lignes\fC [private]\fP"
+
+.SS "int Demineur\&.Grille\&.nbBombeGrille\fC [private]\fP"
+
+.SH "Property Documentation"
+.PP 
+.SS "int Demineur\&.Grille\&.NombreDeBombes\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Retourne ou modifie le nombre de bombes dans la grille\&. Utile au premier tour\&. 
+.SS "\fBCase\fP Demineur\&.Grille\&.this[int ligne, int colonne]\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Rempli le tableau des voisins d'une case\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIligne\fP Coordonnée en Y
+.br
+\fIcolonne\fP Coordonnée en X
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBCase\fP
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Demineur from the source code\&.
