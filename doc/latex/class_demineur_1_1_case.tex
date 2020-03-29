@@ -1,0 +1,167 @@
+\hypertarget{class_demineur_1_1_case}{}\doxysection{Demineur.\+Case Class Reference}
+\label{class_demineur_1_1_case}\index{Demineur.Case@{Demineur.Case}}
+
+
+Représente une case du démineur. Le grille génére sa grille en créant \char`\"{}\+Lignes X Colonne\char`\"{} cases. Bool es\+Tu\+Bombe détermine si un case est une bombe ou non. Bool est\+Ouverte détermine si la case est ouverte ou non. int nb\+Danger détermine combien de bombe entoure la case ouverte. \mbox{\hyperlink{class_demineur_1_1_case}{Case}}\mbox{[}\mbox{]} cases\+Voisines contient les cases qui entourent cette case.  
+
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_demineur_1_1_case_adbd952831df7377e8077d45afa987535}{Case}} ()
+\begin{DoxyCompactList}\small\item\em Construit une case fermé sans bombe avec un danger par défaut de 0. \mbox{\hyperlink{class_demineur_1_1_case}{Case}} 0 = NW $\vert$ 1 = N $\vert$ 2 = NE $\vert$ 3 = W $\vert$ 4 = E $\vert$ 5 = SW $\vert$ 6 = S $\vert$ 7 = SE \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_demineur_1_1_case_ac526dcb5779b01ef47d616bf2313b68e}{Set\+Case}} (int i, \mbox{\hyperlink{class_demineur_1_1_case}{Case}} voisin)
+\begin{DoxyCompactList}\small\item\em Affecte au tableau cases\+Voisines les voisins de la case active. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_demineur_1_1_case_a0cfe50b5982ceff4bc7e0d2348e25d5f}{Calculer\+Danger}} ()
+\begin{DoxyCompactList}\small\item\em Parcour les voisin d\textquotesingle{}une case pour affecter la valeur de danger à la case active. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_demineur_1_1_case_a37ac30b22b9d17de0230fe70c3537d46}{Value}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Retourne la valeur numérique du danger autour de la case. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_demineur_1_1_case_a15f80415d9919574e18c6d48bcac7fcd}{Bombe}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Retourne si la case contient une bombe. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_demineur_1_1_case_a2158ad25b24268d6864ca122ead3a749}{Ouvert}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Retourne l\textquotesingle{}état de la case. (Ouverte/\+Fermé) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_demineur_1_1_case}{Case}} \mbox{\hyperlink{class_demineur_1_1_case_aedee3cbcf1e098787ce7b310d3ef7082}{this\mbox{[}int i\mbox{]}}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Permet de naviguer les voisins d\textquotesingle{}une case. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_demineur_1_1_case_acff8ce1e194a3c5c2b5f20a461b004a9}{es\+Tu\+Bombe}}
+\item 
+bool \mbox{\hyperlink{class_demineur_1_1_case_a97923098eb767ca15d8bb43aa0d12dee}{est\+Ouverte}}
+\item 
+int \mbox{\hyperlink{class_demineur_1_1_case_a1c7311f6d66653734c495df2ec606589}{nb\+Danger}}
+\item 
+\mbox{\hyperlink{class_demineur_1_1_case}{Case}}\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_demineur_1_1_case_a9540fe4adbe018ea440a3e0ad7685a45}{cases\+Voisines}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Représente une case du démineur. Le grille génére sa grille en créant \char`\"{}\+Lignes X Colonne\char`\"{} cases. Bool es\+Tu\+Bombe détermine si un case est une bombe ou non. Bool est\+Ouverte détermine si la case est ouverte ou non. int nb\+Danger détermine combien de bombe entoure la case ouverte. \mbox{\hyperlink{class_demineur_1_1_case}{Case}}\mbox{[}\mbox{]} cases\+Voisines contient les cases qui entourent cette case. 
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_demineur_1_1_case_adbd952831df7377e8077d45afa987535}\label{class_demineur_1_1_case_adbd952831df7377e8077d45afa987535}} 
+\index{Demineur.Case@{Demineur.Case}!Case@{Case}}
+\index{Case@{Case}!Demineur.Case@{Demineur.Case}}
+\doxysubsubsection{\texorpdfstring{Case()}{Case()}}
+{\footnotesize\ttfamily Demineur.\+Case.\+Case (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construit une case fermé sans bombe avec un danger par défaut de 0. \mbox{\hyperlink{class_demineur_1_1_case}{Case}} 0 = NW $\vert$ 1 = N $\vert$ 2 = NE $\vert$ 3 = W $\vert$ 4 = E $\vert$ 5 = SW $\vert$ 6 = S $\vert$ 7 = SE 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_demineur_1_1_case_a0cfe50b5982ceff4bc7e0d2348e25d5f}\label{class_demineur_1_1_case_a0cfe50b5982ceff4bc7e0d2348e25d5f}} 
+\index{Demineur.Case@{Demineur.Case}!CalculerDanger@{CalculerDanger}}
+\index{CalculerDanger@{CalculerDanger}!Demineur.Case@{Demineur.Case}}
+\doxysubsubsection{\texorpdfstring{CalculerDanger()}{CalculerDanger()}}
+{\footnotesize\ttfamily int Demineur.\+Case.\+Calculer\+Danger (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Parcour les voisin d\textquotesingle{}une case pour affecter la valeur de danger à la case active. 
+
+\begin{DoxyReturn}{Returns}
+Int \+: nb\+Danger
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_demineur_1_1_case_ac526dcb5779b01ef47d616bf2313b68e}\label{class_demineur_1_1_case_ac526dcb5779b01ef47d616bf2313b68e}} 
+\index{Demineur.Case@{Demineur.Case}!SetCase@{SetCase}}
+\index{SetCase@{SetCase}!Demineur.Case@{Demineur.Case}}
+\doxysubsubsection{\texorpdfstring{SetCase()}{SetCase()}}
+{\footnotesize\ttfamily void Demineur.\+Case.\+Set\+Case (\begin{DoxyParamCaption}\item[{int}]{i,  }\item[{\mbox{\hyperlink{class_demineur_1_1_case}{Case}}}]{voisin }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Affecte au tableau cases\+Voisines les voisins de la case active. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & Index du voisin\\
+\hline
+{\em voisin} & \mbox{\hyperlink{class_demineur_1_1_case}{Case}} voisine\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_demineur_1_1_case_a9540fe4adbe018ea440a3e0ad7685a45}\label{class_demineur_1_1_case_a9540fe4adbe018ea440a3e0ad7685a45}} 
+\index{Demineur.Case@{Demineur.Case}!casesVoisines@{casesVoisines}}
+\index{casesVoisines@{casesVoisines}!Demineur.Case@{Demineur.Case}}
+\doxysubsubsection{\texorpdfstring{casesVoisines}{casesVoisines}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_demineur_1_1_case}{Case}} \mbox{[}$\,$\mbox{]} Demineur.\+Case.\+cases\+Voisines\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_demineur_1_1_case_a97923098eb767ca15d8bb43aa0d12dee}\label{class_demineur_1_1_case_a97923098eb767ca15d8bb43aa0d12dee}} 
+\index{Demineur.Case@{Demineur.Case}!estOuverte@{estOuverte}}
+\index{estOuverte@{estOuverte}!Demineur.Case@{Demineur.Case}}
+\doxysubsubsection{\texorpdfstring{estOuverte}{estOuverte}}
+{\footnotesize\ttfamily bool Demineur.\+Case.\+est\+Ouverte\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_demineur_1_1_case_acff8ce1e194a3c5c2b5f20a461b004a9}\label{class_demineur_1_1_case_acff8ce1e194a3c5c2b5f20a461b004a9}} 
+\index{Demineur.Case@{Demineur.Case}!esTuBombe@{esTuBombe}}
+\index{esTuBombe@{esTuBombe}!Demineur.Case@{Demineur.Case}}
+\doxysubsubsection{\texorpdfstring{esTuBombe}{esTuBombe}}
+{\footnotesize\ttfamily bool Demineur.\+Case.\+es\+Tu\+Bombe\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_demineur_1_1_case_a1c7311f6d66653734c495df2ec606589}\label{class_demineur_1_1_case_a1c7311f6d66653734c495df2ec606589}} 
+\index{Demineur.Case@{Demineur.Case}!nbDanger@{nbDanger}}
+\index{nbDanger@{nbDanger}!Demineur.Case@{Demineur.Case}}
+\doxysubsubsection{\texorpdfstring{nbDanger}{nbDanger}}
+{\footnotesize\ttfamily int Demineur.\+Case.\+nb\+Danger\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{Property Documentation}
+\mbox{\Hypertarget{class_demineur_1_1_case_a15f80415d9919574e18c6d48bcac7fcd}\label{class_demineur_1_1_case_a15f80415d9919574e18c6d48bcac7fcd}} 
+\index{Demineur.Case@{Demineur.Case}!Bombe@{Bombe}}
+\index{Bombe@{Bombe}!Demineur.Case@{Demineur.Case}}
+\doxysubsubsection{\texorpdfstring{Bombe}{Bombe}}
+{\footnotesize\ttfamily bool Demineur.\+Case.\+Bombe\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Retourne si la case contient une bombe. 
+
+\mbox{\Hypertarget{class_demineur_1_1_case_a2158ad25b24268d6864ca122ead3a749}\label{class_demineur_1_1_case_a2158ad25b24268d6864ca122ead3a749}} 
+\index{Demineur.Case@{Demineur.Case}!Ouvert@{Ouvert}}
+\index{Ouvert@{Ouvert}!Demineur.Case@{Demineur.Case}}
+\doxysubsubsection{\texorpdfstring{Ouvert}{Ouvert}}
+{\footnotesize\ttfamily bool Demineur.\+Case.\+Ouvert\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Retourne l\textquotesingle{}état de la case. (Ouverte/\+Fermé) 
+
+\mbox{\Hypertarget{class_demineur_1_1_case_aedee3cbcf1e098787ce7b310d3ef7082}\label{class_demineur_1_1_case_aedee3cbcf1e098787ce7b310d3ef7082}} 
+\index{Demineur.Case@{Demineur.Case}!this\mbox{[}int i\mbox{]}@{this[int i]}}
+\index{this\mbox{[}int i\mbox{]}@{this[int i]}!Demineur.Case@{Demineur.Case}}
+\doxysubsubsection{\texorpdfstring{this[int i]}{this[int i]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_demineur_1_1_case}{Case}} Demineur.\+Case.\+this\mbox{[}int i\mbox{]}\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Permet de naviguer les voisins d\textquotesingle{}une case. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & index\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_demineur_1_1_case}{Case}} \+: Retourne une case
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_demineur_1_1_case_a37ac30b22b9d17de0230fe70c3537d46}\label{class_demineur_1_1_case_a37ac30b22b9d17de0230fe70c3537d46}} 
+\index{Demineur.Case@{Demineur.Case}!Value@{Value}}
+\index{Value@{Value}!Demineur.Case@{Demineur.Case}}
+\doxysubsubsection{\texorpdfstring{Value}{Value}}
+{\footnotesize\ttfamily int Demineur.\+Case.\+Value\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Retourne la valeur numérique du danger autour de la case. 
+

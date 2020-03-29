@@ -1,0 +1,428 @@
+\hypertarget{class_demineur_1_1_interface_usager}{}\doxysection{Demineur.\+Interface\+Usager Class Reference}
+\label{class_demineur_1_1_interface_usager}\index{Demineur.InterfaceUsager@{Demineur.InterfaceUsager}}
+
+
+Dessine l\textquotesingle{}interface usagé Titre \mbox{\hyperlink{class_demineur_1_1_grille}{Grille}} Statistiques Instructions  
+
+
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_demineur_1_1_interface_usager_aa1fa806cb800165d5bc61b7d84a34c21}{Dessiner\+Mode\+De\+Saisie}} ()
+\begin{DoxyCompactList}\small\item\em Affiche le mode de saisie actuel. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_demineur_1_1_interface_usager_a07d564daa3b9324dd0ad46a1970d958e}{Positionner\+Cursor\+Pour\+Repondre}} ()
+\begin{DoxyCompactList}\small\item\em Positionne le cursor lorsqu\textquotesingle{}on doit mettre à jour l\textquotesingle{}affichage de la sélection(en bas à droite). \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_demineur_1_1_interface_usager_af78a2ae4e7acd1817f3f3ea874a82a23}{Positionner\+Cursor\+Pour\+Message\+Erreur}} ()
+\begin{DoxyCompactList}\small\item\em Positionne le cursor et change la couleur du texte pour afficher l\textquotesingle{}erreur. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_demineur_1_1_interface_usager_a302ad836bef7f44883c984c1eac5f44e}{Dessiner\+Plateau}} (string p\+\_\+\+Nom\+Joueur, int n\+Ligne, int n\+Colonne, string grille, int\mbox{[}$\,$\mbox{]} position\+Actuelle, int nb\+Bombes, bool mort)
+\begin{DoxyCompactList}\small\item\em Dessine tout le plateau. Est appelé une fois au premier tour. Ajuste la taille de la fenêtre de la console. Calcule la position des modules de l\textquotesingle{}interface \{titre, instruction, grille, statistique\} \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_demineur_1_1_interface_usager_a75f36e0a6296266ed0c7ccf8cefe7884}{Dessiner\+Grille}} (string p\+\_\+\+Nom\+Joueur, int n\+Ligne, int n\+Colonne, string grille, int\mbox{[}$\,$\mbox{]} position\+Actuelle, int nb\+Bombes, bool mort)
+\begin{DoxyCompactList}\small\item\em Dessine la grille de l\textquotesingle{}interface graphique. Elle appel ce qu\textquotesingle{}elle a besoin. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_demineur_1_1_interface_usager_a57a9341779fdf6af2d7372ff6b485ae1}{Mettre\+A\+Jour\+Selection}} (int\mbox{[}$\,$\mbox{]} position\+Actuelle)
+\begin{DoxyCompactList}\small\item\em Lors de la navigation par flèche ou de l\textquotesingle{}utilisation de l\textquotesingle{}\mbox{\hyperlink{class_demineur_1_1_i_a}{IA}}, cela met à jour les coordonnées en bas à droite. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_demineur_1_1_interface_usager_a8a84f066b8d89f02aee1b2697e1ac6e4}{Message\+Victoire}} ()
+\begin{DoxyCompactList}\small\item\em Affiche le message de victoire. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_demineur_1_1_interface_usager_a7b340f1ae55a62de10d398281b0b89f4}{Message\+Nouveau\+Record}} ()
+\item 
+static void \mbox{\hyperlink{class_demineur_1_1_interface_usager_a959feb7808140f6c4bc4a9932da5c986}{Message\+Defaite}} ()
+\begin{DoxyCompactList}\small\item\em Affiche le message de Défaite. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_demineur_1_1_interface_usager_a30186be3fa5c56e6c68c960a9d793e9c}{Message\+Case\+Deja\+Ouverte}} ()
+\begin{DoxyCompactList}\small\item\em Affiche le message de case déjà ouverte. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_demineur_1_1_interface_usager_ad4e95704ec8ceaccfb8e2aca33240418}{Message\+Format\+Dentree\+Erronee}} ()
+\begin{DoxyCompactList}\small\item\em Affiche le message de format incorrecte si la siasie de respecte pas $^\wedge$\textbackslash{}d+\textbackslash{}s\textbackslash{}d+\$. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_demineur_1_1_interface_usager_ad58d94f7dbb8da1499358997e7824e9b}{Message\+Hors\+Limites}} ()
+\begin{DoxyCompactList}\small\item\em Affiche le message de Saisie hors limite si la saisie ne fait pas partie de la grille. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_demineur_1_1_interface_usager_a0fb3b33152de52a54617038f796fdea8}{Message\+I\+A\+Inactif}} ()
+\begin{DoxyCompactList}\small\item\em Affiche le message intelligence inactif si le joueur a choisi une partie sans \mbox{\hyperlink{class_demineur_1_1_i_a}{IA}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{class_demineur_1_1_interface_usager_a2fdac8c41bef06db2f4839981a38a26a}{Saisie}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Détecte le mode de saisie en cours. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_demineur_1_1_interface_usager_aa49faea71eea903fc1776919aa23954c}{Dessiner\+Titre\+Jeu}} (int colonne)
+\begin{DoxyCompactList}\small\item\em Affiche le titre du jeu. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_demineur_1_1_interface_usager_aff4105bccc12b3a87bc9f0e5567b325a}{Dessiner\+Instructions}} ()
+\begin{DoxyCompactList}\small\item\em Affiche les instructions \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_demineur_1_1_interface_usager_a4c8469c1011fe0d6408ef1ee5f3544d4}{Dessiner\+Stats}} (int n\+Colonne, string nom\+Joueur, bool mort, int nb\+Bombes)
+\begin{DoxyCompactList}\small\item\em Dessine le rectangle des statistiques. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_demineur_1_1_interface_usager_ac68b2427397d0ecba150cdd4eb4c2511}{Dessiner\+Chiffre\+Colonne}} (int colonne)
+\begin{DoxyCompactList}\small\item\em Dessine l\textquotesingle{}entête des colonnes de la grille de l\textquotesingle{}interface graphique. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_demineur_1_1_interface_usager_a8c3a729a593638cdc4885ce57ab924ac}{Dessiner\+Ligne\+Du\+Haut}} (int colonne)
+\begin{DoxyCompactList}\small\item\em Dessine la ligne horizontal du haut de la grille de l\textquotesingle{}interface graphique. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_demineur_1_1_interface_usager_a11e6f5bd2e9efd5a9c8d55243d7c9565}{Dessiner\+Range\+Haut\+Case}} (int colonne)
+\item 
+static void \mbox{\hyperlink{class_demineur_1_1_interface_usager_aa0055ed586c050b715fe24c607f06fea}{Dessiner\+Range\+Centrale\+Case}} (int ligne, int colonne, string grille)
+\begin{DoxyCompactList}\small\item\em Dessine la rangé du milieu de la grille de l\textquotesingle{}interface graphique. Elle affiche les données des cases. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_demineur_1_1_interface_usager_a9b198981372734c5f99ea1725d7389bf}{Dessiner\+Range\+Bas\+Case}} (int colonne)
+\begin{DoxyCompactList}\small\item\em Dessine le bas des cases dans la grille de l\textquotesingle{}interface graphique. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_demineur_1_1_interface_usager_ac9d4fa207988929ddce155bc2ffb0f24}{Dessiner\+Range\+Vide}} (int n\+Colonne)
+\begin{DoxyCompactList}\small\item\em Dessine une rangé vide dans le tableau des statistiques de partie. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static string \mbox{\hyperlink{class_demineur_1_1_interface_usager_a6fa5ec51b4298b21036f4ecb2f285230}{marge}} = \char`\"{} \char`\"{}
+\item 
+static bool \mbox{\hyperlink{class_demineur_1_1_interface_usager_afcf9d82f992dcee0fca7533013b85c6e}{saisie}} = true
+\item 
+static int\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_demineur_1_1_interface_usager_aeca9de5dae62ab29ba84eb6f7d2449fb}{position\+De\+Reponse}}
+\item 
+static int\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_demineur_1_1_interface_usager_a126b111303424f202fe8e19ccbe94aa4}{position\+De\+Message}}
+\item 
+static int \mbox{\hyperlink{class_demineur_1_1_interface_usager_aeacdf6f0c3bad98db5a5a472d8199e96}{position\+Du\+Guide}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Dessine l\textquotesingle{}interface usagé Titre \mbox{\hyperlink{class_demineur_1_1_grille}{Grille}} Statistiques Instructions 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_demineur_1_1_interface_usager_ac68b2427397d0ecba150cdd4eb4c2511}\label{class_demineur_1_1_interface_usager_ac68b2427397d0ecba150cdd4eb4c2511}} 
+\index{Demineur.InterfaceUsager@{Demineur.InterfaceUsager}!DessinerChiffreColonne@{DessinerChiffreColonne}}
+\index{DessinerChiffreColonne@{DessinerChiffreColonne}!Demineur.InterfaceUsager@{Demineur.InterfaceUsager}}
+\doxysubsubsection{\texorpdfstring{DessinerChiffreColonne()}{DessinerChiffreColonne()}}
+{\footnotesize\ttfamily static void Demineur.\+Interface\+Usager.\+Dessiner\+Chiffre\+Colonne (\begin{DoxyParamCaption}\item[{int}]{colonne }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Dessine l\textquotesingle{}entête des colonnes de la grille de l\textquotesingle{}interface graphique. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em colonne} & Nombre de colonnes de la grille.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_demineur_1_1_interface_usager_a75f36e0a6296266ed0c7ccf8cefe7884}\label{class_demineur_1_1_interface_usager_a75f36e0a6296266ed0c7ccf8cefe7884}} 
+\index{Demineur.InterfaceUsager@{Demineur.InterfaceUsager}!DessinerGrille@{DessinerGrille}}
+\index{DessinerGrille@{DessinerGrille}!Demineur.InterfaceUsager@{Demineur.InterfaceUsager}}
+\doxysubsubsection{\texorpdfstring{DessinerGrille()}{DessinerGrille()}}
+{\footnotesize\ttfamily static void Demineur.\+Interface\+Usager.\+Dessiner\+Grille (\begin{DoxyParamCaption}\item[{string}]{p\+\_\+\+Nom\+Joueur,  }\item[{int}]{n\+Ligne,  }\item[{int}]{n\+Colonne,  }\item[{string}]{grille,  }\item[{int\mbox{[}$\,$\mbox{]}}]{position\+Actuelle,  }\item[{int}]{nb\+Bombes,  }\item[{bool}]{mort }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Dessine la grille de l\textquotesingle{}interface graphique. Elle appel ce qu\textquotesingle{}elle a besoin. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+\+Nom\+Joueur} & Nom du joueur\\
+\hline
+{\em n\+Ligne} & Nombre de lignes de la grille\\
+\hline
+{\em n\+Colonne} & Nombre de colonnes de la grille\\
+\hline
+{\em grille} & \mbox{\hyperlink{class_demineur_1_1_grille}{Grille}} en string\\
+\hline
+{\em position\+Actuelle} & Sélection du joueur.\\
+\hline
+{\em nb\+Bombes} & Nombre de bombes dans la grille.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_demineur_1_1_interface_usager_aff4105bccc12b3a87bc9f0e5567b325a}\label{class_demineur_1_1_interface_usager_aff4105bccc12b3a87bc9f0e5567b325a}} 
+\index{Demineur.InterfaceUsager@{Demineur.InterfaceUsager}!DessinerInstructions@{DessinerInstructions}}
+\index{DessinerInstructions@{DessinerInstructions}!Demineur.InterfaceUsager@{Demineur.InterfaceUsager}}
+\doxysubsubsection{\texorpdfstring{DessinerInstructions()}{DessinerInstructions()}}
+{\footnotesize\ttfamily static void Demineur.\+Interface\+Usager.\+Dessiner\+Instructions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Affiche les instructions 
+
+\mbox{\Hypertarget{class_demineur_1_1_interface_usager_a8c3a729a593638cdc4885ce57ab924ac}\label{class_demineur_1_1_interface_usager_a8c3a729a593638cdc4885ce57ab924ac}} 
+\index{Demineur.InterfaceUsager@{Demineur.InterfaceUsager}!DessinerLigneDuHaut@{DessinerLigneDuHaut}}
+\index{DessinerLigneDuHaut@{DessinerLigneDuHaut}!Demineur.InterfaceUsager@{Demineur.InterfaceUsager}}
+\doxysubsubsection{\texorpdfstring{DessinerLigneDuHaut()}{DessinerLigneDuHaut()}}
+{\footnotesize\ttfamily static void Demineur.\+Interface\+Usager.\+Dessiner\+Ligne\+Du\+Haut (\begin{DoxyParamCaption}\item[{int}]{colonne }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Dessine la ligne horizontal du haut de la grille de l\textquotesingle{}interface graphique. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em colonne} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_demineur_1_1_interface_usager_aa1fa806cb800165d5bc61b7d84a34c21}\label{class_demineur_1_1_interface_usager_aa1fa806cb800165d5bc61b7d84a34c21}} 
+\index{Demineur.InterfaceUsager@{Demineur.InterfaceUsager}!DessinerModeDeSaisie@{DessinerModeDeSaisie}}
+\index{DessinerModeDeSaisie@{DessinerModeDeSaisie}!Demineur.InterfaceUsager@{Demineur.InterfaceUsager}}
+\doxysubsubsection{\texorpdfstring{DessinerModeDeSaisie()}{DessinerModeDeSaisie()}}
+{\footnotesize\ttfamily static void Demineur.\+Interface\+Usager.\+Dessiner\+Mode\+De\+Saisie (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Affiche le mode de saisie actuel. 
+
+\mbox{\Hypertarget{class_demineur_1_1_interface_usager_a302ad836bef7f44883c984c1eac5f44e}\label{class_demineur_1_1_interface_usager_a302ad836bef7f44883c984c1eac5f44e}} 
+\index{Demineur.InterfaceUsager@{Demineur.InterfaceUsager}!DessinerPlateau@{DessinerPlateau}}
+\index{DessinerPlateau@{DessinerPlateau}!Demineur.InterfaceUsager@{Demineur.InterfaceUsager}}
+\doxysubsubsection{\texorpdfstring{DessinerPlateau()}{DessinerPlateau()}}
+{\footnotesize\ttfamily static void Demineur.\+Interface\+Usager.\+Dessiner\+Plateau (\begin{DoxyParamCaption}\item[{string}]{p\+\_\+\+Nom\+Joueur,  }\item[{int}]{n\+Ligne,  }\item[{int}]{n\+Colonne,  }\item[{string}]{grille,  }\item[{int\mbox{[}$\,$\mbox{]}}]{position\+Actuelle,  }\item[{int}]{nb\+Bombes,  }\item[{bool}]{mort }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Dessine tout le plateau. Est appelé une fois au premier tour. Ajuste la taille de la fenêtre de la console. Calcule la position des modules de l\textquotesingle{}interface \{titre, instruction, grille, statistique\} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+\+Nom\+Joueur} & Nom du joueur\\
+\hline
+{\em n\+Ligne} & Nombre de lignes de la grille\\
+\hline
+{\em n\+Colonne} & Nombre de colonnes de la grille\\
+\hline
+{\em grille} & \mbox{\hyperlink{class_demineur_1_1_grille}{Grille}} en string\\
+\hline
+{\em position\+Actuelle} & Sélection du joueur.\\
+\hline
+{\em nb\+Bombes} & Nombre de bombes dans la grille.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_demineur_1_1_interface_usager_a9b198981372734c5f99ea1725d7389bf}\label{class_demineur_1_1_interface_usager_a9b198981372734c5f99ea1725d7389bf}} 
+\index{Demineur.InterfaceUsager@{Demineur.InterfaceUsager}!DessinerRangeBasCase@{DessinerRangeBasCase}}
+\index{DessinerRangeBasCase@{DessinerRangeBasCase}!Demineur.InterfaceUsager@{Demineur.InterfaceUsager}}
+\doxysubsubsection{\texorpdfstring{DessinerRangeBasCase()}{DessinerRangeBasCase()}}
+{\footnotesize\ttfamily static void Demineur.\+Interface\+Usager.\+Dessiner\+Range\+Bas\+Case (\begin{DoxyParamCaption}\item[{int}]{colonne }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Dessine le bas des cases dans la grille de l\textquotesingle{}interface graphique. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em colonne} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_demineur_1_1_interface_usager_aa0055ed586c050b715fe24c607f06fea}\label{class_demineur_1_1_interface_usager_aa0055ed586c050b715fe24c607f06fea}} 
+\index{Demineur.InterfaceUsager@{Demineur.InterfaceUsager}!DessinerRangeCentraleCase@{DessinerRangeCentraleCase}}
+\index{DessinerRangeCentraleCase@{DessinerRangeCentraleCase}!Demineur.InterfaceUsager@{Demineur.InterfaceUsager}}
+\doxysubsubsection{\texorpdfstring{DessinerRangeCentraleCase()}{DessinerRangeCentraleCase()}}
+{\footnotesize\ttfamily static void Demineur.\+Interface\+Usager.\+Dessiner\+Range\+Centrale\+Case (\begin{DoxyParamCaption}\item[{int}]{ligne,  }\item[{int}]{colonne,  }\item[{string}]{grille }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Dessine la rangé du milieu de la grille de l\textquotesingle{}interface graphique. Elle affiche les données des cases. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ligne} & Nombre de lignes de la grille.\\
+\hline
+{\em colonne} & Nombre de colonnes de la grille.\\
+\hline
+{\em grille} & La grille en string.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_demineur_1_1_interface_usager_a11e6f5bd2e9efd5a9c8d55243d7c9565}\label{class_demineur_1_1_interface_usager_a11e6f5bd2e9efd5a9c8d55243d7c9565}} 
+\index{Demineur.InterfaceUsager@{Demineur.InterfaceUsager}!DessinerRangeHautCase@{DessinerRangeHautCase}}
+\index{DessinerRangeHautCase@{DessinerRangeHautCase}!Demineur.InterfaceUsager@{Demineur.InterfaceUsager}}
+\doxysubsubsection{\texorpdfstring{DessinerRangeHautCase()}{DessinerRangeHautCase()}}
+{\footnotesize\ttfamily static void Demineur.\+Interface\+Usager.\+Dessiner\+Range\+Haut\+Case (\begin{DoxyParamCaption}\item[{int}]{colonne }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+
+
+Dessine la rangé du haut de la grille de l\textquotesingle{}interface graphique. \mbox{\Hypertarget{class_demineur_1_1_interface_usager_ac9d4fa207988929ddce155bc2ffb0f24}\label{class_demineur_1_1_interface_usager_ac9d4fa207988929ddce155bc2ffb0f24}} 
+\index{Demineur.InterfaceUsager@{Demineur.InterfaceUsager}!DessinerRangeVide@{DessinerRangeVide}}
+\index{DessinerRangeVide@{DessinerRangeVide}!Demineur.InterfaceUsager@{Demineur.InterfaceUsager}}
+\doxysubsubsection{\texorpdfstring{DessinerRangeVide()}{DessinerRangeVide()}}
+{\footnotesize\ttfamily static void Demineur.\+Interface\+Usager.\+Dessiner\+Range\+Vide (\begin{DoxyParamCaption}\item[{int}]{n\+Colonne }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Dessine une rangé vide dans le tableau des statistiques de partie. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n\+Colonne} & Nombre de colonnes de la grille.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_demineur_1_1_interface_usager_a4c8469c1011fe0d6408ef1ee5f3544d4}\label{class_demineur_1_1_interface_usager_a4c8469c1011fe0d6408ef1ee5f3544d4}} 
+\index{Demineur.InterfaceUsager@{Demineur.InterfaceUsager}!DessinerStats@{DessinerStats}}
+\index{DessinerStats@{DessinerStats}!Demineur.InterfaceUsager@{Demineur.InterfaceUsager}}
+\doxysubsubsection{\texorpdfstring{DessinerStats()}{DessinerStats()}}
+{\footnotesize\ttfamily static void Demineur.\+Interface\+Usager.\+Dessiner\+Stats (\begin{DoxyParamCaption}\item[{int}]{n\+Colonne,  }\item[{string}]{nom\+Joueur,  }\item[{bool}]{mort,  }\item[{int}]{nb\+Bombes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Dessine le rectangle des statistiques. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n\+Colonne} & Nombre de colonnes de la grille.\\
+\hline
+{\em nom\+Joueur} & Nom du joueur.\\
+\hline
+\end{DoxyParams}
+/// 
+\begin{DoxyParams}{Parameters}
+{\em mort} & \mbox{\hyperlink{class_demineur_1_1_joueur}{Joueur}} est il mort\\
+\hline
+{\em nb\+Bombes} & Nom de bombes dans la grille.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_demineur_1_1_interface_usager_aa49faea71eea903fc1776919aa23954c}\label{class_demineur_1_1_interface_usager_aa49faea71eea903fc1776919aa23954c}} 
+\index{Demineur.InterfaceUsager@{Demineur.InterfaceUsager}!DessinerTitreJeu@{DessinerTitreJeu}}
+\index{DessinerTitreJeu@{DessinerTitreJeu}!Demineur.InterfaceUsager@{Demineur.InterfaceUsager}}
+\doxysubsubsection{\texorpdfstring{DessinerTitreJeu()}{DessinerTitreJeu()}}
+{\footnotesize\ttfamily static void Demineur.\+Interface\+Usager.\+Dessiner\+Titre\+Jeu (\begin{DoxyParamCaption}\item[{int}]{colonne }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Affiche le titre du jeu. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em colonne} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_demineur_1_1_interface_usager_a30186be3fa5c56e6c68c960a9d793e9c}\label{class_demineur_1_1_interface_usager_a30186be3fa5c56e6c68c960a9d793e9c}} 
+\index{Demineur.InterfaceUsager@{Demineur.InterfaceUsager}!MessageCaseDejaOuverte@{MessageCaseDejaOuverte}}
+\index{MessageCaseDejaOuverte@{MessageCaseDejaOuverte}!Demineur.InterfaceUsager@{Demineur.InterfaceUsager}}
+\doxysubsubsection{\texorpdfstring{MessageCaseDejaOuverte()}{MessageCaseDejaOuverte()}}
+{\footnotesize\ttfamily static void Demineur.\+Interface\+Usager.\+Message\+Case\+Deja\+Ouverte (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Affiche le message de case déjà ouverte. 
+
+\mbox{\Hypertarget{class_demineur_1_1_interface_usager_a959feb7808140f6c4bc4a9932da5c986}\label{class_demineur_1_1_interface_usager_a959feb7808140f6c4bc4a9932da5c986}} 
+\index{Demineur.InterfaceUsager@{Demineur.InterfaceUsager}!MessageDefaite@{MessageDefaite}}
+\index{MessageDefaite@{MessageDefaite}!Demineur.InterfaceUsager@{Demineur.InterfaceUsager}}
+\doxysubsubsection{\texorpdfstring{MessageDefaite()}{MessageDefaite()}}
+{\footnotesize\ttfamily static void Demineur.\+Interface\+Usager.\+Message\+Defaite (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Affiche le message de Défaite. 
+
+\mbox{\Hypertarget{class_demineur_1_1_interface_usager_ad4e95704ec8ceaccfb8e2aca33240418}\label{class_demineur_1_1_interface_usager_ad4e95704ec8ceaccfb8e2aca33240418}} 
+\index{Demineur.InterfaceUsager@{Demineur.InterfaceUsager}!MessageFormatDentreeErronee@{MessageFormatDentreeErronee}}
+\index{MessageFormatDentreeErronee@{MessageFormatDentreeErronee}!Demineur.InterfaceUsager@{Demineur.InterfaceUsager}}
+\doxysubsubsection{\texorpdfstring{MessageFormatDentreeErronee()}{MessageFormatDentreeErronee()}}
+{\footnotesize\ttfamily static void Demineur.\+Interface\+Usager.\+Message\+Format\+Dentree\+Erronee (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Affiche le message de format incorrecte si la siasie de respecte pas $^\wedge$\textbackslash{}d+\textbackslash{}s\textbackslash{}d+\$. 
+
+\mbox{\Hypertarget{class_demineur_1_1_interface_usager_ad58d94f7dbb8da1499358997e7824e9b}\label{class_demineur_1_1_interface_usager_ad58d94f7dbb8da1499358997e7824e9b}} 
+\index{Demineur.InterfaceUsager@{Demineur.InterfaceUsager}!MessageHorsLimites@{MessageHorsLimites}}
+\index{MessageHorsLimites@{MessageHorsLimites}!Demineur.InterfaceUsager@{Demineur.InterfaceUsager}}
+\doxysubsubsection{\texorpdfstring{MessageHorsLimites()}{MessageHorsLimites()}}
+{\footnotesize\ttfamily static void Demineur.\+Interface\+Usager.\+Message\+Hors\+Limites (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Affiche le message de Saisie hors limite si la saisie ne fait pas partie de la grille. 
+
+\mbox{\Hypertarget{class_demineur_1_1_interface_usager_a0fb3b33152de52a54617038f796fdea8}\label{class_demineur_1_1_interface_usager_a0fb3b33152de52a54617038f796fdea8}} 
+\index{Demineur.InterfaceUsager@{Demineur.InterfaceUsager}!MessageIAInactif@{MessageIAInactif}}
+\index{MessageIAInactif@{MessageIAInactif}!Demineur.InterfaceUsager@{Demineur.InterfaceUsager}}
+\doxysubsubsection{\texorpdfstring{MessageIAInactif()}{MessageIAInactif()}}
+{\footnotesize\ttfamily static void Demineur.\+Interface\+Usager.\+Message\+I\+A\+Inactif (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Affiche le message intelligence inactif si le joueur a choisi une partie sans \mbox{\hyperlink{class_demineur_1_1_i_a}{IA}}. 
+
+\mbox{\Hypertarget{class_demineur_1_1_interface_usager_a7b340f1ae55a62de10d398281b0b89f4}\label{class_demineur_1_1_interface_usager_a7b340f1ae55a62de10d398281b0b89f4}} 
+\index{Demineur.InterfaceUsager@{Demineur.InterfaceUsager}!MessageNouveauRecord@{MessageNouveauRecord}}
+\index{MessageNouveauRecord@{MessageNouveauRecord}!Demineur.InterfaceUsager@{Demineur.InterfaceUsager}}
+\doxysubsubsection{\texorpdfstring{MessageNouveauRecord()}{MessageNouveauRecord()}}
+{\footnotesize\ttfamily static void Demineur.\+Interface\+Usager.\+Message\+Nouveau\+Record (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_demineur_1_1_interface_usager_a8a84f066b8d89f02aee1b2697e1ac6e4}\label{class_demineur_1_1_interface_usager_a8a84f066b8d89f02aee1b2697e1ac6e4}} 
+\index{Demineur.InterfaceUsager@{Demineur.InterfaceUsager}!MessageVictoire@{MessageVictoire}}
+\index{MessageVictoire@{MessageVictoire}!Demineur.InterfaceUsager@{Demineur.InterfaceUsager}}
+\doxysubsubsection{\texorpdfstring{MessageVictoire()}{MessageVictoire()}}
+{\footnotesize\ttfamily static void Demineur.\+Interface\+Usager.\+Message\+Victoire (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Affiche le message de victoire. 
+
+\mbox{\Hypertarget{class_demineur_1_1_interface_usager_a57a9341779fdf6af2d7372ff6b485ae1}\label{class_demineur_1_1_interface_usager_a57a9341779fdf6af2d7372ff6b485ae1}} 
+\index{Demineur.InterfaceUsager@{Demineur.InterfaceUsager}!MettreAJourSelection@{MettreAJourSelection}}
+\index{MettreAJourSelection@{MettreAJourSelection}!Demineur.InterfaceUsager@{Demineur.InterfaceUsager}}
+\doxysubsubsection{\texorpdfstring{MettreAJourSelection()}{MettreAJourSelection()}}
+{\footnotesize\ttfamily static void Demineur.\+Interface\+Usager.\+Mettre\+A\+Jour\+Selection (\begin{DoxyParamCaption}\item[{int\mbox{[}$\,$\mbox{]}}]{position\+Actuelle }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Lors de la navigation par flèche ou de l\textquotesingle{}utilisation de l\textquotesingle{}\mbox{\hyperlink{class_demineur_1_1_i_a}{IA}}, cela met à jour les coordonnées en bas à droite. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position\+Actuelle} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_demineur_1_1_interface_usager_af78a2ae4e7acd1817f3f3ea874a82a23}\label{class_demineur_1_1_interface_usager_af78a2ae4e7acd1817f3f3ea874a82a23}} 
+\index{Demineur.InterfaceUsager@{Demineur.InterfaceUsager}!PositionnerCursorPourMessageErreur@{PositionnerCursorPourMessageErreur}}
+\index{PositionnerCursorPourMessageErreur@{PositionnerCursorPourMessageErreur}!Demineur.InterfaceUsager@{Demineur.InterfaceUsager}}
+\doxysubsubsection{\texorpdfstring{PositionnerCursorPourMessageErreur()}{PositionnerCursorPourMessageErreur()}}
+{\footnotesize\ttfamily static void Demineur.\+Interface\+Usager.\+Positionner\+Cursor\+Pour\+Message\+Erreur (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Positionne le cursor et change la couleur du texte pour afficher l\textquotesingle{}erreur. 
+
+\mbox{\Hypertarget{class_demineur_1_1_interface_usager_a07d564daa3b9324dd0ad46a1970d958e}\label{class_demineur_1_1_interface_usager_a07d564daa3b9324dd0ad46a1970d958e}} 
+\index{Demineur.InterfaceUsager@{Demineur.InterfaceUsager}!PositionnerCursorPourRepondre@{PositionnerCursorPourRepondre}}
+\index{PositionnerCursorPourRepondre@{PositionnerCursorPourRepondre}!Demineur.InterfaceUsager@{Demineur.InterfaceUsager}}
+\doxysubsubsection{\texorpdfstring{PositionnerCursorPourRepondre()}{PositionnerCursorPourRepondre()}}
+{\footnotesize\ttfamily static void Demineur.\+Interface\+Usager.\+Positionner\+Cursor\+Pour\+Repondre (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Positionne le cursor lorsqu\textquotesingle{}on doit mettre à jour l\textquotesingle{}affichage de la sélection(en bas à droite). 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_demineur_1_1_interface_usager_a6fa5ec51b4298b21036f4ecb2f285230}\label{class_demineur_1_1_interface_usager_a6fa5ec51b4298b21036f4ecb2f285230}} 
+\index{Demineur.InterfaceUsager@{Demineur.InterfaceUsager}!marge@{marge}}
+\index{marge@{marge}!Demineur.InterfaceUsager@{Demineur.InterfaceUsager}}
+\doxysubsubsection{\texorpdfstring{marge}{marge}}
+{\footnotesize\ttfamily string Demineur.\+Interface\+Usager.\+marge = \char`\"{} \char`\"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_demineur_1_1_interface_usager_a126b111303424f202fe8e19ccbe94aa4}\label{class_demineur_1_1_interface_usager_a126b111303424f202fe8e19ccbe94aa4}} 
+\index{Demineur.InterfaceUsager@{Demineur.InterfaceUsager}!positionDeMessage@{positionDeMessage}}
+\index{positionDeMessage@{positionDeMessage}!Demineur.InterfaceUsager@{Demineur.InterfaceUsager}}
+\doxysubsubsection{\texorpdfstring{positionDeMessage}{positionDeMessage}}
+{\footnotesize\ttfamily int \mbox{[}$\,$\mbox{]} Demineur.\+Interface\+Usager.\+position\+De\+Message\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_demineur_1_1_interface_usager_aeca9de5dae62ab29ba84eb6f7d2449fb}\label{class_demineur_1_1_interface_usager_aeca9de5dae62ab29ba84eb6f7d2449fb}} 
+\index{Demineur.InterfaceUsager@{Demineur.InterfaceUsager}!positionDeReponse@{positionDeReponse}}
+\index{positionDeReponse@{positionDeReponse}!Demineur.InterfaceUsager@{Demineur.InterfaceUsager}}
+\doxysubsubsection{\texorpdfstring{positionDeReponse}{positionDeReponse}}
+{\footnotesize\ttfamily int \mbox{[}$\,$\mbox{]} Demineur.\+Interface\+Usager.\+position\+De\+Reponse\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_demineur_1_1_interface_usager_aeacdf6f0c3bad98db5a5a472d8199e96}\label{class_demineur_1_1_interface_usager_aeacdf6f0c3bad98db5a5a472d8199e96}} 
+\index{Demineur.InterfaceUsager@{Demineur.InterfaceUsager}!positionDuGuide@{positionDuGuide}}
+\index{positionDuGuide@{positionDuGuide}!Demineur.InterfaceUsager@{Demineur.InterfaceUsager}}
+\doxysubsubsection{\texorpdfstring{positionDuGuide}{positionDuGuide}}
+{\footnotesize\ttfamily int Demineur.\+Interface\+Usager.\+position\+Du\+Guide\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_demineur_1_1_interface_usager_afcf9d82f992dcee0fca7533013b85c6e}\label{class_demineur_1_1_interface_usager_afcf9d82f992dcee0fca7533013b85c6e}} 
+\index{Demineur.InterfaceUsager@{Demineur.InterfaceUsager}!saisie@{saisie}}
+\index{saisie@{saisie}!Demineur.InterfaceUsager@{Demineur.InterfaceUsager}}
+\doxysubsubsection{\texorpdfstring{saisie}{saisie}}
+{\footnotesize\ttfamily bool Demineur.\+Interface\+Usager.\+saisie = true\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+\doxysubsection{Property Documentation}
+\mbox{\Hypertarget{class_demineur_1_1_interface_usager_a2fdac8c41bef06db2f4839981a38a26a}\label{class_demineur_1_1_interface_usager_a2fdac8c41bef06db2f4839981a38a26a}} 
+\index{Demineur.InterfaceUsager@{Demineur.InterfaceUsager}!Saisie@{Saisie}}
+\index{Saisie@{Saisie}!Demineur.InterfaceUsager@{Demineur.InterfaceUsager}}
+\doxysubsubsection{\texorpdfstring{Saisie}{Saisie}}
+{\footnotesize\ttfamily bool Demineur.\+Interface\+Usager.\+Saisie\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Détecte le mode de saisie en cours. 
+

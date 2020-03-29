@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: Demineur.Grille Class Reference</title>
+<title>Demineur: Demineur.Grille Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -30,8 +30,10 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">My Project
+   <div id="projectname">Demineur
+   &#160;<span id="projectnumber">2.0</span>
    </div>
+   <div id="projectbrief">Programmation 3 - TP1 - Demineur</div>
   </td>
    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -93,24 +95,91 @@ $(document).ready(function(){initNavTree('class_demineur_1_1_grille.html',''); i
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#properties">Properties</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_demineur_1_1_grille-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Demineur.Grille Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><a class="el" href="class_demineur_1_1_grille.html" title="Grille représente le plateau de jeu. Elle contient des cases de type Case. Case[,] : champs est le ta...">Grille</a> représente le plateau de jeu. Elle contient des cases de type <a class="el" href="class_demineur_1_1_case.html" title="Représente une case du démineur. Le grille génére sa grille en créant &quot;Lignes X Colonne&quot; cases....">Case</a>. <a class="el" href="class_demineur_1_1_case.html" title="Représente une case du démineur. Le grille génére sa grille en créant &quot;Lignes X Colonne&quot; cases....">Case</a>[,] : champs est le tableau 2D [Lignes x Colonnes] Int : nbBombeGrille contient le nombre de bombe que la grille contient. Int : colonnes Dimension X du tableau Int : lignes Dimension Y du table Int : casesFermer contient le nombre de base fermer en début de partie. Stack&lt;Case&gt; : aOuvrir Permet la recherche récursive pour l'ouverture automatique des cases dont le danger est de 0.  
+ <a href="class_demineur_1_1_grille.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a508a171b82fdfb35c37819783008e537"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_grille.html#a508a171b82fdfb35c37819783008e537">Grille</a> (short colonne, short ligne, short difficulte)</td></tr>
-<tr class="separator:a508a171b82fdfb35c37819783008e537"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae4fd8e048766a807d44381ed693e6c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_grille.html#aae4fd8e048766a807d44381ed693e6c5">DisperserBombes</a> (short colonne, short ligne)</td></tr>
-<tr class="separator:aae4fd8e048766a807d44381ed693e6c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae0243a87e2e3433b9b1371644f6d22e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_grille.html#ae0243a87e2e3433b9b1371644f6d22e1">RencontreVoisin</a> (short colonne, short ligne)</td></tr>
-<tr class="separator:ae0243a87e2e3433b9b1371644f6d22e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1bf4f6d7d192934f7fbc807d51e28924"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_grille.html#a1bf4f6d7d192934f7fbc807d51e28924">Grille</a> (short <a class="el" href="class_demineur_1_1_grille.html#a5c50a7496a70f74f8af80cc8ec41508d">lignes</a>, short <a class="el" href="class_demineur_1_1_grille.html#a5717472aaa2beef6f406f1ee4bd10444">colonnes</a>, short difficulte)</td></tr>
+<tr class="separator:a1bf4f6d7d192934f7fbc807d51e28924"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af79425cb94b43596af52dd754d1c6bbc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_grille.html#af79425cb94b43596af52dd754d1c6bbc">DisperserBombes</a> (short <a class="el" href="class_demineur_1_1_grille.html#a5c50a7496a70f74f8af80cc8ec41508d">lignes</a>, short <a class="el" href="class_demineur_1_1_grille.html#a5717472aaa2beef6f406f1ee4bd10444">colonnes</a>)</td></tr>
+<tr class="memdesc:af79425cb94b43596af52dd754d1c6bbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disperse les bombes dans la grille en mettant le boolean estTuBombe à true sur les cases ciblés.  <a href="class_demineur_1_1_grille.html#af79425cb94b43596af52dd754d1c6bbc">More...</a><br /></td></tr>
+<tr class="separator:af79425cb94b43596af52dd754d1c6bbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02157ebf2578c545cb13490386e4fca0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_grille.html#a02157ebf2578c545cb13490386e4fca0">RencontreVoisin</a> (int ligne, int colonne)</td></tr>
+<tr class="memdesc:a02157ebf2578c545cb13490386e4fca0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fouille les case adjacentes à la case active pour remplir le tableau des cases voisines.  <a href="class_demineur_1_1_grille.html#a02157ebf2578c545cb13490386e4fca0">More...</a><br /></td></tr>
+<tr class="separator:a02157ebf2578c545cb13490386e4fca0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4c27bb08c774aa5137fae403827bfd3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_grille.html#ad4c27bb08c774aa5137fae403827bfd3">MettreAJourVoisin</a> (int ligne, int colonne, int l, int c)</td></tr>
+<tr class="memdesc:ad4c27bb08c774aa5137fae403827bfd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utilisé seulement lorsque la première case ouverte est une bombe.  <a href="class_demineur_1_1_grille.html#ad4c27bb08c774aa5137fae403827bfd3">More...</a><br /></td></tr>
+<tr class="separator:ad4c27bb08c774aa5137fae403827bfd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5576f35a80fa5545c2450ace42f04d85"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_grille.html#a5576f35a80fa5545c2450ace42f04d85">OuvrirCase</a> (int ligne, int colonne)</td></tr>
+<tr class="memdesc:a5576f35a80fa5545c2450ace42f04d85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ouvre une case suite à la confirmation du joueur.  <a href="class_demineur_1_1_grille.html#a5576f35a80fa5545c2450ace42f04d85">More...</a><br /></td></tr>
+<tr class="separator:a5576f35a80fa5545c2450ace42f04d85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab08b8398fa5639ebd1c8f9392fa019e6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_grille.html#ab08b8398fa5639ebd1c8f9392fa019e6">BombePremierTour</a> (int[] cible)</td></tr>
+<tr class="memdesc:ab08b8398fa5639ebd1c8f9392fa019e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Neutralise la case si la première case est une bombe.  <a href="class_demineur_1_1_grille.html#ab08b8398fa5639ebd1c8f9392fa019e6">More...</a><br /></td></tr>
+<tr class="separator:ab08b8398fa5639ebd1c8f9392fa019e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af96b95cae8dd85c8d93bcba5b94302b5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_grille.html#af96b95cae8dd85c8d93bcba5b94302b5">DecouvrirBombes</a> ()</td></tr>
+<tr class="memdesc:af96b95cae8dd85c8d93bcba5b94302b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ouvre les bombes lorsque le joueur explose.  <a href="class_demineur_1_1_grille.html#af96b95cae8dd85c8d93bcba5b94302b5">More...</a><br /></td></tr>
+<tr class="separator:af96b95cae8dd85c8d93bcba5b94302b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc4236a3b0681ed3a987b00b422b4259"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_grille.html#adc4236a3b0681ed3a987b00b422b4259">Colonnes</a> ()</td></tr>
+<tr class="memdesc:adc4236a3b0681ed3a987b00b422b4259"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le nombre de colonnes de la grille.  <a href="class_demineur_1_1_grille.html#adc4236a3b0681ed3a987b00b422b4259">More...</a><br /></td></tr>
+<tr class="separator:adc4236a3b0681ed3a987b00b422b4259"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ab8fed833bfb16a36e131a1636962bb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_grille.html#a0ab8fed833bfb16a36e131a1636962bb">Lignes</a> ()</td></tr>
+<tr class="memdesc:a0ab8fed833bfb16a36e131a1636962bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le nombre de Lignes de la grille.  <a href="class_demineur_1_1_grille.html#a0ab8fed833bfb16a36e131a1636962bb">More...</a><br /></td></tr>
+<tr class="separator:a0ab8fed833bfb16a36e131a1636962bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3daead5a6fc67aa422d56d767f05fbe"><td class="memItemLeft" align="right" valign="top">override string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_grille.html#ac3daead5a6fc67aa422d56d767f05fbe">ToString</a> ()</td></tr>
+<tr class="memdesc:ac3daead5a6fc67aa422d56d767f05fbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne la grille sous forme de string. '?' signigie case fermer '¤' signifie bombe ' ' signigie Ouverte et danger 0  <a href="class_demineur_1_1_grille.html#ac3daead5a6fc67aa422d56d767f05fbe">More...</a><br /></td></tr>
+<tr class="separator:ac3daead5a6fc67aa422d56d767f05fbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e98b9ed81f7becb86ae4da4542a35e2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_grille.html#a3e98b9ed81f7becb86ae4da4542a35e2">CalculerNbCaseFermer</a> ()</td></tr>
+<tr class="memdesc:a3e98b9ed81f7becb86ae4da4542a35e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcule le nombre de case fermer. Permet de mettre à jour le compte pour déterminer si la partie est gagné.  <a href="class_demineur_1_1_grille.html#a3e98b9ed81f7becb86ae4da4542a35e2">More...</a><br /></td></tr>
+<tr class="separator:a3e98b9ed81f7becb86ae4da4542a35e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
+Properties</h2></td></tr>
+<tr class="memitem:aaac104aecb34df70b072f101972cce59"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_demineur_1_1_case.html">Case</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_grille.html#aaac104aecb34df70b072f101972cce59">this[int ligne, int colonne]</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:aaac104aecb34df70b072f101972cce59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rempli le tableau des voisins d'une case.  <a href="class_demineur_1_1_grille.html#aaac104aecb34df70b072f101972cce59">More...</a><br /></td></tr>
+<tr class="separator:aaac104aecb34df70b072f101972cce59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3d6add44843c1cf2661c5c1c7e6e146"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_grille.html#ae3d6add44843c1cf2661c5c1c7e6e146">NombreDeBombes</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:ae3d6add44843c1cf2661c5c1c7e6e146"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne ou modifie le nombre de bombes dans la grille. Utile au premier tour.  <a href="class_demineur_1_1_grille.html#ae3d6add44843c1cf2661c5c1c7e6e146">More...</a><br /></td></tr>
+<tr class="separator:ae3d6add44843c1cf2661c5c1c7e6e146"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:abc5ab77dcb1050ee1dcc570c662e666e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_grille.html#abc5ab77dcb1050ee1dcc570c662e666e">CalculerBombes</a> (short <a class="el" href="class_demineur_1_1_grille.html#a5c50a7496a70f74f8af80cc8ec41508d">lignes</a>, short <a class="el" href="class_demineur_1_1_grille.html#a5717472aaa2beef6f406f1ee4bd10444">colonnes</a>, short difficulte)</td></tr>
+<tr class="memdesc:abc5ab77dcb1050ee1dcc570c662e666e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Détermine le nombre de bombe a générer selon la difficulté. Le calcule se fait en pourcentage de cases.  <a href="class_demineur_1_1_grille.html#abc5ab77dcb1050ee1dcc570c662e666e">More...</a><br /></td></tr>
+<tr class="separator:abc5ab77dcb1050ee1dcc570c662e666e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a262349ba9ace07d2a43419033ce51dd1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_grille.html#a262349ba9ace07d2a43419033ce51dd1">OuvrirCase</a> (<a class="el" href="class_demineur_1_1_case.html">Case</a> voisin)</td></tr>
+<tr class="memdesc:a262349ba9ace07d2a43419033ce51dd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ouvre automatiquement les cases voisines de la sélection  <a href="class_demineur_1_1_grille.html#a262349ba9ace07d2a43419033ce51dd1">More...</a><br /></td></tr>
+<tr class="separator:a262349ba9ace07d2a43419033ce51dd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:ab5ef7b4ae3d9e0702a18ea15109e345c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_demineur_1_1_case.html">Case</a>[,]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_grille.html#ab5ef7b4ae3d9e0702a18ea15109e345c">champs</a></td></tr>
+<tr class="separator:ab5ef7b4ae3d9e0702a18ea15109e345c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7065625ba1306e25e7743a3143a1473"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_grille.html#ad7065625ba1306e25e7743a3143a1473">nbBombeGrille</a></td></tr>
+<tr class="separator:ad7065625ba1306e25e7743a3143a1473"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5717472aaa2beef6f406f1ee4bd10444"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_grille.html#a5717472aaa2beef6f406f1ee4bd10444">colonnes</a></td></tr>
+<tr class="separator:a5717472aaa2beef6f406f1ee4bd10444"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c50a7496a70f74f8af80cc8ec41508d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_grille.html#a5c50a7496a70f74f8af80cc8ec41508d">lignes</a></td></tr>
+<tr class="separator:a5c50a7496a70f74f8af80cc8ec41508d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d8514ead836fb96b214cf578b8b51db"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_grille.html#a6d8514ead836fb96b214cf578b8b51db">casesFermer</a></td></tr>
+<tr class="separator:a6d8514ead836fb96b214cf578b8b51db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa16cd8a441a779bb8a6035ad2a6cc41b"><td class="memItemLeft" align="right" valign="top">Stack&lt; <a class="el" href="class_demineur_1_1_case.html">Case</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_grille.html#aa16cd8a441a779bb8a6035ad2a6cc41b">aOuvrir</a></td></tr>
+<tr class="separator:aa16cd8a441a779bb8a6035ad2a6cc41b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a508a171b82fdfb35c37819783008e537"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a508a171b82fdfb35c37819783008e537">&#9670;&nbsp;</a></span>Grille()</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="class_demineur_1_1_grille.html" title="Grille représente le plateau de jeu. Elle contient des cases de type Case. Case[,] : champs est le ta...">Grille</a> représente le plateau de jeu. Elle contient des cases de type <a class="el" href="class_demineur_1_1_case.html" title="Représente une case du démineur. Le grille génére sa grille en créant &quot;Lignes X Colonne&quot; cases....">Case</a>. <a class="el" href="class_demineur_1_1_case.html" title="Représente une case du démineur. Le grille génére sa grille en créant &quot;Lignes X Colonne&quot; cases....">Case</a>[,] : champs est le tableau 2D [Lignes x Colonnes] Int : nbBombeGrille contient le nombre de bombe que la grille contient. Int : colonnes Dimension X du tableau Int : lignes Dimension Y du table Int : casesFermer contient le nombre de base fermer en début de partie. Stack&lt;Case&gt; : aOuvrir Permet la recherche récursive pour l'ouverture automatique des cases dont le danger est de 0. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a1bf4f6d7d192934f7fbc807d51e28924"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1bf4f6d7d192934f7fbc807d51e28924">&#9670;&nbsp;</a></span>Grille()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -122,13 +191,13 @@ Public Member Functions</h2></td></tr>
           <td class="memname">Demineur.Grille.Grille </td>
           <td>(</td>
           <td class="paramtype">short&#160;</td>
-          <td class="paramname"><em>colonne</em>, </td>
+          <td class="paramname"><em>lignes</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">short&#160;</td>
-          <td class="paramname"><em>ligne</em>, </td>
+          <td class="paramname"><em>colonnes</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -152,8 +221,178 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="aae4fd8e048766a807d44381ed693e6c5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aae4fd8e048766a807d44381ed693e6c5">&#9670;&nbsp;</a></span>DisperserBombes()</h2>
+<a id="ab08b8398fa5639ebd1c8f9392fa019e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab08b8398fa5639ebd1c8f9392fa019e6">&#9670;&nbsp;</a></span>BombePremierTour()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Demineur.Grille.BombePremierTour </td>
+          <td>(</td>
+          <td class="paramtype">int[]&#160;</td>
+          <td class="paramname"><em>cible</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Neutralise la case si la première case est une bombe. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cible</td><td><a class="el" href="class_demineur_1_1_case.html" title="Représente une case du démineur. Le grille génére sa grille en créant &quot;Lignes X Colonne&quot; cases....">Case</a> sélectionnée.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="abc5ab77dcb1050ee1dcc570c662e666e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc5ab77dcb1050ee1dcc570c662e666e">&#9670;&nbsp;</a></span>CalculerBombes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Demineur.Grille.CalculerBombes </td>
+          <td>(</td>
+          <td class="paramtype">short&#160;</td>
+          <td class="paramname"><em>lignes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">short&#160;</td>
+          <td class="paramname"><em>colonnes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">short&#160;</td>
+          <td class="paramname"><em>difficulte</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Détermine le nombre de bombe a générer selon la difficulté. Le calcule se fait en pourcentage de cases. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lignes</td><td>Nombre de lignes qu'il y a dans la grille</td></tr>
+    <tr><td class="paramname">colonnes</td><td>Nombre de colonnes qu'il y a dans la grille</td></tr>
+    <tr><td class="paramname">difficulte</td><td>Difficulté {1,2,3}</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Int : Nombre de bombes</dd></dl>
+
+</div>
+</div>
+<a id="a3e98b9ed81f7becb86ae4da4542a35e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e98b9ed81f7becb86ae4da4542a35e2">&#9670;&nbsp;</a></span>CalculerNbCaseFermer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Demineur.Grille.CalculerNbCaseFermer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Calcule le nombre de case fermer. Permet de mettre à jour le compte pour déterminer si la partie est gagné. </p>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="adc4236a3b0681ed3a987b00b422b4259"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc4236a3b0681ed3a987b00b422b4259">&#9670;&nbsp;</a></span>Colonnes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Demineur.Grille.Colonnes </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retourne le nombre de colonnes de la grille. </p>
+<dl class="section return"><dt>Returns</dt><dd>Int : Colonnes</dd></dl>
+
+</div>
+</div>
+<a id="af96b95cae8dd85c8d93bcba5b94302b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af96b95cae8dd85c8d93bcba5b94302b5">&#9670;&nbsp;</a></span>DecouvrirBombes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Demineur.Grille.DecouvrirBombes </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ouvre les bombes lorsque le joueur explose. </p>
+
+</div>
+</div>
+<a id="af79425cb94b43596af52dd754d1c6bbc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af79425cb94b43596af52dd754d1c6bbc">&#9670;&nbsp;</a></span>DisperserBombes()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -165,13 +404,13 @@ Public Member Functions</h2></td></tr>
           <td class="memname">void Demineur.Grille.DisperserBombes </td>
           <td>(</td>
           <td class="paramtype">short&#160;</td>
-          <td class="paramname"><em>colonne</em>, </td>
+          <td class="paramname"><em>lignes</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">short&#160;</td>
-          <td class="paramname"><em>ligne</em>&#160;</td>
+          <td class="paramname"><em>colonnes</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -186,10 +425,187 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Disperse les bombes dans la grille en mettant le boolean estTuBombe à true sur les cases ciblés. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lignes</td><td>Nombre de lignes dans la grille de jeu.</td></tr>
+    <tr><td class="paramname">colonnes</td><td>Nombre de colonnes dans la grille de jeu.</td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
-<a id="ae0243a87e2e3433b9b1371644f6d22e1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae0243a87e2e3433b9b1371644f6d22e1">&#9670;&nbsp;</a></span>RencontreVoisin()</h2>
+<a id="a0ab8fed833bfb16a36e131a1636962bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ab8fed833bfb16a36e131a1636962bb">&#9670;&nbsp;</a></span>Lignes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Demineur.Grille.Lignes </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retourne le nombre de Lignes de la grille. </p>
+<dl class="section return"><dt>Returns</dt><dd>Int : Lignes</dd></dl>
+
+</div>
+</div>
+<a id="ad4c27bb08c774aa5137fae403827bfd3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4c27bb08c774aa5137fae403827bfd3">&#9670;&nbsp;</a></span>MettreAJourVoisin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Demineur.Grille.MettreAJourVoisin </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ligne</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>colonne</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>l</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>c</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Utilisé seulement lorsque la première case ouverte est une bombe. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ligne</td><td>Ligne en cours de traitement</td></tr>
+    <tr><td class="paramname">colonne</td><td>Colonne en cours de traitement</td></tr>
+    <tr><td class="paramname">l</td><td>Y de la bombe à neutraliser</td></tr>
+    <tr><td class="paramname">c</td><td>X de la bombe à neutraliser</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a262349ba9ace07d2a43419033ce51dd1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a262349ba9ace07d2a43419033ce51dd1">&#9670;&nbsp;</a></span>OuvrirCase() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Demineur.Grille.OuvrirCase </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_demineur_1_1_case.html">Case</a>&#160;</td>
+          <td class="paramname"><em>voisin</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ouvre automatiquement les cases voisines de la sélection </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">voisin</td><td>Voisin de la case sélectionné.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Retourne vrai si ?</dd></dl>
+
+</div>
+</div>
+<a id="a5576f35a80fa5545c2450ace42f04d85"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5576f35a80fa5545c2450ace42f04d85">&#9670;&nbsp;</a></span>OuvrirCase() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Demineur.Grille.OuvrirCase </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ligne</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>colonne</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ouvre une case suite à la confirmation du joueur. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ligne</td><td>Coordonnée Y de la case à ouvrir.</td></tr>
+    <tr><td class="paramname">colonne</td><td>Coordonnée X de la case à ouvrir.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Bool : Retourne faux si la case est une bombe, retourne vrai si elle n'est pas une bombe.</dd></dl>
+
+</div>
+</div>
+<a id="a02157ebf2578c545cb13490386e4fca0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02157ebf2578c545cb13490386e4fca0">&#9670;&nbsp;</a></span>RencontreVoisin()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -200,14 +616,14 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void Demineur.Grille.RencontreVoisin </td>
           <td>(</td>
-          <td class="paramtype">short&#160;</td>
-          <td class="paramname"><em>colonne</em>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ligne</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">short&#160;</td>
-          <td class="paramname"><em>ligne</em>&#160;</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>colonne</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -221,6 +637,233 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Fouille les case adjacentes à la case active pour remplir le tableau des cases voisines. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ligne</td><td>Ligne en cours de traitement</td></tr>
+    <tr><td class="paramname">colonne</td><td>Colonne en cours de traitement</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac3daead5a6fc67aa422d56d767f05fbe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3daead5a6fc67aa422d56d767f05fbe">&#9670;&nbsp;</a></span>ToString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">override string Demineur.Grille.ToString </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retourne la grille sous forme de string. '?' signigie case fermer '¤' signifie bombe ' ' signigie Ouverte et danger 0 </p>
+<dl class="section return"><dt>Returns</dt><dd>string : grille</dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="aa16cd8a441a779bb8a6035ad2a6cc41b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa16cd8a441a779bb8a6035ad2a6cc41b">&#9670;&nbsp;</a></span>aOuvrir</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Stack&lt;<a class="el" href="class_demineur_1_1_case.html">Case</a>&gt; Demineur.Grille.aOuvrir</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6d8514ead836fb96b214cf578b8b51db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d8514ead836fb96b214cf578b8b51db">&#9670;&nbsp;</a></span>casesFermer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Demineur.Grille.casesFermer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab5ef7b4ae3d9e0702a18ea15109e345c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5ef7b4ae3d9e0702a18ea15109e345c">&#9670;&nbsp;</a></span>champs</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_demineur_1_1_case.html">Case</a> [,] Demineur.Grille.champs</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5717472aaa2beef6f406f1ee4bd10444"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5717472aaa2beef6f406f1ee4bd10444">&#9670;&nbsp;</a></span>colonnes</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Demineur.Grille.colonnes</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5c50a7496a70f74f8af80cc8ec41508d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c50a7496a70f74f8af80cc8ec41508d">&#9670;&nbsp;</a></span>lignes</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Demineur.Grille.lignes</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad7065625ba1306e25e7743a3143a1473"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7065625ba1306e25e7743a3143a1473">&#9670;&nbsp;</a></span>nbBombeGrille</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Demineur.Grille.nbBombeGrille</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Property Documentation</h2>
+<a id="ae3d6add44843c1cf2661c5c1c7e6e146"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3d6add44843c1cf2661c5c1c7e6e146">&#9670;&nbsp;</a></span>NombreDeBombes</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Demineur.Grille.NombreDeBombes</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retourne ou modifie le nombre de bombes dans la grille. Utile au premier tour. </p>
+
+</div>
+</div>
+<a id="aaac104aecb34df70b072f101972cce59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaac104aecb34df70b072f101972cce59">&#9670;&nbsp;</a></span>this[int ligne, int colonne]</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_demineur_1_1_case.html">Case</a> Demineur.Grille.this[int ligne, int colonne]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Rempli le tableau des voisins d'une case. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ligne</td><td>Coordonnée en Y</td></tr>
+    <tr><td class="paramname">colonne</td><td>Coordonnée en X</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_demineur_1_1_case.html" title="Représente une case du démineur. Le grille génére sa grille en créant &quot;Lignes X Colonne&quot; cases....">Case</a></dd></dl>
 
 </div>
 </div>

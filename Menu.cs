@@ -2,10 +2,23 @@
 
 namespace Demineur
 {
+    /// <summary>
+    /// La classe Menu guide l'utilisateur à travers les différentes options de partie.
+    /// Il peut Joueur, afficher le classement ou quitter.
+    /// </summary>
     public static class Menu
     {
         static short[] optionsDePartie; // Sera retourné à Démineur afin qu'il puisse démarrer une partie ayant ces options là.
         static string recap; // Permet d'afficher une récapilation des choix du joueur.
+
+        /// <summary>
+        /// Dessine la Première page du menu principale.
+        /// </summary>
+        /// <returns>Short : Retourne le choix 
+        /// 1 : jouer
+        /// 2 : Afficher le classement
+        /// 3 : Quitter 
+        /// </returns>
         public static short AfficherMenu()
         {
             char choix;
@@ -53,6 +66,14 @@ namespace Demineur
             }
         }
 
+        /// <summary>
+        /// S'affiche lorsque le joueur choisi de jouer. Permet de choisir la grosseur du plateau
+        /// </summary>
+        /// <returns> short : Retourne le choix 
+        /// 1 : Petit
+        /// 2 : Moyen
+        /// 3 : Grand
+        /// </returns>
         static short MenuJouerGrosseur()
         {
 
@@ -100,6 +121,14 @@ namespace Demineur
             return Int16.Parse(choix.ToString());
         }
 
+        /// <summary>
+        /// S'affiche lorsque le joueur a choisi la grosseur du plateau. Permet de choisir la difficulté de la partie.
+        /// </summary>
+        /// <returns> short : Retourne le choix 
+        /// 1 : Facile
+        /// 2 : Normal
+        /// 3 : Difficile
+        /// </returns>
         static short MenuJouerDifficulte()
         {
 
@@ -144,6 +173,15 @@ namespace Demineur
             while (choix != '1' && choix != '2' && choix != '3' && choix != '4');
             return optionsDePartie[2] = Int16.Parse(choix.ToString());
         }
+
+        /// <summary>
+        /// S'affiche lorsque le joueur a choisi sa difficulté. Permet de choisir l'aide de l'intelligence artificiel.
+        /// </summary>
+        /// <returns> short : Retourne le choix 
+        /// 1 : Sans
+        /// 2 : Avec
+        /// 3 : Automatique
+        /// </returns>
         static short MenuJouerAI()
         {
 
@@ -189,6 +227,14 @@ namespace Demineur
             return optionsDePartie[3] = Int16.Parse(choix.ToString());
         }
 
+        /// <summary>
+        /// S'affiche lorsque le joueur a choisi le type d'assistance désiré. Le joueur voit ce qu'il a sélectionné.
+        /// Il peut commencer la partie ou modifier les options de partie.
+        /// </summary>
+        /// <returns> short : Retourne le choix 
+        /// C : Commencer -> retourne 0
+        /// 4 : Recommencer
+        /// </returns>
         static short RecapFinal()
         {
 
@@ -235,16 +281,71 @@ namespace Demineur
             return 0;
         }
 
+        /// <summary>
+        /// Dessine le classement.
+        /// </summary>
+        public static short AfficherClassement(string p_Classement, short tri)//À trier
+        {
+            string triEnCours = TypeDeTri(tri);
+            ConsoleKey reponse;
+            Console.Clear();
+            Console.WriteLine("Type de Tri : " + triEnCours + "\n");
+            Console.WriteLine("                                  Temps en Minutes par catégories                         \n");
+            Console.WriteLine("Joueur       |         Facile        |         Normal        |       Difficile       |\n");
+            Console.WriteLine("             |   P       M       G   |   P       M       G   |   P       M       G   |\n");
+            Console.WriteLine(p_Classement);
+            Console.Write("\n F = Afficher Facile en ordre, N = Afficher Normal en ordre, D = Afficher Difficile en ordre");
+            Console.Write("\n S = Afficher le classement sans tri");
+            Console.Write("\n Appuyez sur Entrer pour revenir au menu principal...");
+            do
+                reponse = Console.ReadKey(true).Key;
+            while (reponse != ConsoleKey.S && reponse != ConsoleKey.F && reponse != ConsoleKey.N && reponse != ConsoleKey.D && reponse != ConsoleKey.Enter);
+
+            switch (reponse)
+            {
+                case ConsoleKey.S: //sans tri
+                    return 0;
+                case ConsoleKey.F: // tri Facile
+                    return 1;
+                case ConsoleKey.N: // tri Normal
+                    return 2;
+                case ConsoleKey.D: // tri Difficile
+                    return 3;
+                case ConsoleKey.Enter: //Retour au menu
+                    return 4;
+                default:
+                    return 0;
+            }
+        }
+
+        static string TypeDeTri(short tri) {
+            switch (tri) {
+                case 1:
+                    return "Tri Meilleur score en mode Facile";
+                case 2:
+                    return "Tri Meilleur score en mode Normal";
+                case 3:
+                    return "Tri Meilleur score en mode Difficile";
+                default:
+                    return "Aucun tri";
+            }      
+        }
+
+        /// <summary>
+        /// Retourne le tableau d'options de partie.
+        /// Est appelé lors dela création d'une nouvelle partie.
+        /// </summary>
+        /// <returns>short[] optionsDePartie</returns>
         public static short[] OptionDePartie()
         {
             return optionsDePartie;
         }
 
-        public static void AfficherClassement()
-        {
-            Console.WriteLine("Classement... Veuillez appuyez sur un touche pour continuer.");
-        }
-
+        /// <summary>
+        /// Demande le nom du joueur après qu'il ait confirmer le début de la partie.
+        /// Est appelé lors dela création d'une nouvelle partie.
+        /// </summary>
+        /// <returns>string : nom</returns>
         public static string DemanderNom()
         {
             string nom;

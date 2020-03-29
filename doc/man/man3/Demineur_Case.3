@@ -1,0 +1,142 @@
+.TH "Demineur.Case" 3 "Sun Mar 29 2020" "Version 2.0" "Demineur" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Demineur.Case \- Représente une case du démineur\&. Le grille génére sa grille en créant 'Lignes X Colonne' cases\&. Bool esTuBombe détermine si un case est une bombe ou non\&. Bool estOuverte détermine si la case est ouverte ou non\&. int nbDanger détermine combien de bombe entoure la case ouverte\&. \fBCase\fP[] casesVoisines contient les cases qui entourent cette case\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCase\fP ()"
+.br
+.RI "Construit une case fermé sans bombe avec un danger par défaut de 0\&. \fBCase\fP 0 = NW | 1 = N | 2 = NE | 3 = W | 4 = E | 5 = SW | 6 = S | 7 = SE "
+.ti -1c
+.RI "void \fBSetCase\fP (int i, \fBCase\fP voisin)"
+.br
+.RI "Affecte au tableau casesVoisines les voisins de la case active\&. "
+.ti -1c
+.RI "int \fBCalculerDanger\fP ()"
+.br
+.RI "Parcour les voisin d'une case pour affecter la valeur de danger à la case active\&. "
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "int \fBValue\fP\fC [get, set]\fP"
+.br
+.RI "Retourne la valeur numérique du danger autour de la case\&. "
+.ti -1c
+.RI "bool \fBBombe\fP\fC [get, set]\fP"
+.br
+.RI "Retourne si la case contient une bombe\&. "
+.ti -1c
+.RI "bool \fBOuvert\fP\fC [get, set]\fP"
+.br
+.RI "Retourne l'état de la case\&. (Ouverte/Fermé) "
+.ti -1c
+.RI "\fBCase\fP \fBthis[int i]\fP\fC [get, set]\fP"
+.br
+.RI "Permet de naviguer les voisins d'une case\&. "
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "bool \fBesTuBombe\fP"
+.br
+.ti -1c
+.RI "bool \fBestOuverte\fP"
+.br
+.ti -1c
+.RI "int \fBnbDanger\fP"
+.br
+.ti -1c
+.RI "\fBCase\fP[] \fBcasesVoisines\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Représente une case du démineur\&. Le grille génére sa grille en créant 'Lignes X Colonne' cases\&. Bool esTuBombe détermine si un case est une bombe ou non\&. Bool estOuverte détermine si la case est ouverte ou non\&. int nbDanger détermine combien de bombe entoure la case ouverte\&. \fBCase\fP[] casesVoisines contient les cases qui entourent cette case\&. 
+
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Demineur\&.Case\&.Case ()\fC [inline]\fP"
+
+.PP
+Construit une case fermé sans bombe avec un danger par défaut de 0\&. \fBCase\fP 0 = NW | 1 = N | 2 = NE | 3 = W | 4 = E | 5 = SW | 6 = S | 7 = SE 
+.SH "Member Function Documentation"
+.PP 
+.SS "int Demineur\&.Case\&.CalculerDanger ()\fC [inline]\fP"
+
+.PP
+Parcour les voisin d'une case pour affecter la valeur de danger à la case active\&. 
+.PP
+\fBReturns\fP
+.RS 4
+Int : nbDanger
+.RE
+.PP
+
+.SS "void Demineur\&.Case\&.SetCase (int i, \fBCase\fP voisin)\fC [inline]\fP"
+
+.PP
+Affecte au tableau casesVoisines les voisins de la case active\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIi\fP Index du voisin
+.br
+\fIvoisin\fP \fBCase\fP voisine
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBCase\fP [] Demineur\&.Case\&.casesVoisines\fC [private]\fP"
+
+.SS "bool Demineur\&.Case\&.estOuverte\fC [private]\fP"
+
+.SS "bool Demineur\&.Case\&.esTuBombe\fC [private]\fP"
+
+.SS "int Demineur\&.Case\&.nbDanger\fC [private]\fP"
+
+.SH "Property Documentation"
+.PP 
+.SS "bool Demineur\&.Case\&.Bombe\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Retourne si la case contient une bombe\&. 
+.SS "bool Demineur\&.Case\&.Ouvert\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Retourne l'état de la case\&. (Ouverte/Fermé) 
+.SS "\fBCase\fP Demineur\&.Case\&.this[int i]\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Permet de naviguer les voisins d'une case\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIi\fP index
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBCase\fP : Retourne une case
+.RE
+.PP
+
+.SS "int Demineur\&.Case\&.Value\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Retourne la valeur numérique du danger autour de la case\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Demineur from the source code\&.

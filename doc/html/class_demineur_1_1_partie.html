@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: Demineur.Partie Class Reference</title>
+<title>Demineur: Demineur.Partie Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -30,8 +30,10 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">My Project
+   <div id="projectname">Demineur
+   &#160;<span id="projectnumber">2.0</span>
    </div>
+   <div id="projectbrief">Programmation 3 - TP1 - Demineur</div>
   </td>
    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -93,6 +95,8 @@ $(document).ready(function(){initNavTree('class_demineur_1_1_partie.html',''); i
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_demineur_1_1_partie-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Demineur.Partie Class Reference</div>  </div>
@@ -101,14 +105,83 @@ $(document).ready(function(){initNavTree('class_demineur_1_1_partie.html',''); i
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a69dedbe8660b44090c2170ab5f6804d7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_partie.html#a69dedbe8660b44090c2170ab5f6804d7">Partie</a> (short[] optionDePartie)</td></tr>
-<tr class="separator:a69dedbe8660b44090c2170ab5f6804d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a0f8e769f990929aac0e365fc096fea"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_partie.html#a9a0f8e769f990929aac0e365fc096fea">ObtenirMetadonneesDeLaPartieActuellementTerminee</a> ()</td></tr>
-<tr class="separator:a9a0f8e769f990929aac0e365fc096fea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4344cad6ccbcc00761833363f23c042e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_partie.html#a4344cad6ccbcc00761833363f23c042e">Partie</a> (string nom, short[] optionDePartie)</td></tr>
+<tr class="separator:a4344cad6ccbcc00761833363f23c042e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28d4a1078d70229f217d30bc33f9cfb9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_partie.html#a28d4a1078d70229f217d30bc33f9cfb9">CommencerPartie</a> ()</td></tr>
+<tr class="memdesc:a28d4a1078d70229f217d30bc33f9cfb9"><td class="mdescLeft">&#160;</td><td class="mdescRight">S'occupe du déroulement de la partie.  <a href="class_demineur_1_1_partie.html#a28d4a1078d70229f217d30bc33f9cfb9">More...</a><br /></td></tr>
+<tr class="separator:a28d4a1078d70229f217d30bc33f9cfb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac34a2b34c23f2079c2c64867e3413864"><td class="memItemLeft" align="right" valign="top">int[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_partie.html#ac34a2b34c23f2079c2c64867e3413864">Touches</a> (int iCol, int iLig, string s_Grille, int xActuel, int yActuel)</td></tr>
+<tr class="separator:ac34a2b34c23f2079c2c64867e3413864"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa92ca05e9dc74376016e1673ef4ca8f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_partie.html#afa92ca05e9dc74376016e1673ef4ca8f">AllerGauche</a> ()</td></tr>
+<tr class="memdesc:afa92ca05e9dc74376016e1673ef4ca8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">En mode flèche, selectionne la case à gauche.  <a href="class_demineur_1_1_partie.html#afa92ca05e9dc74376016e1673ef4ca8f">More...</a><br /></td></tr>
+<tr class="separator:afa92ca05e9dc74376016e1673ef4ca8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac18bafffc55c39433082c63e5932ae81"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_partie.html#ac18bafffc55c39433082c63e5932ae81">AllerDroite</a> ()</td></tr>
+<tr class="memdesc:ac18bafffc55c39433082c63e5932ae81"><td class="mdescLeft">&#160;</td><td class="mdescRight">En mode flèche, selectionne la case à droite.  <a href="class_demineur_1_1_partie.html#ac18bafffc55c39433082c63e5932ae81">More...</a><br /></td></tr>
+<tr class="separator:ac18bafffc55c39433082c63e5932ae81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75af550bcfef5682a847625c70f3e27c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_partie.html#a75af550bcfef5682a847625c70f3e27c">AllerHaut</a> ()</td></tr>
+<tr class="memdesc:a75af550bcfef5682a847625c70f3e27c"><td class="mdescLeft">&#160;</td><td class="mdescRight">En mode flèche, selectionne la case en haut.  <a href="class_demineur_1_1_partie.html#a75af550bcfef5682a847625c70f3e27c">More...</a><br /></td></tr>
+<tr class="separator:a75af550bcfef5682a847625c70f3e27c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9bfad12d47fc9d39da79c20421ff866"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_partie.html#aa9bfad12d47fc9d39da79c20421ff866">AllerBas</a> ()</td></tr>
+<tr class="memdesc:aa9bfad12d47fc9d39da79c20421ff866"><td class="mdescLeft">&#160;</td><td class="mdescRight">En mode flèche, selectionne la case en bas.  <a href="class_demineur_1_1_partie.html#aa9bfad12d47fc9d39da79c20421ff866">More...</a><br /></td></tr>
+<tr class="separator:aa9bfad12d47fc9d39da79c20421ff866"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77412e4eb3254d23e20b4c9b5e3a9a35"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_partie.html#a77412e4eb3254d23e20b4c9b5e3a9a35">AppelerIA</a> ()</td></tr>
+<tr class="memdesc:a77412e4eb3254d23e20b4c9b5e3a9a35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appele l'intelligence artificiel.  <a href="class_demineur_1_1_partie.html#a77412e4eb3254d23e20b4c9b5e3a9a35">More...</a><br /></td></tr>
+<tr class="separator:a77412e4eb3254d23e20b4c9b5e3a9a35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac037320ce32788b410183ab89b773c4d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_partie.html#ac037320ce32788b410183ab89b773c4d">EntreeManuelle</a> (string entree)</td></tr>
+<tr class="memdesc:ac037320ce32788b410183ab89b773c4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Active la sélection manuelle des cases avec des coordonnées clavier. Saisir 'f' active la saisie avec flèches Saisir 'a' fait joueur l'<a class="el" href="class_demineur_1_1_i_a.html">IA</a> si l'option de partie le permet. Saisir autres choses qu'un coordonnées valide entrainera une erreur.  <a href="class_demineur_1_1_partie.html#ac037320ce32788b410183ab89b773c4d">More...</a><br /></td></tr>
+<tr class="separator:ac037320ce32788b410183ab89b773c4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2826399cfb11d2ac90eb2db927975ee2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_partie.html#a2826399cfb11d2ac90eb2db927975ee2">VerificationFormatDeLentree</a> (string entree)</td></tr>
+<tr class="memdesc:a2826399cfb11d2ac90eb2db927975ee2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Agit comme un masque de saisie.  <a href="class_demineur_1_1_partie.html#a2826399cfb11d2ac90eb2db927975ee2">More...</a><br /></td></tr>
+<tr class="separator:a2826399cfb11d2ac90eb2db927975ee2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9720449199d00b268c31e81c71a70009"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_partie.html#a9720449199d00b268c31e81c71a70009">VerificationDesMinMaxDeLentree</a> (string entree)</td></tr>
+<tr class="memdesc:a9720449199d00b268c31e81c71a70009"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vérifie si la saisie fait partie du tableau.  <a href="class_demineur_1_1_partie.html#a9720449199d00b268c31e81c71a70009">More...</a><br /></td></tr>
+<tr class="separator:a9720449199d00b268c31e81c71a70009"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6113f50e502874fd8cb71ad57035728c"><td class="memItemLeft" align="right" valign="top">string[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_partie.html#a6113f50e502874fd8cb71ad57035728c">InfoDepartie</a> ()</td></tr>
+<tr class="memdesc:a6113f50e502874fd8cb71ad57035728c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utilise pour mettre à jour le score du joueur si la partie est gagnée.  <a href="class_demineur_1_1_partie.html#a6113f50e502874fd8cb71ad57035728c">More...</a><br /></td></tr>
+<tr class="separator:a6113f50e502874fd8cb71ad57035728c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a4962bb1ec5d6ad6d3efd4033f9f70fea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_partie.html#a4962bb1ec5d6ad6d3efd4033f9f70fea">ActiverModeFleche</a> ()</td></tr>
+<tr class="memdesc:a4962bb1ec5d6ad6d3efd4033f9f70fea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Active la sélection des cases avec les flèches.  <a href="class_demineur_1_1_partie.html#a4962bb1ec5d6ad6d3efd4033f9f70fea">More...</a><br /></td></tr>
+<tr class="separator:a4962bb1ec5d6ad6d3efd4033f9f70fea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04994d1019433d23498f1eb7f6a80194"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_partie.html#a04994d1019433d23498f1eb7f6a80194">ActiverModeSaisieManuelle</a> ()</td></tr>
+<tr class="memdesc:a04994d1019433d23498f1eb7f6a80194"><td class="mdescLeft">&#160;</td><td class="mdescRight">Active la sélection des cases avec les flèches.  <a href="class_demineur_1_1_partie.html#a04994d1019433d23498f1eb7f6a80194">More...</a><br /></td></tr>
+<tr class="separator:a04994d1019433d23498f1eb7f6a80194"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae54def899dae08ed8bc0f33d750a8935"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_partie.html#ae54def899dae08ed8bc0f33d750a8935">VerificationOuvertureEtContenue</a> (int[] <a class="el" href="class_demineur_1_1_partie.html#a26df36168f045845f719eee1d9f08b9f">selection</a>)</td></tr>
+<tr class="memdesc:ae54def899dae08ed8bc0f33d750a8935"><td class="mdescLeft">&#160;</td><td class="mdescRight">Une fois la saisie validé, une ouvre la case si elle n'est pas déjà ouverte.  <a href="class_demineur_1_1_partie.html#ae54def899dae08ed8bc0f33d750a8935">More...</a><br /></td></tr>
+<tr class="separator:ae54def899dae08ed8bc0f33d750a8935"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a5e1749f7c46523ff8e6e17bb6fac5da2"><td class="memItemLeft" align="right" valign="top">Regex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_partie.html#a5e1749f7c46523ff8e6e17bb6fac5da2">rx</a> = new Regex(@&quot;^\d+\s\d+$&quot;, RegexOptions.Compiled | RegexOptions.IgnoreCase)</td></tr>
+<tr class="separator:a5e1749f7c46523ff8e6e17bb6fac5da2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8414ccd337e59e4d5e07db370793d28"><td class="memItemLeft" align="right" valign="top">int[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_partie.html#af8414ccd337e59e4d5e07db370793d28">positionActuelle</a></td></tr>
+<tr class="separator:af8414ccd337e59e4d5e07db370793d28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26df36168f045845f719eee1d9f08b9f"><td class="memItemLeft" align="right" valign="top">int[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_partie.html#a26df36168f045845f719eee1d9f08b9f">selection</a></td></tr>
+<tr class="separator:a26df36168f045845f719eee1d9f08b9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79ae97cb0877273a92fd96e39440d56b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_demineur_1_1_grille.html">Grille</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_partie.html#a79ae97cb0877273a92fd96e39440d56b">m_Grille</a></td></tr>
+<tr class="separator:a79ae97cb0877273a92fd96e39440d56b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a651f0f198a056460e57e4b0ac4131901"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_partie.html#a651f0f198a056460e57e4b0ac4131901">enMarche</a></td></tr>
+<tr class="separator:a651f0f198a056460e57e4b0ac4131901"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48b88cd02b2422edfe7248f865c24542"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_partie.html#a48b88cd02b2422edfe7248f865c24542">mort</a></td></tr>
+<tr class="separator:a48b88cd02b2422edfe7248f865c24542"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd968b5fdbd62152d617e08ca0bc6661"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_partie.html#afd968b5fdbd62152d617e08ca0bc6661">auto</a></td></tr>
+<tr class="separator:afd968b5fdbd62152d617e08ca0bc6661"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acce339b78d0c982be9bcacb55e40282e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_demineur_1_1_joueur.html">Joueur</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_partie.html#acce339b78d0c982be9bcacb55e40282e">j</a></td></tr>
+<tr class="separator:acce339b78d0c982be9bcacb55e40282e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad173a9c60913a4381bdc8a22243ae795"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_partie.html#ad173a9c60913a4381bdc8a22243ae795">difficulte</a></td></tr>
+<tr class="separator:ad173a9c60913a4381bdc8a22243ae795"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8478d4fe0378160d8bfe6195ed3e651f"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_partie.html#a8478d4fe0378160d8bfe6195ed3e651f">temps</a></td></tr>
+<tr class="separator:a8478d4fe0378160d8bfe6195ed3e651f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1aa0fe5c50a0280f8cefa03b9b2844e"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_partie.html#aa1aa0fe5c50a0280f8cefa03b9b2844e">grosseur</a></td></tr>
+<tr class="separator:aa1aa0fe5c50a0280f8cefa03b9b2844e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad939d9ca717f9590f2178947d3efa0ce"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_demineur_1_1_a_i_test.html">AITest</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_partie.html#ad939d9ca717f9590f2178947d3efa0ce">intel</a></td></tr>
+<tr class="separator:ad939d9ca717f9590f2178947d3efa0ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a69dedbe8660b44090c2170ab5f6804d7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a69dedbe8660b44090c2170ab5f6804d7">&#9670;&nbsp;</a></span>Partie()</h2>
+<a id="a4344cad6ccbcc00761833363f23c042e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4344cad6ccbcc00761833363f23c042e">&#9670;&nbsp;</a></span>Partie()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -119,9 +192,19 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">Demineur.Partie.Partie </td>
           <td>(</td>
-          <td class="paramtype">short[]&#160;</td>
-          <td class="paramname"><em>optionDePartie</em></td><td>)</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>nom</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">short[]&#160;</td>
+          <td class="paramname"><em>optionDePartie</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -134,8 +217,8 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a9a0f8e769f990929aac0e365fc096fea"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9a0f8e769f990929aac0e365fc096fea">&#9670;&nbsp;</a></span>ObtenirMetadonneesDeLaPartieActuellementTerminee()</h2>
+<a id="a4962bb1ec5d6ad6d3efd4033f9f70fea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4962bb1ec5d6ad6d3efd4033f9f70fea">&#9670;&nbsp;</a></span>ActiverModeFleche()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -144,7 +227,61 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">string Demineur.Partie.ObtenirMetadonneesDeLaPartieActuellementTerminee </td>
+          <td class="memname">void Demineur.Partie.ActiverModeFleche </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Active la sélection des cases avec les flèches. </p>
+
+</div>
+</div>
+<a id="a04994d1019433d23498f1eb7f6a80194"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04994d1019433d23498f1eb7f6a80194">&#9670;&nbsp;</a></span>ActiverModeSaisieManuelle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Demineur.Partie.ActiverModeSaisieManuelle </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Active la sélection des cases avec les flèches. </p>
+
+</div>
+</div>
+<a id="aa9bfad12d47fc9d39da79c20421ff866"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9bfad12d47fc9d39da79c20421ff866">&#9670;&nbsp;</a></span>AllerBas()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Demineur.Partie.AllerBas </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -153,6 +290,632 @@ Public Member Functions</h2></td></tr>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>En mode flèche, selectionne la case en bas. </p>
+
+</div>
+</div>
+<a id="ac18bafffc55c39433082c63e5932ae81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac18bafffc55c39433082c63e5932ae81">&#9670;&nbsp;</a></span>AllerDroite()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Demineur.Partie.AllerDroite </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>En mode flèche, selectionne la case à droite. </p>
+
+</div>
+</div>
+<a id="afa92ca05e9dc74376016e1673ef4ca8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa92ca05e9dc74376016e1673ef4ca8f">&#9670;&nbsp;</a></span>AllerGauche()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Demineur.Partie.AllerGauche </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>En mode flèche, selectionne la case à gauche. </p>
+
+</div>
+</div>
+<a id="a75af550bcfef5682a847625c70f3e27c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75af550bcfef5682a847625c70f3e27c">&#9670;&nbsp;</a></span>AllerHaut()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Demineur.Partie.AllerHaut </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>En mode flèche, selectionne la case en haut. </p>
+
+</div>
+</div>
+<a id="a77412e4eb3254d23e20b4c9b5e3a9a35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77412e4eb3254d23e20b4c9b5e3a9a35">&#9670;&nbsp;</a></span>AppelerIA()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Demineur.Partie.AppelerIA </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Appele l'intelligence artificiel. </p>
+<dl class="section return"><dt>Returns</dt><dd>bool : vrai si <a class="el" href="class_demineur_1_1_i_a.html">IA</a> actif, faux si partie sans <a class="el" href="class_demineur_1_1_i_a.html">IA</a></dd></dl>
+
+</div>
+</div>
+<a id="a28d4a1078d70229f217d30bc33f9cfb9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28d4a1078d70229f217d30bc33f9cfb9">&#9670;&nbsp;</a></span>CommencerPartie()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Demineur.Partie.CommencerPartie </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>S'occupe du déroulement de la partie. </p>
+<dl class="section return"><dt>Returns</dt><dd>bool : vrai si gagnée, faux si perdu.</dd></dl>
+
+</div>
+</div>
+<a id="ac037320ce32788b410183ab89b773c4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac037320ce32788b410183ab89b773c4d">&#9670;&nbsp;</a></span>EntreeManuelle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Demineur.Partie.EntreeManuelle </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>entree</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Active la sélection manuelle des cases avec des coordonnées clavier. Saisir 'f' active la saisie avec flèches Saisir 'a' fait joueur l'<a class="el" href="class_demineur_1_1_i_a.html">IA</a> si l'option de partie le permet. Saisir autres choses qu'un coordonnées valide entrainera une erreur. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entree</td><td>Saisie du joueur.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>bool : Retourne true si saisie valide, false si invalide.</dd></dl>
+
+</div>
+</div>
+<a id="a6113f50e502874fd8cb71ad57035728c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6113f50e502874fd8cb71ad57035728c">&#9670;&nbsp;</a></span>InfoDepartie()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string [] Demineur.Partie.InfoDepartie </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Utilise pour mettre à jour le score du joueur si la partie est gagnée. </p>
+<dl class="section return"><dt>Returns</dt><dd>string[] : Informations de partie {nom_joueur, grosseur, difficulté, temps}</dd></dl>
+
+</div>
+</div>
+<a id="ac34a2b34c23f2079c2c64867e3413864"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac34a2b34c23f2079c2c64867e3413864">&#9670;&nbsp;</a></span>Touches()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int [] Demineur.Partie.Touches </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iCol</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iLig</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>s_Grille</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>xActuel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>yActuel</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9720449199d00b268c31e81c71a70009"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9720449199d00b268c31e81c71a70009">&#9670;&nbsp;</a></span>VerificationDesMinMaxDeLentree()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Demineur.Partie.VerificationDesMinMaxDeLentree </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>entree</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Vérifie si la saisie fait partie du tableau. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entree</td><td>Saisie manuelle du l'utilisateur.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a2826399cfb11d2ac90eb2db927975ee2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2826399cfb11d2ac90eb2db927975ee2">&#9670;&nbsp;</a></span>VerificationFormatDeLentree()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Demineur.Partie.VerificationFormatDeLentree </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>entree</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Agit comme un masque de saisie. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entree</td><td>Saisie manuelle du l'utilisateur.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="ae54def899dae08ed8bc0f33d750a8935"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae54def899dae08ed8bc0f33d750a8935">&#9670;&nbsp;</a></span>VerificationOuvertureEtContenue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Demineur.Partie.VerificationOuvertureEtContenue </td>
+          <td>(</td>
+          <td class="paramtype">int[]&#160;</td>
+          <td class="paramname"><em>selection</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Une fois la saisie validé, une ouvre la case si elle n'est pas déjà ouverte. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">selection</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>bool : vrai si case a été ouverte, faux si case déjà ouverte.</dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="afd968b5fdbd62152d617e08ca0bc6661"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd968b5fdbd62152d617e08ca0bc6661">&#9670;&nbsp;</a></span>auto</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Demineur.Partie.auto</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad173a9c60913a4381bdc8a22243ae795"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad173a9c60913a4381bdc8a22243ae795">&#9670;&nbsp;</a></span>difficulte</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Demineur.Partie.difficulte</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a651f0f198a056460e57e4b0ac4131901"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a651f0f198a056460e57e4b0ac4131901">&#9670;&nbsp;</a></span>enMarche</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Demineur.Partie.enMarche</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa1aa0fe5c50a0280f8cefa03b9b2844e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1aa0fe5c50a0280f8cefa03b9b2844e">&#9670;&nbsp;</a></span>grosseur</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Demineur.Partie.grosseur</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad939d9ca717f9590f2178947d3efa0ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad939d9ca717f9590f2178947d3efa0ce">&#9670;&nbsp;</a></span>intel</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_demineur_1_1_a_i_test.html">AITest</a> Demineur.Partie.intel</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acce339b78d0c982be9bcacb55e40282e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acce339b78d0c982be9bcacb55e40282e">&#9670;&nbsp;</a></span>j</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_demineur_1_1_joueur.html">Joueur</a> Demineur.Partie.j</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a79ae97cb0877273a92fd96e39440d56b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79ae97cb0877273a92fd96e39440d56b">&#9670;&nbsp;</a></span>m_Grille</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_demineur_1_1_grille.html">Grille</a> Demineur.Partie.m_Grille</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a48b88cd02b2422edfe7248f865c24542"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48b88cd02b2422edfe7248f865c24542">&#9670;&nbsp;</a></span>mort</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Demineur.Partie.mort</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af8414ccd337e59e4d5e07db370793d28"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8414ccd337e59e4d5e07db370793d28">&#9670;&nbsp;</a></span>positionActuelle</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int [] Demineur.Partie.positionActuelle</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5e1749f7c46523ff8e6e17bb6fac5da2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e1749f7c46523ff8e6e17bb6fac5da2">&#9670;&nbsp;</a></span>rx</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Regex Demineur.Partie.rx = new Regex(@&quot;^\d+\s\d+$&quot;, RegexOptions.Compiled | RegexOptions.IgnoreCase)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a26df36168f045845f719eee1d9f08b9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26df36168f045845f719eee1d9f08b9f">&#9670;&nbsp;</a></span>selection</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int [] Demineur.Partie.selection</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8478d4fe0378160d8bfe6195ed3e651f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8478d4fe0378160d8bfe6195ed3e651f">&#9670;&nbsp;</a></span>temps</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Demineur.Partie.temps</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

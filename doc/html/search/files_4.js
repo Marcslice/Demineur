@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['joueur_2ecs_44',['Joueur.cs',['../_joueur_8cs.html',1,'']]]
+  ['ia_2ecs_164',['IA.cs',['../_i_a_8cs.html',1,'']]],
+  ['interfaceusager_2ecs_165',['InterfaceUsager.cs',['../_interface_usager_8cs.html',1,'']]]
 ];

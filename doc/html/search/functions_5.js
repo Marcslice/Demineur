@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['joueur_54',['Joueur',['../class_demineur_1_1_joueur.html#a08f72848aa1b76594839606d34b91f9c',1,'Demineur.Joueur.Joueur(string p_Nom)'],['../class_demineur_1_1_joueur.html#a5f659169afa9e9a598811e09052214e7',1,'Demineur.Joueur.Joueur(string p_Nom, string[] p_Scores)']]]
+  ['fichierclassement_209',['FichierClassement',['../class_demineur_1_1_classements.html#a0cae5a8cdb49db79efb51c5d99467e63',1,'Demineur::Classements']]],
+  ['formatclassement_210',['FormatClassement',['../class_demineur_1_1_joueur.html#abfd3970656430e9f8573158baa3b2ed5',1,'Demineur::Joueur']]]
 ];

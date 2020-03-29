@@ -1,0 +1,342 @@
+\hypertarget{class_demineur_1_1_grille}{}\doxysection{Demineur.\+Grille Class Reference}
+\label{class_demineur_1_1_grille}\index{Demineur.Grille@{Demineur.Grille}}
+
+
+\mbox{\hyperlink{class_demineur_1_1_grille}{Grille}} représente le plateau de jeu. Elle contient des cases de type \mbox{\hyperlink{class_demineur_1_1_case}{Case}}. \mbox{\hyperlink{class_demineur_1_1_case}{Case}}\mbox{[},\mbox{]} \+: champs est le tableau 2D \mbox{[}Lignes x Colonnes\mbox{]} Int \+: nb\+Bombe\+Grille contient le nombre de bombe que la grille contient. Int \+: colonnes Dimension X du tableau Int \+: lignes Dimension Y du table Int \+: cases\+Fermer contient le nombre de base fermer en début de partie. Stack$<$\+Case$>$ \+: a\+Ouvrir Permet la recherche récursive pour l\textquotesingle{}ouverture automatique des cases dont le danger est de 0.  
+
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_demineur_1_1_grille_a1bf4f6d7d192934f7fbc807d51e28924}{Grille}} (short \mbox{\hyperlink{class_demineur_1_1_grille_a5c50a7496a70f74f8af80cc8ec41508d}{lignes}}, short \mbox{\hyperlink{class_demineur_1_1_grille_a5717472aaa2beef6f406f1ee4bd10444}{colonnes}}, short difficulte)
+\item 
+void \mbox{\hyperlink{class_demineur_1_1_grille_af79425cb94b43596af52dd754d1c6bbc}{Disperser\+Bombes}} (short \mbox{\hyperlink{class_demineur_1_1_grille_a5c50a7496a70f74f8af80cc8ec41508d}{lignes}}, short \mbox{\hyperlink{class_demineur_1_1_grille_a5717472aaa2beef6f406f1ee4bd10444}{colonnes}})
+\begin{DoxyCompactList}\small\item\em Disperse les bombes dans la grille en mettant le boolean est\+Tu\+Bombe à true sur les cases ciblés. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_demineur_1_1_grille_a02157ebf2578c545cb13490386e4fca0}{Rencontre\+Voisin}} (int ligne, int colonne)
+\begin{DoxyCompactList}\small\item\em Fouille les case adjacentes à la case active pour remplir le tableau des cases voisines. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_demineur_1_1_grille_ad4c27bb08c774aa5137fae403827bfd3}{Mettre\+A\+Jour\+Voisin}} (int ligne, int colonne, int l, int c)
+\begin{DoxyCompactList}\small\item\em Utilisé seulement lorsque la première case ouverte est une bombe. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_demineur_1_1_grille_a5576f35a80fa5545c2450ace42f04d85}{Ouvrir\+Case}} (int ligne, int colonne)
+\begin{DoxyCompactList}\small\item\em Ouvre une case suite à la confirmation du joueur. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_demineur_1_1_grille_ab08b8398fa5639ebd1c8f9392fa019e6}{Bombe\+Premier\+Tour}} (int\mbox{[}$\,$\mbox{]} cible)
+\begin{DoxyCompactList}\small\item\em Neutralise la case si la première case est une bombe. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_demineur_1_1_grille_af96b95cae8dd85c8d93bcba5b94302b5}{Decouvrir\+Bombes}} ()
+\begin{DoxyCompactList}\small\item\em Ouvre les bombes lorsque le joueur explose. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_demineur_1_1_grille_adc4236a3b0681ed3a987b00b422b4259}{Colonnes}} ()
+\begin{DoxyCompactList}\small\item\em Retourne le nombre de colonnes de la grille. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_demineur_1_1_grille_a0ab8fed833bfb16a36e131a1636962bb}{Lignes}} ()
+\begin{DoxyCompactList}\small\item\em Retourne le nombre de Lignes de la grille. \end{DoxyCompactList}\item 
+override string \mbox{\hyperlink{class_demineur_1_1_grille_ac3daead5a6fc67aa422d56d767f05fbe}{To\+String}} ()
+\begin{DoxyCompactList}\small\item\em Retourne la grille sous forme de string. \textquotesingle{}?\textquotesingle{} signigie case fermer \textquotesingle{}¤\textquotesingle{} signifie bombe \textquotesingle{} \textquotesingle{} signigie Ouverte et danger 0 \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_demineur_1_1_grille_a3e98b9ed81f7becb86ae4da4542a35e2}{Calculer\+Nb\+Case\+Fermer}} ()
+\begin{DoxyCompactList}\small\item\em Calcule le nombre de case fermer. Permet de mettre à jour le compte pour déterminer si la partie est gagné. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_demineur_1_1_case}{Case}} \mbox{\hyperlink{class_demineur_1_1_grille_aaac104aecb34df70b072f101972cce59}{this\mbox{[}int ligne, int colonne\mbox{]}}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Rempli le tableau des voisins d\textquotesingle{}une case. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_demineur_1_1_grille_ae3d6add44843c1cf2661c5c1c7e6e146}{Nombre\+De\+Bombes}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Retourne ou modifie le nombre de bombes dans la grille. Utile au premier tour. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_demineur_1_1_grille_abc5ab77dcb1050ee1dcc570c662e666e}{Calculer\+Bombes}} (short \mbox{\hyperlink{class_demineur_1_1_grille_a5c50a7496a70f74f8af80cc8ec41508d}{lignes}}, short \mbox{\hyperlink{class_demineur_1_1_grille_a5717472aaa2beef6f406f1ee4bd10444}{colonnes}}, short difficulte)
+\begin{DoxyCompactList}\small\item\em Détermine le nombre de bombe a générer selon la difficulté. Le calcule se fait en pourcentage de cases. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_demineur_1_1_grille_a262349ba9ace07d2a43419033ce51dd1}{Ouvrir\+Case}} (\mbox{\hyperlink{class_demineur_1_1_case}{Case}} voisin)
+\begin{DoxyCompactList}\small\item\em Ouvre automatiquement les cases voisines de la sélection \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_demineur_1_1_case}{Case}}\mbox{[},\mbox{]} \mbox{\hyperlink{class_demineur_1_1_grille_ab5ef7b4ae3d9e0702a18ea15109e345c}{champs}}
+\item 
+int \mbox{\hyperlink{class_demineur_1_1_grille_ad7065625ba1306e25e7743a3143a1473}{nb\+Bombe\+Grille}}
+\item 
+int \mbox{\hyperlink{class_demineur_1_1_grille_a5717472aaa2beef6f406f1ee4bd10444}{colonnes}}
+\item 
+int \mbox{\hyperlink{class_demineur_1_1_grille_a5c50a7496a70f74f8af80cc8ec41508d}{lignes}}
+\item 
+int \mbox{\hyperlink{class_demineur_1_1_grille_a6d8514ead836fb96b214cf578b8b51db}{cases\+Fermer}}
+\item 
+Stack$<$ \mbox{\hyperlink{class_demineur_1_1_case}{Case}} $>$ \mbox{\hyperlink{class_demineur_1_1_grille_aa16cd8a441a779bb8a6035ad2a6cc41b}{a\+Ouvrir}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{class_demineur_1_1_grille}{Grille}} représente le plateau de jeu. Elle contient des cases de type \mbox{\hyperlink{class_demineur_1_1_case}{Case}}. \mbox{\hyperlink{class_demineur_1_1_case}{Case}}\mbox{[},\mbox{]} \+: champs est le tableau 2D \mbox{[}Lignes x Colonnes\mbox{]} Int \+: nb\+Bombe\+Grille contient le nombre de bombe que la grille contient. Int \+: colonnes Dimension X du tableau Int \+: lignes Dimension Y du table Int \+: cases\+Fermer contient le nombre de base fermer en début de partie. Stack$<$\+Case$>$ \+: a\+Ouvrir Permet la recherche récursive pour l\textquotesingle{}ouverture automatique des cases dont le danger est de 0. 
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_demineur_1_1_grille_a1bf4f6d7d192934f7fbc807d51e28924}\label{class_demineur_1_1_grille_a1bf4f6d7d192934f7fbc807d51e28924}} 
+\index{Demineur.Grille@{Demineur.Grille}!Grille@{Grille}}
+\index{Grille@{Grille}!Demineur.Grille@{Demineur.Grille}}
+\doxysubsubsection{\texorpdfstring{Grille()}{Grille()}}
+{\footnotesize\ttfamily Demineur.\+Grille.\+Grille (\begin{DoxyParamCaption}\item[{short}]{lignes,  }\item[{short}]{colonnes,  }\item[{short}]{difficulte }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_demineur_1_1_grille_ab08b8398fa5639ebd1c8f9392fa019e6}\label{class_demineur_1_1_grille_ab08b8398fa5639ebd1c8f9392fa019e6}} 
+\index{Demineur.Grille@{Demineur.Grille}!BombePremierTour@{BombePremierTour}}
+\index{BombePremierTour@{BombePremierTour}!Demineur.Grille@{Demineur.Grille}}
+\doxysubsubsection{\texorpdfstring{BombePremierTour()}{BombePremierTour()}}
+{\footnotesize\ttfamily void Demineur.\+Grille.\+Bombe\+Premier\+Tour (\begin{DoxyParamCaption}\item[{int\mbox{[}$\,$\mbox{]}}]{cible }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Neutralise la case si la première case est une bombe. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cible} & \mbox{\hyperlink{class_demineur_1_1_case}{Case}} sélectionnée.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_demineur_1_1_grille_abc5ab77dcb1050ee1dcc570c662e666e}\label{class_demineur_1_1_grille_abc5ab77dcb1050ee1dcc570c662e666e}} 
+\index{Demineur.Grille@{Demineur.Grille}!CalculerBombes@{CalculerBombes}}
+\index{CalculerBombes@{CalculerBombes}!Demineur.Grille@{Demineur.Grille}}
+\doxysubsubsection{\texorpdfstring{CalculerBombes()}{CalculerBombes()}}
+{\footnotesize\ttfamily int Demineur.\+Grille.\+Calculer\+Bombes (\begin{DoxyParamCaption}\item[{short}]{lignes,  }\item[{short}]{colonnes,  }\item[{short}]{difficulte }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Détermine le nombre de bombe a générer selon la difficulté. Le calcule se fait en pourcentage de cases. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lignes} & Nombre de lignes qu\textquotesingle{}il y a dans la grille\\
+\hline
+{\em colonnes} & Nombre de colonnes qu\textquotesingle{}il y a dans la grille\\
+\hline
+{\em difficulte} & Difficulté \{1,2,3\}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Int \+: Nombre de bombes
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_demineur_1_1_grille_a3e98b9ed81f7becb86ae4da4542a35e2}\label{class_demineur_1_1_grille_a3e98b9ed81f7becb86ae4da4542a35e2}} 
+\index{Demineur.Grille@{Demineur.Grille}!CalculerNbCaseFermer@{CalculerNbCaseFermer}}
+\index{CalculerNbCaseFermer@{CalculerNbCaseFermer}!Demineur.Grille@{Demineur.Grille}}
+\doxysubsubsection{\texorpdfstring{CalculerNbCaseFermer()}{CalculerNbCaseFermer()}}
+{\footnotesize\ttfamily int Demineur.\+Grille.\+Calculer\+Nb\+Case\+Fermer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Calcule le nombre de case fermer. Permet de mettre à jour le compte pour déterminer si la partie est gagné. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_demineur_1_1_grille_adc4236a3b0681ed3a987b00b422b4259}\label{class_demineur_1_1_grille_adc4236a3b0681ed3a987b00b422b4259}} 
+\index{Demineur.Grille@{Demineur.Grille}!Colonnes@{Colonnes}}
+\index{Colonnes@{Colonnes}!Demineur.Grille@{Demineur.Grille}}
+\doxysubsubsection{\texorpdfstring{Colonnes()}{Colonnes()}}
+{\footnotesize\ttfamily int Demineur.\+Grille.\+Colonnes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retourne le nombre de colonnes de la grille. 
+
+\begin{DoxyReturn}{Returns}
+Int \+: Colonnes
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_demineur_1_1_grille_af96b95cae8dd85c8d93bcba5b94302b5}\label{class_demineur_1_1_grille_af96b95cae8dd85c8d93bcba5b94302b5}} 
+\index{Demineur.Grille@{Demineur.Grille}!DecouvrirBombes@{DecouvrirBombes}}
+\index{DecouvrirBombes@{DecouvrirBombes}!Demineur.Grille@{Demineur.Grille}}
+\doxysubsubsection{\texorpdfstring{DecouvrirBombes()}{DecouvrirBombes()}}
+{\footnotesize\ttfamily void Demineur.\+Grille.\+Decouvrir\+Bombes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Ouvre les bombes lorsque le joueur explose. 
+
+\mbox{\Hypertarget{class_demineur_1_1_grille_af79425cb94b43596af52dd754d1c6bbc}\label{class_demineur_1_1_grille_af79425cb94b43596af52dd754d1c6bbc}} 
+\index{Demineur.Grille@{Demineur.Grille}!DisperserBombes@{DisperserBombes}}
+\index{DisperserBombes@{DisperserBombes}!Demineur.Grille@{Demineur.Grille}}
+\doxysubsubsection{\texorpdfstring{DisperserBombes()}{DisperserBombes()}}
+{\footnotesize\ttfamily void Demineur.\+Grille.\+Disperser\+Bombes (\begin{DoxyParamCaption}\item[{short}]{lignes,  }\item[{short}]{colonnes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Disperse les bombes dans la grille en mettant le boolean est\+Tu\+Bombe à true sur les cases ciblés. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lignes} & Nombre de lignes dans la grille de jeu.\\
+\hline
+{\em colonnes} & Nombre de colonnes dans la grille de jeu.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_demineur_1_1_grille_a0ab8fed833bfb16a36e131a1636962bb}\label{class_demineur_1_1_grille_a0ab8fed833bfb16a36e131a1636962bb}} 
+\index{Demineur.Grille@{Demineur.Grille}!Lignes@{Lignes}}
+\index{Lignes@{Lignes}!Demineur.Grille@{Demineur.Grille}}
+\doxysubsubsection{\texorpdfstring{Lignes()}{Lignes()}}
+{\footnotesize\ttfamily int Demineur.\+Grille.\+Lignes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retourne le nombre de Lignes de la grille. 
+
+\begin{DoxyReturn}{Returns}
+Int \+: Lignes
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_demineur_1_1_grille_ad4c27bb08c774aa5137fae403827bfd3}\label{class_demineur_1_1_grille_ad4c27bb08c774aa5137fae403827bfd3}} 
+\index{Demineur.Grille@{Demineur.Grille}!MettreAJourVoisin@{MettreAJourVoisin}}
+\index{MettreAJourVoisin@{MettreAJourVoisin}!Demineur.Grille@{Demineur.Grille}}
+\doxysubsubsection{\texorpdfstring{MettreAJourVoisin()}{MettreAJourVoisin()}}
+{\footnotesize\ttfamily void Demineur.\+Grille.\+Mettre\+A\+Jour\+Voisin (\begin{DoxyParamCaption}\item[{int}]{ligne,  }\item[{int}]{colonne,  }\item[{int}]{l,  }\item[{int}]{c }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Utilisé seulement lorsque la première case ouverte est une bombe. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ligne} & Ligne en cours de traitement\\
+\hline
+{\em colonne} & Colonne en cours de traitement\\
+\hline
+{\em l} & Y de la bombe à neutraliser\\
+\hline
+{\em c} & X de la bombe à neutraliser\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_demineur_1_1_grille_a262349ba9ace07d2a43419033ce51dd1}\label{class_demineur_1_1_grille_a262349ba9ace07d2a43419033ce51dd1}} 
+\index{Demineur.Grille@{Demineur.Grille}!OuvrirCase@{OuvrirCase}}
+\index{OuvrirCase@{OuvrirCase}!Demineur.Grille@{Demineur.Grille}}
+\doxysubsubsection{\texorpdfstring{OuvrirCase()}{OuvrirCase()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Demineur.\+Grille.\+Ouvrir\+Case (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_demineur_1_1_case}{Case}}}]{voisin }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Ouvre automatiquement les cases voisines de la sélection 
+
+
+\begin{DoxyParams}{Parameters}
+{\em voisin} & Voisin de la case sélectionné.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Retourne vrai si ?
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_demineur_1_1_grille_a5576f35a80fa5545c2450ace42f04d85}\label{class_demineur_1_1_grille_a5576f35a80fa5545c2450ace42f04d85}} 
+\index{Demineur.Grille@{Demineur.Grille}!OuvrirCase@{OuvrirCase}}
+\index{OuvrirCase@{OuvrirCase}!Demineur.Grille@{Demineur.Grille}}
+\doxysubsubsection{\texorpdfstring{OuvrirCase()}{OuvrirCase()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool Demineur.\+Grille.\+Ouvrir\+Case (\begin{DoxyParamCaption}\item[{int}]{ligne,  }\item[{int}]{colonne }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Ouvre une case suite à la confirmation du joueur. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ligne} & Coordonnée Y de la case à ouvrir.\\
+\hline
+{\em colonne} & Coordonnée X de la case à ouvrir.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Bool \+: Retourne faux si la case est une bombe, retourne vrai si elle n\textquotesingle{}est pas une bombe.
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_demineur_1_1_grille_a02157ebf2578c545cb13490386e4fca0}\label{class_demineur_1_1_grille_a02157ebf2578c545cb13490386e4fca0}} 
+\index{Demineur.Grille@{Demineur.Grille}!RencontreVoisin@{RencontreVoisin}}
+\index{RencontreVoisin@{RencontreVoisin}!Demineur.Grille@{Demineur.Grille}}
+\doxysubsubsection{\texorpdfstring{RencontreVoisin()}{RencontreVoisin()}}
+{\footnotesize\ttfamily void Demineur.\+Grille.\+Rencontre\+Voisin (\begin{DoxyParamCaption}\item[{int}]{ligne,  }\item[{int}]{colonne }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Fouille les case adjacentes à la case active pour remplir le tableau des cases voisines. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ligne} & Ligne en cours de traitement\\
+\hline
+{\em colonne} & Colonne en cours de traitement\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_demineur_1_1_grille_ac3daead5a6fc67aa422d56d767f05fbe}\label{class_demineur_1_1_grille_ac3daead5a6fc67aa422d56d767f05fbe}} 
+\index{Demineur.Grille@{Demineur.Grille}!ToString@{ToString}}
+\index{ToString@{ToString}!Demineur.Grille@{Demineur.Grille}}
+\doxysubsubsection{\texorpdfstring{ToString()}{ToString()}}
+{\footnotesize\ttfamily override string Demineur.\+Grille.\+To\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retourne la grille sous forme de string. \textquotesingle{}?\textquotesingle{} signigie case fermer \textquotesingle{}¤\textquotesingle{} signifie bombe \textquotesingle{} \textquotesingle{} signigie Ouverte et danger 0 
+
+\begin{DoxyReturn}{Returns}
+string \+: grille
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_demineur_1_1_grille_aa16cd8a441a779bb8a6035ad2a6cc41b}\label{class_demineur_1_1_grille_aa16cd8a441a779bb8a6035ad2a6cc41b}} 
+\index{Demineur.Grille@{Demineur.Grille}!aOuvrir@{aOuvrir}}
+\index{aOuvrir@{aOuvrir}!Demineur.Grille@{Demineur.Grille}}
+\doxysubsubsection{\texorpdfstring{aOuvrir}{aOuvrir}}
+{\footnotesize\ttfamily Stack$<$\mbox{\hyperlink{class_demineur_1_1_case}{Case}}$>$ Demineur.\+Grille.\+a\+Ouvrir\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_demineur_1_1_grille_a6d8514ead836fb96b214cf578b8b51db}\label{class_demineur_1_1_grille_a6d8514ead836fb96b214cf578b8b51db}} 
+\index{Demineur.Grille@{Demineur.Grille}!casesFermer@{casesFermer}}
+\index{casesFermer@{casesFermer}!Demineur.Grille@{Demineur.Grille}}
+\doxysubsubsection{\texorpdfstring{casesFermer}{casesFermer}}
+{\footnotesize\ttfamily int Demineur.\+Grille.\+cases\+Fermer\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_demineur_1_1_grille_ab5ef7b4ae3d9e0702a18ea15109e345c}\label{class_demineur_1_1_grille_ab5ef7b4ae3d9e0702a18ea15109e345c}} 
+\index{Demineur.Grille@{Demineur.Grille}!champs@{champs}}
+\index{champs@{champs}!Demineur.Grille@{Demineur.Grille}}
+\doxysubsubsection{\texorpdfstring{champs}{champs}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_demineur_1_1_case}{Case}} \mbox{[},\mbox{]} Demineur.\+Grille.\+champs\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_demineur_1_1_grille_a5717472aaa2beef6f406f1ee4bd10444}\label{class_demineur_1_1_grille_a5717472aaa2beef6f406f1ee4bd10444}} 
+\index{Demineur.Grille@{Demineur.Grille}!colonnes@{colonnes}}
+\index{colonnes@{colonnes}!Demineur.Grille@{Demineur.Grille}}
+\doxysubsubsection{\texorpdfstring{colonnes}{colonnes}}
+{\footnotesize\ttfamily int Demineur.\+Grille.\+colonnes\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_demineur_1_1_grille_a5c50a7496a70f74f8af80cc8ec41508d}\label{class_demineur_1_1_grille_a5c50a7496a70f74f8af80cc8ec41508d}} 
+\index{Demineur.Grille@{Demineur.Grille}!lignes@{lignes}}
+\index{lignes@{lignes}!Demineur.Grille@{Demineur.Grille}}
+\doxysubsubsection{\texorpdfstring{lignes}{lignes}}
+{\footnotesize\ttfamily int Demineur.\+Grille.\+lignes\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_demineur_1_1_grille_ad7065625ba1306e25e7743a3143a1473}\label{class_demineur_1_1_grille_ad7065625ba1306e25e7743a3143a1473}} 
+\index{Demineur.Grille@{Demineur.Grille}!nbBombeGrille@{nbBombeGrille}}
+\index{nbBombeGrille@{nbBombeGrille}!Demineur.Grille@{Demineur.Grille}}
+\doxysubsubsection{\texorpdfstring{nbBombeGrille}{nbBombeGrille}}
+{\footnotesize\ttfamily int Demineur.\+Grille.\+nb\+Bombe\+Grille\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{Property Documentation}
+\mbox{\Hypertarget{class_demineur_1_1_grille_ae3d6add44843c1cf2661c5c1c7e6e146}\label{class_demineur_1_1_grille_ae3d6add44843c1cf2661c5c1c7e6e146}} 
+\index{Demineur.Grille@{Demineur.Grille}!NombreDeBombes@{NombreDeBombes}}
+\index{NombreDeBombes@{NombreDeBombes}!Demineur.Grille@{Demineur.Grille}}
+\doxysubsubsection{\texorpdfstring{NombreDeBombes}{NombreDeBombes}}
+{\footnotesize\ttfamily int Demineur.\+Grille.\+Nombre\+De\+Bombes\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Retourne ou modifie le nombre de bombes dans la grille. Utile au premier tour. 
+
+\mbox{\Hypertarget{class_demineur_1_1_grille_aaac104aecb34df70b072f101972cce59}\label{class_demineur_1_1_grille_aaac104aecb34df70b072f101972cce59}} 
+\index{Demineur.Grille@{Demineur.Grille}!this\mbox{[}int ligne, int colonne\mbox{]}@{this[int ligne, int colonne]}}
+\index{this\mbox{[}int ligne, int colonne\mbox{]}@{this[int ligne, int colonne]}!Demineur.Grille@{Demineur.Grille}}
+\doxysubsubsection{\texorpdfstring{this[int ligne, int colonne]}{this[int ligne, int colonne]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_demineur_1_1_case}{Case}} Demineur.\+Grille.\+this\mbox{[}int ligne, int colonne\mbox{]}\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Rempli le tableau des voisins d\textquotesingle{}une case. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ligne} & Coordonnée en Y\\
+\hline
+{\em colonne} & Coordonnée en X\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_demineur_1_1_case}{Case}}
+\end{DoxyReturn}

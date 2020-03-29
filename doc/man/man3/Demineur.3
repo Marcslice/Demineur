@@ -1,0 +1,52 @@
+.TH "Demineur" 3 "Sun Mar 29 2020" "Version 2.0" "Demineur" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Demineur
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBAITest\fP"
+.br
+.ti -1c
+.RI "class \fBCase\fP"
+.br
+.RI "Représente une case du démineur\&. Le grille génére sa grille en créant 'Lignes X Colonne' cases\&. Bool esTuBombe détermine si un case est une bombe ou non\&. Bool estOuverte détermine si la case est ouverte ou non\&. int nbDanger détermine combien de bombe entoure la case ouverte\&. \fBCase\fP[] casesVoisines contient les cases qui entourent cette case\&. "
+.ti -1c
+.RI "class \fBClassements\fP"
+.br
+.RI "Classement est une extension de démineur\&. Elle permet de créer et lire le fichier texte contenant les données des joueurs\&. "
+.ti -1c
+.RI "class \fBDemineur\fP"
+.br
+.RI "Point d'entrée du programme\&. On a une seule instance de \fBDemineur\fP\&. \fBDemineur\fP peut créer une seule partie à la fois\&. "
+.ti -1c
+.RI "class \fBGrille\fP"
+.br
+.RI "\fBGrille\fP représente le plateau de jeu\&. Elle contient des cases de type \fBCase\fP\&. \fBCase\fP[,] : champs est le tableau 2D [Lignes x Colonnes] Int : nbBombeGrille contient le nombre de bombe que la grille contient\&. Int : colonnes Dimension X du tableau Int : lignes Dimension Y du table Int : casesFermer contient le nombre de base fermer en début de partie\&. Stack<Case> : aOuvrir Permet la recherche récursive pour l'ouverture automatique des cases dont le danger est de 0\&. "
+.ti -1c
+.RI "class \fBIA\fP"
+.br
+.ti -1c
+.RI "class \fBInterfaceUsager\fP"
+.br
+.RI "Dessine l'interface usagé Titre \fBGrille\fP Statistiques Instructions "
+.ti -1c
+.RI "class \fBJoueur\fP"
+.br
+.RI "Représente un joueur\&. string : m_nom est le nom du joueur\&. string[] : m_Scores et le tableau des scores(en temps) du joueur\&. "
+.ti -1c
+.RI "class \fBMenu\fP"
+.br
+.RI "La classe \fBMenu\fP guide l'utilisateur à travers les différentes options de partie\&. Il peut \fBJoueur\fP, afficher le classement ou quitter\&. "
+.ti -1c
+.RI "class \fBPartie\fP"
+.br
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Demineur from the source code\&.

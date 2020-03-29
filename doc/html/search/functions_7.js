@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['obtenirmetadonneesdelapartieactuellementterminee_57',['ObtenirMetadonneesDeLaPartieActuellementTerminee',['../class_demineur_1_1_partie.html#a9a0f8e769f990929aac0e365fc096fea',1,'Demineur::Partie']]],
-  ['obtenirnom_58',['ObtenirNom',['../class_demineur_1_1_joueur.html#addb73c6aa0aa914535fe796383303dd3',1,'Demineur::Joueur']]],
-  ['obtenirscore_59',['ObtenirScore',['../class_demineur_1_1_joueur.html#ae13efc9f3cc1f82f22628c7371469c51',1,'Demineur::Joueur']]]
+  ['ia_213',['IA',['../class_demineur_1_1_i_a.html#a2db33257dc6e7ee86006e7c5f0e69a3f',1,'Demineur::IA']]],
+  ['infodepartie_214',['InfoDepartie',['../class_demineur_1_1_partie.html#a6113f50e502874fd8cb71ad57035728c',1,'Demineur::Partie']]]
 ];

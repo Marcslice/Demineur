@@ -1,0 +1,125 @@
+.TH "Demineur.AITest" 3 "Sun Mar 29 2020" "Version 2.0" "Demineur" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Demineur.AITest
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAITest\fP (int lignes, int colonnes, int difficulte)"
+.br
+.ti -1c
+.RI "int[] \fBMeilleurCoup\fP (string grilleDeJeu)"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBCalculerChanceRand\fP ()"
+.br
+.ti -1c
+.RI "void \fBGenererGrille\fP (string aConvertir)"
+.br
+.ti -1c
+.RI "void \fBComparerGrille\fP ()"
+.br
+.ti -1c
+.RI "void \fBAnalyserGrille\fP ()"
+.br
+.ti -1c
+.RI "void \fBVoisinOuvert\fP (int coordL, int coordC)"
+.br
+.ti -1c
+.RI "bool \fBCalculerDanger\fP (int coordL, int coordC)"
+.br
+.ti -1c
+.RI "void \fBVerifierScore\fP (int coordL, int coordC, ref int valeurMaxDanger)"
+.br
+.ti -1c
+.RI "bool \fBComparerDeuxScore\fP (int score1, int score2)"
+.br
+.ti -1c
+.RI "void \fBMeilleur\fP (int ligne, int colonne)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "int \fBnbLignes\fP"
+.br
+.ti -1c
+.RI "int \fBnbColonnes\fP"
+.br
+.ti -1c
+.RI "int[,] \fBgrille\fP"
+.br
+.ti -1c
+.RI "string[,] \fBgrilleDeBombe\fP"
+.br
+.ti -1c
+.RI "int[] \fBmeilleurCoup\fP"
+.br
+.ti -1c
+.RI "bool \fBnouvelleBombe\fP"
+.br
+.ti -1c
+.RI "int \fBscore\fP"
+.br
+.ti -1c
+.RI "int \fBratioDiff\fP"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Demineur\&.AITest\&.AITest (int lignes, int colonnes, int difficulte)\fC [inline]\fP"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void Demineur\&.AITest\&.AnalyserGrille ()\fC [inline]\fP, \fC [private]\fP"
+
+.SS "int Demineur\&.AITest\&.CalculerChanceRand ()\fC [inline]\fP, \fC [private]\fP"
+
+.SS "bool Demineur\&.AITest\&.CalculerDanger (int coordL, int coordC)\fC [inline]\fP, \fC [private]\fP"
+
+.SS "bool Demineur\&.AITest\&.ComparerDeuxScore (int score1, int score2)\fC [inline]\fP, \fC [private]\fP"
+
+.SS "void Demineur\&.AITest\&.ComparerGrille ()\fC [inline]\fP, \fC [private]\fP"
+
+.SS "void Demineur\&.AITest\&.GenererGrille (string aConvertir)\fC [inline]\fP, \fC [private]\fP"
+
+.SS "void Demineur\&.AITest\&.Meilleur (int ligne, int colonne)\fC [inline]\fP, \fC [private]\fP"
+
+.SS "int [] Demineur\&.AITest\&.MeilleurCoup (string grilleDeJeu)\fC [inline]\fP"
+
+.SS "void Demineur\&.AITest\&.VerifierScore (int coordL, int coordC, ref int valeurMaxDanger)\fC [inline]\fP, \fC [private]\fP"
+
+.SS "void Demineur\&.AITest\&.VoisinOuvert (int coordL, int coordC)\fC [inline]\fP, \fC [private]\fP"
+
+.SH "Member Data Documentation"
+.PP 
+.SS "int [,] Demineur\&.AITest\&.grille\fC [private]\fP"
+
+.SS "string [,] Demineur\&.AITest\&.grilleDeBombe\fC [private]\fP"
+
+.SS "int [] Demineur\&.AITest\&.meilleurCoup\fC [private]\fP"
+
+.SS "int Demineur\&.AITest\&.nbColonnes\fC [private]\fP"
+
+.SS "int Demineur\&.AITest\&.nbLignes\fC [private]\fP"
+
+.SS "bool Demineur\&.AITest\&.nouvelleBombe\fC [private]\fP"
+
+.SS "int Demineur\&.AITest\&.ratioDiff\fC [private]\fP"
+
+.SS "int Demineur\&.AITest\&.score\fC [private]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Demineur from the source code\&.
