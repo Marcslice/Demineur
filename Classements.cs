@@ -125,7 +125,10 @@ namespace Demineur
             if (listTrier.Count == 1)
                 if (listTrier[0].ObtenirScore()[indexFacile] == "00.00")
                     listTrier.RemoveAt(0);
-            return listTrier;
+            if (listTrier.Count < 10)
+                return listTrier.GetRange(0, listTrier.Count);
+            else
+                return listTrier.GetRange(0, 9);
         }
 
         /// <summary>
@@ -161,7 +164,10 @@ namespace Demineur
             if (listTrier.Count == 1)
                 if (listTrier[0].ObtenirScore()[indexNormal] == "00.00")
                     listTrier.RemoveAt(0);
-            return listTrier;
+            if (listTrier.Count < 10)
+                return listTrier.GetRange(0, listTrier.Count);
+            else
+                return listTrier.GetRange(0, 9);
         }
 
         /// <summary>
@@ -197,7 +203,10 @@ namespace Demineur
             if (listTrier.Count == 1)
                 if (listTrier[0].ObtenirScore()[indexDifficile] == "00.00")
                     listTrier.RemoveAt(0);
-            return listTrier;
+            if (listTrier.Count < 10)
+                return listTrier.GetRange(0, listTrier.Count);
+            else
+                return listTrier.GetRange(0, 9);
         }
 
         public void SauvegardeDuClassement()

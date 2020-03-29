@@ -59,37 +59,6 @@ namespace Demineur
         }
 
         /// <summary>
-        /// Affiche le mode de saisie actuel.
-        /// </summary>
-        public static void DessinerModeDeSaisie()
-        {
-            Console.SetCursorPosition(positionDuGuide, 16);
-            if (Saisie)
-                Console.Write("Mode de jeu actif : Contrôle avec flèches");
-            else
-                Console.Write("Mode de jeu actif : Saisie manuelle      ");
-        }
-
-        /// <summary>
-        /// Positionne le cursor lorsqu'on doit mettre à jour l'affichage de la sélection(en bas à droite).
-        /// </summary>
-        public static void PositionnerCursorPourRepondre()
-        {
-            Console.SetCursorPosition(positionDeReponse[0], positionDeReponse[1]);
-            Console.Write("                                                    ");
-            Console.SetCursorPosition(positionDeReponse[0], positionDeReponse[1]);
-        }
-
-        /// <summary>
-        /// Positionne le cursor et change la couleur du texte pour afficher l'erreur.
-        /// </summary>
-        public static void PositionnerCursorPourMessageErreur()
-        {
-            Console.SetCursorPosition(positionDeMessage[0], positionDeMessage[1]);
-            Console.ForegroundColor = ConsoleColor.Red;
-        }
-
-        /// <summary>
         /// Dessine le rectangle des statistiques.
         /// </summary>
         /// <param name="nColonne">Nombre de colonnes de la grille.</param>
@@ -142,75 +111,6 @@ namespace Demineur
                 Console.Write("___ ");
             Console.Write("\b|\n");
 
-        }
-
-        /// <summary>
-        /// Dessine tout le plateau.
-        /// Est appelé une fois au premier tour.
-        /// Ajuste la taille de la fenêtre de la console.
-        /// Calcule la position des modules de l'interface {titre, instruction, grille, statistique}
-        /// </summary>
-        /// <param name="p_NomJoueur">Nom du joueur</param>
-        /// <param name="nLigne">Nombre de lignes de la grille</param>
-        /// <param name="nColonne">Nombre de colonnes de la grille</param>
-        /// <param name="grille">Grille en string</param>
-        /// <param name="positionActuelle">Sélection du joueur.</param>
-        /// <param name="nbBombes">Nombre de bombes dans la grille.</param>
-        public static void DessinerPlateau(string p_NomJoueur, int nLigne, int nColonne, string grille, int[] positionActuelle, int nbBombes, bool mort)
-        {
-            Console.SetWindowSize(nColonne * 4 + 65, nLigne * 4 + 14);
-            positionDeMessage = new int[2] { 4, nLigne * 3 + 14 };
-            positionDeReponse = new int[2] { 43, nLigne * 3 + 11 };
-            positionDuGuide = nColonne * 4 + 8; //instructions
-            Console.Clear();
-
-            DessinerTitreJeu(nColonne);
-            DessinerInstructions();
-            DessinerModeDeSaisie();
-
-            DessinerGrille(p_NomJoueur,nLigne, nColonne, grille, positionActuelle,nbBombes, mort);
-        }
-
-        /// <summary>
-        /// Dessine la grille de l'interface graphique.
-        /// Elle appel ce qu'elle a besoin.
-        /// </summary>
-        /// <param name="p_NomJoueur">Nom du joueur</param>
-        /// <param name="nLigne">Nombre de lignes de la grille</param>
-        /// <param name="nColonne">Nombre de colonnes de la grille</param>
-        /// <param name="grille">Grille en string</param>
-        /// <param name="positionActuelle">Sélection du joueur.</param>
-        /// <param name="nbBombes">Nombre de bombes dans la grille.</param>
-        public static void DessinerGrille(string p_NomJoueur, int nLigne, int nColonne, string grille, int[] positionActuelle, int nbBombes, bool mort)
-        {
-            Console.SetCursorPosition(0, 2); // Nécessaire pour dessiner la grille au bonne endroit.
-
-            DessinerChiffreColonne(nColonne);
-            DessinerLigneDuHaut(nColonne);
-
-            for (int l = 0; l < nLigne; l++)
-            {
-                DessinerRangeHautCase(nColonne);
-                DessinerRangeCentraleCase(l, nColonne, grille);
-                DessinerRangeBasCase(nColonne);
-            }
-
-            DessinerStats(nColonne, p_NomJoueur, mort, nbBombes);
-
-            Console.Write("\n" + marge + "Quelle case souhaitez-vous ouvrir ? >> ");
-            MettreAJourSelection(positionActuelle);
-        }
-
-        /// <summary>
-        /// Lors de la navigation par flèche ou de l'utilisation de l'IA,
-        /// cela met à jour les coordonnées en bas à droite. 
-        /// </summary>
-        /// <param name="positionActuelle"></param>
-        public static void MettreAJourSelection(int[] positionActuelle)
-        {
-            InterfaceUsager.PositionnerCursorPourRepondre();
-            Console.Write(positionActuelle[0] / 4 + " " + positionActuelle[1] / 3 + "    ");
-            Console.SetCursorPosition(positionActuelle[0], positionActuelle[1]);
         }
 
         /// <summary>
@@ -303,6 +203,106 @@ namespace Demineur
         }
 
         /// <summary>
+        /// Dessine tout le plateau.
+        /// Est appelé une fois au premier tour.
+        /// Ajuste la taille de la fenêtre de la console.
+        /// Calcule la position des modules de l'interface {titre, instruction, grille, statistique}
+        /// </summary>
+        /// <param name="p_NomJoueur">Nom du joueur</param>
+        /// <param name="nLigne">Nombre de lignes de la grille</param>
+        /// <param name="nColonne">Nombre de colonnes de la grille</param>
+        /// <param name="grille">Grille en string</param>
+        /// <param name="positionActuelle">Sélection du joueur.</param>
+        /// <param name="nbBombes">Nombre de bombes dans la grille.</param>
+        public static void DessinerPlateau(string p_NomJoueur, int nLigne, int nColonne, string grille, int[] positionActuelle, int nbBombes, bool mort)
+        {
+            Console.SetWindowSize(nColonne * 4 + 65, nLigne * 4 + 14);
+            positionDeMessage = new int[2] { 4, nLigne * 3 + 14 };
+            positionDeReponse = new int[2] { 43, nLigne * 3 + 11 };
+            positionDuGuide = nColonne * 4 + 8; //instructions
+            Console.Clear();
+
+            DessinerTitreJeu(nColonne);
+            DessinerInstructions();
+            DessinerModeDeSaisie();
+
+            DessinerGrille(p_NomJoueur, nLigne, nColonne, grille, positionActuelle, nbBombes, mort);
+        }
+
+        /// <summary>
+        /// Dessine la grille de l'interface graphique.
+        /// Elle appel ce qu'elle a besoin.
+        /// </summary>
+        /// <param name="p_NomJoueur">Nom du joueur</param>
+        /// <param name="nLigne">Nombre de lignes de la grille</param>
+        /// <param name="nColonne">Nombre de colonnes de la grille</param>
+        /// <param name="grille">Grille en string</param>
+        /// <param name="positionActuelle">Sélection du joueur.</param>
+        /// <param name="nbBombes">Nombre de bombes dans la grille.</param>
+        public static void DessinerGrille(string p_NomJoueur, int nLigne, int nColonne, string grille, int[] positionActuelle, int nbBombes, bool mort)
+        {
+            Console.SetCursorPosition(0, 2); // Nécessaire pour dessiner la grille au bonne endroit.
+
+            DessinerChiffreColonne(nColonne);
+            DessinerLigneDuHaut(nColonne);
+
+            for (int l = 0; l < nLigne; l++)
+            {
+                DessinerRangeHautCase(nColonne);
+                DessinerRangeCentraleCase(l, nColonne, grille);
+                DessinerRangeBasCase(nColonne);
+            }
+
+            DessinerStats(nColonne, p_NomJoueur, mort, nbBombes);
+
+            Console.Write("\n" + marge + "Quelle case souhaitez-vous ouvrir ? >> ");
+            MettreAJourSelection(positionActuelle);
+        }
+
+        /// <summary>
+        /// Lors de la navigation par flèche ou de l'utilisation de l'IA,
+        /// cela met à jour les coordonnées en bas à droite. 
+        /// </summary>
+        /// <param name="positionActuelle"></param>
+        public static void MettreAJourSelection(int[] positionActuelle)
+        {
+            InterfaceUsager.PositionnerCursorPourRepondre();
+            Console.Write(positionActuelle[0] / 4 + " " + positionActuelle[1] / 3 + "    ");
+            Console.SetCursorPosition(positionActuelle[0], positionActuelle[1]);
+        }
+
+        /// <summary>
+        /// Affiche le mode de saisie actuel.
+        /// </summary>
+        public static void DessinerModeDeSaisie()
+        {
+            Console.SetCursorPosition(positionDuGuide, 16);
+            if (Saisie)
+                Console.Write("Mode de jeu actif : Contrôle avec flèches");
+            else
+                Console.Write("Mode de jeu actif : Saisie manuelle      ");
+        }
+
+        /// <summary>
+        /// Positionne le cursor lorsqu'on doit mettre à jour l'affichage de la sélection(en bas à droite).
+        /// </summary>
+        public static void PositionnerCursorPourRepondre()
+        {
+            Console.SetCursorPosition(positionDeReponse[0], positionDeReponse[1]);
+            Console.Write("                                                    ");
+            Console.SetCursorPosition(positionDeReponse[0], positionDeReponse[1]);
+        }
+
+        /// <summary>
+        /// Positionne le cursor et change la couleur du texte pour afficher l'erreur.
+        /// </summary>
+        public static void PositionnerCursorPourMessageErreur()
+        {
+            Console.SetCursorPosition(positionDeMessage[0], positionDeMessage[1]);
+            Console.ForegroundColor = ConsoleColor.Red;
+        }
+
+        /// <summary>
         /// Affiche le message de victoire.
         /// </summary>
         public static void MessageVictoire()
@@ -315,7 +315,7 @@ namespace Demineur
 
         public static void MessageNouveauRecord() {
             PositionnerCursorPourMessageErreur();
-            Console.WriteLine("C'est un nouveau record! Félicitation.");
+            Console.WriteLine("Bravo! C'est un nouveau record personnel.");
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadLine();
         }

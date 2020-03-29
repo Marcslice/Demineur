@@ -66,7 +66,7 @@ namespace Demineur
         /// </summary>
         /// <param name="lignes">Nombre de lignes dans la grille de jeu.</param>
         /// <param name="colonnes">Nombre de colonnes dans la grille de jeu.</param>
-        public void DisperserBombes(short lignes, short colonnes)
+        void DisperserBombes(short lignes, short colonnes)
         {
             Random random = new Random();
 
@@ -104,7 +104,7 @@ namespace Demineur
         /// </summary>
         /// <param name="ligne">Ligne en cours de traitement</param>
         /// <param name="colonne">Colonne en cours de traitement</param>
-        public void RencontreVoisin(int ligne, int colonne)
+        void RencontreVoisin(int ligne, int colonne)
         {
             for (int l = 0; l < ligne; l++)
             {
@@ -147,7 +147,7 @@ namespace Demineur
         /// <param name="colonne">Colonne en cours de traitement</param>
         /// <param name="l">Y de la bombe à neutraliser</param>
         /// <param name="c">X de la bombe à neutraliser</param>
-        public void MettreAJourVoisin(int ligne, int colonne, int l, int c)
+        void MettreAJourVoisin(int ligne, int colonne, int l, int c)
         {
 
             Case destination = champs[l, c];
@@ -176,7 +176,6 @@ namespace Demineur
 
             if ((l + 1 < ligne) && (c + 1 < colonne))//SE
                 destination.SetCase(7, voisin = champs[l + 1, c + 1]);
-
         }
 
         /// <summary>
