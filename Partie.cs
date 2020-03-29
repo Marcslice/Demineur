@@ -59,8 +59,6 @@ namespace Demineur
             //Partie Terminé
             minuterie.Stop();
             temps = TimeSpan.FromMinutes(minuterie.Elapsed.TotalMinutes).ToString(@"mm\.ss");
-            Console.WriteLine(temps);
-            Console.ReadLine();
             if (mort)
             {
                 InterfaceUsager.DessinerGrille(j.ObtenirNom(),m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection, m_Grille.NombreDeBombes, mort); //Dessine la grille on game over
