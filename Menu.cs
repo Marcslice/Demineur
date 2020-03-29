@@ -291,8 +291,8 @@ namespace Demineur
             Console.Clear();
             Console.WriteLine("Type de Tri : " + triEnCours + "\n");
             Console.WriteLine("                                  Temps en Minutes par catégories                         \n");
-            Console.WriteLine("Joueur       |         Facile        |         Normal        |       Difficile       |\n");
-            Console.WriteLine("             |   P       M       G   |   P       M       G   |   P       M       G   |\n");
+            Console.WriteLine("Joueur       |         Petit         |         Moyen         |         Grand         |\n");
+            Console.WriteLine("             |   F       N       D   |   F       N       D   |   F       N       D   |\n");
             Console.WriteLine(p_Classement);
             Console.Write("\n F = Afficher Facile en ordre, N = Afficher Normal en ordre, D = Afficher Difficile en ordre");
             Console.Write("\n S = Afficher le classement sans tri");

@@ -12,19 +12,18 @@ namespace Demineur
               selection;
         Grille m_Grille;
         bool enMarche, mort, auto;
-        Joueur j;
-        string difficulte, temps, grosseur;
+        string nom, difficulte, temps, grosseur;
         //IA intelligence;
         AITest intel;
 
-        public Partie(string nom, short[] optionDePartie)
+        public Partie(string p_Nom, short[] optionDePartie)
         {
             enMarche = mort = false;
             selection = new int[2] { 6, 5 }; // 1,1 dans l'interface graphique
             m_Grille = new Grille(optionDePartie[0], optionDePartie[1], optionDePartie[2]);
-            j = new Joueur(nom);
             difficulte = Convert.ToString(optionDePartie[2]);
             grosseur = Convert.ToString(optionDePartie[0]);
+            nom = p_Nom;
             if (optionDePartie[3] > 1)
                 //intelligence = new IA(optionDePartie[0], optionDePartie[1]);
                 intel = new AITest(optionDePartie[0], optionDePartie[1], optionDePartie[2]);
@@ -44,24 +43,25 @@ namespace Demineur
             minuterie.Start();
 
             //Premier Tour            
-            InterfaceUsager.DessinerPlateau(j.ObtenirNom(),m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection, m_Grille.NombreDeBombes, mort);
+            InterfaceUsager.DessinerPlateau(nom,m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection, m_Grille.NombreDeBombes, mort);
             VerificationOuvertureEtContenue(selection = Touches(m_Grille.Colonnes(), m_Grille.Lignes(), m_Grille.ToString(), selection[0], selection[1]));
 
             //Autres Tours
             enMarche = true;
             while (enMarche)
             {
-                InterfaceUsager.DessinerGrille(j.ObtenirNom(),m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection, m_Grille.NombreDeBombes, mort);
+                InterfaceUsager.DessinerGrille(nom, m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection, m_Grille.NombreDeBombes, mort);
                 VerificationOuvertureEtContenue(selection = Touches(m_Grille.Colonnes(), m_Grille.Lignes(), m_Grille.ToString(), selection[0], selection[1]));
-                InterfaceUsager.DessinerGrille(j.ObtenirNom(),m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection, m_Grille.NombreDeBombes, mort);
+                InterfaceUsager.DessinerGrille(nom, m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection, m_Grille.NombreDeBombes, mort);
             }
 
             //Partie Terminé
             minuterie.Stop();
             temps = TimeSpan.FromMinutes(minuterie.Elapsed.TotalMinutes).ToString(@"mm\.ss");
+
             if (mort)
             {
-                InterfaceUsager.DessinerGrille(j.ObtenirNom(),m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection, m_Grille.NombreDeBombes, mort); //Dessine la grille on game over
+                InterfaceUsager.DessinerGrille(nom, m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection, m_Grille.NombreDeBombes, mort); //Dessine la grille on game over
                 InterfaceUsager.MessageDefaite();              
                 return false;
             }
@@ -315,7 +315,7 @@ namespace Demineur
         /// <returns>string[] : Informations de partie {nom_joueur, grosseur, difficulté, temps}</returns>
         public string[] InfoDepartie()
         {
-            return new string[] { j.ObtenirNom(), grosseur, difficulte, temps };
+            return new string[] { nom, grosseur, difficulte, temps };
         }
     }
 }

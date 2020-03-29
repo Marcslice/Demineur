@@ -39,10 +39,7 @@ namespace Demineur
                     InterfaceUsager.MessageNouveauRecord();
             }
             else
-            {
                 m_ListeJoueurs.Add(new Joueur(info[0], index, info[3]));
-                Console.WriteLine(m_ListeJoueurs[m_ListeJoueurs.Count - 1].ObtenirNom());
-            }
         }
 
         /// <summary>
@@ -50,7 +47,7 @@ namespace Demineur
         /// Créer la liste de joueur si le fichier text existe.
         /// Créer un fichier text vide si il n'existe pas.
         /// </summary>
-        public void FichierClassement()
+        void FichierClassement()
         {
 
             string cheminFichier = @"..\..\..\classement\classement.txt";
@@ -79,22 +76,6 @@ namespace Demineur
         }
 
         /// <summary>
-        /// Est appelé après la partie.
-        /// Permet de sauvegarder automatiquement les informations des joueurs du classement.
-        /// </summary>
-        public void SauvegardeDuClassement()
-        {
-            string cheminFichier = @"..\..\..\classement\classement.txt";
-            FileStream fs = File.OpenWrite(cheminFichier);
-            StreamWriter sw = new StreamWriter(fs, UTF8Encoding.UTF8);
-            foreach (Joueur j in m_ListeJoueurs)
-                sw.WriteLine(j.ToString());
-
-            sw.Close();
-            fs.Close();
-        }
-
-        /// <summary>
         /// Créer les joueurs à partir du fichier texte.
         /// </summary>
         /// <param name="joueurStats">Ligne lu par le programme.</param>
@@ -109,81 +90,6 @@ namespace Demineur
                 index++;
             }
             m_ListeJoueurs.Add(new Joueur(nomJoueur, tableauScore));
-        }
-
-        /// <summary>
-        /// Retourne le classement sous forme de string
-        /// </summary>
-        /// <returns>string : classement</returns>
-        public string ToString(short tri)
-        {
-            string classement = "";
-            switch(tri){
-                case 0:
-                    foreach (Joueur j in m_ListeJoueurs)
-                        classement += j.FormatClassement() + "\n";
-                    return classement;
-                case 1:
-                    for (short x = 0; x < 7; x += 3)
-                    {
-                        switch (x) {
-                            case 0:
-                                classement += "\n                                       Facile et Petite grille                        \n\n";
-                                break;
-                            case 3:
-                                classement += "\n                                       Facile et Moyenne grille                       \n\n";
-                                break;
-                            case 6:
-                                classement += "\n                                       Facile et Grande grille                        \n\n";
-                                break;
-                        }
-                        foreach (Joueur j in triFacile(x))
-                            classement += j.FormatClassement() + "\n";
-                        classement += "\n\n";
-                    }
-                    return classement;
-                case 2:
-                    for (short x = 1; x < 8; x += 3)
-                    {
-                        switch (x)
-                        {
-                            case 1:
-                                classement += "\n                                       Normal et Petite grille                        \n\n";
-                                break;
-                            case 4:
-                                classement += "\n                                       Normal et Moyenne grille                       \n\n";
-                                break;
-                            case 7:
-                                classement += "\n                                       Normal et Grande grille                        \n\n";
-                                break;
-                        }
-                        foreach (Joueur j in triNormal(x))
-                            classement += j.FormatClassement() + "\n";
-                        classement += "\n\n";
-                    }
-                    return classement;
-                case 3:
-                    for (short x = 2; x < 9; x += 3)
-                    {
-                        switch (x)
-                        {
-                            case 2:
-                                classement += "\n                                       Difficile et Petite grille                        \n\n";
-                                break;
-                            case 5:
-                                classement += "\n                                       Difficile et Moyenne grille                       \n\n";
-                                break;
-                            case 8:
-                                classement += "\n                                       Difficile et Grande grille                        \n\n";
-                                break;
-                        }
-                        foreach (Joueur j in triDifficile(x))
-                            classement += j.FormatClassement() + "\n";
-                        classement += "\n\n";
-                    }
-                    return classement;
-            }
-            return classement;
         }
 
         /// <summary>
@@ -292,6 +198,99 @@ namespace Demineur
                 if (listTrier[0].ObtenirScore()[indexDifficile] == "00.00")
                     listTrier.RemoveAt(0);
             return listTrier;
+        }
+
+        public void SauvegardeDuClassement()
+        {
+            string cheminFichier = @"..\..\..\classement\classement.txt";
+            FileStream fs = File.OpenWrite(cheminFichier);
+            StreamWriter sw = new StreamWriter(fs, UTF8Encoding.UTF8);
+            foreach (Joueur j in m_ListeJoueurs)
+                sw.WriteLine(j.ToString());
+
+            sw.Close();
+            fs.Close();
+        }
+
+        /// <summary>
+        /// Retourne le classement sous forme de string
+        /// </summary>
+        /// <returns>string : classement</returns>
+        ///         /// <summary>
+        /// Est appelé après la partie.
+        /// Permet de sauvegarder automatiquement les informations des joueurs du classement.
+        /// </summary>
+        public string ToString(short tri)
+        {
+            string classement = "";
+            switch (tri)
+            {
+                case 0:
+                    foreach (Joueur j in m_ListeJoueurs)
+                        classement += j.FormatClassement() + "\n";
+                    return classement;
+                case 1:
+                    for (short x = 0; x < 7; x += 3)
+                    {
+                        switch (x)
+                        {
+                            case 0:
+                                classement += "\n                                       Facile et Petite grille                        \n\n";
+                                break;
+                            case 3:
+                                classement += "\n                                       Facile et Moyenne grille                       \n\n";
+                                break;
+                            case 6:
+                                classement += "\n                                       Facile et Grande grille                        \n\n";
+                                break;
+                        }
+                        foreach (Joueur j in triFacile(x))
+                            classement += j.FormatClassement() + "\n";
+                        classement += "\n\n";
+                    }
+                    return classement;
+                case 2:
+                    for (short x = 1; x < 8; x += 3)
+                    {
+                        switch (x)
+                        {
+                            case 1:
+                                classement += "\n                                       Normal et Petite grille                        \n\n";
+                                break;
+                            case 4:
+                                classement += "\n                                       Normal et Moyenne grille                       \n\n";
+                                break;
+                            case 7:
+                                classement += "\n                                       Normal et Grande grille                        \n\n";
+                                break;
+                        }
+                        foreach (Joueur j in triNormal(x))
+                            classement += j.FormatClassement() + "\n";
+                        classement += "\n\n";
+                    }
+                    return classement;
+                case 3:
+                    for (short x = 2; x < 9; x += 3)
+                    {
+                        switch (x)
+                        {
+                            case 2:
+                                classement += "\n                                       Difficile et Petite grille                        \n\n";
+                                break;
+                            case 5:
+                                classement += "\n                                       Difficile et Moyenne grille                       \n\n";
+                                break;
+                            case 8:
+                                classement += "\n                                       Difficile et Grande grille                        \n\n";
+                                break;
+                        }
+                        foreach (Joueur j in triDifficile(x))
+                            classement += j.FormatClassement() + "\n";
+                        classement += "\n\n";
+                    }
+                    return classement;
+            }
+            return classement;
         }
     }
 }
