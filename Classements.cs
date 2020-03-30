@@ -211,6 +211,9 @@ namespace Demineur
                 return listTrier;
         }
 
+        /// <summary>
+        /// Écrit dans le document classement.txt
+        /// </summary>
         public void SauvegardeDuClassement()
         {
             string cheminFichier = @"..\..\..\classement\classement.txt";

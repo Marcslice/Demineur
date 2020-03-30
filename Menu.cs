@@ -354,11 +354,13 @@ namespace Demineur
 
             do
             {
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
                 Console.WriteLine("Le nom doit contenir entre 3 et 10 caractères.");
                 Console.Write("Quel nom voulez-vous utiliser ? >> ");
+                Console.ForegroundColor = ConsoleColor.White;
                 nom = Console.ReadLine();
             }
-            while (nom.Length < 3 && nom.Length > 10);
+            while (nom.Length < 3 || nom.Length > 10);
             return nom;
         }
     }

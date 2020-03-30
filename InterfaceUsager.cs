@@ -141,7 +141,7 @@ namespace Demineur
             Console.Write("\n");
         }
 
-        // <summary>
+        /// <summary>
         /// Dessine la rangé du haut de la grille de l'interface graphique.
         /// </summary>
         static void DessinerRangeHautCase(int colonne)
