@@ -110,25 +110,25 @@ namespace Demineur
                     {
                         Joueur aBouger = listTrier[x];
                         listTrier[x] = listTrier[y];
-                        listTrier[y] = aBouger;                   
+                        listTrier[y] = aBouger;
                     }
-                    if (listTrier[y].ObtenirScore()[indexFacile] == "00.00")
-                        listTrier.RemoveAt(y);
                     if (listTrier[x].ObtenirScore()[indexFacile] == "00.00")
+                    {
                         listTrier.RemoveAt(x);
-
-                    if(listTrier.Count == 1)
-                        if (listTrier[x].ObtenirScore()[indexFacile] == "00.00")
-                            listTrier.RemoveAt(x);
+                        y -= 1;
+                    }
                 }
             }
             if (listTrier.Count == 1)
                 if (listTrier[0].ObtenirScore()[indexFacile] == "00.00")
                     listTrier.RemoveAt(0);
-            if (listTrier.Count < 10)
-                return listTrier.GetRange(0, listTrier.Count);
-            else
+
+            if (listTrier.Count < 10 && listTrier.Count > 0)
+                return listTrier.GetRange(0, listTrier.Count - 1);
+            else if (listTrier.Count > 9)
                 return listTrier.GetRange(0, 9);
+            else
+                return listTrier;
         }
 
         /// <summary>
@@ -151,23 +151,25 @@ namespace Demineur
                         listTrier[x] = listTrier[y];
                         listTrier[y] = aBouger;
                     }
-                    if (listTrier[y].ObtenirScore()[indexNormal] == "00.00")
-                        listTrier.RemoveAt(y);
-                    if (listTrier[x].ObtenirScore()[indexNormal] == "00.00")
-                        listTrier.RemoveAt(x);
 
-                    if (listTrier.Count == 1)
-                        if (listTrier[x].ObtenirScore()[indexNormal] == "00.00")
-                            listTrier.RemoveAt(x);
+                    if (listTrier[x].ObtenirScore()[indexNormal] == "00.00")
+                    {
+                        listTrier.RemoveAt(x);
+                        y -= 1;
+                    }
                 }
             }
             if (listTrier.Count == 1)
                 if (listTrier[0].ObtenirScore()[indexNormal] == "00.00")
                     listTrier.RemoveAt(0);
-            if (listTrier.Count < 10)
-                return listTrier.GetRange(0, listTrier.Count);
-            else
+
+
+            if (listTrier.Count < 10 && listTrier.Count > 0)
+                return listTrier.GetRange(0, listTrier.Count - 1);
+            else if (listTrier.Count > 9)
                 return listTrier.GetRange(0, 9);
+            else
+                return listTrier;
         }
 
         /// <summary>
@@ -190,23 +192,23 @@ namespace Demineur
                         listTrier[x] = listTrier[y];
                         listTrier[y] = aBouger;
                     }
-                    if (listTrier[y].ObtenirScore()[indexDifficile] == "00.00")
-                        listTrier.RemoveAt(y);
                     if (listTrier[x].ObtenirScore()[indexDifficile] == "00.00")
+                    {
                         listTrier.RemoveAt(x);
-
-                    if (listTrier.Count == 1)
-                        if (listTrier[x].ObtenirScore()[indexDifficile] == "00.00")
-                            listTrier.RemoveAt(x);
+                        y -= 1;
+                    }
                 }
             }
             if (listTrier.Count == 1)
                 if (listTrier[0].ObtenirScore()[indexDifficile] == "00.00")
                     listTrier.RemoveAt(0);
-            if (listTrier.Count < 10)
-                return listTrier.GetRange(0, listTrier.Count);
-            else
+
+            if (listTrier.Count < 10 && listTrier.Count > 0)
+                return listTrier.GetRange(0, listTrier.Count - 1);
+            else if (listTrier.Count > 9)
                 return listTrier.GetRange(0, 9);
+            else
+                return listTrier;
         }
 
         public void SauvegardeDuClassement()
