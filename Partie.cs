@@ -12,19 +12,18 @@ namespace Demineur
               selection;
         Grille m_Grille;
         bool enMarche, mort, auto;
-        Joueur j;
-        string difficulte, temps, grosseur;
+        string nom, difficulte, temps, grosseur;
         //IA intelligence;
         AITest intel;
 
-        public Partie(string nom, short[] optionDePartie)
+        public Partie(string p_Nom, short[] optionDePartie)
         {
             enMarche = mort = false;
             selection = new int[2] { 6, 5 }; // 1,1 dans l'interface graphique
             m_Grille = new Grille(optionDePartie[0], optionDePartie[1], optionDePartie[2]);
-            j = new Joueur(nom);
             difficulte = Convert.ToString(optionDePartie[2]);
             grosseur = Convert.ToString(optionDePartie[0]);
+            nom = p_Nom;
             if (optionDePartie[3] > 1)
                 //intelligence = new IA(optionDePartie[0], optionDePartie[1]);
                 intel = new AITest(optionDePartie[0], optionDePartie[1], optionDePartie[2]);
@@ -44,26 +43,25 @@ namespace Demineur
             minuterie.Start();
 
             //Premier Tour            
-            InterfaceUsager.DessinerPlateau(j.ObtenirNom(),m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection, m_Grille.NombreDeBombes, mort);
+            InterfaceUsager.DessinerPlateau(nom,m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection, m_Grille.NombreDeBombes, mort);
             VerificationOuvertureEtContenue(selection = Touches(m_Grille.Colonnes(), m_Grille.Lignes(), m_Grille.ToString(), selection[0], selection[1]));
 
             //Autres Tours
             enMarche = true;
             while (enMarche)
             {
-                InterfaceUsager.DessinerGrille(j.ObtenirNom(),m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection, m_Grille.NombreDeBombes, mort);
+                InterfaceUsager.DessinerGrille(nom, m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection, m_Grille.NombreDeBombes, mort);
                 VerificationOuvertureEtContenue(selection = Touches(m_Grille.Colonnes(), m_Grille.Lignes(), m_Grille.ToString(), selection[0], selection[1]));
-                InterfaceUsager.DessinerGrille(j.ObtenirNom(),m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection, m_Grille.NombreDeBombes, mort);
+                InterfaceUsager.DessinerGrille(nom, m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection, m_Grille.NombreDeBombes, mort);
             }
 
             //Partie Terminé
             minuterie.Stop();
             temps = TimeSpan.FromMinutes(minuterie.Elapsed.TotalMinutes).ToString(@"mm\.ss");
-            Console.WriteLine(temps);
-            Console.ReadLine();
+
             if (mort)
             {
-                InterfaceUsager.DessinerGrille(j.ObtenirNom(),m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection, m_Grille.NombreDeBombes, mort); //Dessine la grille on game over
+                InterfaceUsager.DessinerGrille(nom, m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection, m_Grille.NombreDeBombes, mort); //Dessine la grille on game over
                 InterfaceUsager.MessageDefaite();              
                 return false;
             }
@@ -74,20 +72,20 @@ namespace Demineur
             }
         }
 
-        public int[] Touches(int iCol, int iLig, string s_Grille, int xActuel, int yActuel)
+        int[] Touches(int iCol, int iLig, string s_Grille, int xActuel, int yActuel)
         {
-            positionActuelle = new int[2] { xActuel, yActuel };
             ConsoleKeyInfo touche = new ConsoleKeyInfo(' ', ConsoleKey.Spacebar, false, false, false);
+            positionActuelle = new int[2] { xActuel, yActuel };
             string entree;
             do
             {
                 entree = "";
-                if (InterfaceUsager.Saisie)
+                if (InterfaceUsager.Saisie) // En mode flèche
                 {
                     ActiverModeFleche();
                     do
                     {
-                        if (auto)
+                        if (auto) //AI en mode auto
                         {
                             touche = new ConsoleKeyInfo('a', ConsoleKey.A, false, false, false);
                             Thread.Sleep(1000);
@@ -119,7 +117,7 @@ namespace Demineur
                         }
                     } while (InterfaceUsager.Saisie && touche.Key != ConsoleKey.Enter && touche.Key != ConsoleKey.A);
                 }
-                else
+                else // en mode manuelle
                     do
                     {
                         ActiverModeSaisieManuelle();
@@ -133,9 +131,8 @@ namespace Demineur
         /// <summary>
         /// En mode flèche, selectionne la case à gauche.
         /// </summary>
-        public void AllerGauche()//OK
+        void AllerGauche()//OK
         {
-
             if (Console.CursorLeft < 10)
                 Console.SetCursorPosition((m_Grille.Colonnes() * 4) + 2, Console.CursorTop);
             else
@@ -147,9 +144,8 @@ namespace Demineur
         /// <summary>
         /// En mode flèche, selectionne la case à droite.
         /// </summary>
-        public void AllerDroite()//OK
+        void AllerDroite()//OK
         {
-
             if (Console.CursorLeft > (m_Grille.Colonnes() * 4))
                 Console.SetCursorPosition(6, Console.CursorTop);
             else
@@ -161,7 +157,7 @@ namespace Demineur
         /// <summary>
         /// En mode flèche, selectionne la case en haut.
         /// </summary>
-        public void AllerHaut()//OK
+        void AllerHaut()//OK
         {
             if (Console.CursorTop < 8)
                 Console.SetCursorPosition(Console.CursorLeft, (m_Grille.Lignes() * 3) + 2);
@@ -174,7 +170,7 @@ namespace Demineur
         /// <summary>
         /// En mode flèche, selectionne la case en bas.
         /// </summary>
-        public void AllerBas()//OK
+        void AllerBas()//OK
         {
             if (Console.CursorTop > m_Grille.Lignes() * 3)
                 Console.SetCursorPosition(Console.CursorLeft, 5);
@@ -188,7 +184,7 @@ namespace Demineur
         /// Appele l'intelligence artificiel.
         /// </summary>
         /// <returns>bool : vrai si IA actif, faux si partie sans IA</returns>
-        public bool AppelerIA()
+        bool AppelerIA()
         {
             if (intel != null)
             {
@@ -230,7 +226,7 @@ namespace Demineur
         /// </summary>
         /// <param name="entree">Saisie du joueur.</param>
         /// <returns>bool : Retourne true si saisie valide, false si invalide.</returns>
-        public bool EntreeManuelle(string entree)
+        bool EntreeManuelle(string entree)
         {
             if (entree.Length > 2)
             {
@@ -287,7 +283,7 @@ namespace Demineur
         /// </summary>
         /// <param name="entree">Saisie manuelle du l'utilisateur.</param>
         /// <returns></returns>
-        public bool VerificationFormatDeLentree(string entree)
+        bool VerificationFormatDeLentree(string entree)
         {
             MatchCollection matches = rx.Matches(entree);
 
@@ -302,7 +298,7 @@ namespace Demineur
         /// </summary>
         /// <param name="entree">Saisie manuelle du l'utilisateur.</param>
         /// <returns></returns>
-        public bool VerificationDesMinMaxDeLentree(string entree)
+        bool VerificationDesMinMaxDeLentree(string entree)
         {
             if (Int32.Parse(entree.Split(' ', StringSplitOptions.RemoveEmptyEntries)[0]) <= m_Grille.Colonnes() &&
                 Int32.Parse(entree.Split(' ', StringSplitOptions.RemoveEmptyEntries)[1]) <= m_Grille.Lignes())
@@ -317,7 +313,7 @@ namespace Demineur
         /// <returns>string[] : Informations de partie {nom_joueur, grosseur, difficulté, temps}</returns>
         public string[] InfoDepartie()
         {
-            return new string[] { j.ObtenirNom(), grosseur, difficulte, temps };
+            return new string[] { nom, grosseur, difficulte, temps };
         }
     }
 }

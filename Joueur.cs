@@ -12,13 +12,6 @@ namespace Demineur
     {
         string m_Nom;
         string[] m_Scores;
-
-        public Joueur(string p_Nom)
-        {
-            m_Nom = p_Nom;
-            m_Scores = new string[] { "00.00", "00.00", "00.00", "00.00", "00.00", "00.00", "00.00", "00.00", "00.00" };
-        }
-
         public Joueur(string p_Nom, string[] p_Scores)
         {
             m_Nom = p_Nom;
