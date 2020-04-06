@@ -97,123 +97,38 @@ namespace Demineur
         /// Tri le tableau de joueur selon le tri demandé et le retourne
         /// au toString() pour créer ce qui sera affiché à l'écran.
         /// </summary>
-        /// <param name="indexFacile">0, 3, 6 sont les scores en mode facile dans le tableau de joueur.</param>
+        /// <param name="indexDifficulte">
+        /// 0, 3, 6 sont les scores en mode facile dans le tableau de joueur.
+        /// 1,4,7 sont les scores en mode Normal dans le tableau de joueur.
+        /// 2,5,8 sont les scores en mode Difficile dans le tableau de joueur.
+        /// </param>
         /// <returns>List trié de joueur.</returns>
-        List<Joueur> triFacile(short indexFacile)
+        List<Joueur> trierClassement(short indexDifficulte)
         {
             List<Joueur> listTrier = new List<Joueur>(m_ListeJoueurs);
             for (int x = 0; x < listTrier.Count - 1; x++)
             {
                 for (int y = x + 1; y < listTrier.Count; y++)
                 {
-                    if (Double.Parse(listTrier[x].ObtenirScore()[indexFacile], CultureInfo.InvariantCulture) > Double.Parse(listTrier[y].ObtenirScore()[indexFacile], CultureInfo.InvariantCulture) && listTrier[y].ObtenirScore()[indexFacile] != "00.00")
+                    if (Double.Parse(listTrier[x].ObtenirScore()[indexDifficulte], CultureInfo.InvariantCulture) > Double.Parse(listTrier[y].ObtenirScore()[indexDifficulte], CultureInfo.InvariantCulture) && listTrier[y].ObtenirScore()[indexDifficulte] != "00.00")
                     {
                         Joueur aBouger = listTrier[x];
                         listTrier[x] = listTrier[y];
                         listTrier[y] = aBouger;
                     }
-                    if (listTrier[x].ObtenirScore()[indexFacile] == "00.00")
+                    if (listTrier[x].ObtenirScore()[indexDifficulte] == "00.00")
                     {
                         listTrier.RemoveAt(x);
                         y -= 1;
                     }
-                    if (listTrier[y].ObtenirScore()[indexFacile] == "00.00")
+                    if (listTrier[y].ObtenirScore()[indexDifficulte] == "00.00")
                     {
                         listTrier.RemoveAt(y);
                     }
                 }
             }
             if (listTrier.Count == 1)
-                if (listTrier[0].ObtenirScore()[indexFacile] == "00.00")
-                    listTrier.RemoveAt(0);
-
-            if (listTrier.Count < 10 && listTrier.Count > 0)
-                return listTrier.GetRange(0, listTrier.Count);
-            else if (listTrier.Count > 9)
-                return listTrier.GetRange(0, 9);
-            else
-                return listTrier;
-        }
-
-        /// <summary>
-        /// Tri le tableau de joueur selon le tri demandé et le retourne
-        /// au toString() pour créer ce qui sera affiché à l'écran.
-        /// </summary>
-        /// <param name="indexFacile">1, 4, 7 sont les scores en mode Normal dans le tableau de joueur.</param>
-        /// <returns>List trié de joueur.</returns>
-        List<Joueur> triNormal(short indexNormal)
-        {
-            List<Joueur> listTrier = new List<Joueur>(m_ListeJoueurs);
-
-            for (int x = 0; x < listTrier.Count - 1; x++)
-            {
-                for (int y = x + 1; y < listTrier.Count; y++)
-                {
-                    if (Double.Parse(listTrier[x].ObtenirScore()[indexNormal], CultureInfo.InvariantCulture) > Double.Parse(listTrier[y].ObtenirScore()[indexNormal], CultureInfo.InvariantCulture) && listTrier[y].ObtenirScore()[indexNormal] != "00.00")
-                    {
-                        Joueur aBouger = listTrier[x];
-                        listTrier[x] = listTrier[y];
-                        listTrier[y] = aBouger;
-                    }
-
-                    if (listTrier[x].ObtenirScore()[indexNormal] == "00.00")
-                    {
-                        listTrier.RemoveAt(x);
-                        y -= 1;
-                    }
-                    if (listTrier[y].ObtenirScore()[indexNormal] == "00.00")
-                    {
-                        listTrier.RemoveAt(y);
-                    }
-
-                }
-            }
-            if (listTrier.Count == 1)
-                if (listTrier[0].ObtenirScore()[indexNormal] == "00.00")
-                    listTrier.RemoveAt(0);
-
-
-            if (listTrier.Count < 10 && listTrier.Count > 0)
-                return listTrier.GetRange(0, listTrier.Count);
-            else if (listTrier.Count > 9)
-                return listTrier.GetRange(0, 9);
-            else
-                return listTrier;
-        }
-
-        /// <summary>
-        /// Tri le tableau de joueur selon le tri demandé et le retourne
-        /// au toString() pour créer ce qui sera affiché à l'écran.
-        /// </summary>
-        /// <param name="indexFacile">2, 5, 8 sont les scores en mode Difficile dans le tableau de joueur.</param>
-        /// <returns>List trié de joueur.</returns>
-        List<Joueur> triDifficile(short indexDifficile)
-        {
-            List<Joueur> listTrier = new List<Joueur>(m_ListeJoueurs);
-
-            for (int x = 0; x < listTrier.Count - 1; x++)
-            {
-                for (int y = x + 1; y < listTrier.Count; y++)
-                {
-                    if (Double.Parse(listTrier[x].ObtenirScore()[indexDifficile], CultureInfo.InvariantCulture) > Double.Parse(listTrier[y].ObtenirScore()[indexDifficile], CultureInfo.InvariantCulture) && listTrier[y].ObtenirScore()[indexDifficile] != "00.00")
-                    {
-                        Joueur aBouger = listTrier[x];
-                        listTrier[x] = listTrier[y];
-                        listTrier[y] = aBouger;
-                    }
-                    if (listTrier[x].ObtenirScore()[indexDifficile] == "00.00")
-                    {
-                        listTrier.RemoveAt(x);
-                        y -= 1;
-                    }
-                    if (listTrier[y].ObtenirScore()[indexDifficile] == "00.00")
-                    {
-                        listTrier.RemoveAt(y);
-                    }
-                }
-            }
-            if (listTrier.Count == 1)
-                if (listTrier[0].ObtenirScore()[indexDifficile] == "00.00")
+                if (listTrier[0].ObtenirScore()[indexDifficulte] == "00.00")
                     listTrier.RemoveAt(0);
 
             if (listTrier.Count < 10 && listTrier.Count > 0)
@@ -243,10 +158,6 @@ namespace Demineur
         /// Retourne le classement sous forme de string
         /// </summary>
         /// <returns>string : classement</returns>
-        ///         /// <summary>
-        /// Est appelé après la partie.
-        /// Permet de sauvegarder automatiquement les informations des joueurs du classement.
-        /// </summary>
         public string ToString(short tri)
         {
             string classement = "";
@@ -272,8 +183,7 @@ namespace Demineur
                                 break;
                         }
 
-                        List<Joueur> trier = triFacile(x);
-                        foreach (Joueur j in trier)
+                        foreach (Joueur j in trierClassement(x))
                             classement += j.FormatClassement() + "\n";
                         classement += "\n\n";
                     }
@@ -293,7 +203,7 @@ namespace Demineur
                                 classement += "\n                                       Normal et Grande grille                        \n\n";
                                 break;
                         }
-                        foreach (Joueur j in triNormal(x))
+                        foreach (Joueur j in trierClassement(x))
                             classement += j.FormatClassement() + "\n";
                         classement += "\n\n";
                     }
@@ -313,7 +223,7 @@ namespace Demineur
                                 classement += "\n                                       Difficile et Grande grille                        \n\n";
                                 break;
                         }
-                        foreach (Joueur j in triDifficile(x))
+                        foreach (Joueur j in trierClassement(x))
                             classement += j.FormatClassement() + "\n";
                         classement += "\n\n";
                     }
