@@ -6,7 +6,7 @@ namespace Demineur
     public class AITest
     {
 
-        int nbLignes, nbColonnes, score, ratioDiff;
+        int nbLignes, nbColonnes, score;
         int[,] grille;
         int[] meilleurCoup;
         bool nouvelleBombe;
@@ -23,28 +23,12 @@ namespace Demineur
                     grille[l, c] = 10;
                 }
             }
-
-            switch (difficulte)
-            {
-                case 1:
-                    ratioDiff = 10;
-                    break;
-                case 2:
-                    ratioDiff = 15;
-                    break;
-                case 3:
-                    ratioDiff = 20;
-                    break;
-            }
         }
 
         public int[] MeilleurCoup(string grilleDeJeu)
         {
             meilleurCoup = new int[3] { 0, 0, 0 };//ligne, colonne, valeurDanger
             GenererGrille(grilleDeJeu);
-
-            if (CalculerChanceRand() < 30 && meilleurCoup[2] >= 50)
-                meilleurCoup[2] = 420;
 
             if (meilleurCoup[2] == 420)
             {
@@ -58,26 +42,6 @@ namespace Demineur
             }
 
             return meilleurCoup;
-        }
-
-        int CalculerChanceRand()
-        {
-            int nbCaseFermer = 0;
-            int nbBombeTrouve = 0;
-            for (int l = 0; l < nbLignes; l++)
-            {
-                for (int c = 0; c < nbColonnes; c++)
-                {
-                    if (grille[l, c] == 10)
-                       nbCaseFermer++;
-                    if (grille[l, c] == 9)
-                        nbBombeTrouve++;
-                }
-            }
-            if (nbCaseFermer == 0)//sert pour les cas ou 0 case fermer meme si techniquement impossible
-                return 420;
-            else
-                return (((nbLignes * nbColonnes * ratioDiff) - (nbBombeTrouve * 100))/nbCaseFermer );
         }
 
         void GenererGrille(string aConvertir)
@@ -109,6 +73,7 @@ namespace Demineur
         {
             nouvelleBombe = false;
             meilleurCoup[2] = 420;
+            int nbCaseFermer = 0;
 
             for (int l = 0; l < nbLignes; l++)
             {
@@ -120,10 +85,30 @@ namespace Demineur
                     }
                     if (grille[l, c] == 10)
                     {
+                        nbCaseFermer++;
                         VoisinOuvert(l, c);
                     }
                 }
             }
+            if(nbCaseFermer == 0)
+            {
+                ResetCaseBombes();
+            }
+        }
+
+        void ResetCaseBombes()
+        {
+            for (int l = 0; l < nbLignes; l++)
+            {
+                for (int c = 0; c < nbColonnes; c++)
+                {
+                    if (grille[l, c] == 9)
+                    {
+                        grille[l,c] = 10;
+                    }
+                }
+            }
+            AnalyserGrille();
         }
 
         void AnalyseCaseO(int coordL, int coordC)
