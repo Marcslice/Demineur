@@ -117,6 +117,10 @@ namespace Demineur
                         listTrier.RemoveAt(x);
                         y -= 1;
                     }
+                    if (listTrier[y].ObtenirScore()[indexFacile] == "00.00")
+                    {
+                        listTrier.RemoveAt(y);
+                    }
                 }
             }
             if (listTrier.Count == 1)
@@ -157,6 +161,11 @@ namespace Demineur
                         listTrier.RemoveAt(x);
                         y -= 1;
                     }
+                    if (listTrier[y].ObtenirScore()[indexNormal] == "00.00")
+                    {
+                        listTrier.RemoveAt(y);
+                    }
+
                 }
             }
             if (listTrier.Count == 1)
@@ -196,6 +205,10 @@ namespace Demineur
                     {
                         listTrier.RemoveAt(x);
                         y -= 1;
+                    }
+                    if (listTrier[y].ObtenirScore()[indexDifficile] == "00.00")
+                    {
+                        listTrier.RemoveAt(y);
                     }
                 }
             }
