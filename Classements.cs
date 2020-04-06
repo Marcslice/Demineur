@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Text;
 
@@ -101,12 +102,11 @@ namespace Demineur
         List<Joueur> triFacile(short indexFacile)
         {
             List<Joueur> listTrier = new List<Joueur>(m_ListeJoueurs);
-
             for (int x = 0; x < listTrier.Count - 1; x++)
             {
                 for (int y = x + 1; y < listTrier.Count; y++)
                 {
-                    if (Double.Parse(listTrier[x].ObtenirScore()[indexFacile]) > Double.Parse(listTrier[y].ObtenirScore()[indexFacile]) && listTrier[y].ObtenirScore()[indexFacile] != "00.00")
+                    if (Double.Parse(listTrier[x].ObtenirScore()[indexFacile], CultureInfo.InvariantCulture) > Double.Parse(listTrier[y].ObtenirScore()[indexFacile], CultureInfo.InvariantCulture) && listTrier[y].ObtenirScore()[indexFacile] != "00.00")
                     {
                         Joueur aBouger = listTrier[x];
                         listTrier[x] = listTrier[y];
@@ -124,7 +124,7 @@ namespace Demineur
                     listTrier.RemoveAt(0);
 
             if (listTrier.Count < 10 && listTrier.Count > 0)
-                return listTrier.GetRange(0, listTrier.Count - 1);
+                return listTrier.GetRange(0, listTrier.Count);
             else if (listTrier.Count > 9)
                 return listTrier.GetRange(0, 9);
             else
@@ -145,7 +145,7 @@ namespace Demineur
             {
                 for (int y = x + 1; y < listTrier.Count; y++)
                 {
-                    if (Double.Parse(listTrier[x].ObtenirScore()[indexNormal]) > Double.Parse(listTrier[y].ObtenirScore()[indexNormal]) && listTrier[y].ObtenirScore()[indexNormal] != "00.00")
+                    if (Double.Parse(listTrier[x].ObtenirScore()[indexNormal], CultureInfo.InvariantCulture) > Double.Parse(listTrier[y].ObtenirScore()[indexNormal], CultureInfo.InvariantCulture) && listTrier[y].ObtenirScore()[indexNormal] != "00.00")
                     {
                         Joueur aBouger = listTrier[x];
                         listTrier[x] = listTrier[y];
@@ -165,7 +165,7 @@ namespace Demineur
 
 
             if (listTrier.Count < 10 && listTrier.Count > 0)
-                return listTrier.GetRange(0, listTrier.Count - 1);
+                return listTrier.GetRange(0, listTrier.Count);
             else if (listTrier.Count > 9)
                 return listTrier.GetRange(0, 9);
             else
@@ -186,7 +186,7 @@ namespace Demineur
             {
                 for (int y = x + 1; y < listTrier.Count; y++)
                 {
-                    if (Double.Parse(listTrier[x].ObtenirScore()[indexDifficile]) > Double.Parse(listTrier[y].ObtenirScore()[indexDifficile]) && listTrier[y].ObtenirScore()[indexDifficile] != "00.00")
+                    if (Double.Parse(listTrier[x].ObtenirScore()[indexDifficile], CultureInfo.InvariantCulture) > Double.Parse(listTrier[y].ObtenirScore()[indexDifficile], CultureInfo.InvariantCulture) && listTrier[y].ObtenirScore()[indexDifficile] != "00.00")
                     {
                         Joueur aBouger = listTrier[x];
                         listTrier[x] = listTrier[y];
@@ -204,7 +204,7 @@ namespace Demineur
                     listTrier.RemoveAt(0);
 
             if (listTrier.Count < 10 && listTrier.Count > 0)
-                return listTrier.GetRange(0, listTrier.Count - 1);
+                return listTrier.GetRange(0, listTrier.Count);
             else if (listTrier.Count > 9)
                 return listTrier.GetRange(0, 9);
             else
@@ -258,7 +258,9 @@ namespace Demineur
                                 classement += "\n                                       Facile et Grande grille                        \n\n";
                                 break;
                         }
-                        foreach (Joueur j in triFacile(x))
+
+                        List<Joueur> trier = triFacile(x);
+                        foreach (Joueur j in trier)
                             classement += j.FormatClassement() + "\n";
                         classement += "\n\n";
                     }
