@@ -277,7 +277,7 @@ namespace Demineur
                     return 0;
             }
         }
-     
+
         /// <summary>
         /// Dessine la Première page du menu principale.
         /// </summary>

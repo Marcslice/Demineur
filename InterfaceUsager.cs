@@ -26,6 +26,83 @@ namespace Demineur
         }
 
         /// <summary>
+        /// En mode flèche, selectionne la case à gauche.
+        /// </summary>
+        public static int[] AllerGauche(int colonnes)
+        {
+            if (Console.CursorLeft < 10)
+                Console.SetCursorPosition((colonnes * 4) + 2, Console.CursorTop);
+            else
+                Console.SetCursorPosition(Console.CursorLeft - 4, Console.CursorTop);
+
+            return new int[2] { Console.CursorLeft, Console.CursorTop };
+        }
+
+        /// <summary>
+        /// En mode flèche, selectionne la case à droite.
+        /// </summary>
+        public static int[] AllerDroite(int colonnes)
+        {
+            if (Console.CursorLeft > (colonnes * 4))
+                Console.SetCursorPosition(6, Console.CursorTop);
+            else
+                Console.SetCursorPosition(Console.CursorLeft + 4, Console.CursorTop);
+
+            return new int[2] { Console.CursorLeft, Console.CursorTop };
+        }
+
+        /// <summary>
+        /// En mode flèche, selectionne la case en haut.
+        /// </summary>
+        public static int[] AllerHaut(int lignes)
+        {
+            if (Console.CursorTop < 8)
+                Console.SetCursorPosition(Console.CursorLeft, (lignes * 3) + 2);
+            else
+                Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop - 3);
+
+            return new int[2] { Console.CursorLeft, Console.CursorTop };
+        }
+
+        /// <summary>
+        /// En mode flèche, selectionne la case en bas.
+        /// </summary>
+        public static int[] AllerBas(int lignes)
+        {
+            if (Console.CursorTop > lignes * 3)
+                Console.SetCursorPosition(Console.CursorLeft, 5);
+            else
+                Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop + 3);
+
+            return new int[2] { Console.CursorLeft, Console.CursorTop };
+        }
+
+        public static string EntreeManuelle()
+        {
+            return Console.ReadLine();
+        }
+
+        /// <summary>
+        /// Active la sélection des cases avec les flèches.
+        /// </summary>
+        public static void ActiverModeFleche(int[] positionActuelle)
+        {
+            saisie = true;
+            DessinerModeDeSaisie();
+            Console.SetCursorPosition(positionActuelle[0], positionActuelle[1]);
+        }
+
+        /// <summary>
+        /// Active la sélection des cases avec les flèches.
+        /// </summary>
+        public static void ActiverModeSaisieManuelle()
+        {
+            saisie = false;
+            DessinerModeDeSaisie();
+            PositionnerCursorPourRepondre();
+        }
+
+        /// <summary>
         /// Affiche le titre du jeu.
         /// </summary>
         /// <param name="colonne"></param>
@@ -94,7 +171,8 @@ namespace Demineur
                     c += Convert.ToString(nbBombes).Length;
                     dessiner = true;
                 }
-                else if (c == (((nColonne * 4) / 2) - 2)) {
+                else if (c == (((nColonne * 4) / 2) - 2))
+                {
                     Console.Write(etat);
                     c += etat.Length;
                 }
@@ -230,8 +308,7 @@ namespace Demineur
         }
 
         /// <summary>
-        /// Dessine la grille de l'interface graphique.
-        /// Elle appel ce qu'elle a besoin.
+        /// Dessine la grille et les statistiques à chaque rafraichissement.
         /// </summary>
         /// <param name="p_NomJoueur">Nom du joueur</param>
         /// <param name="nLigne">Nombre de lignes de la grille</param>
@@ -289,7 +366,10 @@ namespace Demineur
         public static void PositionnerCursorPourRepondre()
         {
             Console.SetCursorPosition(positionDeReponse[0], positionDeReponse[1]);
-            Console.Write("                                                    ");
+            Console.WriteLine("                                                                                             ");
+            Console.WriteLine("                                                                                             ");
+            Console.WriteLine("                                                                                             ");
+            Console.WriteLine("                                                                                             ");
             Console.SetCursorPosition(positionDeReponse[0], positionDeReponse[1]);
         }
 
@@ -313,7 +393,8 @@ namespace Demineur
             Console.ReadLine();
         }
 
-        public static void MessageNouveauRecord() {
+        public static void MessageNouveauRecord()
+        {
             PositionnerCursorPourMessageErreur();
             Console.WriteLine("Bravo! C'est un nouveau record personnel.");
             Console.ForegroundColor = ConsoleColor.White;
@@ -346,7 +427,7 @@ namespace Demineur
         }
 
         /// <summary>
-        /// Affiche le message de format incorrecte si la siasie de respecte pas ^\d+\s\d+$.
+        /// Affiche le message de format incorrecte si la saisie ne respecte pas ^\d+\s\d+$.
         /// </summary>
         public static void MessageFormatDentreeErronee()
         {
@@ -361,7 +442,7 @@ namespace Demineur
         }
 
         /// <summary>
-        /// Affiche le message de Saisie hors limite si la saisie ne fait pas partie de la grille.
+        /// Affiche le message de Ssaisie hors limite si la saisie ne fait pas partie de la grille.
         /// </summary>
         public static void MessageHorsLimites()
         {

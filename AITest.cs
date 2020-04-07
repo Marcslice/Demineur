@@ -11,7 +11,7 @@ namespace Demineur
         int[] meilleurCoup;
         bool nouvelleBombe;
 
-        public AITest(int lignes, int colonnes, int difficulte)
+        public AITest(int lignes, int colonnes)
         {
             nbLignes = lignes;
             nbColonnes = colonnes;
@@ -53,17 +53,17 @@ namespace Demineur
                 charTranscrit = nbColonnes * l;
                 for (int c = 0; c < nbColonnes; c++)
                 {
-                    if(aConvertir[charTranscrit + c] != '?')
-                    switch (aConvertir[charTranscrit + c])
-                    {
-                        case ' ':
-                            grille[l, c] = 0;
-                            break;
+                    if (aConvertir[charTranscrit + c] != '?')
+                        switch (aConvertir[charTranscrit + c])
+                        {
+                            case ' ':
+                                grille[l, c] = 0;
+                                break;
 
-                        default:
-                            grille[l, c] = ((int)aConvertir[charTranscrit + c] - 48);
-                            break;
-                    }
+                            default:
+                                grille[l, c] = ((int)aConvertir[charTranscrit + c] - 48);
+                                break;
+                        }
                 }
             }
             AnalyserGrille();
@@ -81,7 +81,7 @@ namespace Demineur
                 {
                     if (grille[l, c] < 9)
                     {
-                        AnalyseCaseO(l,c);
+                        AnalyseCaseO(l, c);
                     }
                     if (grille[l, c] == 10)
                     {
@@ -90,7 +90,7 @@ namespace Demineur
                     }
                 }
             }
-            if(nbCaseFermer == 0)
+            if (nbCaseFermer == 0)
             {
                 ResetCaseBombes();
             }
@@ -104,7 +104,7 @@ namespace Demineur
                 {
                     if (grille[l, c] == 9)
                     {
-                        grille[l,c] = 10;
+                        grille[l, c] = 10;
                     }
                 }
             }
@@ -124,7 +124,7 @@ namespace Demineur
             {
                 valVoisin = grille[coordL - 1, coordC - 1];
 
-                if (valVoisin > 8) 
+                if (valVoisin > 8)
                 {
                     if (valVoisin == 9)
                     {
@@ -157,7 +157,7 @@ namespace Demineur
                     }
                 }
             }
-                   
+
             if ((coordL > 0) && (coordC + 1 < nbColonnes))//NE
             {
                 valVoisin = grille[coordL - 1, coordC + 1];
@@ -176,7 +176,7 @@ namespace Demineur
                     }
                 }
             }
-                    
+
             if (coordC > 0)//W
             {
                 valVoisin = grille[coordL, coordC - 1];
@@ -195,7 +195,7 @@ namespace Demineur
                     }
                 }
             }
-                   
+
             if (coordC + 1 < nbColonnes)//E
             {
                 valVoisin = grille[coordL, coordC + 1];
@@ -214,7 +214,7 @@ namespace Demineur
                     }
                 }
             }
-                    
+
             if ((coordL + 1 < nbLignes) && (coordC - 1 > 0))//SW
             {
                 valVoisin = grille[coordL + 1, coordC - 1];
@@ -252,7 +252,7 @@ namespace Demineur
                     }
                 }
             }
-                    
+
             if ((coordL + 1 < nbLignes) && (coordC + 1 < nbColonnes))//SE
             {
                 valVoisin = grille[coordL + 1, coordC + 1];
@@ -272,17 +272,17 @@ namespace Demineur
                 }
             }
 
-            if(caseF > 0)
+            if (caseF > 0)
             {
-                if((grille[coordL, coordC] - bombe) == caseF)
+                if ((grille[coordL, coordC] - bombe) == caseF)
                 {
-                    while(caseFermer.Count > 0)
+                    while (caseFermer.Count > 0)
                     {
                         grille[caseFermer.Pop(), caseFermer.Pop()] = 9;
                     }
                 }
             }
-                   
+
         }
 
         void VoisinOuvert(int coordL, int coordC)//coordonnee ligne, coordonnee colonne      cherche les case ouvertes autour non-bombe
@@ -290,13 +290,13 @@ namespace Demineur
             int valeurMaxDanger = 1;
             int valeurTester;
 
-                if ((coordL > 0) && (coordC > 0))//NW
-                {
-                    valeurTester = grille[coordL - 1, coordC - 1];
-                    if (valeurTester != 10 && valeurTester != 9)
-                        if (CalculerDanger(coordL - 1, coordC - 1))
-                            VerifierScore(coordL, coordC, ref valeurMaxDanger);
-                }
+            if ((coordL > 0) && (coordC > 0))//NW
+            {
+                valeurTester = grille[coordL - 1, coordC - 1];
+                if (valeurTester != 10 && valeurTester != 9)
+                    if (CalculerDanger(coordL - 1, coordC - 1))
+                        VerifierScore(coordL, coordC, ref valeurMaxDanger);
+            }
 
             if (!nouvelleBombe)
                 if (coordL > 0)//N
@@ -457,7 +457,7 @@ namespace Demineur
             return false;//ne pas tenir compte
         }
 
-        void VerifierScore(int coordL, int coordC,  ref int valeurMaxDanger)
+        void VerifierScore(int coordL, int coordC, ref int valeurMaxDanger)
         {
             {
                 if (score == 0)

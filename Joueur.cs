@@ -1,6 +1,5 @@
-﻿using System.Collections.Generic;
-using System;
-
+﻿using System;
+using System.Globalization;
 namespace Demineur
 {
     /// <summary>
@@ -52,7 +51,7 @@ namespace Demineur
         /// <returns></returns>
         public bool ModifierScore(int index, string temp)
         {
-            if (Double.Parse(m_Scores[index]) > Double.Parse(temp) || m_Scores[index] == "00.00")
+            if (Double.Parse(m_Scores[index], CultureInfo.InvariantCulture) > Double.Parse(temp, CultureInfo.InvariantCulture) || m_Scores[index] == "00.00")
             {
                 m_Scores[index] = temp;
                 return true;

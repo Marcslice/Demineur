@@ -6,7 +6,7 @@ using System.Threading;
 namespace Demineur
 {
 
-//moving arrows to interface
+    //moving arrows to interface
     public class Partie
     {
         Regex rx = new Regex(@"^\d+\s\d+$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
@@ -20,7 +20,8 @@ namespace Demineur
 
         public Partie(string p_Nom, short[] optionDePartie)
         {
-            enMarche = mort = false;
+            InterfaceUsager.Saisie = true;
+            enMarche = mort = auto = false;
             selection = new int[2] { 6, 5 }; // 1,1 dans l'interface graphique
             m_Grille = new Grille(optionDePartie[0], optionDePartie[1], optionDePartie[2]);
             difficulte = Convert.ToString(optionDePartie[2]);
@@ -28,11 +29,9 @@ namespace Demineur
             nom = p_Nom;
             if (optionDePartie[3] > 1)
                 //intelligence = new IA(optionDePartie[0], optionDePartie[1]);
-                intel = new AITest(optionDePartie[0], optionDePartie[1], optionDePartie[2]);
+                intel = new AITest(optionDePartie[0], optionDePartie[1]);
             if (optionDePartie[3] > 2)
                 auto = true;
-            else
-                auto = false;
         }
 
         /// <summary>
@@ -45,7 +44,7 @@ namespace Demineur
             minuterie.Start();
 
             //Premier Tour            
-            InterfaceUsager.DessinerPlateau(nom,m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection, m_Grille.NombreDeBombes, mort);
+            InterfaceUsager.DessinerPlateau(nom, m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection, m_Grille.NombreDeBombes, mort);
             VerificationOuvertureEtContenue(selection = Touches(m_Grille.Colonnes(), m_Grille.Lignes(), m_Grille.ToString(), selection[0], selection[1]));
 
             //Autres Tours
@@ -64,129 +63,85 @@ namespace Demineur
             if (mort)
             {
                 InterfaceUsager.DessinerGrille(nom, m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection, m_Grille.NombreDeBombes, mort); //Dessine la grille on game over
-                InterfaceUsager.MessageDefaite();              
+                InterfaceUsager.MessageDefaite();
                 return false;
             }
-            else
-            {
-                InterfaceUsager.MessageVictoire();
-                return true;
-            }
+            InterfaceUsager.MessageVictoire();
+            return true;
         }
 
         int[] Touches(int iCol, int iLig, string s_Grille, int xActuel, int yActuel)
         {
             ConsoleKeyInfo touche = new ConsoleKeyInfo(' ', ConsoleKey.Spacebar, false, false, false);
             positionActuelle = new int[2] { xActuel, yActuel };
-            string entree;
+
             do
             {
-                entree = "";
-                if (InterfaceUsager.Saisie) // En mode flèche
+                if (auto) //AI en mode automatique
                 {
-                    ActiverModeFleche();
-                    do
-                    {
-                        if (auto) //AI en mode auto
+                    AppelerIA();
+                    touche = new ConsoleKeyInfo('\n', ConsoleKey.Enter, false, false, false);
+                    Thread.Sleep(1000);
+                }
+                else //Joueur non afk
+                {
+                    if (InterfaceUsager.Saisie) // En mode flèche
+                    {                       
+                        do
                         {
-                            touche = new ConsoleKeyInfo('a', ConsoleKey.A, false, false, false);
-                            Thread.Sleep(1000);
-                        }
-                        else
+                            InterfaceUsager.ActiverModeFleche(positionActuelle);
                             touche = Console.ReadKey(true);
 
-                        switch ((int)touche.Key)
+                            switch ((int)touche.Key)
+                            {
+                                case 37:
+                                    positionActuelle = InterfaceUsager.AllerGauche(m_Grille.Colonnes());
+                                    InterfaceUsager.MettreAJourSelection(positionActuelle);
+                                    break;
+                                case 39:
+                                    positionActuelle = InterfaceUsager.AllerDroite(m_Grille.Colonnes());
+                                    InterfaceUsager.MettreAJourSelection(positionActuelle);
+                                    break;
+                                case 38:
+                                    positionActuelle = InterfaceUsager.AllerHaut(m_Grille.Lignes());
+                                    InterfaceUsager.MettreAJourSelection(positionActuelle);
+                                    break;
+                                case 40:
+                                    positionActuelle = InterfaceUsager.AllerBas(m_Grille.Lignes());
+                                    InterfaceUsager.MettreAJourSelection(positionActuelle);
+                                    break;
+                                case 65:
+                                    positionActuelle = InterfaceUsager.AllerBas(m_Grille.Lignes());
+                                    ConsoleKey k = AppelerIA();
+                                    touche = new ConsoleKeyInfo(k.ToString()[0], k,false,false,false);
+                                    break;
+                                case 67:
+                                    InterfaceUsager.ActiverModeSaisieManuelle();
+                                    break;
+                            }
+                        } while (InterfaceUsager.Saisie && touche.Key != ConsoleKey.Enter && touche.Key != ConsoleKey.A);
+                    }
+                    else // en mode manuelle
+                    {                     
+                        ConsoleKey entree;
+                        do
                         {
-                            case 37:
-                                AllerGauche();
-                                InterfaceUsager.MettreAJourSelection(positionActuelle);
-                                break;
-                            case 39:
-                                AllerDroite();
-                                InterfaceUsager.MettreAJourSelection(positionActuelle);
-                                break;
-                            case 38:
-                                AllerHaut();
-                                InterfaceUsager.MettreAJourSelection(positionActuelle);
-                                break;
-                            case 40:
-                                AllerBas();
-                                InterfaceUsager.MettreAJourSelection(positionActuelle);
-                                break;
-                            case 67:                     
-                                ActiverModeSaisieManuelle();
-                                break;
+                            InterfaceUsager.ActiverModeSaisieManuelle();
+                            entree = VerificationEntreeManuelle(InterfaceUsager.EntreeManuelle());
                         }
-                    } while (InterfaceUsager.Saisie && touche.Key != ConsoleKey.Enter && touche.Key != ConsoleKey.A);
+                        while (entree == ConsoleKey.E);
+                        touche = new ConsoleKeyInfo(entree.ToString()[0], entree, false, false, false);
+                    }
                 }
-                else // en mode manuelle
-                    do
-                    {
-                        ActiverModeSaisieManuelle();
-                        entree = Console.ReadLine();
-                    } while (!EntreeManuelle(entree));
-
-            } while ((entree.Length < 3 && !InterfaceUsager.Saisie) || (entree == "f" && InterfaceUsager.Saisie) || (touche.Key == ConsoleKey.A && !AppelerIA()));
+            } while (touche.Key != ConsoleKey.Enter && touche.Key != ConsoleKey.A);
             return positionActuelle;
-        }
-
-        /// <summary>
-        /// En mode flèche, selectionne la case à gauche.
-        /// </summary>
-        void AllerGauche()//OK
-        {
-            if (Console.CursorLeft < 10)
-                Console.SetCursorPosition((m_Grille.Colonnes() * 4) + 2, Console.CursorTop);
-            else
-                Console.SetCursorPosition(Console.CursorLeft - 4, Console.CursorTop);
-            positionActuelle[0] = Console.CursorLeft;
-            positionActuelle[1] = Console.CursorTop;
-        }
-
-        /// <summary>
-        /// En mode flèche, selectionne la case à droite.
-        /// </summary>
-        void AllerDroite()//OK
-        {
-            if (Console.CursorLeft > (m_Grille.Colonnes() * 4))
-                Console.SetCursorPosition(6, Console.CursorTop);
-            else
-                Console.SetCursorPosition(Console.CursorLeft + 4, Console.CursorTop);
-            positionActuelle[0] = Console.CursorLeft;
-            positionActuelle[1] = Console.CursorTop;
-        }
-
-        /// <summary>
-        /// En mode flèche, selectionne la case en haut.
-        /// </summary>
-        void AllerHaut()//OK
-        {
-            if (Console.CursorTop < 8)
-                Console.SetCursorPosition(Console.CursorLeft, (m_Grille.Lignes() * 3) + 2);
-            else
-                Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop - 3);
-            positionActuelle[0] = Console.CursorLeft;
-            positionActuelle[1] = Console.CursorTop;
-        }
-
-        /// <summary>
-        /// En mode flèche, selectionne la case en bas.
-        /// </summary>
-        void AllerBas()//OK
-        {
-            if (Console.CursorTop > m_Grille.Lignes() * 3)
-                Console.SetCursorPosition(Console.CursorLeft, 5);
-            else
-                Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop + 3);
-            positionActuelle[0] = Console.CursorLeft;
-            positionActuelle[1] = Console.CursorTop;
         }
 
         /// <summary>
         /// Appele l'intelligence artificiel.
         /// </summary>
         /// <returns>bool : vrai si IA actif, faux si partie sans IA</returns>
-        bool AppelerIA()
+        ConsoleKey AppelerIA()
         {
             if (intel != null)
             {
@@ -194,30 +149,10 @@ namespace Demineur
                 positionActuelle[0] = (retourIA[1] + 1) * 4 + 2;
                 positionActuelle[1] = (retourIA[0] + 1) * 3 + 2;
                 InterfaceUsager.MettreAJourSelection(positionActuelle);
-                return true;
+                return ConsoleKey.A;
             }
             InterfaceUsager.MessageIAInactif();
-            return false;
-        }
-
-        /// <summary>
-        /// Active la sélection des cases avec les flèches.
-        /// </summary>
-        void ActiverModeFleche()//OK
-        {
-            InterfaceUsager.Saisie = true;
-            InterfaceUsager.DessinerModeDeSaisie();
-            Console.SetCursorPosition(positionActuelle[0], positionActuelle[1]);
-        }
-
-        /// <summary>
-        /// Active la sélection des cases avec les flèches.
-        /// </summary>
-        void ActiverModeSaisieManuelle()//OK
-        {
-            InterfaceUsager.Saisie = false;
-            InterfaceUsager.DessinerModeDeSaisie();
-            InterfaceUsager.PositionnerCursorPourRepondre();
+            return ConsoleKey.E;
         }
 
         /// <summary>
@@ -227,8 +162,8 @@ namespace Demineur
         /// Saisir autres choses qu'un coordonnées valide entrainera une erreur.
         /// </summary>
         /// <param name="entree">Saisie du joueur.</param>
-        /// <returns>bool : Retourne vrai si saisie valide, faux si invalide.</returns>
-        bool EntreeManuelle(string entree)
+        /// <returns>bool : Retourne le consolekey correspondant au choix, si erreur retourne consolekey.e</returns>
+        ConsoleKey VerificationEntreeManuelle(string entree)
         {
             if (entree.Length > 2)
             {
@@ -236,19 +171,19 @@ namespace Demineur
                 {
                     positionActuelle[0] = Int32.Parse(entree.Split(' ', StringSplitOptions.RemoveEmptyEntries)[0]) * 4 + 2;
                     positionActuelle[1] = Int32.Parse(entree.Split(' ', StringSplitOptions.RemoveEmptyEntries)[1]) * 3 + 2;
-                    return true;
+                    return ConsoleKey.Enter;
                 }
             }
             else if (entree == "f")
             {
-                ActiverModeFleche();
-                return true;
+                InterfaceUsager.ActiverModeFleche(positionActuelle);
+                return ConsoleKey.F;
             }
             else if (entree == "a")
                 return AppelerIA();
             else
                 InterfaceUsager.MessageFormatDentreeErronee();
-            return false;
+            return ConsoleKey.E;
         }
 
         /// <summary>
@@ -256,7 +191,7 @@ namespace Demineur
         /// </summary>
         /// <param name="selection"></param>
         /// <returns>bool : vrai si case a été ouverte, faux si case déjà ouverte.</returns>
-        bool VerificationOuvertureEtContenue(int[] selection)//OK
+        bool VerificationOuvertureEtContenue(int[] selection)
         {
             int[] cible = new int[2];
             cible[1] = selection[1] / 3 - 1; // Conversion coordonnées pour tableau grille
@@ -303,8 +238,7 @@ namespace Demineur
         /// <returns></returns>
         bool VerificationDesMinMaxDeLentree(string entree)
         {
-            if (Int32.Parse(entree.Split(' ', StringSplitOptions.RemoveEmptyEntries)[0]) <= m_Grille.Colonnes() &&
-                Int32.Parse(entree.Split(' ', StringSplitOptions.RemoveEmptyEntries)[1]) <= m_Grille.Lignes())
+            if (Int32.Parse(entree.Split(' ', StringSplitOptions.RemoveEmptyEntries)[0]) <= m_Grille.Colonnes() && Int32.Parse(entree.Split(' ', StringSplitOptions.RemoveEmptyEntries)[1]) <= m_Grille.Lignes())
                 return true;
             InterfaceUsager.MessageHorsLimites();
             return false;
