@@ -86,7 +86,7 @@ namespace Demineur
                 else //Joueur non afk
                 {
                     if (InterfaceUsager.Saisie) // En mode flèche
-                    {                       
+                    {
                         do
                         {
                             InterfaceUsager.ActiverModeFleche(positionActuelle);
@@ -113,7 +113,7 @@ namespace Demineur
                                 case 65:
                                     positionActuelle = InterfaceUsager.AllerBas(m_Grille.Lignes());
                                     ConsoleKey k = AppelerIA();
-                                    touche = new ConsoleKeyInfo(k.ToString()[0], k,false,false,false);
+                                    touche = new ConsoleKeyInfo(k.ToString()[0], k, false, false, false);
                                     break;
                                 case 67:
                                     InterfaceUsager.ActiverModeSaisieManuelle();
@@ -122,7 +122,7 @@ namespace Demineur
                         } while (InterfaceUsager.Saisie && touche.Key != ConsoleKey.Enter && touche.Key != ConsoleKey.A);
                     }
                     else // en mode manuelle
-                    {                     
+                    {
                         ConsoleKey entree;
                         do
                         {
