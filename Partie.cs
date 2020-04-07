@@ -5,6 +5,8 @@ using System.Threading;
 
 namespace Demineur
 {
+
+//moving arrows to interface
     public class Partie
     {
         Regex rx = new Regex(@"^\d+\s\d+$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
