@@ -225,7 +225,7 @@ namespace Demineur
         /// Saisir autres choses qu'un coordonnées valide entrainera une erreur.
         /// </summary>
         /// <param name="entree">Saisie du joueur.</param>
-        /// <returns>bool : Retourne true si saisie valide, false si invalide.</returns>
+        /// <returns>bool : Retourne vrai si saisie valide, faux si invalide.</returns>
         bool EntreeManuelle(string entree)
         {
             if (entree.Length > 2)
@@ -250,7 +250,7 @@ namespace Demineur
         }
 
         /// <summary>
-        /// Une fois la saisie validé, une ouvre la case si elle n'est pas déjà ouverte.
+        /// Une fois la saisie validée, ouvre la case si elle n'est pas déjà ouverte.
         /// </summary>
         /// <param name="selection"></param>
         /// <returns>bool : vrai si case a été ouverte, faux si case déjà ouverte.</returns>
@@ -262,15 +262,15 @@ namespace Demineur
 
             if (!m_Grille[cible[1], cible[0]].Ouvert) // N'ouvre pas case déjà ouverte.
             {
-                if (m_Grille.OuvrirCase(cible[1], cible[0]) == false && enMarche)//stop la partie si le joueur meurt
+                if (m_Grille.OuvrirCase(cible[1], cible[0]) == false && enMarche)//Stop la partie si le joueur meurt
                 {
                     m_Grille.DecouvrirBombes();
                     mort = true;
                     enMarche = false;
                 }
-                else if (m_Grille.OuvrirCase(cible[1], cible[0]) == false && !enMarche) //Neutralize la bonne si au premier tour
+                else if (m_Grille.OuvrirCase(cible[1], cible[0]) == false && !enMarche)//Neutralize la bombe au premier tour
                     m_Grille.BombePremierTour(cible);
-                else if (m_Grille.CalculerNbCaseFermer() == m_Grille.NombreDeBombes)
+                else if (m_Grille.CalculerNbCaseFermer() == m_Grille.NombreDeBombes)//Detection de victoire
                     enMarche = false;
                 return true;
             }
@@ -280,8 +280,9 @@ namespace Demineur
 
         /// <summary>
         /// Agit comme un masque de saisie.
+        /// Si l'entrée ne match pas, un message d'erreur de format est affiché.
         /// </summary>
-        /// <param name="entree">Saisie manuelle du l'utilisateur.</param>
+        /// <param name="entree">Saisie manuelle de l'utilisateur.</param>
         /// <returns></returns>
         bool VerificationFormatDeLentree(string entree)
         {
@@ -308,7 +309,7 @@ namespace Demineur
         }
 
         /// <summary>
-        /// Utilise pour mettre à jour le score du joueur si la partie est gagnée.
+        /// Utilisé pour mettre à jour le score du joueur si la partie est gagnée.
         /// </summary>
         /// <returns>string[] : Informations de partie {nom_joueur, grosseur, difficulté, temps}</returns>
         public string[] InfoDepartie()
