@@ -117,7 +117,7 @@ namespace Demineur
                 }
             }
 
-            while (listTrier.Count > 0 && listTrier[0].ObtenirScore()[indexDifficulte] == "00.00" )
+            while (listTrier.Count > 0 && listTrier[0].ObtenirScore()[indexDifficulte] == "00.00")
                 listTrier.RemoveAt(0);
 
             if (listTrier.Count < 10 && listTrier.Count > 0)

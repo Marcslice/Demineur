@@ -298,7 +298,8 @@ namespace Demineur
             {
                 Console.SetWindowSize(nColonne * 4 + 65, nLigne * 4 + 14);
             }
-            catch (ArgumentOutOfRangeException e) {
+            catch (ArgumentOutOfRangeException e)
+            {
                 Console.SetWindowSize(Console.LargestWindowWidth, Console.LargestWindowHeight);
             }
 

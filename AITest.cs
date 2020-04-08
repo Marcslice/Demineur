@@ -6,16 +6,25 @@ namespace Demineur
     public class AITest
     {
 
+
+
         int nbLignes, nbColonnes, score;
         int[,] grille;
         int[] meilleurCoup;
-        bool nouvelleBombe;
+        Stack<int> caseFermer;
 
+        /// <summary>
+        /// constructeur appeler lors de la creation d'une partie avec AI
+        /// </summary>
+        /// <param name="lignes">nombre de lignes dans la grille de la partie</param>
+        /// <param name="colonnes">nombre de colonnes dans la grille de la partie</param>
         public AITest(int lignes, int colonnes)
         {
             nbLignes = lignes;
             nbColonnes = colonnes;
             grille = new int[lignes, colonnes];
+            caseFermer = new Stack<int>();
+
             for (int l = 0; l < lignes; l++)
             {
                 for (int c = 0; c < colonnes; c++)
@@ -25,8 +34,18 @@ namespace Demineur
             }
         }
 
+        /// <summary>
+        /// Methode public qu'enplois la classe partie pour obtenir la meilleur case a jouer agit comme le main de la classe
+        /// </summary>
+        /// <param name="grilleDeJeu">version string de la grille de jeu generer par le demineur</param>
+        /// <returns>Retourne des coordonner d'ordre ligne, colonne sous la forme d'un tableau d'entier a la partie</returns>
         public int[] MeilleurCoup(string grilleDeJeu)
         {
+            if (caseFermer.Count > 0)
+            {
+                CoupFacile();
+            }
+
             meilleurCoup = new int[3] { 0, 0, 0 };//ligne, colonne, valeurDanger
             GenererGrille(grilleDeJeu);
 
@@ -44,6 +63,22 @@ namespace Demineur
             return meilleurCoup;
         }
 
+        /// <summary>
+        /// Pile contenant des cordonnees confirmer comme etant non-bombe
+        /// </summary>
+        /// <returns>Retourne des coordonner d'ordre ligne, colonne sous la forme d'un tableau d'entier a la partie</returns>
+        int[] CoupFacile()
+        {
+            meilleurCoup[0] = caseFermer.Pop();
+            meilleurCoup[1] = caseFermer.Pop();
+            return meilleurCoup;
+        }
+
+        /// <summary>
+        /// Analyse toutes les case ouvertes et store leur valeur dans la grille de l'AI pour qu'il puisse faire son analyse. Utilise les variable 
+        /// global nblignes et nbcolonnes pour rester dans les limites de la grille
+        /// </summary>
+        /// <param name="aConvertir">String representant la grille de jeu connu sous le nom grilleDeJeu lors de l'appel de MeilleurCoup()</param>
         void GenererGrille(string aConvertir)
         {
             int charTranscrit;
@@ -69,11 +104,13 @@ namespace Demineur
             AnalyserGrille();
         }
 
-        void AnalyserGrille()//cherche pour une case fermer
+        /// <summary>
+        /// Analyse toutes les valeur presente dans la grille de notre AI. Dependant de la valeur de la case emploi une methode d'analyse differente.
+        /// Initialise les valeurs nouvelleBombe et meilleurCoup[2] a leur valeur par default.
+        /// </summary>
+        void AnalyserGrille()
         {
-            nouvelleBombe = false;
             meilleurCoup[2] = 420;
-            int nbCaseFermer = 0;
 
             for (int l = 0; l < nbLignes; l++)
             {
@@ -85,40 +122,27 @@ namespace Demineur
                     }
                     if (grille[l, c] == 10)
                     {
-                        nbCaseFermer++;
-                        VoisinOuvert(l, c);
+                        AnalyseCaseF(l, c);
                     }
                 }
             }
-            if (nbCaseFermer == 0)
-            {
-                ResetCaseBombes();
-            }
         }
 
-        void ResetCaseBombes()
-        {
-            for (int l = 0; l < nbLignes; l++)
-            {
-                for (int c = 0; c < nbColonnes; c++)
-                {
-                    if (grille[l, c] == 9)
-                    {
-                        grille[l, c] = 10;
-                    }
-                }
-            }
-            AnalyserGrille();
-        }
-
+        /// <summary>
+        /// Verifie si la case selectionne a des voisin a tout les points cardinaux. Verifie si cest voisin sont des 9 (bombe) ou 10 (case fermer) 
+        /// afin de determiner si toutes les bombes a proximiter on ete trouvees. Si une case est fermer cest coordonnees sont mises dans une pile 
+        /// preemptivement au cas ou toutes les bombes auraient ete trouvees. Si la difference entre la valeur de la case et le nombre de bombe trouve
+        /// est de 0 les coordonnees dans la pile sont garder en memoire comme etant des case securitaire. Si la valeur de la case moins le nombre de 
+        /// bombe avoisinante est egale au nombre de case fermee, les coordonnees dans la pile sont marquer comme etant des bombe. Sinon la pile est vider
+        /// de son contenu
+        /// </summary>
+        /// <param name="coordL">numero de la ligne de la case a analyser</param>
+        /// <param name="coordC">numero de la colonne de la case a analyser</param>
         void AnalyseCaseO(int coordL, int coordC)
         {
             int caseF = 0;
             int bombe = 0;
             int valVoisin;
-            Stack<int> caseFermer;
-
-            caseFermer = new Stack<int>();
 
             if ((coordL > 0) && (coordC > 0))//NW
             {
@@ -132,8 +156,8 @@ namespace Demineur
                     }
                     else
                     {
-                        caseFermer.Push(coordC - 1);
-                        caseFermer.Push(coordL - 1);//dessu
+                        caseFermer.Push(coordC - 1);//2e a etre pop()
+                        caseFermer.Push(coordL - 1);//1er a etre pop()
                         caseF++;
                     }
                 }
@@ -152,7 +176,7 @@ namespace Demineur
                     else
                     {
                         caseFermer.Push(coordC);
-                        caseFermer.Push(coordL - 1);//dessu
+                        caseFermer.Push(coordL - 1);
                         caseF++;
                     }
                 }
@@ -171,7 +195,7 @@ namespace Demineur
                     else
                     {
                         caseFermer.Push(coordC + 1);
-                        caseFermer.Push(coordL - 1);//dessu
+                        caseFermer.Push(coordL - 1);
                         caseF++;
                     }
                 }
@@ -190,7 +214,7 @@ namespace Demineur
                     else
                     {
                         caseFermer.Push(coordC - 1);
-                        caseFermer.Push(coordL);//dessu
+                        caseFermer.Push(coordL);
                         caseF++;
                     }
                 }
@@ -209,7 +233,7 @@ namespace Demineur
                     else
                     {
                         caseFermer.Push(coordC + 1);
-                        caseFermer.Push(coordL);//dessu
+                        caseFermer.Push(coordL);
                         caseF++;
                     }
                 }
@@ -228,7 +252,7 @@ namespace Demineur
                     else
                     {
                         caseFermer.Push(coordC - 1);
-                        caseFermer.Push(coordL + 1);//dessu
+                        caseFermer.Push(coordL + 1);
                         caseF++;
                     }
                 }
@@ -247,7 +271,7 @@ namespace Demineur
                     else
                     {
                         caseFermer.Push(coordC);
-                        caseFermer.Push(coordL + 1);//dessu
+                        caseFermer.Push(coordL + 1);
                         caseF++;
                     }
                 }
@@ -266,7 +290,7 @@ namespace Demineur
                     else
                     {
                         caseFermer.Push(coordC + 1);
-                        caseFermer.Push(coordL + 1);//dessu
+                        caseFermer.Push(coordL + 1);
                         caseF++;
                     }
                 }
@@ -281,11 +305,27 @@ namespace Demineur
                         grille[caseFermer.Pop(), caseFermer.Pop()] = 9;
                     }
                 }
+                else if ((grille[coordL, coordC] - bombe) == 0)
+                {
+                    CoupFacile();
+                }
+                else
+                {
+                    caseFermer.Clear();
+                }
             }
 
         }
 
-        void VoisinOuvert(int coordL, int coordC)//coordonnee ligne, coordonnee colonne      cherche les case ouvertes autour non-bombe
+        /// <summary>
+        /// Analyse le danger que peut presenter l'ouverture de la case selectionne en fonction des information disponible sur les case ouverte autour
+        /// d'elle qui ne sont pas des bombe. La menace la plus grande est garder en memoir et comparer avec le danger du meilleur coup actuel. Si la 
+        /// menace represente un risque moins elever d'ouvrir un bombe que le meilleur coup actuel, les coordonnees son storer dans meilleurCoup[] ainsi
+        /// que le nombre representant le danger
+        /// </summary>
+        /// <param name="coordL">numero de la ligne de la case a analyser</param>
+        /// <param name="coordC">numero de la colonne de la case a analyser</param>
+        void AnalyseCaseF(int coordL, int coordC)
         {
             int valeurMaxDanger = 1;
             int valeurTester;
@@ -294,79 +334,89 @@ namespace Demineur
             {
                 valeurTester = grille[coordL - 1, coordC - 1];
                 if (valeurTester != 10 && valeurTester != 9)
-                    if (CalculerDanger(coordL - 1, coordC - 1))
-                        VerifierScore(coordL, coordC, ref valeurMaxDanger);
+                {
+                    CalculerDanger(coordL - 1, coordC - 1);
+                    VerifierScore(ref valeurMaxDanger);
+                }
             }
 
-            if (!nouvelleBombe)
-                if (coordL > 0)//N
-                {
-                    valeurTester = grille[coordL - 1, coordC];
-                    if (valeurTester != 10 && valeurTester != 9)
-                        if (CalculerDanger(coordL - 1, coordC))
-                            VerifierScore(coordL, coordC, ref valeurMaxDanger);
-                }
 
-            if (!nouvelleBombe)
-                if ((coordL > 0) && (coordC + 1 < nbColonnes))//NE
-                {
-                    valeurTester = grille[coordL - 1, coordC + 1];
-                    if (valeurTester != 10 && valeurTester != 9)
-                        if (CalculerDanger(coordL - 1, coordC + 1))
-                            VerifierScore(coordL, coordC, ref valeurMaxDanger);
-                }
-
-            if (!nouvelleBombe)
-                if (coordC > 0)//W
-                {
-                    valeurTester = grille[coordL, coordC - 1];
-                    if (valeurTester != 10 && valeurTester != 9)
-                        if (CalculerDanger(coordL, coordC - 1))
-                            VerifierScore(coordL, coordC, ref valeurMaxDanger);
-                }
-
-            if (!nouvelleBombe)
-                if (coordC + 1 < nbColonnes)//E
-                {
-                    valeurTester = grille[coordL, coordC + 1];
-                    if (valeurTester != 10 && valeurTester != 9)
-                        if (CalculerDanger(coordL, coordC + 1))
-                            VerifierScore(coordL, coordC, ref valeurMaxDanger);
-                }
-
-            if (!nouvelleBombe)
-                if ((coordL + 1 < nbLignes) && (coordC - 1 > 0))//SW
-                {
-                    valeurTester = grille[coordL + 1, coordC - 1];
-                    if (valeurTester != 10 && valeurTester != 9)
-                        if (CalculerDanger(coordL + 1, coordC - 1))
-                            VerifierScore(coordL, coordC, ref valeurMaxDanger);
-                }
-
-            if (!nouvelleBombe)
-                if (coordL + 1 < nbLignes)//S
-                {
-                    valeurTester = grille[coordL + 1, coordC];
-                    if (valeurTester != 10 && valeurTester != 9)
-                        if (CalculerDanger(coordL + 1, coordC))
-                            VerifierScore(coordL, coordC, ref valeurMaxDanger);
-                }
-
-            if (!nouvelleBombe)
-                if ((coordL + 1 < nbLignes) && (coordC + 1 < nbColonnes))//SE
-                {
-                    valeurTester = grille[coordL + 1, coordC + 1];
-                    if (valeurTester != 10 && valeurTester != 9)
-                        if (CalculerDanger(coordL + 1, coordC + 1))
-                            VerifierScore(coordL, coordC, ref valeurMaxDanger);
-                }
-
-            if (nouvelleBombe)
+            if (coordL > 0)//N
             {
-                grille[coordL, coordC] = 9;
-                AnalyserGrille();
-                return;
+                valeurTester = grille[coordL - 1, coordC];
+                if (valeurTester != 10 && valeurTester != 9)
+                {
+                    CalculerDanger(coordL - 1, coordC);
+                    VerifierScore(ref valeurMaxDanger);
+                }
             }
+
+
+            if ((coordL > 0) && (coordC + 1 < nbColonnes))//NE
+            {
+                valeurTester = grille[coordL - 1, coordC + 1];
+                if (valeurTester != 10 && valeurTester != 9)
+                {
+                    CalculerDanger(coordL - 1, coordC + 1);
+                    VerifierScore(ref valeurMaxDanger);
+                }
+            }
+
+
+            if (coordC > 0)//W
+            {
+                valeurTester = grille[coordL, coordC - 1];
+                if (valeurTester != 10 && valeurTester != 9)
+                {
+                    CalculerDanger(coordL, coordC - 1);
+                    VerifierScore(ref valeurMaxDanger);
+                }
+            }
+
+
+            if (coordC + 1 < nbColonnes)//E
+            {
+                valeurTester = grille[coordL, coordC + 1];
+                if (valeurTester != 10 && valeurTester != 9)
+                {
+                    CalculerDanger(coordL, coordC + 1);
+                    VerifierScore(ref valeurMaxDanger);
+                }
+            }
+
+
+            if ((coordL + 1 < nbLignes) && (coordC - 1 > 0))//SW
+            {
+                valeurTester = grille[coordL + 1, coordC - 1];
+                if (valeurTester != 10 && valeurTester != 9)
+                {
+                    CalculerDanger(coordL + 1, coordC - 1);
+                    VerifierScore(ref valeurMaxDanger);
+                }
+            }
+
+
+            if (coordL + 1 < nbLignes)//S
+            {
+                valeurTester = grille[coordL + 1, coordC];
+                if (valeurTester != 10 && valeurTester != 9)
+                {
+                    CalculerDanger(coordL + 1, coordC);
+                    VerifierScore(ref valeurMaxDanger);
+                }
+            }
+
+
+            if ((coordL + 1 < nbLignes) && (coordC + 1 < nbColonnes))//SE
+            {
+                valeurTester = grille[coordL + 1, coordC + 1];
+                if (valeurTester != 10 && valeurTester != 9)
+                {
+                    CalculerDanger(coordL + 1, coordC + 1);
+                    VerifierScore(ref valeurMaxDanger);
+                }
+            }
+
 
             if (valeurMaxDanger != 1 && valeurMaxDanger <= meilleurCoup[2])
             {
@@ -388,112 +438,187 @@ namespace Demineur
             }
         }
 
-        bool CalculerDanger(int coordL, int coordC)
+        /// <summary>
+        /// Genere un score en analysant les case autours de la case appele. Calcule le nombre de case ferme et le nombre de bombe trouve et determine un 
+        /// score corespondant au danger d'ouvrir une bombe dans les cases voisines.Si la valuer de la case moin le nombre de bombe trouver egal 0 les cases 
+        /// fermees qui on ete storees son defini comme securitaire et CoupFacile() est appeler. Si la difference est egale au nombre de case fermer la pile 
+        /// est considerer comme etant des bombe et une fois les cases transformer en bombes AnalyserGrille() est rappeler et on sort de la methode. Sinon la 
+        /// pile est videe
+        /// </summary>
+        /// <param name="coordL">numero de la ligne de la case a analyser</param>
+        /// <param name="coordC">numero de la colonne de la case a analyser</param>
+        /// <returns></returns>
+        void CalculerDanger(int coordL, int coordC)
         {
             int nbBombes = 0;
             int nbCaseFermer = 0;
 
             if ((coordL > 0) && (coordC > 0))//NW
+            {
                 if (grille[coordL - 1, coordC - 1] == 9)
+                {
                     nbBombes++;
+                }
                 else if (grille[coordL - 1, coordC - 1] == 10)
+                {
+                    caseFermer.Push(coordC - 1);//2e a etre pop()
+                    caseFermer.Push(coordL - 1);//1er a etre pop()
                     nbCaseFermer++;
+                }
+            }
 
             if (coordL > 0)//N
+            {
                 if (grille[coordL - 1, coordC] == 9)
+                {
                     nbBombes++;
+                }
                 else if (grille[coordL - 1, coordC] == 10)
+                {
+                    caseFermer.Push(coordC);
+                    caseFermer.Push(coordL - 1);
                     nbCaseFermer++;
+                }
+            }
 
             if ((coordL > 0) && (coordC + 1 < nbColonnes))//NE
+            {
                 if (grille[coordL - 1, coordC + 1] == 9)
+                {
                     nbBombes++;
+                }
                 else if (grille[coordL - 1, coordC + 1] == 10)
+                {
+                    caseFermer.Push(coordC + 1);
+                    caseFermer.Push(coordL - 1);
                     nbCaseFermer++;
+                }
+            }
 
             if (coordC > 0)//W
+            {
                 if (grille[coordL, coordC - 1] == 9)
+                {
                     nbBombes++;
+                }
                 else if (grille[coordL, coordC - 1] == 10)
+                {
+                    caseFermer.Push(coordC - 1);
+                    caseFermer.Push(coordL);
                     nbCaseFermer++;
+                }
+            }
 
             if (coordC + 1 < nbColonnes)//E
+            {
                 if (grille[coordL, coordC + 1] == 9)
+                {
                     nbBombes++;
+                }
                 else if (grille[coordL, coordC + 1] == 10)
+                {
+                    caseFermer.Push(coordC + 1);
+                    caseFermer.Push(coordL);
                     nbCaseFermer++;
+                }
+            }
 
             if ((coordL + 1 < nbLignes) && (coordC - 1 > 0))//SW
+            {
                 if (grille[coordL + 1, coordC - 1] == 9)
+                {
                     nbBombes++;
+                }
                 else if (grille[coordL + 1, coordC - 1] == 10)
+                {
+                    caseFermer.Push(coordC - 1);
+                    caseFermer.Push(coordL + 1);
                     nbCaseFermer++;
+                }
+            }
 
             if (coordL + 1 < nbLignes)//S
+            {
                 if (grille[coordL + 1, coordC] == 9)
+                {
                     nbBombes++;
+                }
                 else if (grille[coordL + 1, coordC] == 10)
+                {
+                    caseFermer.Push(coordC);
+                    caseFermer.Push(coordL + 1);
                     nbCaseFermer++;
+                }
+            }
 
             if ((coordL + 1 < nbLignes) && (coordC + 1 < nbColonnes))//SE
+            {
                 if (grille[coordL + 1, coordC + 1] == 9)
+                {
                     nbBombes++;
+                }
                 else if (grille[coordL + 1, coordC + 1] == 10)
+                {
+                    caseFermer.Push(coordC + 1);
+                    caseFermer.Push(coordL + 1);
                     nbCaseFermer++;
-
-            if (grille[coordL, coordC] != 0)
-            {
-                if (nbCaseFermer != 0)
-                {
-                    score = (((grille[coordL, coordC] - nbBombes) * 100) / nbCaseFermer);
-
-
-                    if (score == 100)
-                        nouvelleBombe = true; //la case non decouvert est une bombe
-
-                    return true;
                 }
             }
-            return false;//ne pas tenir compte
-        }
 
-        void VerifierScore(int coordL, int coordC, ref int valeurMaxDanger)
-        {
+            if (nbCaseFermer != 0)
             {
-                if (score == 0)
+                score = (((grille[coordL, coordC] - nbBombes) * 100) / nbCaseFermer);
+
+
+                if (score == 100)
                 {
-                    meilleurCoup[2] = score;
-                    Meilleur(coordL, coordC);
+                    while (caseFermer.Count > 0)
+                    {
+                        grille[caseFermer.Pop(), caseFermer.Pop()] = 9;
+                    }
+                    AnalyserGrille();
+                    return;
                 }
-                else if (ComparerDeuxScore(score, valeurMaxDanger))
-                    valeurMaxDanger = score;
+                else if (score == 0)
+                {
+                    CoupFacile();
+                }
+
+                caseFermer.Clear();
             }
         }
 
-        bool ComparerDeuxScore(int score1, int score2)
+        /// <summary>
+        /// Verifie si le score et la valeur maximal de danger sont egal, si cest le cas un des deux sera retenu au hasard. Sinon il verifie si score est plus grand
+        /// que la valeur maximal de danger si cest le cas la valeur maximal change pour score
+        /// </summary>
+        /// <param name="valeurMaxDanger">la valeur de danger maximal que represanterait ouvrir cette case fermer</param>
+        void VerifierScore(ref int valeurMaxDanger)
         {
-            if (score1 == score2)
+            if (score == valeurMaxDanger)
             {
                 var rand = new Random();
 
                 if (rand.Next() % 2 == 0)
-                    return true;
+                    valeurMaxDanger = score;
             }
-            else if (score1 > score2)
+            else if (score > valeurMaxDanger)
             {
-                return true;
+                valeurMaxDanger = score;
             }
-
-            return false;
         }
 
+
+        /// <summary>
+        /// Methode qui attribue de nouvelles coordonnees au meilleurcoup
+        /// </summary>
+        /// <param name="ligne">numero de ligne</param>
+        /// <param name="colonne">numero de colonne</param>
         void Meilleur(int ligne, int colonne)
         {
             meilleurCoup[0] = ligne;
             meilleurCoup[1] = colonne;
         }
     }
-    //quand trouve 10 nbCaseFermer++         quand trouve 9 nbBombeATrouver --
-    // changer alo pour garder valeur danger plus elever parmis info voisin puis comparer avec meilleurCoup[2]
 }
 
