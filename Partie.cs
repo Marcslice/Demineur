@@ -206,7 +206,10 @@ namespace Demineur
                     enMarche = false;
                 }
                 else if (m_Grille.OuvrirCase(cible[1], cible[0]) == false && !enMarche)//Neutralize la bombe au premier tour
+                {
                     m_Grille.BombePremierTour(cible);
+                    m_Grille.OuvrirCase(cible[1], cible[0]); // fix bombes premier tour et l'ouverture des cases vide autour.
+                }
                 else if (m_Grille.CalculerNbCaseFermer() == m_Grille.NombreDeBombes)//Detection de victoire
                     enMarche = false;
                 return true;
