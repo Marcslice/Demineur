@@ -294,10 +294,17 @@ namespace Demineur
         /// <param name="nbBombes">Nombre de bombes dans la grille.</param>
         public static void DessinerPlateau(string p_NomJoueur, int nLigne, int nColonne, string grille, int[] positionActuelle, int nbBombes, bool mort)
         {
-            Console.SetWindowSize(nColonne * 4 + 65, nLigne * 4 + 14);
+            try
+            {
+                Console.SetWindowSize(nColonne * 4 + 65, nLigne * 4 + 14);
+            }
+            catch (ArgumentOutOfRangeException e) {
+                Console.SetWindowSize(Console.LargestWindowWidth, Console.LargestWindowHeight);
+            }
+
             positionDeMessage = new int[2] { 4, nLigne * 3 + 14 };
             positionDeReponse = new int[2] { 43, nLigne * 3 + 11 };
-            positionDuGuide = nColonne * 4 + 8; //instructions
+            positionDuGuide = nColonne * 4 + 8; //instruction
             Console.Clear();
 
             DessinerTitreJeu(nColonne);
@@ -318,6 +325,7 @@ namespace Demineur
         /// <param name="nbBombes">Nombre de bombes dans la grille.</param>
         public static void DessinerGrille(string p_NomJoueur, int nLigne, int nColonne, string grille, int[] positionActuelle, int nbBombes, bool mort)
         {
+            Console.CursorVisible = false;
             Console.SetCursorPosition(0, 2); // Nécessaire pour dessiner la grille au bonne endroit.
 
             DessinerChiffreColonne(nColonne);
@@ -334,6 +342,7 @@ namespace Demineur
 
             Console.Write("\n" + marge + "Quelle case souhaitez-vous ouvrir ? >> ");
             MettreAJourSelection(positionActuelle);
+            Console.CursorVisible = true;
         }
 
         /// <summary>

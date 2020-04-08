@@ -108,26 +108,17 @@ namespace Demineur
             {
                 for (int y = x + 1; y < listTrier.Count; y++)
                 {
-                    if (Double.Parse(listTrier[x].ObtenirScore()[indexDifficulte], CultureInfo.InvariantCulture) > Double.Parse(listTrier[y].ObtenirScore()[indexDifficulte], CultureInfo.InvariantCulture) && listTrier[y].ObtenirScore()[indexDifficulte] != "00.00")
+                    if (Double.Parse(listTrier[x].ObtenirScore()[indexDifficulte], CultureInfo.InvariantCulture) > Double.Parse(listTrier[y].ObtenirScore()[indexDifficulte], CultureInfo.InvariantCulture))
                     {
                         Joueur aBouger = listTrier[x];
                         listTrier[x] = listTrier[y];
                         listTrier[y] = aBouger;
                     }
-                    if (listTrier[x].ObtenirScore()[indexDifficulte] == "00.00")
-                    {
-                        listTrier.RemoveAt(x);
-                        y -= 1;
-                    }
-                    if (listTrier[y].ObtenirScore()[indexDifficulte] == "00.00")
-                    {
-                        listTrier.RemoveAt(y);
-                    }
                 }
             }
-            if (listTrier.Count == 1)
-                if (listTrier[0].ObtenirScore()[indexDifficulte] == "00.00")
-                    listTrier.RemoveAt(0);
+
+            while (listTrier.Count > 0 && listTrier[0].ObtenirScore()[indexDifficulte] == "00.00" )
+                listTrier.RemoveAt(0);
 
             if (listTrier.Count < 10 && listTrier.Count > 0)
                 return listTrier.GetRange(0, listTrier.Count);
