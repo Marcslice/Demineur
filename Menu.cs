@@ -9,62 +9,7 @@ namespace Demineur
     public static class Menu
     {
         static short[] optionsDePartie; // Sera retourné à Démineur afin qu'il puisse démarrer une partie ayant ces options là.
-        static string recap; // Permet d'afficher une récapilation des choix du joueur.
-
-        /// <summary>
-        /// Dessine la Première page du menu principale.
-        /// </summary>
-        /// <returns>Short : Retourne le choix 
-        /// 1 : jouer
-        /// 2 : Afficher le classement
-        /// 3 : Quitter 
-        /// </returns>
-        public static short AfficherMenu()
-        {
-            char choix;
-            optionsDePartie = new short[] { 0, 0, 0, 0 };
-            recap = "";
-
-            Console.Clear();
-            Console.WriteLine("##########################################################");
-            Console.WriteLine("#                                                        #");
-            Console.WriteLine("#                         MENU                           #");
-            Console.WriteLine("#                                                        #");
-            Console.WriteLine("#          Bienvenue dans l'ultime expérience            #");
-            Console.WriteLine("#                 Démineur du JUGEMENT                   #");
-            Console.WriteLine("#                                                        #");
-            Console.WriteLine("#                 1.  JOUER                              #");
-            Console.WriteLine("#                                                        #");
-            Console.WriteLine("#                 2.  AFFICHER CLASSEMENT                #");
-            Console.WriteLine("#                                                        #");
-            Console.WriteLine("#                 3.  Quitter                            #");
-            Console.WriteLine("#                                                        #");
-            Console.WriteLine("##########################################################");
-            Console.Write("Quel est votre choix ? >> ");
-            do
-                choix = Console.ReadKey(true).KeyChar;
-            while (choix != '1' && choix != '2' && choix != '3');
-
-
-            switch (choix)
-            {
-                case '1': // Jouer
-                    if (MenuJouerGrosseur() == 4) // 4 = retour au menu principal
-                        return 4;
-                    if (MenuJouerDifficulte() == 4)
-                        return 4;
-                    if (MenuJouerAI() == 4)
-                        return 4;
-                    if (RecapFinal() == 4)
-                        return 4;
-                    return 1;
-                case '2': // Afficher classement
-                    return 2;
-                case '3': // Quitter
-                default:
-                    return 3;
-            }
-        }
+        static string recap; // Permet d'afficher une récapilation des choix du joueur.     
 
         /// <summary>
         /// S'affiche lorsque le joueur choisi de jouer. Permet de choisir la grosseur du plateau
@@ -281,6 +226,21 @@ namespace Demineur
             return 0;
         }
 
+        static string TypeDeTri(short tri)
+        {
+            switch (tri)
+            {
+                case 1:
+                    return "Tri Meilleur score en mode Facile";
+                case 2:
+                    return "Tri Meilleur score en mode Normal";
+                case 3:
+                    return "Tri Meilleur score en mode Difficile";
+                default:
+                    return "Aucun tri";
+            }
+        }
+
         /// <summary>
         /// Dessine le classement.
         /// </summary>
@@ -291,8 +251,8 @@ namespace Demineur
             Console.Clear();
             Console.WriteLine("Type de Tri : " + triEnCours + "\n");
             Console.WriteLine("                                  Temps en Minutes par catégories                         \n");
-            Console.WriteLine("Joueur       |         Facile        |         Normal        |       Difficile       |\n");
-            Console.WriteLine("             |   P       M       G   |   P       M       G   |   P       M       G   |\n");
+            Console.WriteLine("Joueur       |         Petit         |         Moyen         |         Grand         |\n");
+            Console.WriteLine("             |   F       N       D   |   F       N       D   |   F       N       D   |\n");
             Console.WriteLine(p_Classement);
             Console.Write("\n F = Afficher Facile en ordre, N = Afficher Normal en ordre, D = Afficher Difficile en ordre");
             Console.Write("\n S = Afficher le classement sans tri");
@@ -318,17 +278,59 @@ namespace Demineur
             }
         }
 
-        static string TypeDeTri(short tri) {
-            switch (tri) {
-                case 1:
-                    return "Tri Meilleur score en mode Facile";
-                case 2:
-                    return "Tri Meilleur score en mode Normal";
-                case 3:
-                    return "Tri Meilleur score en mode Difficile";
+        /// <summary>
+        /// Dessine la Première page du menu principale.
+        /// </summary>
+        /// <returns>Short : Retourne le choix 
+        /// 1 : jouer
+        /// 2 : Afficher le classement
+        /// 3 : Quitter 
+        /// </returns>
+        public static short AfficherMenu()
+        {
+            char choix;
+            optionsDePartie = new short[] { 0, 0, 0, 0 };
+            recap = "";
+
+            Console.Clear();
+            Console.WriteLine("##########################################################");
+            Console.WriteLine("#                                                        #");
+            Console.WriteLine("#                         MENU                           #");
+            Console.WriteLine("#                                                        #");
+            Console.WriteLine("#          Bienvenue dans l'ultime expérience            #");
+            Console.WriteLine("#                 Démineur du JUGEMENT                   #");
+            Console.WriteLine("#                                                        #");
+            Console.WriteLine("#                 1.  JOUER                              #");
+            Console.WriteLine("#                                                        #");
+            Console.WriteLine("#                 2.  AFFICHER CLASSEMENT                #");
+            Console.WriteLine("#                                                        #");
+            Console.WriteLine("#                 3.  Quitter                            #");
+            Console.WriteLine("#                                                        #");
+            Console.WriteLine("##########################################################");
+            Console.Write("Quel est votre choix ? >> ");
+            do
+                choix = Console.ReadKey(true).KeyChar;
+            while (choix != '1' && choix != '2' && choix != '3');
+
+
+            switch (choix)
+            {
+                case '1': // Jouer
+                    if (MenuJouerGrosseur() == 4) // 4 = retour au menu principal
+                        return 4;
+                    if (MenuJouerDifficulte() == 4)
+                        return 4;
+                    if (MenuJouerAI() == 4)
+                        return 4;
+                    if (RecapFinal() == 4)
+                        return 4;
+                    return 1;
+                case '2': // Afficher classement
+                    return 2;
+                case '3': // Quitter
                 default:
-                    return "Aucun tri";
-            }      
+                    return 3;
+            }
         }
 
         /// <summary>
@@ -352,11 +354,13 @@ namespace Demineur
 
             do
             {
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
                 Console.WriteLine("Le nom doit contenir entre 3 et 10 caractères.");
                 Console.Write("Quel nom voulez-vous utiliser ? >> ");
+                Console.ForegroundColor = ConsoleColor.White;
                 nom = Console.ReadLine();
             }
-            while (nom.Length < 3 && nom.Length > 10);
+            while (nom.Length < 3 || nom.Length > 10);
             return nom;
         }
     }

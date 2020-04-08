@@ -1,5 +1,4 @@
-﻿using System;
-namespace Demineur
+﻿namespace Demineur
 {
     /// <summary>
     /// Point d'entrée du programme.

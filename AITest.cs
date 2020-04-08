@@ -1,42 +1,27 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Demineur
 {
     public class AITest
     {
 
-        int nbLignes, nbColonnes;
+        int nbLignes, nbColonnes, score;
         int[,] grille;
-        string[,] grilleDeBombe;
         int[] meilleurCoup;
         bool nouvelleBombe;
-        int score;
-        int ratioDiff;
 
-        public AITest(int lignes, int colonnes, int difficulte)
+        public AITest(int lignes, int colonnes)
         {
             nbLignes = lignes;
             nbColonnes = colonnes;
-            grilleDeBombe = new string[lignes, colonnes];
+            grille = new int[lignes, colonnes];
             for (int l = 0; l < lignes; l++)
             {
                 for (int c = 0; c < colonnes; c++)
                 {
-                    grilleDeBombe[l, c] = "o";
+                    grille[l, c] = 10;
                 }
-            }
-
-            switch (difficulte)
-            {
-                case 1:
-                    ratioDiff = 10;
-                    break;
-                case 2:
-                    ratioDiff = 15;
-                    break;
-                case 3:
-                    ratioDiff = 20;
-                    break;
             }
         }
 
@@ -44,9 +29,6 @@ namespace Demineur
         {
             meilleurCoup = new int[3] { 0, 0, 0 };//ligne, colonne, valeurDanger
             GenererGrille(grilleDeJeu);
-
-            if (CalculerChanceRand() < 30 && meilleurCoup[2] >= 50)
-                meilleurCoup[2] = 420;
 
             if (meilleurCoup[2] == 420)
             {
@@ -58,70 +40,30 @@ namespace Demineur
                     meilleurCoup[1] = rand.Next() % nbColonnes;
                 } while (grille[meilleurCoup[0], meilleurCoup[1]] != 10);
             }
-            return meilleurCoup;
-        }
 
-        int CalculerChanceRand()
-        {
-            int nbCaseFermer = 0;
-            int nbBombeTrouve = 0;
-            for (int l = 0; l < nbLignes; l++)
-            {
-                for (int c = 0; c < nbColonnes; c++)
-                {
-                    if (grille[l, c] == 10) // doit etre fixed pour les divisions / 0
-                       nbCaseFermer++;
-                    if (grille[l, c] == 9)
-                        nbBombeTrouve++;
-                }
-            }
-            if (nbCaseFermer == 0)
-                return 420;
-            else
-                return (((nbLignes * nbColonnes * ratioDiff) - (nbBombeTrouve * 100))/nbCaseFermer );
+            return meilleurCoup;
         }
 
         void GenererGrille(string aConvertir)
         {
             int charTranscrit;
 
-            grille = new int[nbLignes, nbColonnes];
-
             for (int l = 0; l < nbLignes; l++)
             {
                 charTranscrit = nbColonnes * l;
                 for (int c = 0; c < nbColonnes; c++)
                 {
-                    switch (aConvertir[charTranscrit + c])
-                    {
-                        case '?':
-                            grille[l, c] = 10;// 10 equivaut a une casse n'etant pas encore ouverte dans grille
-                            break;
+                    if (aConvertir[charTranscrit + c] != '?')
+                        switch (aConvertir[charTranscrit + c])
+                        {
+                            case ' ':
+                                grille[l, c] = 0;
+                                break;
 
-                        case ' ':
-                            grille[l, c] = 0;
-                            break;
-
-                        default:
-                            grille[l, c] = ((int)aConvertir[charTranscrit + c] - 48);
-                            break;
-                    }
-                }
-            }
-            ComparerGrille();
-        }
-
-        void ComparerGrille()
-        {
-            nouvelleBombe = false;
-            meilleurCoup[2] = 420;
-
-            for (int l = 0; l < nbLignes; l++)
-            {
-                for (int c = 0; c < nbColonnes; c++)
-                {
-                    if (grilleDeBombe[l, c] == "x")
-                        grille[l, c] = 9;//9 equivaut a une bombe dans grille
+                            default:
+                                grille[l, c] = ((int)aConvertir[charTranscrit + c] - 48);
+                                break;
+                        }
                 }
             }
             AnalyserGrille();
@@ -129,68 +71,301 @@ namespace Demineur
 
         void AnalyserGrille()//cherche pour une case fermer
         {
+            nouvelleBombe = false;
+            meilleurCoup[2] = 420;
+            int nbCaseFermer = 0;
+
             for (int l = 0; l < nbLignes; l++)
             {
                 for (int c = 0; c < nbColonnes; c++)
                 {
+                    if (grille[l, c] < 9)
+                    {
+                        AnalyseCaseO(l, c);
+                    }
                     if (grille[l, c] == 10)
+                    {
+                        nbCaseFermer++;
                         VoisinOuvert(l, c);
+                    }
                 }
             }
+            if (nbCaseFermer == 0)
+            {
+                ResetCaseBombes();
+            }
+        }
+
+        void ResetCaseBombes()
+        {
+            for (int l = 0; l < nbLignes; l++)
+            {
+                for (int c = 0; c < nbColonnes; c++)
+                {
+                    if (grille[l, c] == 9)
+                    {
+                        grille[l, c] = 10;
+                    }
+                }
+            }
+            AnalyserGrille();
+        }
+
+        void AnalyseCaseO(int coordL, int coordC)
+        {
+            int caseF = 0;
+            int bombe = 0;
+            int valVoisin;
+            Stack<int> caseFermer;
+
+            caseFermer = new Stack<int>();
+
+            if ((coordL > 0) && (coordC > 0))//NW
+            {
+                valVoisin = grille[coordL - 1, coordC - 1];
+
+                if (valVoisin > 8)
+                {
+                    if (valVoisin == 9)
+                    {
+                        bombe++;
+                    }
+                    else
+                    {
+                        caseFermer.Push(coordC - 1);
+                        caseFermer.Push(coordL - 1);//dessu
+                        caseF++;
+                    }
+                }
+            }
+
+            if (coordL > 0)//N
+            {
+                valVoisin = grille[coordL - 1, coordC];
+
+                if (valVoisin > 8)
+                {
+                    if (valVoisin == 9)
+                    {
+                        bombe++;
+                    }
+                    else
+                    {
+                        caseFermer.Push(coordC);
+                        caseFermer.Push(coordL - 1);//dessu
+                        caseF++;
+                    }
+                }
+            }
+
+            if ((coordL > 0) && (coordC + 1 < nbColonnes))//NE
+            {
+                valVoisin = grille[coordL - 1, coordC + 1];
+
+                if (valVoisin > 8)
+                {
+                    if (valVoisin == 9)
+                    {
+                        bombe++;
+                    }
+                    else
+                    {
+                        caseFermer.Push(coordC + 1);
+                        caseFermer.Push(coordL - 1);//dessu
+                        caseF++;
+                    }
+                }
+            }
+
+            if (coordC > 0)//W
+            {
+                valVoisin = grille[coordL, coordC - 1];
+
+                if (valVoisin > 8)
+                {
+                    if (valVoisin == 9)
+                    {
+                        bombe++;
+                    }
+                    else
+                    {
+                        caseFermer.Push(coordC - 1);
+                        caseFermer.Push(coordL);//dessu
+                        caseF++;
+                    }
+                }
+            }
+
+            if (coordC + 1 < nbColonnes)//E
+            {
+                valVoisin = grille[coordL, coordC + 1];
+
+                if (valVoisin > 8)
+                {
+                    if (valVoisin == 9)
+                    {
+                        bombe++;
+                    }
+                    else
+                    {
+                        caseFermer.Push(coordC + 1);
+                        caseFermer.Push(coordL);//dessu
+                        caseF++;
+                    }
+                }
+            }
+
+            if ((coordL + 1 < nbLignes) && (coordC - 1 > 0))//SW
+            {
+                valVoisin = grille[coordL + 1, coordC - 1];
+
+                if (valVoisin > 8)
+                {
+                    if (valVoisin == 9)
+                    {
+                        bombe++;
+                    }
+                    else
+                    {
+                        caseFermer.Push(coordC - 1);
+                        caseFermer.Push(coordL + 1);//dessu
+                        caseF++;
+                    }
+                }
+            }
+
+            if (coordL + 1 < nbLignes)//S
+            {
+                valVoisin = grille[coordL + 1, coordC];
+
+                if (valVoisin > 8)
+                {
+                    if (valVoisin == 9)
+                    {
+                        bombe++;
+                    }
+                    else
+                    {
+                        caseFermer.Push(coordC);
+                        caseFermer.Push(coordL + 1);//dessu
+                        caseF++;
+                    }
+                }
+            }
+
+            if ((coordL + 1 < nbLignes) && (coordC + 1 < nbColonnes))//SE
+            {
+                valVoisin = grille[coordL + 1, coordC + 1];
+
+                if (valVoisin > 8)
+                {
+                    if (valVoisin == 9)
+                    {
+                        bombe++;
+                    }
+                    else
+                    {
+                        caseFermer.Push(coordC + 1);
+                        caseFermer.Push(coordL + 1);//dessu
+                        caseF++;
+                    }
+                }
+            }
+
+            if (caseF > 0)
+            {
+                if ((grille[coordL, coordC] - bombe) == caseF)
+                {
+                    while (caseFermer.Count > 0)
+                    {
+                        grille[caseFermer.Pop(), caseFermer.Pop()] = 9;
+                    }
+                }
+            }
+
         }
 
         void VoisinOuvert(int coordL, int coordC)//coordonnee ligne, coordonnee colonne      cherche les case ouvertes autour non-bombe
         {
             int valeurMaxDanger = 1;
+            int valeurTester;
 
             if ((coordL > 0) && (coordC > 0))//NW
-                if (grille[coordL - 1, coordC - 1] != 10 && grille[coordL - 1, coordC - 1] != 9)
+            {
+                valeurTester = grille[coordL - 1, coordC - 1];
+                if (valeurTester != 10 && valeurTester != 9)
                     if (CalculerDanger(coordL - 1, coordC - 1))
                         VerifierScore(coordL, coordC, ref valeurMaxDanger);
+            }
 
             if (!nouvelleBombe)
                 if (coordL > 0)//N
-                    if (grille[coordL - 1, coordC] != 10 && grille[coordL - 1, coordC] != 9)
-                        VerifierScore(coordL, coordC, ref valeurMaxDanger);
+                {
+                    valeurTester = grille[coordL - 1, coordC];
+                    if (valeurTester != 10 && valeurTester != 9)
+                        if (CalculerDanger(coordL - 1, coordC))
+                            VerifierScore(coordL, coordC, ref valeurMaxDanger);
+                }
 
             if (!nouvelleBombe)
                 if ((coordL > 0) && (coordC + 1 < nbColonnes))//NE
-                    if (grille[coordL - 1, coordC + 1] != 10 && grille[coordL - 1, coordC + 1] != 9)
-                        VerifierScore(coordL, coordC, ref valeurMaxDanger);
+                {
+                    valeurTester = grille[coordL - 1, coordC + 1];
+                    if (valeurTester != 10 && valeurTester != 9)
+                        if (CalculerDanger(coordL - 1, coordC + 1))
+                            VerifierScore(coordL, coordC, ref valeurMaxDanger);
+                }
 
             if (!nouvelleBombe)
                 if (coordC > 0)//W
-                    if (grille[coordL, coordC - 1] != 10 && grille[coordL, coordC - 1] != 9)
-                        VerifierScore(coordL, coordC, ref valeurMaxDanger);
+                {
+                    valeurTester = grille[coordL, coordC - 1];
+                    if (valeurTester != 10 && valeurTester != 9)
+                        if (CalculerDanger(coordL, coordC - 1))
+                            VerifierScore(coordL, coordC, ref valeurMaxDanger);
+                }
 
             if (!nouvelleBombe)
                 if (coordC + 1 < nbColonnes)//E
-                    if (grille[coordL, coordC + 1] != 10 && grille[coordL, coordC + 1] != 9)
+                {
+                    valeurTester = grille[coordL, coordC + 1];
+                    if (valeurTester != 10 && valeurTester != 9)
                         if (CalculerDanger(coordL, coordC + 1))
                             VerifierScore(coordL, coordC, ref valeurMaxDanger);
+                }
 
             if (!nouvelleBombe)
                 if ((coordL + 1 < nbLignes) && (coordC - 1 > 0))//SW
-                    if (grille[coordL + 1, coordC - 1] != 10 && grille[coordL + 1, coordC - 1] != 9)
+                {
+                    valeurTester = grille[coordL + 1, coordC - 1];
+                    if (valeurTester != 10 && valeurTester != 9)
                         if (CalculerDanger(coordL + 1, coordC - 1))
                             VerifierScore(coordL, coordC, ref valeurMaxDanger);
+                }
 
             if (!nouvelleBombe)
                 if (coordL + 1 < nbLignes)//S
-                    if (grille[coordL + 1, coordC] != 10 && grille[coordL + 1, coordC] != 9)
+                {
+                    valeurTester = grille[coordL + 1, coordC];
+                    if (valeurTester != 10 && valeurTester != 9)
                         if (CalculerDanger(coordL + 1, coordC))
                             VerifierScore(coordL, coordC, ref valeurMaxDanger);
+                }
 
             if (!nouvelleBombe)
                 if ((coordL + 1 < nbLignes) && (coordC + 1 < nbColonnes))//SE
-                    if (grille[coordL + 1, coordC + 1] != 10 && grille[coordL + 1, coordC + 1] != 9)
+                {
+                    valeurTester = grille[coordL + 1, coordC + 1];
+                    if (valeurTester != 10 && valeurTester != 9)
                         if (CalculerDanger(coordL + 1, coordC + 1))
                             VerifierScore(coordL, coordC, ref valeurMaxDanger);
+                }
 
             if (nouvelleBombe)
             {
-                grilleDeBombe[coordL, coordC] = "x";
-                ComparerGrille();
+                grille[coordL, coordC] = 9;
+                AnalyserGrille();
+                return;
             }
 
             if (valeurMaxDanger != 1 && valeurMaxDanger <= meilleurCoup[2])
@@ -282,7 +457,7 @@ namespace Demineur
             return false;//ne pas tenir compte
         }
 
-        void VerifierScore(int coordL, int coordC,  ref int valeurMaxDanger)
+        void VerifierScore(int coordL, int coordC, ref int valeurMaxDanger)
         {
             {
                 if (score == 0)
