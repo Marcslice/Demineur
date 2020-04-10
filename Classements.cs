@@ -48,8 +48,8 @@ namespace Demineur
         void FichierClassement()
         {
 
-            string cheminFichier = @"..\..\..\classement\classement.txt"; // en mode visual studio
-            //string cheminFichier = @".\classement\classement.txt"; // en mode exe
+            //string cheminFichier = @"..\..\..\classement\classement.txt"; // en mode visual studio
+            string cheminFichier = @".\classement\classement.txt"; // en mode exe
 
             if (File.Exists(cheminFichier))
             {
@@ -135,8 +135,8 @@ namespace Demineur
         /// </summary>
         public void SauvegardeDuClassement()
         {
-            string cheminFichier = @"..\..\..\classement\classement.txt"; // en mode visual studio
-            //string cheminFichier = @".\classement\classement.txt"; // en mode exe
+            //string cheminFichier = @"..\..\..\classement\classement.txt"; // en mode visual studio
+            string cheminFichier = @".\classement\classement.txt"; // en mode exe
             FileStream fs = File.OpenWrite(cheminFichier);
             StreamWriter sw = new StreamWriter(fs, UTF8Encoding.UTF8);
             foreach (Joueur j in m_ListeJoueurs)
