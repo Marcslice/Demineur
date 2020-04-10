@@ -5,8 +5,11 @@ using System.Threading;
 
 namespace Demineur
 {
-
-    //moving arrows to interface
+    /// <summary>
+    /// Contrôleur secondaire.
+    /// Utilise les classes JOUEUR, IA et Grille.
+    /// La logique de la partie se fait ici.
+    /// </summary>
     public class Partie
     {
         Regex rx = new Regex(@"^\d+\s\d+$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
@@ -15,12 +18,10 @@ namespace Demineur
         Grille m_Grille;
         bool enMarche, mort, auto;
         string nom, difficulte, temps, grosseur;
-        //IA intelligence;
-        AITest intel;
+        IA intelligence;
 
         public Partie(string p_Nom, short[] optionDePartie)
         {
-            InterfaceUsager.Saisie = true;
             enMarche = mort = auto = false;
             selection = new int[2] { 6, 5 }; // 1,1 dans l'interface graphique
             m_Grille = new Grille(optionDePartie[0], optionDePartie[1], optionDePartie[2]);
@@ -28,33 +29,36 @@ namespace Demineur
             grosseur = Convert.ToString(optionDePartie[0]);
             nom = p_Nom;
             if (optionDePartie[3] > 1)
-                //intelligence = new IA(optionDePartie[0], optionDePartie[1]);
-                intel = new AITest(optionDePartie[0], optionDePartie[1]);
+                intelligence = new IA(optionDePartie[0], optionDePartie[1]);
             if (optionDePartie[3] > 2)
                 auto = true;
         }
 
         /// <summary>
         /// S'occupe du déroulement de la partie.
+        /// Le premier tour ne compte pas dans le temps.
+        /// Le joueur ne peut mourir avant que enMarche soit a vrai.(1er tour seulement)
         /// </summary>
         /// <returns>bool : vrai si gagnée, faux si perdu.</returns>
         public bool CommencerPartie()
         {
             Stopwatch minuterie = new Stopwatch();
-            minuterie.Start();
-
+            
             //Premier Tour            
             InterfaceUsager.DessinerPlateau(nom, m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection, m_Grille.NombreDeBombes, mort);
-            VerificationOuvertureEtContenue(selection = Touches(m_Grille.Colonnes(), m_Grille.Lignes(), m_Grille.ToString(), selection[0], selection[1]));
+            VerificationOuvertureEtContenue(selection = Touches(selection[0], selection[1]));
+
+            minuterie.Start();
 
             //Autres Tours
             enMarche = true;
             while (enMarche)
             {
                 InterfaceUsager.DessinerGrille(nom, m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection, m_Grille.NombreDeBombes, mort);
-                VerificationOuvertureEtContenue(selection = Touches(m_Grille.Colonnes(), m_Grille.Lignes(), m_Grille.ToString(), selection[0], selection[1]));
-                InterfaceUsager.DessinerGrille(nom, m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection, m_Grille.NombreDeBombes, mort);
+                VerificationOuvertureEtContenue(selection = Touches(selection[0], selection[1]));                  
             }
+
+            InterfaceUsager.DessinerGrille(nom, m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection, m_Grille.NombreDeBombes, mort);
 
             //Partie Terminé
             minuterie.Stop();
@@ -62,7 +66,6 @@ namespace Demineur
 
             if (mort)
             {
-                InterfaceUsager.DessinerGrille(nom, m_Grille.Lignes(), m_Grille.Colonnes(), m_Grille.ToString(), selection, m_Grille.NombreDeBombes, mort); //Dessine la grille on game over
                 InterfaceUsager.MessageDefaite();
                 return false;
             }
@@ -70,7 +73,13 @@ namespace Demineur
             return true;
         }
 
-        int[] Touches(int iCol, int iLig, string s_Grille, int xActuel, int yActuel)
+        /// <summary>
+        /// Gestion des touches appuyées dans l'interface.
+        /// </summary>
+        /// <param name="xActuel">Remet le curseur à la position du dernier tour</param>
+        /// <param name="yActuel">Remet le curseur à la position du dernier tour</param>
+        /// <returns>Retourne les coordonnées ouvrir après avoir appuyé sur Entrer.</returns>
+        int[] Touches( int xActuel, int yActuel)
         {
             ConsoleKeyInfo touche = new ConsoleKeyInfo(' ', ConsoleKey.Spacebar, false, false, false);
             positionActuelle = new int[2] { xActuel, yActuel };
@@ -90,7 +99,7 @@ namespace Demineur
                         do
                         {
                             InterfaceUsager.ActiverModeFleche(positionActuelle);
-                            touche = Console.ReadKey(true);
+                            touche = InterfaceUsager.RetourDeTouche();
 
                             switch ((int)touche.Key)
                             {
@@ -138,14 +147,14 @@ namespace Demineur
         }
 
         /// <summary>
-        /// Appele l'intelligence artificiel.
+        /// Appelle l'intelligence artificiel.
         /// </summary>
-        /// <returns>bool : vrai si IA actif, faux si partie sans IA</returns>
+        /// <returns>ConsoleKey : A si l'ia est actif, E si l'ia est inactif.</returns>
         ConsoleKey AppelerIA()
         {
-            if (intel != null)
+            if (intelligence != null)
             {
-                int[] retourIA = intel.MeilleurCoup(m_Grille.ToString()); //Methode 
+                int[] retourIA = intelligence.JouerTour(m_Grille.ToString());
                 positionActuelle[0] = (retourIA[1] + 1) * 4 + 2;
                 positionActuelle[1] = (retourIA[0] + 1) * 3 + 2;
                 InterfaceUsager.MettreAJourSelection(positionActuelle);
@@ -162,7 +171,7 @@ namespace Demineur
         /// Saisir autres choses qu'un coordonnées valide entrainera une erreur.
         /// </summary>
         /// <param name="entree">Saisie du joueur.</param>
-        /// <returns>bool : Retourne le consolekey correspondant au choix, si erreur retourne consolekey.e</returns>
+        /// <returns>ConsoleKey : Retourne le consolekey correspondant au choix, si erreur retourne consolekey.E</returns>
         ConsoleKey VerificationEntreeManuelle(string entree)
         {
             if (entree.Length > 2)
@@ -188,10 +197,11 @@ namespace Demineur
 
         /// <summary>
         /// Une fois la saisie validée, ouvre la case si elle n'est pas déjà ouverte.
+        /// Met aussi à jour l'état de la partie. En marche devient faux lorsque la partie se termine.( Par la mort ou la victoire.)
+        /// Affecte aussi le boolean mort à vrai si le joueur ouvre une bombe.
         /// </summary>
-        /// <param name="selection"></param>
-        /// <returns>bool : vrai si case a été ouverte, faux si case déjà ouverte.</returns>
-        bool VerificationOuvertureEtContenue(int[] selection)
+        /// <param name="selection">Coordonnées lorsque le joueur appui sur Entrer.</param>
+        void VerificationOuvertureEtContenue(int[] selection)
         {
             int[] cible = new int[2];
             cible[1] = selection[1] / 3 - 1; // Conversion coordonnées pour tableau grille
@@ -199,28 +209,29 @@ namespace Demineur
 
             if (!m_Grille[cible[1], cible[0]].Ouvert) // N'ouvre pas case déjà ouverte.
             {
-                if (m_Grille.OuvrirCase(cible[1], cible[0]) == false && enMarche)//Stop la partie si le joueur meurt
+
+                bool ouverture = m_Grille.OuvrirCase(cible[1], cible[0]);
+                if (ouverture == false && enMarche)//Stop la partie si le joueur meurt
                 {
                     m_Grille.DecouvrirBombes();
                     mort = true;
                     enMarche = false;
                 }
-                else if (m_Grille.OuvrirCase(cible[1], cible[0]) == false && !enMarche)//Neutralize la bombe au premier tour
+                else if (ouverture == false && !enMarche)//Neutralize la bombe au premier tour
                 {
                     m_Grille.BombePremierTour(cible);
                     m_Grille.OuvrirCase(cible[1], cible[0]); // fix bombes premier tour et l'ouverture des cases vide autour.
                 }
                 else if (m_Grille.CalculerNbCaseFermer() == m_Grille.NombreDeBombes)//Detection de victoire
                     enMarche = false;
-                return true;
             }
-            InterfaceUsager.MessageCaseDejaOuverte();
-            return false;
+            else
+                InterfaceUsager.MessageCaseDejaOuverte();
         }
 
         /// <summary>
         /// Agit comme un masque de saisie.
-        /// Si l'entrée ne match pas, un message d'erreur de format est affiché.
+        /// Si l'entrée ne match pas, le message d'erreur de format est affiché.
         /// </summary>
         /// <param name="entree">Saisie manuelle de l'utilisateur.</param>
         /// <returns></returns>
@@ -238,7 +249,7 @@ namespace Demineur
         /// Vérifie si la saisie fait partie du tableau.
         /// </summary>
         /// <param name="entree">Saisie manuelle du l'utilisateur.</param>
-        /// <returns></returns>
+        /// <returns>bool: Vrai si les coordonnées respecte les limites.</returns>
         bool VerificationDesMinMaxDeLentree(string entree)
         {
             if (Int32.Parse(entree.Split(' ', StringSplitOptions.RemoveEmptyEntries)[0]) <= m_Grille.Colonnes() && Int32.Parse(entree.Split(' ', StringSplitOptions.RemoveEmptyEntries)[1]) <= m_Grille.Lignes())
@@ -249,6 +260,7 @@ namespace Demineur
 
         /// <summary>
         /// Utilisé pour mettre à jour le score du joueur si la partie est gagnée.
+        /// La classe Démineur passe cela à son Classement.
         /// </summary>
         /// <returns>string[] : Informations de partie {nom_joueur, grosseur, difficulté, temps}</returns>
         public string[] InfoDepartie()

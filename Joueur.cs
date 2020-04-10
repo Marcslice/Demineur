@@ -49,15 +49,10 @@ namespace Demineur
         /// <param name="index">Index à modifier dans le tableau des scores.</param>
         /// <param name="temp">La valeur à remplacer.</param>
         /// <returns></returns>
-        public bool ModifierScore(int index, string temp)
+        public void ModifierScore(int index, string temp)
         {
             if (Double.Parse(m_Scores[index], CultureInfo.InvariantCulture) > Double.Parse(temp, CultureInfo.InvariantCulture) || m_Scores[index] == "00.00")
-            {
                 m_Scores[index] = temp;
-                return true;
-            }
-            else
-                return false;
         }
 
         /// <summary>
@@ -65,13 +60,14 @@ namespace Demineur
         /// </summary>
         /// <returns>string nom_joueur et scores[]</returns>
         public override string ToString()
+
         {
             return this.m_Nom + ";" + m_Scores[0] + "," + m_Scores[1] + ',' + m_Scores[2] + ',' +
                 m_Scores[3] + ',' + m_Scores[4] + ',' + m_Scores[5] + ',' + m_Scores[6] + ',' + m_Scores[7] + ',' + m_Scores[8];
         }
 
         /// <summary>
-        /// Dessine avec espacement automatique le tableau des scores.
+        /// Formate avec espacement automatique le tableau des scores.
         /// </summary>
         /// <returns>string ligne des scores d'un joueur.</returns>
         public string FormatClassement()

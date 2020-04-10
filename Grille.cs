@@ -88,7 +88,7 @@ namespace Demineur
         /// <param name="ligne">Coordonnée en Y</param>
         /// <param name="colonne">Coordonnée en X</param>
         /// <returns>Case</returns>
-        public Case this[int ligne, int colonne] // à mettre dans case ? Potentiel bug
+        public Case this[int ligne, int colonne]
         {
             get { return champs[ligne, colonne]; }
             set
@@ -128,7 +128,7 @@ namespace Demineur
                     if (c + 1 < colonne)//E
                         destination.SetCase(4, voisin = champs[l, c + 1]);
 
-                    if ((l + 1 < ligne) && (c > 0))//SW //attemp fix -> c -1 > 0
+                    if ((l + 1 < ligne) && (c > 0))//SW
                         destination.SetCase(5, voisin = champs[l + 1, c - 1]);
 
                     if (l + 1 < ligne)//S
@@ -141,7 +141,8 @@ namespace Demineur
         }
 
         /// <summary>
-        /// Utilisé seulement lorsque la première case ouverte est une bombe.
+        /// Utilisé pour mettre à jour le nombre de bombe, les voisins d'une bombe 
+        /// si elle est ouverte au premier tour.
         /// </summary>
         /// <param name="ligne">Ligne en cours de traitement</param>
         /// <param name="colonne">Colonne en cours de traitement</param>
@@ -168,7 +169,7 @@ namespace Demineur
             if (c + 1 < colonne)//E
                 destination.SetCase(4, voisin = champs[l, c + 1]);
 
-            if ((l + 1 < ligne) && (c - 1 > 0))//SW
+            if ((l + 1 < ligne) && (c > 0))//SW
                 destination.SetCase(5, voisin = champs[l + 1, c - 1]);
 
             if (l + 1 < ligne)//S
@@ -188,13 +189,15 @@ namespace Demineur
         {
             aOuvrir = new Stack<Case>();
 
-            Case cible = champs[ligne, colonne];//retour maintenant un bool pour le gameover
+            Case cible = champs[ligne, colonne];
             cible.Ouvert = true;
             if (cible.Bombe)
                 return false;
+            else
+                casesFermer--; //optimisation de code en test
             if (cible.CalculerDanger() == 0)
                 for (int i = 0; i < 8; i++)
-                    if (cible[i] != null)
+                    if (cible[i] != null) 
                         OuvrirCase(cible[i]);
             return true;
         }
@@ -204,11 +207,12 @@ namespace Demineur
         /// </summary>
         /// <param name="voisin">Voisin de la case sélectionné.</param>
         /// <returns>Retourne vrai si ?</returns>
-        bool OuvrirCase(Case voisin) // Ouvre les case vides adjacentes. À vérifier
+        bool OuvrirCase(Case voisin) // Ouvre les case vides adjacentes.
         {
             if (!voisin.Ouvert)
             {
                 voisin.Ouvert = true;
+                casesFermer--; //optimisation de code en test
                 if (voisin.CalculerDanger() == 0)
                     aOuvrir.Push(voisin);
 
@@ -301,7 +305,7 @@ namespace Demineur
         /// déterminer si la partie est gagné.
         /// </summary>
         /// <returns></returns>
-        public int CalculerNbCaseFermer()
+       /* public int CalculerNbCaseFermer()
         {
             casesFermer = lignes * colonnes;
             for (int l = 0; l < lignes; l++)
@@ -310,6 +314,11 @@ namespace Demineur
                     if (this[l, c].Ouvert)
                         casesFermer--;
             }
+            return casesFermer;
+        }*/
+
+        public int CalculerNbCaseFermer() // version en test
+        {
             return casesFermer;
         }
     }

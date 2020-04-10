@@ -7,7 +7,6 @@
     /// </summary>
     class Demineur
     {
-
         Partie m_Partie;
         Classements m_Classement;
         Demineur()
@@ -21,7 +20,7 @@
                 switch (choix)
 
                 {
-                    case 1:
+                    case 1: //Jouer
                         m_Partie = new Partie(Menu.DemanderNom(), Menu.OptionDePartie());
                         if (m_Partie.CommencerPartie())
                         { // Si partie retourne true, alors le joueur a batu son record.
@@ -29,13 +28,13 @@
                             m_Classement.SauvegardeDuClassement();
                         }
                         break;
-                    case 2:
-                        short visionnement = 0; //par défaut ne tri pas le classement
+                    case 2: // Afficher le Classement
+                        short visionnement = 0; //par défaut ne tri pas le classement {0 = sans tri, 1 = tri facile, 2 = tri Normal, 3 = tri Difficile, 4 = retour au menu principal}
                         do
                             visionnement = (short)Menu.AfficherClassement(m_Classement.ToString(visionnement), visionnement);
                         while (visionnement != 4);
                         break;
-                    case 3:
+                    case 3: //Quitter la partie.
                         break;
                 }
             }

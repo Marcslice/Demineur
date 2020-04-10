@@ -11,18 +11,19 @@ namespace Demineur
     /// </summary>
     public static class InterfaceUsager //static pour test
     {
-        static string marge = "    "; // Unité d'espacement.
+        static readonly string marge = "    "; // Unité d'espacement.
         static bool saisie = true; // true = mode avec flèche
         static int[] positionDeReponse, positionDeMessage;
         static int positionDuGuide;
 
         /// <summary>
         /// Détecte le mode de saisie en cours.
+        /// True = mode flèche
+        /// False = mode manuel
         /// </summary>
         public static bool Saisie
         {
             get { return saisie; }
-            set { saisie = value; }
         }
 
         /// <summary>
@@ -77,6 +78,12 @@ namespace Demineur
             return new int[2] { Console.CursorLeft, Console.CursorTop };
         }
 
+        //Retourne à Partie la touche que l'interface reçoit.
+        public static ConsoleKeyInfo RetourDeTouche() { 
+            return Console.ReadKey(true);
+        }
+
+        //Retourne les coordonnées ou les options tapées au clavier.
         public static string EntreeManuelle()
         {
             return Console.ReadLine();
@@ -298,11 +305,13 @@ namespace Demineur
             {
                 Console.SetWindowSize(nColonne * 4 + 65, nLigne * 4 + 14);
             }
-            catch (ArgumentOutOfRangeException e)
+            catch (ArgumentOutOfRangeException)
             {
                 Console.SetWindowSize(Console.LargestWindowWidth, Console.LargestWindowHeight);
             }
 
+            saisie = true; // mode flèche par défaut.
+            
             positionDeMessage = new int[2] { 4, nLigne * 3 + 14 };
             positionDeReponse = new int[2] { 43, nLigne * 3 + 11 };
             positionDuGuide = nColonne * 4 + 8; //instruction
@@ -353,7 +362,7 @@ namespace Demineur
         /// <param name="positionActuelle"></param>
         public static void MettreAJourSelection(int[] positionActuelle)
         {
-            InterfaceUsager.PositionnerCursorPourRepondre();
+            PositionnerCursorPourRepondre();
             Console.Write(positionActuelle[0] / 4 + " " + positionActuelle[1] / 3 + "    ");
             Console.SetCursorPosition(positionActuelle[0], positionActuelle[1]);
         }
@@ -398,17 +407,9 @@ namespace Demineur
         public static void MessageVictoire()
         {
             PositionnerCursorPourMessageErreur();
-            Console.WriteLine("Vous êtes un champion du démineur!");
+            Console.WriteLine("Vous êtes un champion du démineur! Appuyez sur entrer pour continuer..");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.ReadLine();
-        }
-
-        public static void MessageNouveauRecord()
-        {
-            PositionnerCursorPourMessageErreur();
-            Console.WriteLine("Bravo! C'est un nouveau record personnel.");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.ReadLine();
+            while (!ToucheEntrer(Console.ReadKey(true))) ;
         }
 
         /// <summary>
@@ -417,9 +418,9 @@ namespace Demineur
         public static void MessageDefaite()
         {
             PositionnerCursorPourMessageErreur();
-            Console.WriteLine("Tu as perdu et j'te juge.");
+            Console.WriteLine("Tu as perdu et j'te juge. Appuyez sur entrer pour continuer..");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.ReadLine();
+            while (!ToucheEntrer(Console.ReadKey(true))) ;
             //Dessin du prof
         }
 
@@ -430,7 +431,7 @@ namespace Demineur
         {
             PositionnerCursorPourMessageErreur();
             Console.WriteLine("Désolé cette case est déjà ouverte. Appuyez sur entrer pour continuer...");
-            Console.ReadLine();
+            while (!ToucheEntrer(Console.ReadKey(true))) ;
             PositionnerCursorPourMessageErreur();
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("                                                                        ");
@@ -444,7 +445,7 @@ namespace Demineur
             PositionnerCursorPourMessageErreur();
             Console.WriteLine("Désolé veuillez vous assurez d'entrer vos coordonnées comme suit : (colonne ligne). \n" +
                 marge + "Appuyez sur une touche pour continuer.");
-            Console.ReadLine();
+            while (!ToucheEntrer(Console.ReadKey(true))) ;
             PositionnerCursorPourMessageErreur();
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("                                                                                    \n" +
@@ -458,7 +459,7 @@ namespace Demineur
         {
             PositionnerCursorPourMessageErreur();
             Console.WriteLine("Hé, ho tu ne vois pas les chiffres en haut et à gauche ? Appuie sur entrer la...");
-            Console.ReadLine();
+            while (!ToucheEntrer(Console.ReadKey(true))) ;
             PositionnerCursorPourMessageErreur();
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("                                                                                ");
@@ -472,10 +473,16 @@ namespace Demineur
             PositionnerCursorPourMessageErreur();
             Console.WriteLine("L'intelligence artificiel n'est pas active.");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.ReadLine();
+            while (!ToucheEntrer(Console.ReadKey(true))) ;
             PositionnerCursorPourMessageErreur();
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("                                                                                ");
+        }
+
+        static bool ToucheEntrer(ConsoleKeyInfo key) {
+            if (key.Key == ConsoleKey.Enter)
+                return true;
+            return false;
         }
     }
 }

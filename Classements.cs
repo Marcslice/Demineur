@@ -21,9 +21,11 @@ namespace Demineur
         }
 
         /// <summary>
-        /// Est appelé si le joueur bat son record.
+        /// Est appelé si le joueur gagne une partie.
+        /// S'il bat son record, le temps sera mis à jour.
+        /// Si le joueur n'existait pas déjà, il sera créé.
         /// index est le calcule permettant de passer d'un tableau 2D en tableau 1D,
-        ///     le calcule permet de modifier le bon score dans le tableau de score du joueur.
+        /// le calcule permet de modifier le bon score dans le tableau de score du joueur.
         /// </summary>
         /// <param name="info">info[] {nom, grosseur, difficulté, tempsEnMinutes}</param>
         public void MettreAJourJoueur(string[] info)
@@ -33,10 +35,7 @@ namespace Demineur
             int index = ((Int32.Parse(info[1]) - (Int32.Parse(info[1]) / 2 + 3))) * 3 + (Int32.Parse(info[2]) - 1);
 
             if ((aModifier = m_ListeJoueurs.Find(j => j.ObtenirNom() == info[0])) != null)
-            {
-                if (aModifier.ModifierScore(index, info[3]))
-                    InterfaceUsager.MessageNouveauRecord();
-            }
+                aModifier.ModifierScore(index, info[3]);
             else
                 m_ListeJoueurs.Add(new Joueur(info[0], index, info[3]));
         }
@@ -94,6 +93,8 @@ namespace Demineur
         /// <summary>
         /// Tri le tableau de joueur selon le tri demandé et le retourne
         /// au toString() pour créer ce qui sera affiché à l'écran.
+        /// Les joueurs dont le score est de 00.00 ne sera pas afficher pour une catégorie donnée.
+        /// Seulement les 10 premiers joueur d'une catégorie seront affichés.
         /// </summary>
         /// <param name="indexDifficulte">
         /// 0, 3, 6 sont les scores en mode facile dans le tableau de joueur.

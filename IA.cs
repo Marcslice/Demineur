@@ -6,6 +6,9 @@ using System.Reflection;
 
 namespace Demineur
 {
+    /// <summary>
+    /// Fait le lien avec l'intelligence externe.
+    /// </summary>
     public class IA
     {
         FileInfo dll;
