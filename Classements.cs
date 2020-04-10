@@ -48,7 +48,7 @@ namespace Demineur
         void FichierClassement()
         {
 
-            string cheminFichier = @"..\..\..\classement\classement.txt";
+            string cheminFichier = @".\classement\classement.txt";
 
             if (File.Exists(cheminFichier))
             {
@@ -134,7 +134,7 @@ namespace Demineur
         /// </summary>
         public void SauvegardeDuClassement()
         {
-            string cheminFichier = @"..\..\..\classement\classement.txt";
+            string cheminFichier = @".\classement\classement.txt";
             FileStream fs = File.OpenWrite(cheminFichier);
             StreamWriter sw = new StreamWriter(fs, UTF8Encoding.UTF8);
             foreach (Joueur j in m_ListeJoueurs)
