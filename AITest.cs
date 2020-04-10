@@ -5,12 +5,19 @@ namespace Demineur
 {
     public class AITest
     {
-
-
-
+        /// <summary>
+        /// nbLignes : nombre total de lignes dans la partie
+        /// nbColonnes : nombre total de colonnes dans la partie
+        /// Score : le risque d'ouvrir un bombe dans la case analyser (nombre en %)
+        /// grille : simule la grille de la partie de demineur
+        /// meilleurCoup : est un tableau contenant: [la ligne, la colonne, score] de la case avec le moins de chance detre une bombe
+        /// nouvelleBombe : boolean permettant de savoir si une nouvelle bombe a ete detecter dans la grille
+        /// caseFermer : un stack servant a empiler des coordonnees de case fermer lors des analyse de la grille
+        /// </summary>
         int nbLignes, nbColonnes, score;
         int[,] grille;
         int[] meilleurCoup;
+        bool nouvelleBombe;
         Stack<int> caseFermer;
 
         /// <summary>
@@ -35,19 +42,40 @@ namespace Demineur
         }
 
         /// <summary>
-        /// Methode public qu'enplois la classe partie pour obtenir la meilleur case a jouer agit comme le main de la classe
+        /// Methode public qu'enplois la classe partie pour obtenir la meilleur case a jouer
         /// </summary>
         /// <param name="grilleDeJeu">version string de la grille de jeu generer par le demineur</param>
         /// <returns>Retourne des coordonner d'ordre ligne, colonne sous la forme d'un tableau d'entier a la partie</returns>
         public int[] MeilleurCoup(string grilleDeJeu)
         {
-            if (caseFermer.Count > 0)
+            meilleurCoup = new int[3] { 0, 0, 0 };
+
+            GenererGrille(grilleDeJeu);
+            if (caseFermer.Count < 1)
             {
-                CoupFacile();
+                do
+                {
+                    AnalyserGrille();
+                } while (caseFermer.Count < 1 && nouvelleBombe);
             }
 
-            meilleurCoup = new int[3] { 0, 0, 0 };//ligne, colonne, valeurDanger
-            GenererGrille(grilleDeJeu);
+            if (caseFermer.Count > 0)
+            {
+                do
+                {
+                    if (caseFermer.Count < 1) {
+                       AnalyserGrille();
+                    }
+                    if(caseFermer.Count > 0)
+                    {
+                        meilleurCoup[0] = caseFermer.Pop();
+                        meilleurCoup[1] = caseFermer.Pop();
+                        meilleurCoup[2] = 0;
+                    }
+                } while ((grille[meilleurCoup[0], meilleurCoup[1]] != 10) && meilleurCoup[2] != 420);
+                if(meilleurCoup[2] != 420)
+                    return meilleurCoup;
+            }
 
             if (meilleurCoup[2] == 420)
             {
@@ -64,19 +92,9 @@ namespace Demineur
         }
 
         /// <summary>
-        /// Pile contenant des cordonnees confirmer comme etant non-bombe
-        /// </summary>
-        /// <returns>Retourne des coordonner d'ordre ligne, colonne sous la forme d'un tableau d'entier a la partie</returns>
-        int[] CoupFacile()
-        {
-            meilleurCoup[0] = caseFermer.Pop();
-            meilleurCoup[1] = caseFermer.Pop();
-            return meilleurCoup;
-        }
-
-        /// <summary>
         /// Analyse toutes les case ouvertes et store leur valeur dans la grille de l'AI pour qu'il puisse faire son analyse. Utilise les variable 
         /// global nblignes et nbcolonnes pour rester dans les limites de la grille
+        /// charTranscrit : permet de garder en memoire la position a laquel la boucle est par rapport a la string
         /// </summary>
         /// <param name="aConvertir">String representant la grille de jeu connu sous le nom grilleDeJeu lors de l'appel de MeilleurCoup()</param>
         void GenererGrille(string aConvertir)
@@ -101,28 +119,34 @@ namespace Demineur
                         }
                 }
             }
-            AnalyserGrille();
         }
 
         /// <summary>
         /// Analyse toutes les valeur presente dans la grille de notre AI. Dependant de la valeur de la case emploi une methode d'analyse differente.
         /// Initialise les valeurs nouvelleBombe et meilleurCoup[2] a leur valeur par default.
+        /// l : int representant le numero de la ligne
+        /// c : int represantant le numero de la colonne
         /// </summary>
         void AnalyserGrille()
         {
+            nouvelleBombe = false;
             meilleurCoup[2] = 420;
 
             for (int l = 0; l < nbLignes; l++)
             {
                 for (int c = 0; c < nbColonnes; c++)
                 {
-                    if (grille[l, c] < 9)
+                    if (grille[l, c] < 9 )
                     {
                         AnalyseCaseO(l, c);
+                        if (caseFermer.Count > 0)
+                            return;
                     }
-                    if (grille[l, c] == 10)
+                    else if (grille[l, c] == 10)
                     {
                         AnalyseCaseF(l, c);
+                        if (caseFermer.Count > 0)
+                            return;
                     }
                 }
             }
@@ -135,6 +159,9 @@ namespace Demineur
         /// est de 0 les coordonnees dans la pile sont garder en memoire comme etant des case securitaire. Si la valeur de la case moins le nombre de 
         /// bombe avoisinante est egale au nombre de case fermee, les coordonnees dans la pile sont marquer comme etant des bombe. Sinon la pile est vider
         /// de son contenu
+        /// caseF : int servant a calculer le nombre de case fermer
+        /// bombe : int servant a calculer le nombre de bombe detecter
+        /// valVoisin : int represantant la valeur d'un voisin de la case analyser
         /// </summary>
         /// <param name="coordL">numero de la ligne de la case a analyser</param>
         /// <param name="coordC">numero de la colonne de la case a analyser</param>
@@ -239,7 +266,7 @@ namespace Demineur
                 }
             }
 
-            if ((coordL + 1 < nbLignes) && (coordC - 1 > 0))//SW
+            if ((coordL + 1 < nbLignes) && (coordC > 0))//SW
             {
                 valVoisin = grille[coordL + 1, coordC - 1];
 
@@ -303,18 +330,14 @@ namespace Demineur
                     while (caseFermer.Count > 0)
                     {
                         grille[caseFermer.Pop(), caseFermer.Pop()] = 9;
+                        nouvelleBombe = true;
                     }
                 }
-                else if ((grille[coordL, coordC] - bombe) == 0)
-                {
-                    CoupFacile();
-                }
-                else
+                else if ((grille[coordL, coordC] - bombe) != 0)
                 {
                     caseFermer.Clear();
                 }
             }
-
         }
 
         /// <summary>
@@ -322,6 +345,8 @@ namespace Demineur
         /// d'elle qui ne sont pas des bombe. La menace la plus grande est garder en memoir et comparer avec le danger du meilleur coup actuel. Si la 
         /// menace represente un risque moins elever d'ouvrir un bombe que le meilleur coup actuel, les coordonnees son storer dans meilleurCoup[] ainsi
         /// que le nombre representant le danger
+        /// valeurMaxDanger : int representant les chance en % d'ouvrir une bombe du cas le plus probable
+        /// valeurTester : int representant la valeur de la case tester
         /// </summary>
         /// <param name="coordL">numero de la ligne de la case a analyser</param>
         /// <param name="coordC">numero de la colonne de la case a analyser</param>
@@ -330,7 +355,7 @@ namespace Demineur
             int valeurMaxDanger = 1;
             int valeurTester;
 
-            if ((coordL > 0) && (coordC > 0))//NW
+            if ((coordL > 0) && (coordC > 0) && caseFermer.Count < 1 && !nouvelleBombe)//NW
             {
                 valeurTester = grille[coordL - 1, coordC - 1];
                 if (valeurTester != 10 && valeurTester != 9)
@@ -341,7 +366,7 @@ namespace Demineur
             }
 
 
-            if (coordL > 0)//N
+            if (coordL > 0 && caseFermer.Count < 1 && caseFermer.Count < 1 && !nouvelleBombe)//N
             {
                 valeurTester = grille[coordL - 1, coordC];
                 if (valeurTester != 10 && valeurTester != 9)
@@ -352,7 +377,7 @@ namespace Demineur
             }
 
 
-            if ((coordL > 0) && (coordC + 1 < nbColonnes))//NE
+            if ((coordL > 0) && (coordC + 1 < nbColonnes) && caseFermer.Count < 1 && !nouvelleBombe)//NE
             {
                 valeurTester = grille[coordL - 1, coordC + 1];
                 if (valeurTester != 10 && valeurTester != 9)
@@ -363,7 +388,7 @@ namespace Demineur
             }
 
 
-            if (coordC > 0)//W
+            if (coordC > 0 && caseFermer.Count < 1 && !nouvelleBombe)//W
             {
                 valeurTester = grille[coordL, coordC - 1];
                 if (valeurTester != 10 && valeurTester != 9)
@@ -374,7 +399,7 @@ namespace Demineur
             }
 
 
-            if (coordC + 1 < nbColonnes)//E
+            if (coordC + 1 < nbColonnes && caseFermer.Count < 1 && !nouvelleBombe)//E
             {
                 valeurTester = grille[coordL, coordC + 1];
                 if (valeurTester != 10 && valeurTester != 9)
@@ -385,7 +410,7 @@ namespace Demineur
             }
 
 
-            if ((coordL + 1 < nbLignes) && (coordC - 1 > 0))//SW
+            if ((coordL + 1 < nbLignes) && (coordC > 0) && caseFermer.Count < 1 && !nouvelleBombe)//SW
             {
                 valeurTester = grille[coordL + 1, coordC - 1];
                 if (valeurTester != 10 && valeurTester != 9)
@@ -396,7 +421,7 @@ namespace Demineur
             }
 
 
-            if (coordL + 1 < nbLignes)//S
+            if (coordL + 1 < nbLignes && caseFermer.Count < 1 && !nouvelleBombe)//S
             {
                 valeurTester = grille[coordL + 1, coordC];
                 if (valeurTester != 10 && valeurTester != 9)
@@ -407,7 +432,7 @@ namespace Demineur
             }
 
 
-            if ((coordL + 1 < nbLignes) && (coordC + 1 < nbColonnes))//SE
+            if ((coordL + 1 < nbLignes) && (coordC + 1 < nbColonnes) && caseFermer.Count < 1 && !nouvelleBombe)//SE
             {
                 valeurTester = grille[coordL + 1, coordC + 1];
                 if (valeurTester != 10 && valeurTester != 9)
@@ -418,7 +443,7 @@ namespace Demineur
             }
 
 
-            if (valeurMaxDanger != 1 && valeurMaxDanger <= meilleurCoup[2])
+            if (valeurMaxDanger != 1 && valeurMaxDanger <= meilleurCoup[2] && caseFermer.Count < 1 && !nouvelleBombe)
             {
                 if (valeurMaxDanger == meilleurCoup[2])
                 {
@@ -444,6 +469,8 @@ namespace Demineur
         /// fermees qui on ete storees son defini comme securitaire et CoupFacile() est appeler. Si la difference est egale au nombre de case fermer la pile 
         /// est considerer comme etant des bombe et une fois les cases transformer en bombes AnalyserGrille() est rappeler et on sort de la methode. Sinon la 
         /// pile est videe
+        /// nbBombes : int representant le nombre de bombe detecter autour de la case analyser
+        /// nbCaseFermer : int representant le nombe de case fermer detecter autour de la case analyser
         /// </summary>
         /// <param name="coordL">numero de la ligne de la case a analyser</param>
         /// <param name="coordC">numero de la colonne de la case a analyser</param>
@@ -523,7 +550,7 @@ namespace Demineur
                 }
             }
 
-            if ((coordL + 1 < nbLignes) && (coordC - 1 > 0))//SW
+            if ((coordL + 1 < nbLignes) && (coordC > 0))//SW
             {
                 if (grille[coordL + 1, coordC - 1] == 9)
                 {
@@ -565,8 +592,7 @@ namespace Demineur
                 }
             }
 
-            if (nbCaseFermer != 0)
-            {
+            
                 score = (((grille[coordL, coordC] - nbBombes) * 100) / nbCaseFermer);
 
 
@@ -576,16 +602,14 @@ namespace Demineur
                     {
                         grille[caseFermer.Pop(), caseFermer.Pop()] = 9;
                     }
-                    AnalyserGrille();
-                    return;
-                }
-                else if (score == 0)
-                {
-                    CoupFacile();
-                }
 
-                caseFermer.Clear();
-            }
+                    nouvelleBombe = true;
+                }
+                else if (score != 0)
+                {
+                    caseFermer.Clear();
+                }
+            
         }
 
         /// <summary>
@@ -595,16 +619,19 @@ namespace Demineur
         /// <param name="valeurMaxDanger">la valeur de danger maximal que represanterait ouvrir cette case fermer</param>
         void VerifierScore(ref int valeurMaxDanger)
         {
-            if (score == valeurMaxDanger)
+            if (caseFermer.Count < 1)
             {
-                var rand = new Random();
+                if (score == valeurMaxDanger)
+                {
+                    var rand = new Random();
 
-                if (rand.Next() % 2 == 0)
+                    if (rand.Next() % 2 == 0)
+                        valeurMaxDanger = score;
+                }
+                else if (score > valeurMaxDanger)
+                {
                     valeurMaxDanger = score;
-            }
-            else if (score > valeurMaxDanger)
-            {
-                valeurMaxDanger = score;
+                }
             }
         }
 
