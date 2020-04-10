@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['entreemanuelle_208',['EntreeManuelle',['../class_demineur_1_1_partie.html#ac037320ce32788b410183ab89b773c4d',1,'Demineur::Partie']]]
+  ['entreemanuelle_204',['EntreeManuelle',['../class_demineur_1_1_interface_usager.html#ab72d1738fa3dd8502dfbdd75e5d00869',1,'Demineur::InterfaceUsager']]]
 ];

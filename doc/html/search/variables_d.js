@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['ratiodiff_296',['ratioDiff',['../class_demineur_1_1_a_i_test.html#a3c2e200a7c3397f75d74a7e89eafa096',1,'Demineur::AITest']]],
-  ['recap_297',['recap',['../class_demineur_1_1_menu.html#a2b6d320651c76ba70fb07797cf478059',1,'Demineur::Menu']]],
-  ['rx_298',['rx',['../class_demineur_1_1_partie.html#a5e1749f7c46523ff8e6e17bb6fac5da2',1,'Demineur::Partie']]]
+  ['saisie_293',['saisie',['../class_demineur_1_1_interface_usager.html#afcf9d82f992dcee0fca7533013b85c6e',1,'Demineur::InterfaceUsager']]],
+  ['score_294',['score',['../class_demineur_1_1_a_i_test.html#a13dab476a4c443ac5532e59ed5b77029',1,'Demineur::AITest']]],
+  ['selection_295',['selection',['../class_demineur_1_1_partie.html#a26df36168f045845f719eee1d9f08b9f',1,'Demineur::Partie']]]
 ];

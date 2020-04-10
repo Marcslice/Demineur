@@ -9,18 +9,9 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
-<script type="text/javascript" src="navtreedata.js"></script>
-<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-  $(document).ready(function() { init_search(); });
-/* @license-end */
-</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -31,25 +22,10 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Demineur
-   &#160;<span id="projectnumber">2.0</span>
+   &#160;<span id="projectnumber">beta</span>
    </div>
-   <div id="projectbrief">Programmation 3 - TP1 - Demineur</div>
+   <div id="projectbrief">Demineur</div>
   </td>
-   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
-        <span class="left">
-          <img id="MSearchSelect" src="search/mag_sel.png"
-               onmouseover="return searchBox.OnSearchSelectShow()"
-               onmouseout="return searchBox.OnSearchSelectHide()"
-               alt=""/>
-          <input type="text" id="MSearchField" value="Search" accesskey="S"
-               onfocus="searchBox.OnSearchFieldFocus(true)" 
-               onblur="searchBox.OnSearchFieldFocus(false)" 
-               onkeyup="searchBox.OnSearchFieldChange(event)"/>
-          </span><span class="right">
-            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
-          </span>
-        </div>
-</td>
  </tr>
  </tbody>
 </table>
@@ -61,23 +37,16 @@
 var searchBox = new SearchBox("searchBox", "search",false,'Search');
 /* @license-end */
 </script>
-</div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
-  <div id="nav-tree">
-    <div id="nav-tree-contents">
-      <div id="nav-sync" class="sync"></div>
-    </div>
-  </div>
-  <div id="splitbar" style="-moz-user-select:none;" 
-       class="ui-resizable-handle">
-  </div>
-</div>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('class_demineur_1_1_classements.html',''); initResizable(); });
-/* @license-end */
-</script>
-<div id="doc-content">
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -92,6 +61,11 @@ $(document).ready(function(){initNavTree('class_demineur_1_1_classements.html','
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespace_demineur.html">Demineur</a></li><li class="navelem"><a class="el" href="class_demineur_1_1_classements.html">Classements</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -111,13 +85,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad1cd7b551b6950cef5b9cae2111c40f1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_classements.html#ad1cd7b551b6950cef5b9cae2111c40f1">Classements</a> ()</td></tr>
 <tr class="separator:ad1cd7b551b6950cef5b9cae2111c40f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a419a42ecd6c3d06cede2c4afa68c0f4d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_classements.html#a419a42ecd6c3d06cede2c4afa68c0f4d">MettreAJourJoueur</a> (string[] info)</td></tr>
-<tr class="memdesc:a419a42ecd6c3d06cede2c4afa68c0f4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Est appelé si le joueur bat son record. index est le calcule permettant de passer d'un tableau 2D en tableau 1D, le calcule permet de modifier le bon score dans le tableau de score du joueur.  <a href="class_demineur_1_1_classements.html#a419a42ecd6c3d06cede2c4afa68c0f4d">More...</a><br /></td></tr>
+<tr class="memdesc:a419a42ecd6c3d06cede2c4afa68c0f4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Est appelé si le joueur gagne une partie. S'il bat son record, le temps sera mis à jour. Si le joueur n'existait pas déjà, il sera créé. index est le calcule permettant de passer d'un tableau 2D en tableau 1D, le calcule permet de modifier le bon score dans le tableau de score du joueur.  <a href="class_demineur_1_1_classements.html#a419a42ecd6c3d06cede2c4afa68c0f4d">More...</a><br /></td></tr>
 <tr class="separator:a419a42ecd6c3d06cede2c4afa68c0f4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0cae5a8cdb49db79efb51c5d99467e63"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_classements.html#a0cae5a8cdb49db79efb51c5d99467e63">FichierClassement</a> ()</td></tr>
-<tr class="memdesc:a0cae5a8cdb49db79efb51c5d99467e63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Est appelé lors de la construction de Classement. Créer la liste de joueur si le fichier text existe. Créer un fichier text vide si il n'existe pas.  <a href="class_demineur_1_1_classements.html#a0cae5a8cdb49db79efb51c5d99467e63">More...</a><br /></td></tr>
-<tr class="separator:a0cae5a8cdb49db79efb51c5d99467e63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a33cd720e1fe75826c1ed131d05c406e2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_classements.html#a33cd720e1fe75826c1ed131d05c406e2">SauvegardeDuClassement</a> ()</td></tr>
-<tr class="memdesc:a33cd720e1fe75826c1ed131d05c406e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Est appelé après la partie. Permet de sauvegarder automatiquement les informations des joueurs du classement.  <a href="class_demineur_1_1_classements.html#a33cd720e1fe75826c1ed131d05c406e2">More...</a><br /></td></tr>
+<tr class="memdesc:a33cd720e1fe75826c1ed131d05c406e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Écrit dans le document classement.txt  <a href="class_demineur_1_1_classements.html#a33cd720e1fe75826c1ed131d05c406e2">More...</a><br /></td></tr>
 <tr class="separator:a33cd720e1fe75826c1ed131d05c406e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a96d3fbf6817aa4ec41f247a59f62163e"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_classements.html#a96d3fbf6817aa4ec41f247a59f62163e">ToString</a> (short tri)</td></tr>
 <tr class="memdesc:a96d3fbf6817aa4ec41f247a59f62163e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le classement sous forme de string  <a href="class_demineur_1_1_classements.html#a96d3fbf6817aa4ec41f247a59f62163e">More...</a><br /></td></tr>
@@ -125,18 +96,15 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
+<tr class="memitem:a0cae5a8cdb49db79efb51c5d99467e63"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_classements.html#a0cae5a8cdb49db79efb51c5d99467e63">FichierClassement</a> ()</td></tr>
+<tr class="memdesc:a0cae5a8cdb49db79efb51c5d99467e63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Est appelé lors de la construction de Classement. Créer la liste de joueur si le fichier text existe. Créer un fichier text vide si il n'existe pas.  <a href="class_demineur_1_1_classements.html#a0cae5a8cdb49db79efb51c5d99467e63">More...</a><br /></td></tr>
+<tr class="separator:a0cae5a8cdb49db79efb51c5d99467e63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae8bde8e179dcf4c42c49eee2715c669b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_classements.html#ae8bde8e179dcf4c42c49eee2715c669b">DeStringAJoueur</a> (string joueurStats)</td></tr>
 <tr class="memdesc:ae8bde8e179dcf4c42c49eee2715c669b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Créer les joueurs à partir du fichier texte.  <a href="class_demineur_1_1_classements.html#ae8bde8e179dcf4c42c49eee2715c669b">More...</a><br /></td></tr>
 <tr class="separator:ae8bde8e179dcf4c42c49eee2715c669b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae0f2f334a3b39c805d4eb877a4ebd6e4"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_demineur_1_1_joueur.html">Joueur</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_classements.html#ae0f2f334a3b39c805d4eb877a4ebd6e4">triFacile</a> (short indexFacile)</td></tr>
-<tr class="memdesc:ae0f2f334a3b39c805d4eb877a4ebd6e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tri le tableau de joueur selon le tri demandé et le retourne au toString() pour créer ce qui sera affiché à l'écran.  <a href="class_demineur_1_1_classements.html#ae0f2f334a3b39c805d4eb877a4ebd6e4">More...</a><br /></td></tr>
-<tr class="separator:ae0f2f334a3b39c805d4eb877a4ebd6e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64d48ce4c7eb1d688bbe4cbed70d8e7b"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_demineur_1_1_joueur.html">Joueur</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_classements.html#a64d48ce4c7eb1d688bbe4cbed70d8e7b">triNormal</a> (short indexNormal)</td></tr>
-<tr class="memdesc:a64d48ce4c7eb1d688bbe4cbed70d8e7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tri le tableau de joueur selon le tri demandé et le retourne au toString() pour créer ce qui sera affiché à l'écran.  <a href="class_demineur_1_1_classements.html#a64d48ce4c7eb1d688bbe4cbed70d8e7b">More...</a><br /></td></tr>
-<tr class="separator:a64d48ce4c7eb1d688bbe4cbed70d8e7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb1cbedc4435c31dcf0a2397abdcf3da"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_demineur_1_1_joueur.html">Joueur</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_classements.html#abb1cbedc4435c31dcf0a2397abdcf3da">triDifficile</a> (short indexDifficile)</td></tr>
-<tr class="memdesc:abb1cbedc4435c31dcf0a2397abdcf3da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tri le tableau de joueur selon le tri demandé et le retourne au toString() pour créer ce qui sera affiché à l'écran.  <a href="class_demineur_1_1_classements.html#abb1cbedc4435c31dcf0a2397abdcf3da">More...</a><br /></td></tr>
-<tr class="separator:abb1cbedc4435c31dcf0a2397abdcf3da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee4d9dfcc0b1268667bef4a069718b15"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_demineur_1_1_joueur.html">Joueur</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_demineur_1_1_classements.html#aee4d9dfcc0b1268667bef4a069718b15">trierClassement</a> (short indexDifficulte)</td></tr>
+<tr class="memdesc:aee4d9dfcc0b1268667bef4a069718b15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tri le tableau de joueur selon le tri demandé et le retourne au toString() pour créer ce qui sera affiché à l'écran. Les joueurs dont le score est de 00.00 ne sera pas afficher pour une catégorie donnée. Seulement les 10 premiers joueur d'une catégorie seront affichés.  <a href="class_demineur_1_1_classements.html#aee4d9dfcc0b1268667bef4a069718b15">More...</a><br /></td></tr>
+<tr class="separator:aee4d9dfcc0b1268667bef4a069718b15"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -224,7 +192,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -257,7 +225,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Est appelé si le joueur bat son record. index est le calcule permettant de passer d'un tableau 2D en tableau 1D, le calcule permet de modifier le bon score dans le tableau de score du joueur. </p>
+<p>Est appelé si le joueur gagne une partie. S'il bat son record, le temps sera mis à jour. Si le joueur n'existait pas déjà, il sera créé. index est le calcule permettant de passer d'un tableau 2D en tableau 1D, le calcule permet de modifier le bon score dans le tableau de score du joueur. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">info</td><td>info[] {nom, grosseur, difficulté, tempsEnMinutes}</td></tr>
@@ -290,7 +258,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Est appelé après la partie. Permet de sauvegarder automatiquement les informations des joueurs du classement. </p>
+<p>Écrit dans le document classement.txt </p>
 
 </div>
 </div>
@@ -323,8 +291,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="abb1cbedc4435c31dcf0a2397abdcf3da"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abb1cbedc4435c31dcf0a2397abdcf3da">&#9670;&nbsp;</a></span>triDifficile()</h2>
+<a id="aee4d9dfcc0b1268667bef4a069718b15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee4d9dfcc0b1268667bef4a069718b15">&#9670;&nbsp;</a></span>trierClassement()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -333,10 +301,10 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">List&lt;<a class="el" href="class_demineur_1_1_joueur.html">Joueur</a>&gt; Demineur.Classements.triDifficile </td>
+          <td class="memname">List&lt;<a class="el" href="class_demineur_1_1_joueur.html">Joueur</a>&gt; Demineur.Classements.trierClassement </td>
           <td>(</td>
           <td class="paramtype">short&#160;</td>
-          <td class="paramname"><em>indexDifficile</em></td><td>)</td>
+          <td class="paramname"><em>indexDifficulte</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -347,80 +315,10 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Tri le tableau de joueur selon le tri demandé et le retourne au toString() pour créer ce qui sera affiché à l'écran. </p>
+<p>Tri le tableau de joueur selon le tri demandé et le retourne au toString() pour créer ce qui sera affiché à l'écran. Les joueurs dont le score est de 00.00 ne sera pas afficher pour une catégorie donnée. Seulement les 10 premiers joueur d'une catégorie seront affichés. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">indexFacile</td><td>2, 5, 8 sont les scores en mode Difficile dans le tableau de joueur.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>List trié de joueur.</dd></dl>
-
-</div>
-</div>
-<a id="ae0f2f334a3b39c805d4eb877a4ebd6e4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae0f2f334a3b39c805d4eb877a4ebd6e4">&#9670;&nbsp;</a></span>triFacile()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">List&lt;<a class="el" href="class_demineur_1_1_joueur.html">Joueur</a>&gt; Demineur.Classements.triFacile </td>
-          <td>(</td>
-          <td class="paramtype">short&#160;</td>
-          <td class="paramname"><em>indexFacile</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Tri le tableau de joueur selon le tri demandé et le retourne au toString() pour créer ce qui sera affiché à l'écran. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">indexFacile</td><td>0, 3, 6 sont les scores en mode facile dans le tableau de joueur.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>List trié de joueur.</dd></dl>
-
-</div>
-</div>
-<a id="a64d48ce4c7eb1d688bbe4cbed70d8e7b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a64d48ce4c7eb1d688bbe4cbed70d8e7b">&#9670;&nbsp;</a></span>triNormal()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">List&lt;<a class="el" href="class_demineur_1_1_joueur.html">Joueur</a>&gt; Demineur.Classements.triNormal </td>
-          <td>(</td>
-          <td class="paramtype">short&#160;</td>
-          <td class="paramname"><em>indexNormal</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Tri le tableau de joueur selon le tri demandé et le retourne au toString() pour créer ce qui sera affiché à l'écran. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">indexFacile</td><td>1, 4, 7 sont les scores en mode Normal dans le tableau de joueur.</td></tr>
+    <tr><td class="paramname">indexDifficulte</td><td>0, 3, 6 sont les scores en mode facile dans le tableau de joueur. 1,4,7 sont les scores en mode Normal dans le tableau de joueur. 2,5,8 sont les scores en mode Difficile dans le tableau de joueur. </td></tr>
   </table>
   </dd>
 </dl>
@@ -451,16 +349,15 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="_classements_8cs.html">Classements.cs</a></li>
+</ul>
 </div><!-- contents -->
-</div><!-- doc-content -->
 <!-- start footer part -->
-<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
-  <ul>
-    <li class="navelem"><a class="el" href="namespace_demineur.html">Demineur</a></li><li class="navelem"><a class="el" href="class_demineur_1_1_classements.html">Classements</a></li>
-    <li class="footer">Generated by
-    <a href="http://www.doxygen.org/index.html">
-    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
-  </ul>
-</div>
+<hr class="footer"/><address class="footer"><small>
+Generated by &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
 </body>
 </html>
