@@ -17,7 +17,8 @@ namespace Demineur
         dynamic bot;
         public IA(int lignes, int colonnes)
         {
-            dll = new FileInfo(@".\dll\IntelligenceArtificielDemineur.dll");
+            dll = new FileInfo(@"..\..\..\dll\IntelligenceArtificielDemineur.dll"); //en mode visualstudio
+            //dll = new FileInfo(@".\dll\IntelligenceArtificielDemineur.dll"); // en mode exe
             classes = Assembly.LoadFile(dll.FullName).GetTypes(); // Load les classes du dll.
             ligCol = new object[2] { lignes, colonnes }; // Envoyer au constructeur de l'IA externe.
             bot = Activator.CreateInstance(classes[0], ligCol); //classes[0] pour la premiere classe du dll.     

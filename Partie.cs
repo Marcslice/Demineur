@@ -69,6 +69,7 @@ namespace Demineur
                 InterfaceUsager.MessageDefaite();
                 return false;
             }
+           // Console.Write(TimeSpan.FromMinutes(minuterie.Elapsed.TotalMinutes).ToString(@"mm\.ss"));
             InterfaceUsager.MessageVictoire();
             return true;
         }
@@ -120,7 +121,6 @@ namespace Demineur
                                     InterfaceUsager.MettreAJourSelection(positionActuelle);
                                     break;
                                 case 65:
-                                    positionActuelle = InterfaceUsager.AllerBas(m_Grille.Lignes());
                                     ConsoleKey k = AppelerIA();
                                     touche = new ConsoleKeyInfo(k.ToString()[0], k, false, false, false);
                                     break;
